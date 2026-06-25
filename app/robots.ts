@@ -1,0 +1,35 @@
+import type { MetadataRoute } from "next";
+
+import { siteUrl } from "@/sanity/env";
+
+export default function robots(): MetadataRoute.Robots {
+  const host = new URL(siteUrl).host;
+
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/studio", "/api/"]
+      },
+      {
+        userAgent: [
+          "Googlebot",
+          "Bingbot",
+          "DuckDuckBot",
+          "GPTBot",
+          "ChatGPT-User",
+          "ClaudeBot",
+          "Claude-User",
+          "PerplexityBot",
+          "Applebot",
+          "Bytespider"
+        ],
+        allow: "/",
+        disallow: ["/studio", "/api/"]
+      }
+    ],
+    sitemap: new URL("/sitemap.xml", siteUrl).toString(),
+    host
+  };
+}
