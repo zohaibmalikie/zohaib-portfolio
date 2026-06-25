@@ -6,6 +6,7 @@ import { SanityImage } from "@/components/sanity-image";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { formatProjectDate } from "@/lib/content-utils";
 import type { Project } from "@/types/sanity";
 
 const fallbackLabels = ["Marketplace Platform", "Operations Software", "Federation Platform"];
@@ -20,7 +21,14 @@ export function Work({ projects }: { projects: Project[] }) {
     <section id="work" className="section section-muted">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Selected Work" title="Featured Projects">
+          <SectionHeading eyebrow="Selected Work" 
+            title={
+              <>
+                Featured
+                <span className="text-accent"> Projects</span>
+              </>
+            }
+          >
             <ActionLink href="/work" variant="ghost">
               All Work <ArrowUpRight size={15} aria-hidden="true" />
             </ActionLink>
@@ -40,7 +48,7 @@ export function Work({ projects }: { projects: Project[] }) {
                 <div className="project-card-body">
                   <div className="project-meta">
                     <span>{fallbackLabels[index] || "Case Study"}</span>
-                    <span>{index === 2 ? "2023" : "2024"}</span>
+                    {project.projectDate ? <span>{formatProjectDate(project.projectDate)}</span> : null}
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.shortDescription}</p>

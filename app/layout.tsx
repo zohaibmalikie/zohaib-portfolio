@@ -25,17 +25,17 @@ const monoFont = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "Zohaib Ramzan Portfolio",
+  applicationName: "Muhammad Zohaib Ramzan Portfolio",
   manifest: "/manifest.webmanifest",
   title: {
-    default: "Zohaib Ramzan | Senior Frontend and AI Automation Developer",
-    template: "%s | Zohaib Ramzan"
+    default: "Muhammad Zohaib Ramzan | Senior Frontend and AI Automation Developer",
+    template: "%s | Muhammad Zohaib Ramzan"
   },
   description:
     "Senior frontend developer and AI automation expert specializing in AI-native products, Next.js, React, SvelteKit, Sanity CMS, integrations, and technical SEO.",
-  authors: [{ name: "Zohaib Ramzan", url: siteUrl }],
-  creator: "Zohaib Ramzan",
-  publisher: "Zohaib Ramzan",
+  authors: [{ name: "Muhammad Zohaib Ramzan", url: siteUrl }],
+  creator: "Muhammad Zohaib Ramzan",
+  publisher: "Muhammad Zohaib Ramzan",
   category: "Frontend Development",
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon-180.png", sizes: "180x180", type: "image/png" }]
   },
   keywords: [
-    "Zohaib Ramzan",
+    "Muhammad Zohaib Ramzan",
     "Frontend developer",
     "Next.js developer",
     "React developer",
@@ -73,6 +73,24 @@ export const metadata: Metadata = {
       "max-snippet": -1,
       "max-video-preview": -1
     }
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    title: "Muhammad Zohaib Ramzan | Senior Frontend and AI Automation Developer",
+    description: "Senior frontend developer and AI automation expert specializing in AI-native products, Next.js, React, SvelteKit, Sanity CMS, integrations, and technical SEO.",
+    siteName: "Muhammad Zohaib Ramzan"
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@ZohaibM87432701",
+    creator: "@ZohaibM87432701"
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent" as const,
+    title: "Muhammad Zohaib Ramzan"
   }
 };
 
@@ -91,6 +109,8 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" />
         <link rel="alternate" type="text/markdown" href="/llms-full.txt" />
         <link rel="author" href="/humans.txt" />

@@ -61,6 +61,7 @@ export type Project = {
   title: string;
   slug: string;
   shortDescription?: string;
+  projectDate?: string;
   mainImage?: SanityImage;
   screenshots?: SanityImage[];
   problem?: PortableTextBlock[];

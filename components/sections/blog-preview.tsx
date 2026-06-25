@@ -22,8 +22,8 @@ export function BlogPreview({ posts }: { posts: Post[] }) {
             eyebrow="Blog"
             title={
               <>
-                Writing &amp;<br />
-                <span className="text-accent">Thinking</span>
+                Writing &amp;
+                <span className="text-accent"> Thinking</span>
               </>
             }
           >

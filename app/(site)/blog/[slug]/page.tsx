@@ -45,7 +45,15 @@ export async function generateMetadata({ params }: PostPageProps) {
     path: post.seo?.canonicalUrl || `/blog/${post.slug}`,
     image: post.seo?.openGraphImage || post.mainImage,
     settings,
-    type: "article"
+    type: "article",
+    publishedDate: post.publishedAt,
+    modifiedDate: post.updatedAt || post.publishedAt,
+    author: post.author?.name,
+    tags: post.tags?.length
+      ? post.tags
+      : post.category?.title
+        ? [post.category.title]
+        : undefined
   });
 }
 
@@ -77,7 +85,7 @@ export default async function PostPage({ params }: PostPageProps) {
       : undefined,
     publisher: {
       "@type": "Person",
-      name: "Zohaib Ramzan"
+      name: "Muhammad Zohaib Ramzan"
     },
     articleSection: post.category?.title,
     keywords: post.tags?.join(", "),
@@ -124,7 +132,9 @@ export default async function PostPage({ params }: PostPageProps) {
               ]}
             />
             <p className="eyebrow">{post.category?.title || "Article"}</p>
-            <h1>{post.title}</h1>
+            <div className="page-heading">
+              <h1>{post.title}</h1>
+            </div>
             <p className="lead">{post.excerpt}</p>
             <div className="meta-row">
               <span>{formatDate(post.publishedAt)}</span>

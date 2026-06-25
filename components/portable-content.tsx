@@ -56,7 +56,7 @@ const components: PortableTextComponents = {
 
       if (isExternal) {
         return (
-          <a href={href} target="_blank" rel="noreferrer">
+          <a href={href} target="_blank" rel="noopener noreferrer">
             {children}
           </a>
         );

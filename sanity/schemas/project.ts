@@ -34,6 +34,13 @@ export const project = defineType({
       validation: (Rule) => Rule.required().max(240)
     }),
     defineField({
+      name: "projectDate",
+      title: "Project date",
+      type: "date",
+      group: "overview",
+      description: "Completion or publish date shown on portfolio cards and case studies."
+    }),
+    defineField({
       name: "mainImage",
       title: "Main image",
       type: "image",

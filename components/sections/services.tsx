@@ -15,7 +15,14 @@ export function Services({ services }: { services: ServiceRow[] }) {
     <section id="services" className="section section-dark">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Services" title="What I Build" />
+          <SectionHeading eyebrow="Services"
+            title={
+              <>
+                What I 
+                <span className="text-accent"> Build</span>
+              </>
+            } 
+          />
         </Reveal>
         <Stagger className="service-rows">
           {services.map((service, index) => {

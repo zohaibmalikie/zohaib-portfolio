@@ -2,7 +2,7 @@ import type { StructureResolver } from "sanity/structure";
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title("Zohaib Portfolio CMS")
+    .title("Muhammad Zohaib Ramzan Portfolio CMS")
     .items([
       S.listItem()
         .title("Content")

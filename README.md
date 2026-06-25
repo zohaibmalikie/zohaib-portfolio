@@ -1,6 +1,6 @@
-# Zohaib Portfolio
+# Muhammad Zohaib Ramzan Portfolio
 
-Next.js App Router portfolio for Zohaib Ramzan, with Sanity CMS-powered articles, case studies, services, FAQs, testimonials, SEO metadata, sitemap generation, and LLM/GEO discovery files.
+Next.js App Router portfolio for Muhammad Zohaib Ramzan, with Sanity CMS-powered articles, case studies, services, FAQs, testimonials, SEO metadata, sitemap generation, and LLM/GEO discovery files.
 
 ## Stack
 

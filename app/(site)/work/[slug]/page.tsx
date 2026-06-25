@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { PortableContent } from "@/components/portable-content";
 import { SanityImage } from "@/components/sanity-image";
+import { formatProjectDate } from "@/lib/content-utils";
 import { absoluteUrl, buildMetadata, getImageUrl } from "@/lib/seo";
 import {
   getProject,
@@ -63,8 +64,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     image: imageUrl ? absoluteUrl(imageUrl) : undefined,
     creator: {
       "@type": "Person",
-      name: "Zohaib Ramzan"
+      name: "Muhammad Zohaib Ramzan"
     },
+    datePublished: project.projectDate,
     keywords: project.techStack?.join(", "),
     sameAs: project.projectUrl
   };
@@ -108,7 +110,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               ]}
             />
             <p className="eyebrow">Case study</p>
-            <h1>{project.title}</h1>
+            <div className="page-heading">
+              <h1>{project.title}</h1>
+            </div>
             <p className="lead">{project.shortDescription}</p>
             <div className="button-row">
               <Link href="/#contact" className="button">
@@ -118,7 +122,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <a
                   href={project.projectUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="button-secondary"
                 >
                   Visit project
@@ -141,6 +145,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="container case-study-grid">
             <aside className="side-panel">
               <h2>Overview</h2>
+              {project.projectDate ? (
+                <>
+                  <h3>Date</h3>
+                  <p className="project-date">{formatProjectDate(project.projectDate)}</p>
+                </>
+              ) : null}
               {project.techStack?.length ? (
                 <>
                   <h3>Technologies</h3>

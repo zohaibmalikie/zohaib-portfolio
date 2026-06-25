@@ -120,17 +120,14 @@ h3 {
   letter-spacing: 0;
 }
 
-h1,
 .hero-title {
   font-size: clamp(3.8rem, 9vw, 8.6rem);
   line-height: 0.86;
   font-weight: 800;
 }
 
-h2 {
-  font-size: clamp(3.2rem, 8vw, 7.5rem);
-  line-height: 0.9;
-  font-weight: 800;
+h1 {
+  font-size: clamp(1.35rem, 2.5vw, 4.5rem);
 }
 
 h3 {
@@ -160,7 +157,7 @@ p {
 
 .section {
   position: relative;
-  padding: clamp(110px, 14vw, 210px) 0;
+  padding: clamp(60px, 7vw, 110px) 0;
 }
 
 .section-dark {
@@ -251,7 +248,7 @@ p {
 .meta-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
@@ -555,31 +552,41 @@ p {
   line-height: 0.9;
 }
 
+.faq-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(48px, 6vw, 68px);
+}
+
+.faq-load-more-button {
+  padding: 12px 32px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: rgba(26, 255, 122, 0.08);
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.faq-load-more-button:hover {
+  background: rgba(26, 255, 122, 0.12);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.faq-load-more-button:active {
+  transform: translateY(0);
+}
+
 .proof-tile span {
   display: block;
   margin-top: 8px;
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
-}
-
-.scroll-hint {
-  position: absolute;
-  right: clamp(0px, 10vw, 200px);
-  bottom: -16px;
-  display: grid;
-  justify-items: center;
-  gap: 10px;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.86rem;
-  letter-spacing: 0.16em;
-}
-
-.scroll-hint i {
-  width: 1px;
-  height: 38px;
-  background: linear-gradient(var(--muted), transparent);
 }
 
 .reveal,
@@ -656,13 +663,21 @@ p {
   align-items: end;
 }
 
-.section-heading h2 {
+.section-heading h2, .page-heading h1 {
   max-width: 960px;
-  margin: 0 0 clamp(34px, 5vw, 72px)
+  margin: 0 0 clamp(34px, 5vw, 72px);
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  line-height: 0.9;
+  font-weight: 800;
 }
+
 
 .section-heading-aside {
   align-self: end;
+}
+
+.section-heading-aside a {
+  margin-bottom: 20px;
 }
 
 .section-heading-center {
@@ -821,6 +836,14 @@ p {
 
 .project-meta span:first-child {
   color: var(--primary);
+}
+
+.project-date {
+  margin-bottom: 28px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-transform: uppercase;
 }
 
 .project-card h3,
@@ -1063,22 +1086,40 @@ p {
   color: var(--ink);
 }
 
-.testimonial-dots {
-  display: flex;
-  gap: 10px;
-  margin-top: 28px;
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
 }
 
-.testimonial-dots span {
-  width: 22px;
-  height: 5px;
-  border-radius: 999px;
-  background: var(--surface-2);
+.testimonial-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
-.testimonial-dots .active {
-  width: 52px;
-  background: var(--primary);
+.rating-row-small {
+  margin-bottom: 18px;
+}
+
+.testimonial-card blockquote {
+  margin: 0 0 24px;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.testimonial-card cite {
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+  font-style: normal;
+}
+
+.testimonial-card cite strong {
+  color: var(--ink);
 }
 
 .faq-section {
@@ -1100,6 +1141,8 @@ p {
 .faq-row > span {
   color: var(--primary);
   font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .faq-row h3 {
@@ -1146,7 +1189,7 @@ p {
 }
 
 .contact-panel h2 {
-  max-width: 780px;
+  max-width: 710px;
   margin-bottom: 26px;
   text-align: center;
 }
@@ -1464,15 +1507,12 @@ p {
   .post-grid,
   .grid-3,
   .grid-4,
+  .testimonial-grid,
   .featured-post-link,
   .about-grid,
   .case-study-grid,
   .article-shell {
     grid-template-columns: 1fr;
-  }
-
-  .scroll-hint {
-    right: 0;
   }
 
   .featured-post-image {
@@ -1505,11 +1545,11 @@ p {
 
   h1,
   .hero-title {
-    font-size: clamp(3.2rem, 15vw, 4.35rem);
+    font-size: clamp(1.8rem, 7.5vw, 2.8rem);
   }
 
   h2 {
-    font-size: clamp(3rem, 14vw, 4.8rem);
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
   }
 
   .site-header {
@@ -1539,12 +1579,6 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     margin-top: 54px;
-  }
-
-  .scroll-hint {
-    position: static;
-    width: max-content;
-    margin: 38px auto 0;
   }
 
   .section {
@@ -1613,6 +1647,10 @@ p {
 
   .testimonial-panel blockquote {
     font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .testimonial-card {
+    padding: 20px;
   }
 
   .faq-row {

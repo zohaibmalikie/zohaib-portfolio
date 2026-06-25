@@ -52,7 +52,7 @@ export function About({ settings }: { settings: SiteSettings }) {
           <Reveal delay={0.12}>
             <div className="about-copy">
               <p>
-                I&apos;m Zohaib, a senior frontend developer with 5+ years building
+                I&apos;m Muhammad Zohaib Ramzan, a senior frontend developer with 5+ years building
                 high-quality, responsive, and user-friendly interfaces. I work
                 closely with designers, back-end teams, founders, and marketing
                 teams to turn complex requirements into clean, maintainable code.

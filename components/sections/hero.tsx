@@ -61,10 +61,6 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
             priority
           />
         </div>
-        <div className="scroll-hint" aria-hidden="true">
-          <span>SCROLL</span>
-          <i />
-        </div>
       </div>
     </section>
   );

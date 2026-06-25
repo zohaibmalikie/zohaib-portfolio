@@ -31,6 +31,20 @@ import type {
 
 type SlugResult = { slug: string };
 
+function mergeBySlug<T extends { slug?: string }>(primary: T[] = [], fallback: T[] = []) {
+  const merged = new Map<string, T>();
+
+  for (const item of fallback) {
+    if (item.slug) merged.set(item.slug, item);
+  }
+
+  for (const item of primary) {
+    if (item.slug) merged.set(item.slug, item);
+  }
+
+  return Array.from(merged.values());
+}
+
 async function getData<T>({
   query,
   params,
@@ -93,7 +107,7 @@ export async function getHomePageData() {
   return {
     settings: data.settings || fallbackSettings,
     services: data.services?.length ? data.services : fallbackServices,
-    projects: data.projects?.length ? data.projects : fallbackProjects,
+    projects: mergeBySlug(data.projects || [], fallbackProjects),
     posts: data.posts?.length ? data.posts : fallbackPosts,
     faqs: data.faqs?.length ? data.faqs : fallbackFaqs,
     testimonials: data.testimonials?.length
@@ -158,13 +172,15 @@ export function getPostSlugs() {
   });
 }
 
-export function getProjects(options?: { stega?: boolean }) {
-  return getData<Project[]>({
+export async function getProjects(options?: { stega?: boolean }) {
+  const projects = await getData<Project[]>({
     query: PROJECTS_QUERY,
     tags: ["project"],
     fallback: fallbackProjects,
     stega: options?.stega
   });
+
+  return mergeBySlug(projects, fallbackProjects);
 }
 
 export function getProject(slug: string, options?: { stega?: boolean }) {
@@ -195,7 +211,7 @@ async function getStaticSlugs({
 
   try {
     const data = await metadataClient.fetch<SlugResult[]>(query);
-    return data?.length ? data : fallback;
+    return mergeBySlug(data || [], fallback);
   } catch (error) {
     console.warn("Sanity slug fetch failed, using fallback slugs.", error);
     return fallback;

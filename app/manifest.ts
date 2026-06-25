@@ -4,8 +4,8 @@ import { siteUrl } from "@/sanity/env";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Zohaib Ramzan Portfolio",
-    short_name: "Zohaib",
+    name: "Muhammad Zohaib Ramzan Portfolio",
+    short_name: "M. Zohaib",
     description:
       "Senior frontend developer portfolio for Next.js, React, SvelteKit, CMS, AI integrations, case studies, and technical articles.",
     start_url: "/",

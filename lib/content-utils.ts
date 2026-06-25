@@ -10,6 +10,15 @@ export function formatDate(value?: string) {
   }).format(new Date(value));
 }
 
+export function formatProjectDate(value?: string) {
+  if (!value) return "";
+
+  return new Intl.DateTimeFormat("en", {
+    month: "long",
+    year: "numeric"
+  }).format(new Date(value));
+}
+
 export function slugify(value: string) {
   return value
     .toLowerCase()

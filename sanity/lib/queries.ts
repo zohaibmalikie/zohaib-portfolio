@@ -83,6 +83,7 @@ export const PROJECT_CARD_PROJECTION = `
   title,
   "slug": slug.current,
   shortDescription,
+  projectDate,
   mainImage { ${imageProjection} },
   screenshots[] { ${imageProjection} },
   techStack,

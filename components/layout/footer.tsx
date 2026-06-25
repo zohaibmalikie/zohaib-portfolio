@@ -21,14 +21,14 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
       <Link href="/" className="brand footer-brand">
         ZR<span>.</span>
       </Link>
-      <p>© {new Date().getFullYear()} Zohaib Ramzan — Expert Frontend Developer</p>
+      <p>© {new Date().getFullYear()} Muhammad Zohaib Ramzan — Expert Frontend Developer</p>
       <div className="social-list" aria-label="Social links">
         {links.slice(0, 4).map((link) => (
           <a
             key={`${link.label}-${link.url}`}
             href={link.url}
             target="_blank"
-            rel="me noreferrer"
+            rel="me noopener noreferrer"
           >
             {link.label}
           </a>

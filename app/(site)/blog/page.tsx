@@ -43,7 +43,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const blogListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Frontend development articles by Zohaib Ramzan",
+    name: "Frontend development articles by Muhammad Zohaib Ramzan",
     itemListElement: posts.map((post, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -78,7 +78,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Blog</p>
-          <h1>Technical articles for better frontend publishing.</h1>
+          <div className="page-heading">
+            <h1>Technical articles for better frontend publishing.</h1>
+          </div>
           <p className="lead">
             Notes on Next.js, React, SvelteKit, technical SEO, Core Web Vitals,
             Sanity CMS, Builder.io, AI automation, SaaS frontend architecture,

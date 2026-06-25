@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { JsonLd } from "@/components/json-ld";
 import { SanityImage } from "@/components/sanity-image";
+import { formatProjectDate } from "@/lib/content-utils";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { getProjects, getSiteSettings } from "@/sanity/lib/fetchers";
 
@@ -12,7 +13,7 @@ export async function generateMetadata() {
   return buildMetadata({
     title: "Work",
     description:
-      "Frontend case studies and portfolio projects by Zohaib Ramzan, including CMS, ecommerce, SaaS, and responsive website work.",
+      "Frontend case studies and portfolio projects by Muhammad Zohaib Ramzan, including CMS, ecommerce, SaaS, and responsive website work.",
     path: "/work",
     settings
   });
@@ -23,7 +24,7 @@ export default async function WorkPage() {
   const workListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Frontend and AI development case studies by Zohaib Ramzan",
+    name: "Frontend and AI development case studies by Muhammad Zohaib Ramzan",
     itemListElement: projects.map((project, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -58,7 +59,9 @@ export default async function WorkPage() {
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Work</p>
-          <h1>Case studies with editable outcomes, stacks, and SEO.</h1>
+          <div className="page-heading">
+            <h1>Case studies with editable outcomes, stacks, and SEO.</h1>
+          </div>
           <p className="lead">
             Portfolio entries are powered by Sanity and structured around the
             problem, role, solution, technologies, results, screenshots, and CTA.
@@ -82,6 +85,12 @@ export default async function WorkPage() {
                   className="card-image"
                 />
                 <div className="card-body">
+                  {project.projectDate ? (
+                    <div className="project-meta">
+                      <span>Case Study</span>
+                      <span>{formatProjectDate(project.projectDate)}</span>
+                    </div>
+                  ) : null}
                   <h2>{project.title}</h2>
                   <p>{project.shortDescription}</p>
                   <div className="chip-list">

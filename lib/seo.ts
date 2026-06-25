@@ -34,7 +34,11 @@ export function buildMetadata({
   path,
   image,
   settings,
-  type = "website"
+  type = "website",
+  publishedDate,
+  modifiedDate,
+  author,
+  tags
 }: {
   title?: string;
   description?: string;
@@ -42,11 +46,15 @@ export function buildMetadata({
   image?: SanityImage;
   settings?: SiteSettings;
   type?: "website" | "article";
+  publishedDate?: string;
+  modifiedDate?: string;
+  author?: string;
+  tags?: string[];
 }): Metadata {
   const resolvedTitle =
     title ||
     settings?.defaultSeoTitle ||
-    "Zohaib Ramzan | Frontend Website Developer";
+    "Muhammad Zohaib Ramzan | Frontend Website Developer";
   const resolvedDescription =
     description ||
     settings?.defaultSeoDescription ||
@@ -55,7 +63,7 @@ export function buildMetadata({
   const resolvedImage =
     getImageUrl(image) || getImageUrl(settings?.defaultOpenGraphImage);
 
-  return {
+  const metadata: Metadata = {
     title: {
       absolute: resolvedTitle
     },
@@ -77,13 +85,29 @@ export function buildMetadata({
               alt: image?.alt || resolvedTitle
             }
           ]
-        : undefined
+        : undefined,
+      siteName: "Muhammad Zohaib Ramzan"
     },
     twitter: {
       card: "summary_large_image",
       title: resolvedTitle,
       description: resolvedDescription,
-      images: resolvedImage ? [resolvedImage] : undefined
+      images: resolvedImage ? [resolvedImage] : undefined,
+      creator: "@ZohaibM87432701"
     }
   };
+
+  // Add article-specific metadata
+  if (type === "article") {
+    metadata.openGraph = {
+      ...metadata.openGraph,
+      type: "article",
+      publishedTime: publishedDate,
+      modifiedTime: modifiedDate,
+      authors: author ? [author] : undefined,
+      tags
+    } as any;
+  }
+
+  return metadata;
 }
