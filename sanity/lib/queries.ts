@@ -36,9 +36,7 @@ const seoProjection = `
 
 const publicPostFilter = `
   _type == "post" &&
-  defined(slug.current) &&
-  coalesce(workflowStatus, "published") == "published" &&
-  (!defined(scheduledAt) || dateTime(scheduledAt) <= dateTime(now()))
+  defined(slug.current)
 `;
 
 export const SITE_SETTINGS_QUERY = defineQuery(`
@@ -66,7 +64,6 @@ export const POST_CARD_PROJECTION = `
   _id,
   title,
   "slug": slug.current,
-  workflowStatus,
   excerpt,
   mainImage { ${imageProjection} },
   author->{
@@ -86,22 +83,8 @@ export const POST_CARD_PROJECTION = `
   publishedAt,
   updatedAt,
   firstPublishedAt,
-  scheduledAt,
-  lastReviewedAt,
-  reviewedBy->{
-    _id,
-    name,
-    "slug": slug.current,
-    image { ${imageProjection} },
-    bio
-  },
   readingTime,
   featured,
-  socialShareTitle,
-  socialShareDescription,
-  socialPostStatus,
-  socialPlatforms,
-  socialPostText,
   ${seoProjection}
 `;
 

@@ -1,11 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-const publishReadyStatuses = ["approved", "scheduled", "published"];
-
-type WorkflowDocument = {
-  workflowStatus?: unknown;
-};
-
 type SeoValidationValue = {
   metaTitle?: string;
   title?: string;
@@ -13,20 +7,6 @@ type SeoValidationValue = {
   description?: string;
   focusKeyword?: string;
 };
-
-function getWorkflowStatus(document?: unknown) {
-  if (!document || typeof document !== "object" || !("workflowStatus" in document)) {
-    return undefined;
-  }
-
-  const { workflowStatus } = document as WorkflowDocument;
-  return typeof workflowStatus === "string" ? workflowStatus : undefined;
-}
-
-function requiresPublishReadyFields(document?: unknown) {
-  const workflowStatus = getWorkflowStatus(document);
-  return workflowStatus ? publishReadyStatuses.includes(workflowStatus) : false;
-}
 
 function getSeoValidationValue(value?: unknown) {
   if (!value || typeof value !== "object") return {};
@@ -45,46 +25,16 @@ export const post = defineType({
     { name: "content", title: "Content", default: true },
     { name: "taxonomy", title: "Taxonomy" },
     { name: "seo", title: "SEO" },
-    { name: "workflow", title: "Workflow" },
-    { name: "social", title: "Social Sharing" },
     { name: "automation", title: "Automation" }
   ],
   fields: [
-    defineField({
-      name: "workflowStatus",
-      title: "Workflow status",
-      type: "string",
-      group: "workflow",
-      description:
-        "Move the article through editorial review. Approved, scheduled, and published articles must pass all required publishing fields.",
-      initialValue: "draft",
-      options: {
-        layout: "radio",
-        list: [
-          { title: "Draft", value: "draft" },
-          { title: "In review", value: "inReview" },
-          { title: "Approved", value: "approved" },
-          { title: "Scheduled", value: "scheduled" },
-          { title: "Published", value: "published" },
-          { title: "Archived", value: "archived" }
-        ]
-      },
-      validation: (Rule) => Rule.required()
-    }),
     defineField({
       name: "title",
       title: "Title",
       type: "string",
       group: "content",
       description: "The public article headline.",
-      validation: (Rule) =>
-        Rule.max(100).custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && !value) {
-            return "Title is required before approval, scheduling, or publishing.";
-          }
-
-          return true;
-        })
+      validation: (Rule) => Rule.required().max(100)
     }),
     defineField({
       name: "slug",
@@ -98,14 +48,7 @@ export const post = defineType({
         maxLength: 96,
         isUnique: (slug, context) => context.defaultIsUnique(slug, context)
       },
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && !value?.current) {
-            return "Slug is required before approval, scheduling, or publishing.";
-          }
-
-          return true;
-        })
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: "excerpt",
@@ -115,14 +58,7 @@ export const post = defineType({
       group: "content",
       description:
         "Short public summary used on blog cards, metadata fallbacks, and social previews.",
-      validation: (Rule) =>
-        Rule.max(220).custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && !value) {
-            return "Excerpt is required before approval, scheduling, or publishing.";
-          }
-
-          return true;
-        })
+      validation: (Rule) => Rule.required().max(220)
     }),
     defineField({
       name: "mainImage",
@@ -133,9 +69,9 @@ export const post = defineType({
         "Featured image used at the top of the article, in blog cards, and as the fallback social image.",
       options: { hotspot: true },
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && !value?.asset?._ref) {
-            return "Featured image is required before approval, scheduling, or publishing.";
+        Rule.custom((value) => {
+          if (!value?.asset?._ref) {
+            return "Featured image is required.";
           }
 
           return true;
@@ -162,9 +98,9 @@ export const post = defineType({
       description: "The credited writer shown on the article page.",
       to: [{ type: "author" }],
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && !value?._ref) {
-            return "Author is required before approval, scheduling, or publishing.";
+        Rule.custom((value) => {
+          if (!value?._ref) {
+            return "Author is required.";
           }
 
           return true;
@@ -178,9 +114,9 @@ export const post = defineType({
       description: "Primary category used for filtering and related posts.",
       to: [{ type: "category" }],
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && !value?._ref) {
-            return "Category is required before approval, scheduling, or publishing.";
+        Rule.custom((value) => {
+          if (!value?._ref) {
+            return "Category is required.";
           }
 
           return true;
@@ -199,7 +135,7 @@ export const post = defineType({
       name: "publishedAt",
       title: "Published date",
       type: "datetime",
-      group: "workflow",
+      group: "content",
       description:
         "Public display date. Keep this aligned with the original publish date for existing articles.",
       initialValue: () => new Date().toISOString(),
@@ -209,7 +145,7 @@ export const post = defineType({
       name: "updatedAt",
       title: "Updated date",
       type: "datetime",
-      group: "workflow",
+      group: "content",
       description: "Optional public updated date shown in metadata."
     }),
     defineField({
@@ -220,38 +156,6 @@ export const post = defineType({
       readOnly: true,
       description:
         "Automation-owned timestamp set only once when the article is first published."
-    }),
-    defineField({
-      name: "scheduledAt",
-      title: "Scheduled publish date",
-      type: "datetime",
-      group: "workflow",
-      description:
-        "Required when Workflow status is Scheduled. Future scheduled posts stay hidden on the public site.",
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (getWorkflowStatus(context.document) === "scheduled" && !value) {
-            return "Scheduled publish date is required for scheduled articles.";
-          }
-
-          return true;
-        })
-    }),
-    defineField({
-      name: "lastReviewedAt",
-      title: "Last reviewed at",
-      type: "datetime",
-      group: "workflow",
-      description:
-        "Date this article was last editorially reviewed for accuracy."
-    }),
-    defineField({
-      name: "reviewedBy",
-      title: "Reviewed by",
-      type: "reference",
-      group: "workflow",
-      description: "Editor or author who last reviewed this article.",
-      to: [{ type: "author" }]
     }),
     defineField({
       name: "readingTime",
@@ -279,9 +183,9 @@ export const post = defineType({
       description:
         "Main article content. Add headings, lists, links, and inline images here.",
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (requiresPublishReadyFields(context.document) && isPortableTextEmpty(value)) {
-            return "Body content is required before approval, scheduling, or publishing.";
+        Rule.custom((value) => {
+          if (isPortableTextEmpty(value)) {
+            return "Body content is required.";
           }
 
           return true;
@@ -347,94 +251,25 @@ export const post = defineType({
       type: "seo",
       group: "seo",
       description:
-        "Search and social metadata. Meta title, meta description, and focus keyword are required before approval or publishing.",
+        "Search metadata. Meta title, meta description, and focus keyword are required.",
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (!requiresPublishReadyFields(context.document)) return true;
+        Rule.custom((value) => {
           const seo = getSeoValidationValue(value);
 
           if (!seo.metaTitle && !seo.title) {
-            return "SEO meta title is required before approval, scheduling, or publishing.";
+            return "SEO meta title is required.";
           }
 
           if (!seo.metaDescription && !seo.description) {
-            return "SEO meta description is required before approval, scheduling, or publishing.";
+            return "SEO meta description is required.";
           }
 
           if (!seo.focusKeyword) {
-            return "Focus keyword is required before approval, scheduling, or publishing.";
+            return "Focus keyword is required.";
           }
 
           return true;
         })
-    }),
-    defineField({
-      name: "socialShareTitle",
-      title: "Social share title",
-      type: "string",
-      group: "social",
-      description:
-        "Optional title for manual or automated social posts. Leave blank to reuse the article title.",
-      validation: (Rule) => Rule.max(90)
-    }),
-    defineField({
-      name: "socialShareDescription",
-      title: "Social share description",
-      type: "text",
-      rows: 3,
-      group: "social",
-      description:
-        "Optional social summary for manual or automated sharing. Leave blank to reuse the excerpt.",
-      validation: (Rule) => Rule.max(220)
-    }),
-    defineField({
-      name: "socialPostStatus",
-      title: "Social post status",
-      type: "string",
-      group: "social",
-      description:
-        "Preparation field for future n8n or webhook automation. It does not publish anything by itself.",
-      initialValue: "notCreated",
-      options: {
-        layout: "radio",
-        list: [
-          { title: "Not created", value: "notCreated" },
-          { title: "Draft created", value: "draftCreated" },
-          { title: "Published", value: "published" }
-        ]
-      },
-      validation: (Rule) => Rule.required()
-    }),
-    defineField({
-      name: "socialPlatforms",
-      title: "Social platforms",
-      type: "array",
-      group: "social",
-      description:
-        "Platforms a future automation can target after the article is published.",
-      of: [
-        defineArrayMember({
-          type: "string",
-          options: {
-            list: [
-              { title: "LinkedIn", value: "linkedin" },
-              { title: "Facebook", value: "facebook" },
-              { title: "Twitter/X", value: "twitterX" }
-            ]
-          }
-        })
-      ],
-      options: { layout: "tags" }
-    }),
-    defineField({
-      name: "socialPostText",
-      title: "Social post text",
-      type: "text",
-      rows: 5,
-      group: "social",
-      description:
-        "Optional draft copy that future n8n automation can send to social channels.",
-      validation: (Rule) => Rule.max(1000)
     })
   ],
   preview: {
@@ -442,18 +277,16 @@ export const post = defineType({
       title: "title",
       slug: "slug.current",
       media: "mainImage",
-      workflowStatus: "workflowStatus",
-      publishedAt: "publishedAt",
-      scheduledAt: "scheduledAt"
+      publishedAt: "publishedAt"
     },
-    prepare({ title, slug, media, workflowStatus, publishedAt, scheduledAt }) {
-      const status = workflowStatus || "draft";
-      const date = scheduledAt || publishedAt;
-      const dateLabel = date ? new Date(date).toLocaleDateString() : "No date";
+    prepare({ title, slug, media, publishedAt }) {
+      const dateLabel = publishedAt
+        ? new Date(publishedAt).toLocaleDateString()
+        : "No date";
 
       return {
         title: title || "Untitled article",
-        subtitle: [slug ? `/${slug}` : "No slug", status, dateLabel].join(" | "),
+        subtitle: [slug ? `/${slug}` : "No slug", dateLabel].join(" | "),
         media
       };
     }

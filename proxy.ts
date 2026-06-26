@@ -1,12 +1,26 @@
 import { type NextRequest, NextResponse } from "next/server";
 
+const sanityFrameAncestors =
+  "frame-ancestors 'self' https://www.sanity.io https://sanity.io https://*.sanity.io;";
+
 function isStudioRoute(pathname: string) {
   return pathname === "/studio" || pathname.startsWith("/studio/");
 }
 
+function isPresentationPreviewRoute(pathname: string) {
+  return (
+    pathname === "/" ||
+    pathname === "/blog" ||
+    pathname.startsWith("/blog/") ||
+    pathname === "/work" ||
+    pathname.startsWith("/work/")
+  );
+}
+
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const studioRoute = isStudioRoute(pathname);
+  const sanityFrameableRoute =
+    isStudioRoute(pathname) || isPresentationPreviewRoute(pathname);
 
   const response = NextResponse.next();
 
@@ -22,16 +36,13 @@ export function proxy(request: NextRequest) {
     "max-age=31536000; includeSubDomains"
   );
 
-  if (studioRoute) {
-    // Sanity Dashboard frames /studio, so this route must allow Sanity origins.
-    response.headers.set(
-      "Content-Security-Policy",
-      "frame-ancestors 'self' https://www.sanity.io https://sanity.io https://*.sanity.io;"
-    );
+  if (sanityFrameableRoute) {
+    // Sanity Dashboard frames Studio and Presentation preview routes.
+    response.headers.set("Content-Security-Policy", sanityFrameAncestors);
 
     response.headers.delete("X-Frame-Options");
   } else {
-    // Public pages keep the stricter iframe protection.
+    // Non-preview public pages keep stricter iframe protection.
     response.headers.set("X-Frame-Options", "SAMEORIGIN");
     response.headers.set("Content-Security-Policy", "frame-ancestors 'self';");
   }

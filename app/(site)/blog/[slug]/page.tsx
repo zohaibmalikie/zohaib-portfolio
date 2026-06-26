@@ -42,9 +42,8 @@ export async function generateMetadata({ params }: PostPageProps) {
   const seoTitle = post.seo?.metaTitle || post.seo?.title || post.title;
   const seoDescription =
     post.seo?.metaDescription || post.seo?.description || post.excerpt;
-  const ogTitle = post.seo?.ogTitle || post.socialShareTitle || seoTitle;
-  const ogDescription =
-    post.seo?.ogDescription || post.socialShareDescription || seoDescription;
+  const ogTitle = post.seo?.ogTitle || seoTitle;
+  const ogDescription = post.seo?.ogDescription || seoDescription;
   const seoImage = post.seo?.ogImage || post.seo?.openGraphImage || post.mainImage;
 
   return buildMetadata({
@@ -85,7 +84,6 @@ export default async function PostPage({ params }: PostPageProps) {
   const schemaDescription =
     post.seo?.metaDescription ||
     post.seo?.description ||
-    post.socialShareDescription ||
     post.excerpt;
 
   const blogSchema = {

@@ -7,7 +7,6 @@ type WebhookPayload = {
   _type?: string;
   title?: string;
   slug?: string | { current?: string };
-  workflowStatus?: string;
 };
 
 function getSlug(slug?: WebhookPayload["slug"]) {
@@ -118,7 +117,6 @@ export async function POST(request: NextRequest) {
       documentId: payload._id,
       type,
       slug,
-      workflowStatus: payload.workflowStatus,
       paths,
       tags
     });

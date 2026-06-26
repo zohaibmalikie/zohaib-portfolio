@@ -41,15 +41,6 @@ export function generateExcerptFromPortableText(
   return `${plainText.slice(0, maxLength).replace(/\s+\S*$/, "")}...`;
 }
 
-export function setFirstPublishedAtOnce(
-  firstPublishedAt?: string,
-  workflowStatus?: string,
-  now = new Date().toISOString()
-) {
-  if (firstPublishedAt || workflowStatus !== "published") return firstPublishedAt;
-  return now;
-}
-
 export function mergeSeoWithoutOverwritingManualFields(
   currentSeo: SeoFields = {},
   generatedSeo: SeoFields = {}

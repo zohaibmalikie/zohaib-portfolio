@@ -50,7 +50,6 @@ export type Post = {
   _id: string;
   title: string;
   slug: string;
-  workflowStatus?: "draft" | "inReview" | "approved" | "scheduled" | "published" | "archived";
   excerpt?: string;
   mainImage?: SanityImage;
   author?: Author;
@@ -59,18 +58,10 @@ export type Post = {
   publishedAt?: string;
   updatedAt?: string;
   firstPublishedAt?: string;
-  scheduledAt?: string;
-  lastReviewedAt?: string;
-  reviewedBy?: Author;
   readingTime?: number;
   body?: PortableTextBlock[];
   seo?: SeoFields;
   featured?: boolean;
-  socialShareTitle?: string;
-  socialShareDescription?: string;
-  socialPostStatus?: "notCreated" | "draftCreated" | "published";
-  socialPlatforms?: Array<"linkedin" | "facebook" | "twitterX">;
-  socialPostText?: string;
 };
 
 export type Project = {
