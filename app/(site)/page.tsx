@@ -77,32 +77,7 @@ const fallbackServiceRows: ServiceRow[] = [
   }
 ];
 
-const upworkTestimonials = [
-  {
-    _id: "upwork-marya",
-    clientName: "Marya A.",
-    clientRoleCompany: "Upwork client",
-    text:
-      '"excellent job" on a React and TypeScript structure, with a clear note that they would work with him again.',
-    rating: 5
-  },
-  {
-    _id: "upwork-heer",
-    clientName: "Heer B.",
-    clientRoleCompany: "Upwork client",
-    text:
-      '"You are true expert." The client said the React/Next work matched what they wanted and they were happy with the result.',
-    rating: 5
-  },
-  {
-    _id: "upwork-sharn",
-    clientName: "Sharn C.",
-    clientRoleCompany: "Upwork client",
-    text:
-      '"This guy is a rockstar!!!" The client highlighted availability, helpful React support, humility, and willingness to collaborate again.',
-    rating: 5
-  }
-];
+const upworkTestimonials = [];
 
 function getServiceIcon(service: Service) {
   const haystack = `${service.title} ${service.description || ""} ${
@@ -165,11 +140,7 @@ export default async function HomePage() {
     )
   ) as string[];
 
-  const testimonialCards = testimonials.some((testimonial) =>
-    upworkTestimonials.some((upwork) => upwork.clientName === testimonial.clientName)
-  )
-    ? testimonials
-    : [...upworkTestimonials, ...testimonials].slice(0, 6);
+  const testimonialCards = testimonials || []
 
   const faqSchema =
     faqs.length > 0

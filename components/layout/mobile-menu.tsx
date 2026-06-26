@@ -6,7 +6,15 @@ export type NavItem = {
   href: string;
 };
 
-export function MobileMenu({ navItems }: { navItems: NavItem[] }) {
+export function MobileMenu({
+  navItems,
+  hireHref
+}: {
+  navItems: NavItem[];
+  hireHref: string;
+}) {
+  const isExternalHireLink = /^https?:\/\//.test(hireHref);
+
   return (
     <details className="mobile-menu">
       <summary
@@ -23,9 +31,14 @@ export function MobileMenu({ navItems }: { navItems: NavItem[] }) {
             {item.label}
           </Link>
         ))}
-        <Link href="/#contact" className="button button-primary">
+        <a
+          href={hireHref}
+          className="button button-primary"
+          target={isExternalHireLink ? "_blank" : undefined}
+          rel={isExternalHireLink ? "noopener noreferrer" : undefined}
+        >
           Hire Me
-        </Link>
+        </a>
       </div>
     </details>
   );

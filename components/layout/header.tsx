@@ -14,6 +14,9 @@ const navItems: NavItem[] = [
 ];
 
 export function SiteHeader({ settings }: { settings: SiteSettings }) {
+  const hireHref = settings.upworkLink || "/#contact";
+  const isExternalHireLink = /^https?:\/\//.test(hireHref);
+
   return (
     <header className="site-header">
       <Link href="/" className="brand" aria-label={`ZR. ${settings.name} home`}>
@@ -27,10 +30,15 @@ export function SiteHeader({ settings }: { settings: SiteSettings }) {
         ))}
       </nav>
       <div className="header-actions">
-        <Link href="/#contact" className="button button-primary button-small">
+        <a
+          href={hireHref}
+          className="button button-primary button-small"
+          target={isExternalHireLink ? "_blank" : undefined}
+          rel={isExternalHireLink ? "noopener noreferrer" : undefined}
+        >
           Hire Me <ArrowUpRight size={14} aria-hidden="true" />
-        </Link>
-        <MobileMenu navItems={navItems} />
+        </a>
+        <MobileMenu navItems={navItems} hireHref={hireHref} />
       </div>
     </header>
   );
