@@ -1,39 +1,64 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-function setSecurityHeaders(response: NextResponse) {
+function isStudioPath(pathname: string) {
+  return pathname === "/studio" || pathname.startsWith("/studio/");
+}
+
+function setSecurityHeaders(response: NextResponse, isStudioRoute: boolean) {
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-  response.headers.set("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
+
+  response.headers.set(
+    "Permissions-Policy",
+    "geolocation=(), microphone=(), camera=()"
+  );
+
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("X-XSS-Protection", "1; mode=block");
-  response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+
   response.headers.set(
-    "Content-Security-Policy",
-    "frame-ancestors 'self' https://sanity.io https://*.sanity.io"
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains"
   );
+
+  if (isStudioRoute) {
+    /**
+     * Sanity Dashboard loads /studio inside an iframe.
+     * So /studio must allow Sanity domains as frame ancestors.
+     */
+    response.headers.set(
+      "Content-Security-Policy",
+      "frame-ancestors 'self' https://www.sanity.io https://sanity.io https://*.sanity.io;"
+    );
+
+    /**
+     * Do not send X-Frame-Options for /studio.
+     * X-Frame-Options: SAMEORIGIN blocks Sanity Dashboard iframe loading.
+     */
+    response.headers.delete("X-Frame-Options");
+  } else {
+    /**
+     * Keep normal clickjacking protection for the public website.
+     */
+    response.headers.set("X-Frame-Options", "SAMEORIGIN");
+
+    response.headers.set(
+      "Content-Security-Policy",
+      "frame-ancestors 'self';"
+    );
+  }
 
   return response;
 }
 
 export function proxy(request: NextRequest) {
-  const isRootPath = request.nextUrl.pathname === "/";
-  const isIframeRequest = request.headers.get("sec-fetch-dest") === "iframe";
-  const referrer = request.headers.get("referer") || "";
-  const isFromSanity = /https:\/\/([a-z0-9-]+\.)?sanity\.io/i.test(referrer);
-
-  if (isRootPath && isIframeRequest && isFromSanity) {
-    return setSecurityHeaders(
-      NextResponse.redirect(new URL("/studio", request.url))
-    );
-  }
+  const pathname = request.nextUrl.pathname;
+  const studioRoute = isStudioPath(pathname);
 
   const response = NextResponse.next();
-  setSecurityHeaders(response);
 
-  return response;
+  return setSecurityHeaders(response, studioRoute);
 }
 
 export const config = {
-  matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)"
-  ]
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)"],
 };
