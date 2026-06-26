@@ -53,6 +53,8 @@ export const metadata: Metadata = {
     "SvelteKit developer",
     "Sanity CMS",
     "Builder.io",
+    "shadcn",
+    "shadcn-ui",
     "WordPress developer",
     "technical SEO",
     "Core Web Vitals",
