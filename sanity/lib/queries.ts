@@ -18,11 +18,27 @@ const seoProjection = `
   seo {
     title,
     description,
+    metaTitle,
+    metaDescription,
+    focusKeyword,
     canonicalUrl,
+    noIndex,
+    ogTitle,
+    ogDescription,
+    ogImage {
+      ${imageProjection}
+    },
     openGraphImage {
       ${imageProjection}
     }
   }
+`;
+
+const publicPostFilter = `
+  _type == "post" &&
+  defined(slug.current) &&
+  coalesce(workflowStatus, "published") == "published" &&
+  (!defined(scheduledAt) || dateTime(scheduledAt) <= dateTime(now()))
 `;
 
 export const SITE_SETTINGS_QUERY = defineQuery(`
@@ -50,6 +66,7 @@ export const POST_CARD_PROJECTION = `
   _id,
   title,
   "slug": slug.current,
+  workflowStatus,
   excerpt,
   mainImage { ${imageProjection} },
   author->{
@@ -68,8 +85,23 @@ export const POST_CARD_PROJECTION = `
   tags,
   publishedAt,
   updatedAt,
+  firstPublishedAt,
+  scheduledAt,
+  lastReviewedAt,
+  reviewedBy->{
+    _id,
+    name,
+    "slug": slug.current,
+    image { ${imageProjection} },
+    bio
+  },
   readingTime,
   featured,
+  socialShareTitle,
+  socialShareDescription,
+  socialPostStatus,
+  socialPlatforms,
+  socialPostText,
   ${seoProjection}
 `;
 
@@ -120,7 +152,7 @@ export const HOME_QUERY = defineQuery(`
     "projects": *[_type == "project" && defined(slug.current) && featured == true] | order(_updatedAt desc)[0...6] {
       ${PROJECT_CARD_PROJECTION}
     },
-    "posts": *[_type == "post" && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc)[0...3] {
+    "posts": *[${publicPostFilter}] | order(coalesce(firstPublishedAt, publishedAt, _createdAt) desc)[0...3] {
       ${POST_CARD_PROJECTION}
     },
     "faqs": *[_type == "faq"] | order(sortOrder asc, _createdAt asc)[0...8] {
@@ -146,43 +178,41 @@ export const HOME_QUERY = defineQuery(`
 
 export const POSTS_QUERY = defineQuery(`
   *[
-    _type == "post" &&
-    defined(slug.current) &&
+    ${publicPostFilter} &&
     ($category == null || category->slug.current == $category) &&
     ($tag == null || $tag in tags[])
-  ] | order(coalesce(publishedAt, _createdAt) desc) {
+  ] | order(coalesce(firstPublishedAt, publishedAt, _createdAt) desc) {
     ${POST_CARD_PROJECTION}
   }
 `);
 
 export const FEATURED_POSTS_QUERY = defineQuery(`
-  *[_type == "post" && defined(slug.current) && featured == true] | order(coalesce(publishedAt, _createdAt) desc)[0...3] {
+  *[${publicPostFilter} && featured == true] | order(coalesce(firstPublishedAt, publishedAt, _createdAt) desc)[0...3] {
     ${POST_CARD_PROJECTION}
   }
 `);
 
 export const POST_QUERY = defineQuery(`
-  *[_type == "post" && slug.current == $slug][0] {
+  *[${publicPostFilter} && slug.current == $slug][0] {
     ${POST_DETAIL_PROJECTION}
   }
 `);
 
 export const RELATED_POSTS_QUERY = defineQuery(`
   *[
-    _type == "post" &&
+    ${publicPostFilter} &&
     slug.current != $slug &&
-    defined(slug.current) &&
     (
       category->slug.current == $category ||
       count((tags[])[@ in $tags]) > 0
     )
-  ] | order(coalesce(publishedAt, _createdAt) desc)[0...3] {
+  ] | order(coalesce(firstPublishedAt, publishedAt, _createdAt) desc)[0...3] {
     ${POST_CARD_PROJECTION}
   }
 `);
 
 export const POST_SLUGS_QUERY = defineQuery(`
-  *[_type == "post" && defined(slug.current)] {
+  *[${publicPostFilter}] {
     "slug": slug.current
   }
 `);

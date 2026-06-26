@@ -38,7 +38,12 @@ export function buildMetadata({
   publishedDate,
   modifiedDate,
   author,
-  tags
+  tags,
+  noIndex,
+  openGraphTitle,
+  openGraphDescription,
+  twitterTitle,
+  twitterDescription
 }: {
   title?: string;
   description?: string;
@@ -50,6 +55,11 @@ export function buildMetadata({
   modifiedDate?: string;
   author?: string;
   tags?: string[];
+  noIndex?: boolean;
+  openGraphTitle?: string;
+  openGraphDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
 }): Metadata {
   const resolvedTitle =
     title ||
@@ -71,10 +81,20 @@ export function buildMetadata({
     alternates: {
       canonical: resolvedUrl
     },
+    robots: noIndex
+      ? {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false
+          }
+        }
+      : undefined,
     openGraph: {
       type,
-      title: resolvedTitle,
-      description: resolvedDescription,
+      title: openGraphTitle || resolvedTitle,
+      description: openGraphDescription || resolvedDescription,
       url: resolvedUrl,
       images: resolvedImage
         ? [
@@ -90,8 +110,8 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: resolvedTitle,
-      description: resolvedDescription,
+      title: twitterTitle || openGraphTitle || resolvedTitle,
+      description: twitterDescription || openGraphDescription || resolvedDescription,
       images: resolvedImage ? [resolvedImage] : undefined,
       creator: "@ZohaibM87432701"
     }

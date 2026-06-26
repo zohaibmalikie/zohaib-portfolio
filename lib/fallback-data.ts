@@ -672,7 +672,7 @@ export const fallbackTestimonials: Testimonial[] = [
   },
   {
     _id: "testimonial-svelte-ui",
-    clientName: "Upwork client",
+    clientName: "Janne Halttu",
     clientRoleCompany: "Frontend Svelte UI · August 25, 2024",
     text: "Got what asked =)",
     rating: 5,
@@ -683,7 +683,7 @@ export const fallbackTestimonials: Testimonial[] = [
   },
   {
     _id: "testimonial-website-ui-issues",
-    clientName: "Upwork client",
+    clientName: "Janne Halttu",
     clientRoleCompany: "Website UI issues · August 22, 2024",
     text: "Recommend this guy. Sometimes busy, but when free he is worth it.",
     rating: 5

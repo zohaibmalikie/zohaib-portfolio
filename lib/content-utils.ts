@@ -1,5 +1,10 @@
 import type { PortableTextBlock } from "@portabletext/types";
 
+import {
+  calculateReadingTime,
+  extractPortableTextPlainText
+} from "@/lib/blog-automation";
+
 export function formatDate(value?: string) {
   if (!value) return "";
 
@@ -28,23 +33,12 @@ export function slugify(value: string) {
 }
 
 export function toPlainText(blocks: PortableTextBlock[] = []) {
-  return blocks
-    .map((block) => {
-      if (block._type !== "block" || !Array.isArray(block.children)) {
-        return "";
-      }
-
-      return block.children
-        .map((child) => ("text" in child ? child.text : ""))
-        .join("");
-    })
-    .filter(Boolean)
-    .join("\n\n");
+  return extractPortableTextPlainText(blocks);
 }
 
 export function estimateReadingTime(text: string) {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 220));
+  return Math.max(1, Math.ceil(words / 200));
 }
 
 export function getReadingTime({
@@ -57,7 +51,8 @@ export function getReadingTime({
   body?: PortableTextBlock[];
 }) {
   if (readingTime) return readingTime;
-  return estimateReadingTime([excerpt, toPlainText(body)].filter(Boolean).join(" "));
+  if (body?.length) return calculateReadingTime(body);
+  return estimateReadingTime(excerpt || "");
 }
 
 export function getHeadingId(value: string) {

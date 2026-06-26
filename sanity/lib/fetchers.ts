@@ -100,7 +100,7 @@ export function getSiteSettings(options?: { stega?: boolean }) {
 export async function getHomePageData() {
   const data = await getData<HomePageData>({
     query: HOME_QUERY,
-    tags: ["siteSettings", "service", "project", "post", "faq", "testimonial"],
+    tags: ["siteSettings", "service", "project", "posts", "faq", "testimonial"],
     fallback: fallbackHomePageData
   });
 
@@ -134,7 +134,7 @@ export function getPosts({
   return getData<Post[]>({
     query: POSTS_QUERY,
     params: { category: category || null, tag: tag || null },
-    tags: ["post"],
+    tags: ["posts"],
     fallback,
     stega
   });
@@ -144,7 +144,7 @@ export function getPost(slug: string, options?: { stega?: boolean }) {
   return getData<Post | null>({
     query: POST_QUERY,
     params: { slug },
-    tags: ["post"],
+    tags: ["posts", `post:${slug}`],
     fallback: fallbackPosts.find((post) => post.slug === slug) || null,
     stega: options?.stega
   });
@@ -158,7 +158,7 @@ export function getRelatedPosts(post: Post) {
       category: post.category?.slug || null,
       tags: post.tags || []
     },
-    tags: ["post"],
+    tags: ["posts"],
     fallback: fallbackPosts
       .filter((candidate) => candidate.slug !== post.slug)
       .slice(0, 3)

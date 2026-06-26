@@ -39,21 +39,34 @@ export async function generateMetadata({ params }: PostPageProps) {
     });
   }
 
+  const seoTitle = post.seo?.metaTitle || post.seo?.title || post.title;
+  const seoDescription =
+    post.seo?.metaDescription || post.seo?.description || post.excerpt;
+  const ogTitle = post.seo?.ogTitle || post.socialShareTitle || seoTitle;
+  const ogDescription =
+    post.seo?.ogDescription || post.socialShareDescription || seoDescription;
+  const seoImage = post.seo?.ogImage || post.seo?.openGraphImage || post.mainImage;
+
   return buildMetadata({
-    title: post.seo?.title || post.title,
-    description: post.seo?.description || post.excerpt,
+    title: seoTitle,
+    description: seoDescription,
     path: post.seo?.canonicalUrl || `/blog/${post.slug}`,
-    image: post.seo?.openGraphImage || post.mainImage,
+    image: seoImage,
     settings,
     type: "article",
-    publishedDate: post.publishedAt,
-    modifiedDate: post.updatedAt || post.publishedAt,
+    publishedDate: post.firstPublishedAt || post.publishedAt,
+    modifiedDate: post.updatedAt || post.firstPublishedAt || post.publishedAt,
     author: post.author?.name,
     tags: post.tags?.length
       ? post.tags
       : post.category?.title
         ? [post.category.title]
-        : undefined
+        : undefined,
+    noIndex: post.seo?.noIndex,
+    openGraphTitle: ogTitle,
+    openGraphDescription: ogDescription,
+    twitterTitle: ogTitle,
+    twitterDescription: ogDescription
   });
 }
 
@@ -66,17 +79,23 @@ export default async function PostPage({ params }: PostPageProps) {
   const relatedPosts = await getRelatedPosts(post);
   const readingTime = getReadingTime(post);
   const postUrl = absoluteUrl(`/blog/${post.slug}`);
-  const imageUrl = getImageUrl(post.mainImage);
+  const seoImage = post.seo?.ogImage || post.seo?.openGraphImage || post.mainImage;
+  const imageUrl = getImageUrl(seoImage);
   const absoluteImageUrl = imageUrl ? absoluteUrl(imageUrl) : undefined;
+  const schemaDescription =
+    post.seo?.metaDescription ||
+    post.seo?.description ||
+    post.socialShareDescription ||
+    post.excerpt;
 
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
+    headline: post.seo?.metaTitle || post.title,
+    description: schemaDescription,
     image: absoluteImageUrl ? [absoluteImageUrl] : undefined,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt || post.publishedAt,
+    datePublished: post.firstPublishedAt || post.publishedAt,
+    dateModified: post.updatedAt || post.firstPublishedAt || post.publishedAt,
     author: post.author?.name
       ? {
           "@type": "Person",
@@ -87,6 +106,7 @@ export default async function PostPage({ params }: PostPageProps) {
       "@type": "Person",
       name: "Muhammad Zohaib Ramzan"
     },
+    url: postUrl,
     articleSection: post.category?.title,
     keywords: post.tags?.join(", "),
     mainEntityOfPage: postUrl

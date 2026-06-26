@@ -90,7 +90,11 @@ async function getSitemapData<T>(
   if (!hasSanityConfig) return fallback;
 
   try {
-    const data = await metadataClient.fetch<T>(query, params);
+    const data = await metadataClient.fetch<T>(query, params, {
+      next: {
+        tags: ["sitemap"]
+      }
+    });
     return Array.isArray(data) && data.length === 0 ? fallback : data || fallback;
   } catch (error) {
     console.warn("Sanity sitemap fetch failed, using fallback data.", error);
