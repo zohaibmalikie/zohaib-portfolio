@@ -37,7 +37,9 @@ export function buildLlmsTxt({
   posts: Post[];
   faqs: Faq[];
 }) {
-  const serviceSummary = services.map((service) => service.title).join(", ");
+  const seoSummary =
+    "technical SEO, on-page SEO, off-page SEO guidance, generative engine optimization (GEO), answer engine optimization (AEO), structured data, Core Web Vitals, AI search optimization, and LLM-readable content architecture";
+  const serviceSummary = [seoSummary, ...services.map((service) => service.title)].join(", ");
 
   return `
 # ${settings.name}
@@ -48,7 +50,7 @@ export function buildLlmsTxt({
       "Frontend developer portfolio covering CMS-powered websites, technical SEO, and modern frontend implementation."
   )}
 
-${line(settings.name)} builds fast, editable frontend experiences with Next.js, React, SvelteKit, WordPress, Sanity CMS, Builder.io, responsive UI, and technical SEO.
+${line(settings.name)} builds fast, editable frontend experiences with Next.js, React, SvelteKit, WordPress, Sanity CMS, Builder.io, responsive UI, technical SEO, GEO, AEO, structured data, and AI-ready content architecture.
 
 ## Canonical Pages
 
@@ -61,6 +63,7 @@ ${link("Robots", "/robots.txt", "Crawler access policy.")}
 
 ## Services
 
+- SEO, GEO & AEO Optimization: Technical SEO, on-page SEO, off-page SEO guidance, generative engine optimization, answer engine optimization, schema markup, Core Web Vitals, AI search optimization, and LLM-readable content structure.
 ${services
   .map((service) =>
     `- ${line(service.title)}: ${line(service.description)}${
@@ -90,7 +93,7 @@ ${posts
 ## Common Topics
 
 - ${line(serviceSummary)}
-- Next.js App Router, React, SvelteKit, Sanity CMS, Builder.io, WordPress, technical SEO, Core Web Vitals, ecommerce optimization, SaaS frontend architecture, and AI automation.
+- Next.js App Router, React, SvelteKit, Sanity CMS, Builder.io, WordPress, technical SEO, on-page SEO, off-page SEO, GEO, AEO, schema markup, Core Web Vitals, ecommerce optimization, SaaS frontend architecture, and AI automation.
 
 ## FAQs
 
@@ -136,9 +139,17 @@ Canonical site: ${absoluteUrl("/")}
 
 ## About
 
-${line(settings.name)} is a frontend developer focused on fast, polished, CMS-driven websites and applications. The portfolio emphasizes responsive UI, maintainable component systems, technical SEO, Core Web Vitals, structured content, and publishing workflows that non-technical teams can manage.
+${line(settings.name)} is a frontend developer and SEO/GEO/AEO expert focused on fast, polished, CMS-driven websites and applications. The portfolio emphasizes responsive UI, maintainable component systems, technical SEO, on-page SEO, off-page SEO guidance, Core Web Vitals, structured data, answer engine optimization, generative engine optimization, AI search readiness, and publishing workflows that non-technical teams can manage.
 
 ## Services
+
+### SEO, GEO & AEO Optimization
+
+Technical SEO, on-page SEO, off-page SEO guidance, generative engine optimization (GEO), answer engine optimization (AEO), schema markup, Core Web Vitals, AI search optimization, semantic content structure, and LLM-readable publishing architecture.
+
+Benefits: Better crawlability, stronger search snippets, clearer machine-readable context, improved content discoverability, and cleaner technical foundations for clicks and impressions.
+
+Related technologies: JSON-LD, schema.org, llms.txt, sitemap.xml, robots.txt, canonical URLs, Open Graph, Twitter cards, Next.js metadata, Core Web Vitals
 
 ${services
   .map(

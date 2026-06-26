@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Bot, Code2, Layers3, Smartphone } from "lucide-react";
+import { Bot, Code2, Layers3, SearchCheck, Smartphone } from "lucide-react";
 
 import { JsonLd } from "@/components/json-ld";
 import { About } from "@/components/sections/about";
@@ -51,10 +51,18 @@ const technologyStack = [
 
 const servicePriorities: { pattern: RegExp; icon: LucideIcon }[] = [
   { pattern: /react|next|frontend|svelte/i, icon: Code2 },
+  { pattern: /seo|geo|aeo|search|schema|core web|performance/i, icon: SearchCheck },
   { pattern: /cms|wordpress|webflow|sanity|builder|content|headless/i, icon: Layers3 },
   { pattern: /mobile|native|ionic|cross/i, icon: Smartphone },
   { pattern: /ai|automation|integration|workflow|llm/i, icon: Bot }
 ];
+
+const seoServiceRow: ServiceRow = {
+  title: "SEO, GEO & AEO Optimization",
+  description:
+    "Technical SEO, on-page SEO, structured data, answer engine optimization, generative engine optimization, Core Web Vitals, and AI-ready content architecture for stronger search visibility.",
+  icon: SearchCheck
+};
 
 const fallbackServiceRows: ServiceRow[] = [
   {
@@ -69,6 +77,7 @@ const fallbackServiceRows: ServiceRow[] = [
       "Sanity, WordPress, Builder.io, Webflow, Elementor, and Divi websites your team can update without touching code.",
     icon: Layers3
   },
+  seoServiceRow,
   {
     title: "AI Automation & Integrations",
     description:
@@ -103,22 +112,29 @@ function getHomeServices(services: Service[]) {
   const remaining = services.filter(
     (service) => !source.some((selected) => selected._id === service._id)
   );
-  const rows = [...source, ...remaining].slice(0, 3);
+  const rows: ServiceRow[] = [
+    seoServiceRow,
+    ...[...source, ...remaining].map((service) => ({
+      title: service.title,
+      description: service.description,
+      icon: getServiceIcon(service)
+    }))
+  ]
+    .filter((service, index, list) => {
+      return list.findIndex((item) => item.title === service.title) === index;
+    })
+    .slice(0, 4);
 
   if (!rows.length) return fallbackServiceRows;
-
-  return rows.map((service) => ({
-    title: service.title,
-    description: service.description,
-    icon: getServiceIcon(service)
-  }));
+  return rows;
 }
 
 export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
   return buildMetadata({
-    title: settings.defaultSeoTitle,
-    description: settings.defaultSeoDescription,
+    title: "Frontend, SEO, GEO and AEO Expert",
+    description:
+      "Frontend, SEO, GEO, and AEO expert for technical SEO, on-page SEO, structured data, answer engine optimization, generative engine optimization, Core Web Vitals, Next.js, React, and Sanity CMS.",
     path: "/",
     image: settings.defaultOpenGraphImage || settings.profileImage,
     settings
@@ -141,6 +157,28 @@ export default async function HomePage() {
   ) as string[];
 
   const testimonialCards = testimonials || []
+  const seoOffers = [
+    {
+      title: "Technical SEO",
+      description:
+        "Crawlability, metadata, schema markup, Core Web Vitals, sitemap, robots.txt, canonical URLs, internal linking, and performance optimization."
+    },
+    {
+      title: "On-Page SEO",
+      description:
+        "Search-focused page structure, headings, content optimization, image alt text, semantic HTML, and conversion-friendly metadata."
+    },
+    {
+      title: "Off-Page SEO Guidance",
+      description:
+        "Authority-building guidance, digital PR readiness, backlink opportunity planning, brand visibility support, and profile consistency."
+    },
+    {
+      title: "GEO and AEO Optimization",
+      description:
+        "Generative engine optimization and answer engine optimization for AI search systems, snippets, structured answers, and LLM-readable content."
+    }
+  ];
 
   const faqSchema =
     faqs.length > 0
@@ -164,8 +202,22 @@ export default async function HomePage() {
     name: settings.name,
     url: absoluteUrl("/"),
     jobTitle:
-      "Senior Frontend Developer, AI Automation and Integration Expert, AI Native Developer",
+      "Frontend Developer, SEO Expert, GEO Expert, AEO Expert, AI Automation and Integration Expert",
     email: settings.email,
+    knowsAbout: [
+      "Frontend development",
+      "Technical SEO",
+      "On-page SEO",
+      "Off-page SEO",
+      "Generative engine optimization",
+      "Answer engine optimization",
+      "Structured data",
+      "Core Web Vitals",
+      "AI search optimization",
+      "Next.js",
+      "React",
+      "Sanity CMS"
+    ],
     sameAs
   };
 
@@ -198,12 +250,26 @@ export default async function HomePage() {
     areaServed: "Worldwide",
     knowsAbout: [
       "Senior frontend development",
+      "Technical SEO",
+      "On-page SEO",
+      "Off-page SEO",
+      "Generative engine optimization",
+      "Answer engine optimization",
+      "AI search optimization",
+      "Structured data SEO",
+      "Core Web Vitals",
       "AI automation",
       "AI integrations",
       "AI-native product development",
       ...services.map((service) => service.title)
     ],
-    makesOffer: services.map((service) => ({
+    makesOffer: [
+      ...seoOffers,
+      ...services.map((service) => ({
+        title: service.title,
+        description: service.description
+      }))
+    ].map((service) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",

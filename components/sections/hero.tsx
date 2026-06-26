@@ -31,7 +31,8 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
           <p className="hero-summary">
             I build fast, SEO-friendly web experiences for SaaS, ecommerce, CMS,
             and growing businesses using Next.js, React, SvelteKit, TypeScript,
-            Sanity, Vercel, and technical SEO.
+            Sanity, Vercel, technical SEO, GEO, AEO, structured data, and
+            AI-ready content architecture.
           </p>
           <div className="hero-actions">
             <ActionLink href="/#work">
