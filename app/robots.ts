@@ -3,8 +3,6 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/sanity/env";
 
 export default function robots(): MetadataRoute.Robots {
-  const host = new URL(siteUrl).host;
-
   return {
     rules: [
       {
@@ -29,7 +27,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/studio", "/api/"]
       }
     ],
-    sitemap: new URL("/sitemap.xml", siteUrl).toString(),
-    host
+    sitemap: new URL("/sitemap.xml", siteUrl).toString()
   };
 }
