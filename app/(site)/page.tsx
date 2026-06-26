@@ -191,14 +191,26 @@ export default async function HomePage() {
       ? absoluteUrl(settings.profileImage.asset.url)
       : undefined,
     email: settings.email,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "PK"
+    },
     areaServed: "Worldwide",
-    serviceType: [
+    knowsAbout: [
       "Senior frontend development",
       "AI automation",
       "AI integrations",
       "AI-native product development",
       ...services.map((service) => service.title)
     ],
+    makesOffer: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description
+      }
+    })),
     sameAs
   };
 

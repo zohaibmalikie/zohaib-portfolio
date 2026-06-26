@@ -19,6 +19,60 @@ type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+function getProjectSeoTitle(project: {
+  title: string;
+  seo?: {
+    title?: string;
+    metaTitle?: string;
+  };
+}) {
+  const seoTitle = project.seo?.metaTitle || project.seo?.title;
+  if (seoTitle && seoTitle.trim() !== project.title.trim()) return seoTitle;
+
+  return `${project.title} Case Study | Frontend Development Portfolio`;
+}
+
+function getFallbackProblem(project: {
+  title: string;
+  shortDescription?: string;
+  techStack?: string[];
+}) {
+  const stack = project.techStack?.length
+    ? ` The work needed to fit the project's stack, including ${project.techStack.join(", ")}.`
+    : "";
+
+  return `${project.title} needed a clear, reliable digital experience that could communicate the value of the project quickly and support users across desktop and mobile screens. ${project.shortDescription || ""}${stack}`;
+}
+
+function getFallbackSolution(project: {
+  servicesProvided?: string[];
+  results?: string[];
+}) {
+  const services = project.servicesProvided?.length
+    ? ` My role focused on ${project.servicesProvided.join(", ").toLowerCase()}.`
+    : "";
+  const results = project.results?.length
+    ? ` The outcome included ${project.results.join(", ").toLowerCase()}.`
+    : "";
+
+  return `I approached the project with a frontend-first implementation process: clarify the content structure, shape responsive layouts, keep important actions easy to find, and polish the interface for practical user journeys.${services}${results}`;
+}
+
+function getProjectScope(project: {
+  title: string;
+  techStack?: string[];
+  servicesProvided?: string[];
+}) {
+  const services = project.servicesProvided?.length
+    ? project.servicesProvided.join(", ").toLowerCase()
+    : "frontend implementation, responsive design, and user experience polish";
+  const stack = project.techStack?.length
+    ? ` The implementation used ${project.techStack.join(", ")} to support a maintainable and responsive delivery.`
+    : "";
+
+  return `For ${project.title}, the scope covered ${services}. The focus was to make the interface easier to understand, easier to navigate, and more useful for the people arriving from search, referrals, or direct client workflows.${stack}`;
+}
+
 export async function generateStaticParams() {
   return getProjectSlugs();
 }
@@ -39,10 +93,13 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   }
 
   return buildMetadata({
-    title: project.seo?.title || project.title,
-    description: project.seo?.description || project.shortDescription,
+    title: getProjectSeoTitle(project),
+    description:
+      project.seo?.metaDescription ||
+      project.seo?.description ||
+      project.shortDescription,
     path: project.seo?.canonicalUrl || `/work/${project.slug}`,
-    image: project.seo?.openGraphImage || project.mainImage,
+    image: project.seo?.ogImage || project.seo?.openGraphImage || project.mainImage,
     settings
   });
 }
@@ -55,6 +112,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const imageUrl = getImageUrl(project.mainImage);
   const projectUrl = absoluteUrl(`/work/${project.slug}`);
+  const hasProblem = Boolean(project.problem?.length);
+  const hasSolution = Boolean(project.solution?.length);
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -177,9 +236,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             <div className="rich-text">
               <h2>Challenge</h2>
-              <PortableContent value={project.problem} />
+              {hasProblem ? (
+                <PortableContent value={project.problem} />
+              ) : (
+                <p>{getFallbackProblem(project)}</p>
+              )}
               <h2>Solution</h2>
-              <PortableContent value={project.solution} />
+              {hasSolution ? (
+                <PortableContent value={project.solution} />
+              ) : (
+                <p>{getFallbackSolution(project)}</p>
+              )}
+              <h2>Project scope</h2>
+              <p>{getProjectScope(project)}</p>
               {project.results?.length ? (
                 <>
                   <h2>Results</h2>

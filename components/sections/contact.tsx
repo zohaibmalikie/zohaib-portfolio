@@ -1,9 +1,12 @@
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import type { SiteSettings } from "@/types/sanity";
+
+const whatsappHref =
+  "https://api.whatsapp.com/send?phone=923090844077&text=Hello%20Muhammad%20Zohaib%20Ramzan%2C%20I%20have%20a%20query%20regarding%20your%20services";
 
 export function Contact({ settings }: { settings: SiteSettings }) {
   return (
@@ -20,12 +23,17 @@ export function Contact({ settings }: { settings: SiteSettings }) {
           </p>
           <div className="button-row">
             <ActionLink
-              href="https://wa.me/923090844077?text=Hello%20Muhammad%20Zohaib%20Ramzan%2C%20I%20have%20a%20query%20regarding%20your%20services"
+              href={whatsappHref}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               <MessageCircle size={17} aria-hidden="true" /> WhatsApp Me
             </ActionLink>
+            {settings.email ? (
+              <ActionLink href={`mailto:${settings.email}`} variant="ghost">
+                <Mail size={17} aria-hidden="true" /> Email Me
+              </ActionLink>
+            ) : null}
             {settings.linkedinLink ? (
               <ActionLink
                 href={settings.linkedinLink}
@@ -34,10 +42,6 @@ export function Contact({ settings }: { settings: SiteSettings }) {
                 rel="me noopener noreferrer"
               >
                 LinkedIn <ArrowUpRight size={17} aria-hidden="true" />
-              </ActionLink>
-            ) : settings.email ? (
-              <ActionLink href={`mailto:${settings.email}`} variant="ghost">
-                Email Muhammad Zohaib
               </ActionLink>
             ) : null}
           </div>

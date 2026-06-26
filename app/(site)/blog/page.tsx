@@ -15,14 +15,18 @@ type BlogPageProps = {
   }>;
 };
 
-export async function generateMetadata() {
+export async function generateMetadata({ searchParams }: BlogPageProps) {
+  const filters = await searchParams;
+  const isFiltered = Boolean(filters.category || filters.tag);
   const settings = await getSiteSettings({ stega: false });
+
   return buildMetadata({
-    title: "Blog",
+    title: isFiltered ? "Filtered Blog Articles" : "Blog",
     description:
       "Technical articles about Next.js, React, SvelteKit, Sanity CMS, Builder.io, technical SEO, and frontend architecture.",
     path: "/blog",
-    settings
+    settings,
+    noIndex: isFiltered
   });
 }
 
@@ -101,6 +105,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   key={category.slug}
                   href={`/blog?category=${category.slug}`}
                   aria-current={filters.category === category.slug}
+                  rel="nofollow"
                 >
                   {category.title}
                 </Link>
@@ -111,6 +116,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 key={tag}
                 href={`/blog?tag=${encodeURIComponent(tag)}`}
                 aria-current={filters.tag === tag}
+                rel="nofollow"
               >
                 {tag}
               </Link>

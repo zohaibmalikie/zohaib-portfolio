@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/studio", "/api/"]
+        disallow: ["/studio", "/api/", "/blog?tag=", "/blog?category="]
       },
       {
         userAgent: [
@@ -24,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
           "Bytespider"
         ],
         allow: "/",
-        disallow: ["/studio", "/api/"]
+        disallow: ["/studio", "/api/", "/blog?tag=", "/blog?category="]
       }
     ],
     sitemap: new URL("/sitemap.xml", siteUrl).toString()
