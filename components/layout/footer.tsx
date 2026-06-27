@@ -2,14 +2,30 @@ import Link from "next/link";
 
 import type { SiteSettings } from "@/types/sanity";
 
+const crawlerBlockedDomains = ["fiverr.com", "upwork.com"];
+
+function isCrawlerBlockedSocialUrl(url: string) {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, "");
+    return crawlerBlockedDomains.some(
+      (domain) => hostname === domain || hostname.endsWith(`.${domain}`)
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function SiteFooter({ settings }: { settings: SiteSettings }) {
   const links = [
     ...(settings.socialLinks || []),
     settings.linkedinLink ? { label: "LinkedIn", url: settings.linkedinLink } : null,
-    settings.githubLink ? { label: "GitHub", url: settings.githubLink } : null,
-    settings.upworkLink ? { label: "Upwork", url: settings.upworkLink } : null
+    settings.githubLink ? { label: "GitHub", url: settings.githubLink } : null
   ].reduce<{ label: string; url: string }[]>((uniqueLinks, link) => {
-    if (link && !uniqueLinks.some((item) => item.url === link.url)) {
+    if (
+      link &&
+      !isCrawlerBlockedSocialUrl(link.url) &&
+      !uniqueLinks.some((item) => item.url === link.url)
+    ) {
       uniqueLinks.push(link);
     }
 

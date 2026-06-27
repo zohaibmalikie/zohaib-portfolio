@@ -14,11 +14,18 @@ const fallbackSiteUrl = "https://www.zohaibramzan.com";
 const isLocalSiteUrl = configuredSiteUrl
   ? /^(https?:\/\/)?(localhost|127\.0\.0\.1)(:\d+)?/i.test(configuredSiteUrl)
   : false;
+const canonicalSiteUrl =
+  configuredSiteUrl && !isLocalSiteUrl
+    ? configuredSiteUrl.replace(
+        /^https?:\/\/zohaibramzan\.com\/?$/i,
+        fallbackSiteUrl
+      )
+    : configuredSiteUrl;
 
 export const siteUrl =
   process.env.NODE_ENV === "production" && isLocalSiteUrl
     ? fallbackSiteUrl
-    : configuredSiteUrl || fallbackSiteUrl;
+    : canonicalSiteUrl || fallbackSiteUrl;
 
 export const previewOrigin =
   process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";

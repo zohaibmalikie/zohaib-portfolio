@@ -23,7 +23,7 @@ export async function generateMetadata({ searchParams }: BlogPageProps) {
   return buildMetadata({
     title: isFiltered ? "Filtered Blog Articles" : "Blog",
     description:
-      "Technical articles about Next.js, React, SvelteKit, Sanity CMS, Builder.io, technical SEO, and frontend architecture.",
+      "Technical frontend articles about Next.js, React, SvelteKit, Sanity CMS, Builder.io, Core Web Vitals, and SEO architecture.",
     path: "/blog",
     settings,
     noIndex: isFiltered
@@ -105,7 +105,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   key={category.slug}
                   href={`/blog?category=${category.slug}`}
                   aria-current={filters.category === category.slug}
-                  rel="nofollow"
                 >
                   {category.title}
                 </Link>
@@ -116,7 +115,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 key={tag}
                 href={`/blog?tag=${encodeURIComponent(tag)}`}
                 aria-current={filters.tag === tag}
-                rel="nofollow"
               >
                 {tag}
               </Link>

@@ -14,7 +14,7 @@ const navItems: NavItem[] = [
 ];
 
 export function SiteHeader({ settings }: { settings: SiteSettings }) {
-  const hireHref = settings.upworkLink || "/#contact";
+  const hireHref = "/#contact";
   const isExternalHireLink = /^https?:\/\//.test(hireHref);
 
   return (

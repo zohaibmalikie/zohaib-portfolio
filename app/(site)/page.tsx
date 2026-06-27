@@ -86,7 +86,18 @@ const fallbackServiceRows: ServiceRow[] = [
   }
 ];
 
-const upworkTestimonials = [];
+const crawlerBlockedDomains = ["fiverr.com", "upwork.com"];
+
+function isCrawlerBlockedUrl(url: string) {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, "");
+    return crawlerBlockedDomains.some(
+      (domain) => hostname === domain || hostname.endsWith(`.${domain}`)
+    );
+  } catch {
+    return false;
+  }
+}
 
 function getServiceIcon(service: Service) {
   const haystack = `${service.title} ${service.description || ""} ${
@@ -134,7 +145,7 @@ export async function generateMetadata() {
   return buildMetadata({
     title: "Frontend, SEO, GEO and AEO Expert",
     description:
-      "Frontend, SEO, GEO, and AEO expert for technical SEO, on-page SEO, structured data, answer engine optimization, generative engine optimization, Core Web Vitals, Next.js, React, and Sanity CMS.",
+      "Frontend, SEO, GEO, and AEO expert for fast Next.js, React, Sanity CMS, structured data, Core Web Vitals, and AI-ready websites.",
     path: "/",
     image: settings.defaultOpenGraphImage || settings.profileImage,
     settings
@@ -152,9 +163,9 @@ export default async function HomePage() {
         settings.githubLink,
         settings.upworkLink,
         ...(settings.socialLinks?.map((link) => link.url) || [])
-      ].filter(Boolean)
+      ].filter((url): url is string => Boolean(url))
     )
-  ) as string[];
+  ).filter((url) => !isCrawlerBlockedUrl(url));
 
   const testimonialCards = testimonials || []
   const seoOffers = [

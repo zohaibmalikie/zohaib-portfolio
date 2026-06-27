@@ -53,7 +53,7 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
         </div>
         <div className="hero-banner">
           <Image
-            src="/assets/img/banner.png"
+            src="/assets/img/banner.webp"
             alt="Illustrated project banner showing modern web design"
             width={1200}
             height={620}

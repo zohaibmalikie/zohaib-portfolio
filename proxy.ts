@@ -19,6 +19,19 @@ function isPresentationPreviewRoute(pathname: string) {
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const hostname =
+    request.headers.get("host")?.split(":")[0].toLowerCase() ||
+    request.nextUrl.hostname.toLowerCase();
+
+  if (hostname === "zohaibramzan.com") {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.protocol = "https:";
+    redirectUrl.hostname = "www.zohaibramzan.com";
+    redirectUrl.port = "";
+
+    return NextResponse.redirect(redirectUrl, 301);
+  }
+
   const sanityFrameableRoute =
     isStudioRoute(pathname) || isPresentationPreviewRoute(pathname);
 
@@ -35,6 +48,13 @@ export function proxy(request: NextRequest) {
     "Strict-Transport-Security",
     "max-age=31536000; includeSubDomains"
   );
+
+  if (request.method === "GET" && !pathname.startsWith("/studio")) {
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+    );
+  }
 
   if (sanityFrameableRoute) {
     // Sanity Dashboard frames Studio and Presentation preview routes.

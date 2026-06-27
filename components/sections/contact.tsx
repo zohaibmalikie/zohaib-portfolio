@@ -25,7 +25,7 @@ export function Contact({ settings }: { settings: SiteSettings }) {
             <ActionLink
               href={whatsappHref}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer"
             >
               <MessageCircle size={17} aria-hidden="true" /> WhatsApp Me
             </ActionLink>

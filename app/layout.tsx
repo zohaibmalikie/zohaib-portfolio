@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Muhammad Zohaib Ramzan"
   },
   description:
-    "Frontend, SEO, GEO, and AEO expert specializing in Next.js, React, Sanity CMS, technical SEO, on-page SEO, answer engine optimization, generative engine optimization, Core Web Vitals, and AI-ready websites.",
+    "Frontend, SEO, GEO, and AEO expert for fast Next.js, React, Sanity CMS, structured data, Core Web Vitals, and AI-ready websites.",
   authors: [{ name: "Muhammad Zohaib Ramzan", url: siteUrl }],
   creator: "Muhammad Zohaib Ramzan",
   publisher: "Muhammad Zohaib Ramzan",
@@ -98,7 +98,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     title: "Muhammad Zohaib Ramzan | Frontend, SEO, GEO and AEO Expert",
-    description: "Frontend, SEO, GEO, and AEO expert specializing in Next.js, React, Sanity CMS, technical SEO, on-page SEO, answer engine optimization, generative engine optimization, Core Web Vitals, and AI-ready websites.",
+    description:
+      "Frontend, SEO, GEO, and AEO expert for fast Next.js, React, Sanity CMS, structured data, Core Web Vitals, and AI-ready websites.",
     siteName: "Muhammad Zohaib Ramzan"
   },
   twitter: {
@@ -128,8 +129,6 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" />
         <link rel="alternate" type="text/markdown" href="/llms-full.txt" />
         <link rel="author" href="/humans.txt" />

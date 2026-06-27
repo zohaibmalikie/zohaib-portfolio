@@ -15,7 +15,7 @@ const localImage = (url: string, alt: string) => ({
 
 const localImages = (basePath: string, count: number, alt: string) =>
   Array.from({ length: count }, (_, index) =>
-    localImage(`${basePath}/${index + 1}.png`, `${alt} ${index + 1}`)
+    localImage(`${basePath}/${index + 1}.webp`, `${alt} ${index + 1}`)
   );
 
 const paragraphBlock = (key: string, text: string) => [
@@ -37,11 +37,11 @@ const paragraphBlock = (key: string, text: string) => [
 export const fallbackSettings: SiteSettings = {
   name: "Muhammad Zohaib Ramzan",
   profileImage: localImage(
-    "/assets/img/zohaib-profile-portrait.png",
+    "/assets/img/zohaib-profile-portrait.webp",
     "Muhammad Zohaib Ramzan portrait"
   ),
   defaultOpenGraphImage: localImage(
-    "/assets/img/zohaib-profile-portrait.png",
+    "/assets/img/zohaib-profile-portrait.webp",
     "Muhammad Zohaib Ramzan portrait"
   ),
   heroHeadline:
@@ -51,7 +51,7 @@ export const fallbackSettings: SiteSettings = {
   email: "hello@zohaibramzan.com",
   linkedinLink: "https://www.linkedin.com/in/zohaib-dev/",
   githubLink: "https://github.com/",
-  upworkLink: "https://www.upwork.com/freelancers/zohaibramzan",
+  upworkLink: "",
   socialLinks: [
     {
       label: "LinkedIn",
@@ -60,10 +60,6 @@ export const fallbackSettings: SiteSettings = {
     {
       label: "X",
       url: "https://twitter.com/ZohaibM87432701"
-    },
-    {
-      label: "Fiverr",
-      url: "https://www.fiverr.com/zohaibmalik82"
     }
   ],
   defaultSeoTitle:
@@ -144,7 +140,7 @@ export const fallbackProjects: Project[] = [
       "Premium electronics ecommerce UI/UX focused on fast product discovery, B2B buying flows, campaigns, outlet deals, and conversion-focused catalog navigation.",
     projectDate: "2026-03-01",
     mainImage: localImage(
-      "/assets/img/portfolio/partco/1.png",
+      "/assets/img/portfolio/partco/1.webp",
       "Partco Electronics Store ecommerce UI screen"
     ),
     screenshots: localImages(
@@ -195,7 +191,7 @@ export const fallbackProjects: Project[] = [
       "A professional B2B ecommerce website for industrial warehouse and logistics equipment with structured catalogs, responsive product categories, and quote/cart flows.",
     projectDate: "2025-11-01",
     mainImage: localImage(
-      "/assets/img/portfolio/rastec/1.png",
+      "/assets/img/portfolio/rastec/1.webp",
       "B2B industrial warehouse equipment ecommerce screen"
     ),
     screenshots: localImages(
@@ -245,7 +241,7 @@ export const fallbackProjects: Project[] = [
       "A Finnish LED lighting ecommerce experience combining online shopping, lighting design services, custom LED solution content, blogs, FAQs, and conversion-focused layouts.",
     projectDate: "2025-08-01",
     mainImage: localImage(
-      "/assets/img/portfolio/ledstore/1.png",
+      "/assets/img/portfolio/ledstore/1.webp",
       "LedStore.fi lighting ecommerce UI screen"
     ),
     screenshots: localImages(
@@ -362,7 +358,7 @@ export const fallbackPosts: Post[] = [
       name: "Muhammad Zohaib Ramzan",
       slug: "zohaib-ramzan",
       image: localImage(
-        "/assets/img/zohaib-profile-portrait.png",
+        "/assets/img/zohaib-profile-portrait.webp",
         "Muhammad Zohaib Ramzan portrait"
       )
     },
