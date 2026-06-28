@@ -10,7 +10,7 @@ export const hasSanityConfig = Boolean(projectId && dataset);
 export const readToken = process.env.SANITY_API_READ_TOKEN || "";
 
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-const fallbackSiteUrl = "https://www.zohaibramzan.com";
+const fallbackSiteUrl = "https://zohaibramzan.com";
 const isLocalSiteUrl = configuredSiteUrl
   ? /^(https?:\/\/)?(localhost|127\.0\.0\.1)(:\d+)?/i.test(configuredSiteUrl)
   : false;
