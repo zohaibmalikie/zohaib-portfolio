@@ -1,0 +1,21 @@
+[
+  {
+    "title": "How to Build SEO-Friendly Blog Pages with Next.js and Sanity",
+    "slug": "how-to-build-seo-friendly-blog-pages-with-nextjs-and-sanity",
+    "excerpt": "Learn how to build SEO-friendly blog pages using Next.js, Sanity, metadata, schema, and Portable Text.",
+    "markdown": "## Introduction\nNext.js and Sanity are a strong stack for SEO-focused blogs.\n\n## Why it matters\n- Fast content editing\n- Structured SEO fields\n- Dynamic rendering\n\n## Conclusion\nThis setup gives you a scalable blog workflow.",
+    "image": "./images/seo-friendly-blog-pages.png",
+    "imageAlt": "Modern developer workspace with Next.js and Sanity CMS interface",
+    "imageCaption": "Build SEO-friendly blog pages with Next.js and Sanity",
+    "tags": ["nextjs", "sanity", "seo", "blog"],
+    "categoryId": "YOUR_CATEGORY_DOCUMENT_ID",
+    "authorId": "YOUR_AUTHOR_DOCUMENT_ID",
+    "featured": false,
+    "publishedAt": "2026-07-03T00:00:00.000Z",
+    "seo": {
+      "metaTitle": "SEO-Friendly Blog Pages with Next.js and Sanity",
+      "metaDescription": "Learn how to build SEO-friendly blog pages using Next.js and Sanity with metadata, schema, and Portable Text.",
+      "focusKeyword": "nextjs sanity seo blog"
+    }
+  }
+]

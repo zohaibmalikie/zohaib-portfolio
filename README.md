@@ -42,8 +42,12 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2026-03-01
 SANITY_API_READ_TOKEN=
+SANITY_WRITE_TOKEN=
 SANITY_REVALIDATE_SECRET=
-NEXT_PUBLIC_SITE_URL=https://zohaibramzan.com
+SANITY_DEFAULT_AUTHOR_ID=
+SANITY_DEFAULT_CATEGORY_ID=
+NEXT_PUBLIC_SITE_URL=https://www.zohaibramzan.com
+DRY_RUN=true
 ```
 
 Do not commit `.env` or real secrets.
@@ -56,6 +60,7 @@ npm run build      # Production build
 npm run start      # Serve built app
 npm run lint       # ESLint
 npm run typecheck  # TypeScript check
+npm run import:posts -- content/articles.example.json  # Dry-run local Sanity article import
 ```
 
 ## Content Model
@@ -80,6 +85,24 @@ Sanity webhooks should call:
 ```
 
 Set `SANITY_REVALIDATE_SECRET` and send either a valid Sanity webhook signature or the secret through the supported local-testing query/header path.
+
+## Local Article Automation
+
+Bulk articles can be imported from JSON with:
+
+```bash
+npm run import:posts -- content/articles.example.json
+```
+
+The importer reads `.env`, converts each article's `markdown` field into Sanity Portable Text, uploads or references the main image, calculates reading time, fills SEO fields, and writes `post` documents with `createOrReplace`.
+
+Keep `DRY_RUN=true` while reviewing generated documents. To publish for real:
+
+```bash
+DRY_RUN=false npm run import:posts -- content/articles.json
+```
+
+Each JSON item should include `title`, `markdown`, `authorId` or `SANITY_DEFAULT_AUTHOR_ID`, `categoryId` or `SANITY_DEFAULT_CATEGORY_ID`, and one of `image`, `imageAssetId`, or `mainImageAssetId`. Use `REVALIDATE_AFTER_IMPORT=true` only when you want the script to call `/api/revalidate` after importing.
 
 ## Deployment Notes
 
