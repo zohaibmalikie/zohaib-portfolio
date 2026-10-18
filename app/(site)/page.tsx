@@ -3,6 +3,7 @@ import { Bot, Code2, Layers3, SearchCheck, Smartphone } from "lucide-react";
 
 import { JsonLd } from "@/components/json-ld";
 import { About } from "@/components/sections/about";
+import { AutomationOffers } from "@/components/sections/automation-offers";
 import { BlogPreview } from "@/components/sections/blog-preview";
 import { Contact } from "@/components/sections/contact";
 import { FAQ } from "@/components/sections/faq";
@@ -12,6 +13,7 @@ import { TechMarquee } from "@/components/sections/tech-marquee";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Work } from "@/components/sections/work";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
+import { describeAutomationOffer, getAutomationOffers, isAutomationOffer } from "@/lib/automation-offers";
 import { getHomePageData, getSiteSettings } from "@/sanity/lib/fetchers";
 import type { Service } from "@/types/sanity";
 
@@ -155,6 +157,9 @@ export async function generateMetadata() {
 export default async function HomePage() {
   const { settings, services, projects, posts, faqs, testimonials } =
     await getHomePageData();
+  const automationOffers = getAutomationOffers(services);
+  const generalServices = services.filter((service) => !isAutomationOffer(service));
+  const allServices = [...generalServices, ...automationOffers];
 
   const sameAs = Array.from(
     new Set(
@@ -272,13 +277,15 @@ export default async function HomePage() {
       "AI automation",
       "AI integrations",
       "AI-native product development",
-      ...services.map((service) => service.title)
+      ...allServices.map((service) => service.title)
     ],
     makesOffer: [
       ...seoOffers,
-      ...services.map((service) => ({
+      ...allServices.map((service) => ({
         title: service.title,
-        description: service.description
+        description: isAutomationOffer(service)
+          ? describeAutomationOffer(service)
+          : service.description
       }))
     ].map((service) => ({
       "@type": "Offer",
@@ -328,7 +335,8 @@ export default async function HomePage() {
 
       <Hero stats={heroStats} />
       <TechMarquee technologies={technologyStack} />
-      <Services services={getHomeServices(services)} />
+      <Services services={getHomeServices(generalServices)} />
+      <AutomationOffers offers={automationOffers} />
       <Work projects={projects} />
       <BlogPreview posts={posts} />
       <About settings={settings} />

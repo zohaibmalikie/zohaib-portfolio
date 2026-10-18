@@ -87,6 +87,9 @@ export type Service = {
   title: string;
   slug: string;
   description?: string;
+  offerLabel?: string;
+  priceRange?: string;
+  priceNote?: string;
   icon?: string;
   benefits?: string[];
   relatedTechnologies?: string[];

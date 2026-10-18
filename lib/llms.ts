@@ -1,3 +1,4 @@
+import { describeAutomationOffer, isAutomationOffer } from "@/lib/automation-offers";
 import { toPlainText } from "@/lib/content-utils";
 import { absoluteUrl } from "@/lib/seo";
 import type { Faq, Post, Project, Service, SiteSettings } from "@/types/sanity";
@@ -66,7 +67,7 @@ ${link("Robots", "/robots.txt", "Crawler access policy.")}
 - SEO, GEO & AEO Optimization: Technical SEO, on-page SEO, off-page SEO guidance, generative engine optimization, answer engine optimization, schema markup, Core Web Vitals, AI search optimization, and LLM-readable content structure.
 ${services
   .map((service) =>
-    `- ${line(service.title)}: ${line(service.description)}${
+    `- ${line(service.title)}: ${line(isAutomationOffer(service) ? describeAutomationOffer(service) : service.description)}${
       service.relatedTechnologies?.length
         ? ` Technologies: ${line(service.relatedTechnologies.join(", "))}.`
         : ""
@@ -86,7 +87,6 @@ ${projects
 ## Articles
 
 ${posts
-  .slice(0, 8)
   .map((post) => link(post.title, `/blog/${post.slug}`, post.excerpt))
   .join("\n")}
 
@@ -156,7 +156,7 @@ ${services
     (service) => `
 ### ${line(service.title)}
 
-${line(service.description)}
+${line(isAutomationOffer(service) ? describeAutomationOffer(service) : service.description)}
 
 Benefits: ${line(service.benefits?.join(", ") || "Editable content, responsive implementation, and performance-aware delivery.")}
 

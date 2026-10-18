@@ -33,6 +33,27 @@ export const service = defineType({
       validation: (Rule) => Rule.required().max(320)
     }),
     defineField({
+      name: "offerLabel",
+      title: "Offer price label",
+      type: "string",
+      group: "content",
+      description: "For an automation offer, for example Illustrative pilot price. Match its existing website slug to override the default offer."
+    }),
+    defineField({
+      name: "priceRange",
+      title: "Illustrative price range (USD)",
+      type: "string",
+      group: "content",
+      description: "For example $150–$300 or $150–$400/month. These are estimates; scope is confirmed before work."
+    }),
+    defineField({
+      name: "priceNote",
+      title: "Offer scope note",
+      type: "string",
+      group: "content",
+      description: "A short scope or delivery clarification shown beneath the price."
+    }),
+    defineField({
       name: "icon",
       title: "Icon",
       type: "string",

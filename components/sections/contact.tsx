@@ -1,6 +1,6 @@
 import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 
-import { Reveal } from "@/components/motion/reveal";
+import { EnquiryForm } from "@/components/enquiry-form";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import type { SiteSettings } from "@/types/sanity";
@@ -13,17 +13,21 @@ export function Contact({ settings }: { settings: SiteSettings }) {
     <section id="contact" className="section section-muted contact-section">
       <Container>
         <div className="contact-panel">
-          <p className="eyebrow">Let&apos;s Collaborate</p>
+          <p className="eyebrow">Let&apos;s solve it</p>
           <div className="section-heading">
-            <h2>Have a project <span className="text-accent"> in mind?</span></h2>
+            <h2>Tell me what is <span className="text-accent">slowing your team down.</span></h2>
           </div>
           <p>
-            From a quick consultation to a full-stack product partnership, let&apos;s
-            talk about what you&apos;re building and how to ship it with polish.
+            A failing integration, repetitive work, or a website that needs attention?
+            Share the tools you use and the outcome you want. We can agree on a
+            focused scope and the right next step.
           </p>
-          <div className="button-row">
+          <EnquiryForm />
+          <p className="contact-direct-label">Prefer to start a conversation directly?</p>
+          <div className="button-row contact-direct-links">
             <ActionLink
               href={whatsappHref}
+              variant="ghost"
               target="_blank"
               rel="noopener noreferrer"
             >

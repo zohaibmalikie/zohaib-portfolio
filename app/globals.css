@@ -407,6 +407,7 @@ p {
 
 .hero {
   position: relative;
+  overflow: clip;
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -736,6 +737,171 @@ p {
 
 .service-row:hover h3 {
   color: var(--primary);
+}
+
+.automation-offers .section-heading {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+  align-items: start;
+}
+
+.automation-offers .section-heading h2 {
+  max-width: 760px;
+}
+
+.automation-offers-intro {
+  margin: 0 0 40px;
+  color: var(--muted-2);
+  font-size: 1.05rem;
+}
+
+.automation-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-3);
+}
+
+.automation-offer {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.automation-offer + .automation-offer {
+  border-left: 1px solid var(--line);
+}
+
+.automation-offer-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 32px;
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.automation-offer-number {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.automation-offer h3 {
+  min-height: 2.7em;
+  margin: 0 0 20px;
+  font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+  line-height: 1.25;
+}
+
+.automation-offer-description {
+  flex-grow: 1;
+  margin: 0 0 28px;
+  color: var(--muted-2);
+  font-size: 1rem;
+}
+
+.automation-offer-pricing {
+  padding-block: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.automation-offer-label,
+.automation-offer-currency {
+  margin: 0;
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.automation-offer-price {
+  margin: 8px 0 2px;
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.35vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.automation-offer-note {
+  min-height: 3.5em;
+  margin: 14px 0 0;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+}
+
+.automation-offer-deliverables {
+  display: grid;
+  gap: 14px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.automation-offer-deliverables li {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.automation-offer-deliverables svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--primary);
+}
+
+.automation-offer-cta {
+  margin-top: auto;
+}
+
+.automation-offers-disclaimer {
+  max-width: 780px;
+  margin: 24px 0 0;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1000px) {
+  .automation-offers .section-heading {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .automation-offers .section-heading h2 {
+    margin-bottom: 28px;
+  }
+
+  .automation-offers-intro {
+    max-width: 640px;
+  }
+
+  .automation-offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .automation-offer + .automation-offer {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .automation-offer h3,
+  .automation-offer-note {
+    min-height: 0;
+  }
+
+  .automation-offer-topline {
+    margin-bottom: 24px;
+  }
+
+  .automation-offer-price {
+    font-size: 2rem;
+  }
 }
 
 .grid {
@@ -1700,5 +1866,159 @@ p {
   .reveal,
   .stagger-item {
     animation: none !important;
+  }
+}
+
+.blog-result-count {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.blog-pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 42px;
+}
+
+.blog-pagination a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.blog-pagination a[aria-current="page"] {
+  background: var(--primary);
+  color: var(--bg);
+}
+
+.enquiry-form {
+  display: grid;
+  gap: 24px;
+  width: min(100%, 740px);
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid var(--line-strong);
+  background: var(--surface-3);
+  text-align: left;
+}
+
+.enquiry-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.enquiry-field {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.enquiry-field label {
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.enquiry-field label span {
+  color: var(--muted-2);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.enquiry-field input,
+.enquiry-field select,
+.enquiry-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  color-scheme: dark;
+}
+
+.enquiry-field textarea {
+  resize: vertical;
+}
+
+.enquiry-field input::placeholder {
+  color: var(--muted-2);
+  opacity: 1;
+}
+
+.enquiry-field input:focus-visible,
+.enquiry-field select:focus-visible,
+.enquiry-field textarea:focus-visible {
+  border-color: var(--primary);
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.contact-panel .enquiry-field-help,
+.contact-panel .enquiry-form-footer p {
+  max-width: none;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.enquiry-form-footer {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+
+.contact-panel .contact-direct-label {
+  margin: 30px 0 12px;
+  font-size: 0.9rem;
+}
+
+.contact-direct-links {
+  gap: 12px;
+}
+
+.article-enquiry {
+  padding: clamp(36px, 6vw, 64px) 0;
+  border-block: 1px solid var(--line-strong);
+  background: var(--surface-3);
+}
+
+.article-enquiry h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+}
+
+.article-enquiry p:not(.eyebrow) {
+  max-width: 640px;
+  margin: 0 0 24px;
+  color: var(--muted-2);
+}
+
+@media (max-width: 640px) {
+  .enquiry-form-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .enquiry-form-footer {
+    justify-items: stretch;
+  }
+
+  .enquiry-form-footer .button {
+    white-space: normal;
+    text-align: center;
   }
 }
