@@ -1,5 +1,8 @@
 import { draftMode } from "next/headers";
 
+import { getAutomationOffers, isAutomationOffer } from "@/lib/automation-offers";
+import { matchesPostFilters, mergePosts } from "@/lib/post-collections";
+
 import {
   fallbackFaqs,
   fallbackHomePageData,
@@ -19,7 +22,6 @@ import {
   PROJECT_QUERY,
   PROJECT_SLUGS_QUERY,
   PROJECTS_QUERY,
-  RELATED_POSTS_QUERY,
   SITE_SETTINGS_QUERY
 } from "@/sanity/lib/queries";
 import type {
@@ -98,17 +100,20 @@ export function getSiteSettings(options?: { stega?: boolean }) {
 }
 
 export async function getHomePageData() {
-  const data = await getData<HomePageData>({
+  const [data, posts] = await Promise.all([getData<HomePageData>({
     query: HOME_QUERY,
     tags: ["siteSettings", "service", "project", "posts", "faq", "testimonial"],
     fallback: fallbackHomePageData
-  });
+  }), getPosts()]);
 
   return {
     settings: data.settings || fallbackSettings,
-    services: data.services?.length ? data.services : fallbackServices,
+    services: [
+      ...(data.services?.length ? data.services : fallbackServices).filter((service) => !isAutomationOffer(service)),
+      ...getAutomationOffers(data.services || [])
+    ],
     projects: mergeBySlug(data.projects || [], fallbackProjects),
-    posts: data.posts?.length ? data.posts : fallbackPosts,
+    posts: posts.slice(0, 4),
     faqs: data.faqs?.length ? data.faqs : fallbackFaqs,
     testimonials: data.testimonials?.length
       ? data.testimonials
@@ -116,7 +121,7 @@ export async function getHomePageData() {
   };
 }
 
-export function getPosts({
+export async function getPosts({
   category,
   tag,
   stega
@@ -125,19 +130,17 @@ export function getPosts({
   tag?: string;
   stega?: boolean;
 } = {}) {
-  const fallback = fallbackPosts.filter((post) => {
-    const categoryMatches = category ? post.category?.slug === category : true;
-    const tagMatches = tag ? post.tags?.includes(tag) : true;
-    return categoryMatches && tagMatches;
-  });
-
-  return getData<Post[]>({
+  // Merge the complete CMS collection before filtering so a CMS override that
+  // changes taxonomy cannot leave its bundled version in the old category.
+  const posts = await getData<Post[]>({
     query: POSTS_QUERY,
-    params: { category: category || null, tag: tag || null },
+    params: { category: null, tag: null },
     tags: ["posts"],
-    fallback,
+    fallback: fallbackPosts,
     stega
   });
+
+  return mergePosts(posts, fallbackPosts).filter((post) => matchesPostFilters(post, category, tag));
 }
 
 export function getPost(slug: string, options?: { stega?: boolean }) {
@@ -150,19 +153,18 @@ export function getPost(slug: string, options?: { stega?: boolean }) {
   });
 }
 
-export function getRelatedPosts(post: Post) {
-  return getData<Post[]>({
-    query: RELATED_POSTS_QUERY,
-    params: {
-      slug: post.slug,
-      category: post.category?.slug || null,
-      tags: post.tags || []
-    },
-    tags: ["posts"],
-    fallback: fallbackPosts
-      .filter((candidate) => candidate.slug !== post.slug)
-      .slice(0, 3)
-  });
+export async function getRelatedPosts(post: Post) {
+  const posts = await getPosts();
+  return posts
+    .filter((candidate) => candidate.slug !== post.slug)
+    .map((candidate) => ({
+      candidate,
+      score: (candidate.category?.slug && candidate.category.slug === post.category?.slug ? 2 : 0) +
+        (candidate.tags?.filter((tag) => post.tags?.includes(tag)).length || 0)
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(({ candidate }) => candidate);
 }
 
 export function getPostSlugs() {

@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+import { mergePosts } from "@/lib/post-collections";
+
 import {
   fallbackPosts,
   fallbackProjects,
@@ -47,7 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8
     },
-    ...posts.map((post) => ({
+    ...mergePosts(posts, fallbackPosts).filter((post) => !post.seo?.noIndex && (!post.seo?.canonicalUrl || post.seo.canonicalUrl === url(`/blog/${post.slug}`) || post.seo.canonicalUrl === `/blog/${post.slug}`)).map((post) => ({
       url: url(`/blog/${post.slug}`),
       lastModified: post.updatedAt || post.publishedAt || now,
       changeFrequency: "monthly" as const,

@@ -107,3 +107,11 @@ Each JSON item should include `title`, `markdown`, `authorId` or `SANITY_DEFAULT
 ## Deployment Notes
 
 Set `NEXT_PUBLIC_SITE_URL` to the production domain. This controls canonical URLs, sitemap URLs, `llms.txt`, JSON-LD, and Open Graph metadata.
+
+## Bundled editorial guides and growth workflow
+
+The 50 practical guides in `content/editorial-articles.json` are merged with CMS posts by slug; CMS content wins for a matching slug. Their covers live in `public/assets/img/blogs/guides`. This keeps the site useful without a Sanity write connection. Topic filters and crawlable pagination organize the expanded collection.
+
+Run `npm run validate:content` to check article structure, schema limits, unique slugs/keywords, cover assets and internal article links. `node scripts/export-editorial-posts.mjs` prepares an optional import JSON in a temporary folder; use the existing importer in dry-run mode with configured author/category references before any CMS write. Existing published CMS articles are not overwritten automatically.
+
+See `docs/search-growth-plan.md` for the baseline, unmeasured keyword inventory and reporting priorities, and `docs/seo-automation.md` for the recurring publishing and maintenance workflow. Rankings and enquiry volume are goals rather than guarantees. The contact form prepares a WhatsApp message for visitor review and does not claim to save or deliver it.

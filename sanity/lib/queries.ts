@@ -120,6 +120,9 @@ export const SERVICE_PROJECTION = `
   title,
   "slug": slug.current,
   description,
+  offerLabel,
+  priceRange,
+  priceNote,
   icon,
   benefits,
   relatedTechnologies,
@@ -129,7 +132,7 @@ export const SERVICE_PROJECTION = `
 export const HOME_QUERY = defineQuery(`
   {
     "settings": ${SITE_SETTINGS_QUERY},
-    "services": *[_type == "service" && defined(slug.current)] | order(title asc)[0...8] {
+    "services": *[_type == "service" && defined(slug.current)] | order(title asc) {
       ${SERVICE_PROJECTION}
     },
     "projects": *[_type == "project" && defined(slug.current) && featured == true] | order(_updatedAt desc)[0...6] {

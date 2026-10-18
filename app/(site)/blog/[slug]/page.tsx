@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { PortableContent } from "@/components/portable-content";
 import { SanityImage } from "@/components/sanity-image";
+import { ActionLink } from "@/components/ui/action-link";
 import { formatDate, getReadingTime } from "@/lib/content-utils";
 import { absoluteUrl, buildMetadata, getImageUrl } from "@/lib/seo";
 import {
@@ -178,6 +179,21 @@ export default async function PostPage({ params }: PostPageProps) {
           </div>
         </section>
       </article>
+
+      <aside className="article-enquiry" aria-labelledby="article-enquiry-title">
+        <div className="container-narrow">
+          <p className="eyebrow">Put this guide to work</p>
+          <h2 id="article-enquiry-title">Need help applying this to your business?</h2>
+          <p>
+            Share what you are trying to improve, the tools involved, and where
+            you are stuck. Let&apos;s turn the next step into a clear scope.
+          </p>
+          <div className="button-row">
+            <ActionLink href="/#contact">Discuss your project</ActionLink>
+            <ActionLink href="/#automation-offers" variant="ghost">Explore automation services</ActionLink>
+          </div>
+        </div>
+      </aside>
 
       {relatedPosts.length ? (
         <section className="section section-muted">

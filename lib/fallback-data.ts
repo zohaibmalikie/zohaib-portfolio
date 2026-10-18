@@ -1,3 +1,6 @@
+import { automationOffers } from "@/lib/automation-offers";
+import { editorialPosts } from "@/lib/editorial-posts";
+
 import type {
   Faq,
   HomePageData,
@@ -69,6 +72,7 @@ export const fallbackSettings: SiteSettings = {
 };
 
 export const fallbackServices: Service[] = [
+  ...automationOffers,
   {
     _id: "service-ai-automation",
     title: "AI Automation and Integrations",
@@ -344,6 +348,7 @@ export const fallbackProjects: Project[] = [
 ];
 
 export const fallbackPosts: Post[] = [
+  ...editorialPosts,
   {
     _id: "post-web-developer",
     title: "What does a web developer do? How do I become one?",

@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "import:posts": "node scripts/import-sanity-posts.mjs",
-    "import:posts:dry": "DRY_RUN=true node scripts/import-sanity-posts.mjs"
+    "import:posts:dry": "DRY_RUN=true node scripts/import-sanity-posts.mjs",
+    "validate:content": "node scripts/validate-editorial-content.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^6.2.0",

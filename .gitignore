@@ -7,3 +7,6 @@ dist/
 *.log
 tsconfig.tsbuildinfo
 .DS_Store
+
+# Private search performance and enquiry reports
+.seo-reports/
