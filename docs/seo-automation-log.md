@@ -34,3 +34,7 @@ Follow-up verification retained the Bricolage heading font while moving body and
 ## 19 October 2026 — reduce initial route prefetching
 
 Removed speculative prefetching from primary navigation and action buttons. Same-page homepage anchors now use native navigation, retaining real hrefs, keyboard use and the existing mobile menu close behavior. The production build made zero route-prefetch requests before navigation. Local mobile Lighthouse remained 95 performance and 100 in accessibility, best practices and SEO; no 100 mobile claim is made. Existing fonts, article artwork and content remain in place.
+
+## 20 October 2026 — smaller display font
+
+Consolidated Bricolage display typography on the bold 800 face, reducing its Latin font payload from about 41 KB to 22 KB. Checked desktop/mobile home layouts and mobile service/article headings for clipping and horizontal overflow. Lint, TypeScript, production build and the 127-page content/schema check passed. Local Lighthouse measured 96 mobile performance and 100 in the other categories; no live score is inferred from this local result.

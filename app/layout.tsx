@@ -6,6 +6,7 @@ import { siteUrl } from "@/sanity/env";
 
 const displayFont = Bricolage_Grotesque({
   subsets: ["latin"],
+  weight: "800",
   variable: "--font-display",
   display: "optional"
 });
