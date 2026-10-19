@@ -21,13 +21,15 @@ export function ActionLink({
   const classes = ["button", `button-${variant}`, className]
     .filter(Boolean)
     .join(" ");
-  const external =
+  const nativeNavigation =
     href.startsWith("http") ||
     href.startsWith("mailto:") ||
     href.startsWith("tel:") ||
-    target === "_blank";
+    target === "_blank" ||
+    href.startsWith("#") ||
+    href.startsWith("/#");
 
-  if (external) {
+  if (nativeNavigation) {
     return (
       <a href={href} className={classes} target={target} rel={rel}>
         {children}
@@ -36,7 +38,7 @@ export function ActionLink({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} prefetch={false} className={classes}>
       {children}
     </Link>
   );
