@@ -24,6 +24,7 @@ const seoProjection = `
     metaTitle,
     metaDescription,
     focusKeyword,
+    keywords,
     canonicalUrl,
     noIndex,
     ogTitle,
@@ -50,6 +51,7 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     heroHeadline,
     conversionHeadline,
     conversionDescription,
+    remoteCollaboration { heading, description, faqs[]{question, answer} },
     heroDescription,
     email,
     socialLinks[] {
@@ -61,6 +63,7 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     linkedinLink,
     defaultSeoTitle,
     defaultSeoDescription,
+    defaultSeoKeywords,
     defaultOpenGraphImage { ${imageProjection} }
   }
 `);

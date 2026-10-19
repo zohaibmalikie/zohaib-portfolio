@@ -66,3 +66,9 @@ Keep confirmed placements, destination URLs, publication dates, referral traffic
 - [n8n community guidelines](https://community.n8n.io/guidelines)
 - [Sanity Exchange](https://www.sanity.io/exchange)
 - [DEV code of conduct](https://dev.to/code-of-conduct)
+
+## US, UK and European buyer focus
+
+Prioritize real project credits and useful technical contributions in communities serving the target buyers, rather than bulk directory submissions. Tailor an original case-study explanation around the business problem, actual contribution, implementation evidence and a relevant service link. Keep existing profile descriptions consistent with remote delivery and the real business identity.
+
+Reviewed 19 October 2026: [n8n's expert partner program](https://n8n.io/expert-partners/) describes a closed pilot, including existing implementations and at least three active n8n customers. Eligibility is unverified; do not claim partner status or submit invented customer evidence. [Sanity's partner page](https://www.sanity.io/agency-partners) requests company and project information; it is an application process, not a guaranteed directory listing or backlink. Neither application has been submitted. Existing professional relationships and a truthful Sanity project contribution remain the more immediate opportunities.

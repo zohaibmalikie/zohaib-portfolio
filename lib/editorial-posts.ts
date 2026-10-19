@@ -53,9 +53,7 @@ export const editorialPosts: Post[] = articles.map((article) => {
     mainImage: {
       asset: { url: article.image.replace("../public", "") },
       alt: article.imageAlt,
-      creditName: article.imageCreditName,
-      creditUrl: article.imageCreditUrl,
-      licenseUrl: article.imageLicenseUrl
+      caption: article.imageCaption
     },
     author: { name: "Muhammad Zohaib Ramzan", slug: "zohaib-ramzan" },
     category: article.category,

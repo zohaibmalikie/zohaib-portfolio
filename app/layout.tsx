@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, DM_Mono, DM_Sans } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 
 import "@/app/globals.css";
 import { siteUrl } from "@/sanity/env";
@@ -7,21 +7,7 @@ import { siteUrl } from "@/sanity/env";
 const displayFont = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
-  display: "swap"
-});
-
-const bodyFont = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap"
-});
-
-const monoFont = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  preload: false,
-  variable: "--font-mono",
-  display: "swap"
+  display: "optional"
 });
 
 export const metadata: Metadata = {
@@ -99,7 +85,7 @@ export default function RootLayout({
         <link rel="alternate" type="text/markdown" href="/llms-full.txt" />
         <link rel="author" href="/humans.txt" />
       </head>
-      <body className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
+      <body className={displayFont.variable}>
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>

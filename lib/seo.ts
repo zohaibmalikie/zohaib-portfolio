@@ -51,6 +51,7 @@ export function buildMetadata({
   modifiedDate,
   author,
   tags,
+  keywords,
   noIndex,
   openGraphTitle,
   openGraphDescription,
@@ -67,6 +68,7 @@ export function buildMetadata({
   modifiedDate?: string;
   author?: string;
   tags?: string[];
+  keywords?: string[];
   noIndex?: boolean;
   openGraphTitle?: string;
   openGraphDescription?: string;
@@ -90,6 +92,7 @@ export function buildMetadata({
       absolute: resolvedTitle
     },
     description: resolvedDescription,
+    keywords: [...new Map((keywords || tags || []).map((keyword) => [keyword.trim().toLowerCase(), keyword.trim()])).values()].filter(Boolean).slice(0, 8),
     alternates: {
       canonical: resolvedUrl
     },

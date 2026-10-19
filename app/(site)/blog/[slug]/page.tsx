@@ -73,6 +73,7 @@ export async function generateMetadata({ params }: PostPageProps) {
     publishedDate: post.firstPublishedAt || post.publishedAt,
     modifiedDate: post.updatedAt || post.firstPublishedAt || post.publishedAt,
     author: post.author?.name,
+    keywords: post.seo?.keywords?.length ? post.seo.keywords : [post.seo?.focusKeyword, ...(post.tags || [])].filter((keyword): keyword is string => Boolean(keyword)),
     tags: post.tags?.length
       ? post.tags
       : post.category?.title
