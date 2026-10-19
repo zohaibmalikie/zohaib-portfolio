@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000
   },
+  async redirects() {
+    return [{ source: "/work/ledstore-fi-ecommerce-ui-ux", destination: "/work/ledstore", permanent: true }];
+  },
   async headers() {
     return [
       {

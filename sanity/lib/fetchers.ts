@@ -1,6 +1,8 @@
 import { enrichPost } from "@/lib/blog-enrichment";
 import { withBlogPhotography } from "@/lib/blog-photography";
 
+import { canonicalProjectSlug, mergeProjects } from "@/lib/project-collections";
+
 import { draftMode } from "next/headers";
 
 import { getAutomationOffers, isAutomationOffer } from "@/lib/automation-offers";
@@ -23,8 +25,6 @@ import {
   POST_QUERY,
   POST_SLUGS_QUERY,
   POSTS_QUERY,
-  PROJECT_QUERY,
-  PROJECT_SLUGS_QUERY,
   PROJECTS_QUERY,
   SITE_SETTINGS_QUERY,
   SERVICES_QUERY
@@ -120,7 +120,7 @@ export async function getHomePageData() {
       ...(data.services?.length ? data.services : fallbackServices).filter((service) => !isAutomationOffer(service)),
       ...getAutomationOffers(data.services || [])
     ],
-    projects: mergeBySlug(data.projects || [], fallbackProjects),
+    projects: mergeProjects(data.projects || [], fallbackProjects),
     posts: posts.slice(0, 4),
     faqs: data.faqs?.length ? data.faqs : fallbackFaqs,
     testimonials: data.testimonials?.length
@@ -186,32 +186,24 @@ export function getPostSlugs() {
   });
 }
 
-export async function getProjects(options?: { stega?: boolean }) {
+export async function getProjects(options?: { stega?: boolean; publishedOnly?: boolean }) {
   const projects = await getData<Project[]>({
     query: PROJECTS_QUERY,
     tags: ["project"],
     fallback: fallbackProjects,
-    stega: options?.stega
+    stega: options?.stega,
+    publishedOnly: options?.publishedOnly
   });
 
-  return mergeBySlug(projects, fallbackProjects);
+  return mergeProjects(projects, fallbackProjects);
 }
 
-export function getProject(slug: string, options?: { stega?: boolean }) {
-  return getData<Project | null>({
-    query: PROJECT_QUERY,
-    params: { slug },
-    tags: ["project"],
-    fallback: fallbackProjects.find((project) => project.slug === slug) || null,
-    stega: options?.stega
-  });
+export async function getProject(slug: string, options?: { stega?: boolean }) {
+  return (await getProjects(options)).find((project) => project.slug === canonicalProjectSlug(slug)) || null;
 }
 
-export function getProjectSlugs() {
-  return getStaticSlugs({
-    query: PROJECT_SLUGS_QUERY,
-    fallback: fallbackProjects.map((project) => ({ slug: project.slug }))
-  });
+export async function getProjectSlugs() {
+  return (await getProjects({ stega: false, publishedOnly: true })).map(({ slug }) => ({ slug }));
 }
 
 async function getStaticSlugs({

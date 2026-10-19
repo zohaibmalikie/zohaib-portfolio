@@ -1,3 +1,4 @@
+import { DraftEditing } from "@/components/draft-editing";
 import { JsonLd } from "@/components/json-ld";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -16,18 +17,12 @@ export default async function SiteLayout({
   let draftTools: React.ReactNode = null;
 
   if (draft.isEnabled) {
-    const [{ VisualEditing }, { DisableDraftMode }, { SanityLive }] =
-      await Promise.all([
-        import("next-sanity/visual-editing"),
-        import("@/components/disable-draft-mode"),
-        import("@/sanity/lib/live")
-      ]);
+    const { SanityLive } = await import("@/sanity/lib/live");
 
     draftTools = (
       <>
         <SanityLive />
-        <VisualEditing />
-        <DisableDraftMode />
+        <DraftEditing />
       </>
     );
   }
