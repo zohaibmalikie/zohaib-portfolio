@@ -38,3 +38,7 @@ Removed speculative prefetching from primary navigation and action buttons. Same
 ## 20 October 2026 — smaller display font
 
 Consolidated Bricolage display typography on the bold 800 face, reducing its Latin font payload from about 41 KB to 22 KB. Checked desktop/mobile home layouts and mobile service/article headings for clipping and horizontal overflow. Lint, TypeScript, production build and the 127-page content/schema check passed. Local Lighthouse measured 96 mobile performance and 100 in the other categories; no live score is inferred from this local result.
+
+## 20 October 2026 — independent performance verification
+
+Added a manual cloud Lighthouse workflow with standard mobile and desktop profiles, pinned Node/action versions, public-page HTML/JSON artifacts and explicit measured-score summaries. It uses a hosted Ubuntu runner independently of the local connection and has no repository checkout or Search Console inputs. Runtime validation is required after the workflow is available on the default branch; no cloud score is claimed before that run.
