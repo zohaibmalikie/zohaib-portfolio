@@ -146,9 +146,10 @@ function getHomeServices(services: Service[]) {
 export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
   return buildMetadata({
-    title: "Next.js Development & Workflow Automation | Zohaib Ramzan",
+    keywords: settings.defaultSeoKeywords?.length ? settings.defaultSeoKeywords : ["freelance Next.js developer", "workflow automation consultant", "API integration repair", "Sanity CMS development"],
+    title: "Freelance Next.js Developer & Automation | Zohaib Ramzan",
     description:
-      "Fast Next.js websites, practical workflow automation, and technical SEO for small businesses, SaaS teams, and ecommerce stores. Explore services and real projects.",
+      "Remote Next.js development, workflow automation and API repair for US, UK and European businesses. Explore real work, clear scopes and practical next steps.",
     path: "/",
     image: settings.defaultOpenGraphImage || { asset: { url: absoluteUrl("/assets/img/social/site-card.png") }, alt: "Zohaib Ramzan — websites that work, workflows that last" },
     settings

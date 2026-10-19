@@ -117,6 +117,10 @@
       {
         "question": "Is acknowledgement the same as incident resolution?",
         "answer": "No. Acknowledgement confirms someone has received the issue. Investigation and resolution depend on the cause, available access and external providers; distinguish these expectations."
+      },
+      {
+        "question": "What should an automation support agreement say about response times?",
+        "answer": "State the covered workflows, support hours and timezone, severity levels, escalation contact and response target. Distinguish an acknowledgement from a repair, identify exclusions and provider dependencies, and agree the reporting cadence and change allowance before the plan starts."
       }
     ],
     "visualSteps": [
@@ -132,7 +136,8 @@
         "title": "Rehearse recovery",
         "description": "Check backups, access and replay instructions with a controlled failure."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "automation-documentation-handoff-checklist": {
     "source": "content/editorial-articles.json#automation-documentation-handoff-checklist",
@@ -144,6 +149,10 @@
       {
         "question": "How can I verify a handoff document is usable?",
         "answer": "Ask someone who did not build the flow to recover a sanitized failed record using the document. Fix unclear instructions, missing access and outdated references."
+      },
+      {
+        "question": "What should a business retain when an automation engagement ends?",
+        "answer": "Keep workflow exports or source code, account ownership records, configuration instructions, field mappings, acceptance evidence and a recovery runbook. Confirm which third-party services remain billable and who receives failure alerts. Store secrets in the agreed credential manager rather than in the handoff document."
       }
     ],
     "visualSteps": [
@@ -159,7 +168,8 @@
         "title": "Test independent recovery",
         "description": "Observe another operator using the runbook and resolve the gaps."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "automation-monitoring-metrics": {
     "source": "content/editorial-articles.json#automation-monitoring-metrics",
@@ -711,6 +721,10 @@
       {
         "question": "How should a workflow handle repeated invalid AI output?",
         "answer": "Use a bounded retry or human review path with a redacted failure reason. Do not loop indefinitely asking the model to repair an output."
+      },
+      {
+        "question": "How do I make structured AI output reliable in a TypeScript API?",
+        "answer": "Use an explicit output schema and validate the actual returned data at runtime. Handle missing fields, refused or incomplete responses and provider errors before using the result. Type annotations alone do not validate remote JSON; keep a defined fallback for rejected output."
       }
     ],
     "visualSteps": [
@@ -726,7 +740,8 @@
         "title": "Bound recovery",
         "description": "Route repeated failures to a controlled retry limit or review queue."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "human-in-the-loop-automation": {
     "source": "content/editorial-articles.json#human-in-the-loop-automation",
@@ -1494,6 +1509,10 @@
       {
         "question": "Should AI-generated changes receive less review because they were produced quickly?",
         "answer": "No. Review according to consequence and complexity, especially around permissions, data handling and business rules. Generation speed does not establish correctness."
+      },
+      {
+        "question": "Does passing TypeScript make AI-generated application code safe to deploy?",
+        "answer": "TypeScript checks declared types, not the complete behavior of the application. Review authorization, validation, secret handling, database access and failure paths, then exercise the important user journeys. Treat generated code as a contribution that still needs engineering review."
       }
     ],
     "visualSteps": [
@@ -1509,7 +1528,8 @@
         "title": "Verify acceptance evidence",
         "description": "Review meaningful tests and retain clear human ownership."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "building-a-type-safe-sanity-client-in-nextjs-with-typescript-and-groq": {
     "source": "https://www.zohaibramzan.com/blog/building-a-type-safe-sanity-client-in-nextjs-with-typescript-and-groq",
@@ -1683,6 +1703,10 @@
       {
         "question": "Why should an agent have a step or execution limit?",
         "answer": "Unbounded tool loops can waste time, increase usage and repeat actions. Bound execution, validate inputs and make failures observable before granting broader tool access."
+      },
+      {
+        "question": "How do I add an AI agent to an existing Next.js app?",
+        "answer": "Start with one server-side task and a small set of explicitly allowed tools. Keep API credentials on the server, validate tool inputs and model outputs, cap execution steps, and require approval before consequential actions. Test failure and duplicate-event cases before connecting live business data."
       }
     ],
     "visualSteps": [
@@ -1698,7 +1722,8 @@
         "title": "Observe real outcomes",
         "description": "Inspect tool results, failures and the final business action."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "mastering-portable-text-in-react-rendering-rich-content-from-sanity": {
     "source": "https://www.zohaibramzan.com/blog/mastering-portable-text-in-react-rendering-rich-content-from-sanity",
@@ -1737,6 +1762,10 @@
       {
         "question": "How can a team make AI-assisted frontend work repeatable?",
         "answer": "Provide design and code conventions, keep tasks bounded and review the resulting diff. Use appropriate browser and code checks rather than measuring progress by generated code volume."
+      },
+      {
+        "question": "Can AI-generated React components go straight into production?",
+        "answer": "Review them against your design system, responsive layouts, keyboard use, data states and code conventions first. Generated components can accelerate a first draft, but their accessibility, dependencies, security and integration with real content still need verification."
       }
     ],
     "visualSteps": [
@@ -1752,7 +1781,8 @@
         "title": "Check the user journey",
         "description": "Verify responsiveness, interactions and accessibility in the actual application."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "how-structured-data-helps-ai-agents-understand-your-website": {
     "source": "https://www.zohaibramzan.com/blog/how-structured-data-helps-ai-agents-understand-your-website",
@@ -1899,6 +1929,10 @@
       {
         "question": "Why use generated query types in React props?",
         "answer": "They carry the actual selected fields and nullable relationships into rendering. This helps detect mismatches when editors’ content models or GROQ projections change."
+      },
+      {
+        "question": "Is next typegen the same as Sanity TypeGen?",
+        "answer": "No. next typegen generates Next.js route definitions; Sanity TypeGen generates types for your content schema and supported GROQ queries. A CMS application may need both. Regenerate the appropriate types after route or content-contract changes, then run TypeScript checks."
       }
     ],
     "visualSteps": [
@@ -1914,7 +1948,8 @@
         "title": "Check consuming components",
         "description": "Run TypeScript and handle optional content before publishing the change."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "how-to-build-seo-friendly-blog-pages-with-nextjs-and-sanity": {
     "source": "https://www.zohaibramzan.com/blog/how-to-build-seo-friendly-blog-pages-with-nextjs-and-sanity",
@@ -1953,6 +1988,10 @@
       {
         "question": "Can retrieval and fine-tuning be combined?",
         "answer": "Yes. A system can retrieve current evidence while using a model adapted to a task or response style. Evaluate the combination against the actual failure being addressed."
+      },
+      {
+        "question": "Should a changing customer-support knowledge base use RAG or fine-tuning?",
+        "answer": "RAG is usually the first approach to evaluate when answers depend on frequently updated documents and need source references. Fine-tuning changes model behavior and is not a substitute for keeping factual content current. Compare retrieval quality, evaluation effort, update frequency and ongoing operating costs before choosing."
       }
     ],
     "visualSteps": [
@@ -1968,7 +2007,8 @@
         "title": "Evaluate the complete system",
         "description": "Compare correctness, update effort and operating complexity on representative cases."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "vector-databases-explained-for-full-stack-developers": {
     "source": "https://www.zohaibramzan.com/blog/vector-databases-explained-for-full-stack-developers",
@@ -2304,6 +2344,10 @@
       {
         "question": "Should static scanning replace human review of AI code?",
         "answer": "No. Scanners can catch useful classes of issues, while people must assess business permissions, intent and broader design. Combine appropriate tooling with accountable review."
+      },
+      {
+        "question": "How should I check dependencies suggested by AI-generated code?",
+        "answer": "Verify that each package exists in the intended registry, confirm its maintainer and purpose, inspect the exact version and dependency changes, and review relevant vulnerability reports. Use your normal dependency approval and lockfile process; a plausible package name or successful install does not establish that it is suitable."
       }
     ],
     "visualSteps": [
@@ -2319,7 +2363,8 @@
         "title": "Verify protections",
         "description": "Exercise relevant failure cases and review the actual access behavior."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-19T08:00:00.000Z"
   },
   "how-to-auto-publish-ai-generated-articles-safely-in-nextjs": {
     "source": "https://www.zohaibramzan.com/blog/how-to-auto-publish-ai-generated-articles-safely-in-nextjs",

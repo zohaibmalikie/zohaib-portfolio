@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const articles = JSON.parse(await fs.readFile(path.join(root, "content/editorial-articles.json"), "utf8"));
@@ -31,7 +32,14 @@ for (const article of articles) {
 }
 const enrichments = JSON.parse(await fs.readFile(path.join(root, "content/blog-enrichment.json"), "utf8"));
 const questions = new Set();
+const coverArt = JSON.parse(await fs.readFile(path.join(root, "content/blog-cover-art.json"), "utf8"));
+const coverHashes = new Set();
 for (const [slug, entry] of Object.entries(enrichments)) {
+  assert(coverArt[slug]?.alt && coverArt[slug]?.prompt, `${slug}: missing unique cover brief`);
+  const cover = await fs.readFile(path.join(root, "public/assets/img/blogs/artwork", `${slug}.webp`));
+  const hash = createHash("sha256").update(cover).digest("hex");
+  assert(!coverHashes.has(hash), `${slug}: duplicate cover image`);
+  coverHashes.add(hash);
   assert(entry.faqs.length >= 2 && entry.visualSteps.length >= 3, `${slug}: missing article enhancements`);
   for (const faq of entry.faqs) {
     assert(faq.question.trim() && faq.answer.trim(), `${slug}: empty FAQ`);
@@ -42,4 +50,5 @@ for (const [slug, entry] of Object.entries(enrichments)) {
 }
 for (const slug of slugs) assert(enrichments[slug], `${slug}: missing FAQs and visual stages`);
 console.log(`Validated ${Object.keys(enrichments).length} enriched articles and ${questions.size} unique FAQ questions.`);
+console.log(`Validated ${coverHashes.size} distinct article cover assets with descriptive alternative text.`);
 console.log(`Validated ${articles.length} articles, unique slugs/keywords, ${wordCount} words, covers, schema limits and internal article links.`);

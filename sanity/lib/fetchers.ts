@@ -252,7 +252,7 @@ export async function getServices({ publishedOnly = false }: { publishedOnly?: b
       faqs: service.faqs?.length ? service.faqs : existing?.faqs,
       relatedPostSlugs: service.relatedPostSlugs ?? existing?.relatedPostSlugs,
       relatedProjectSlugs: service.relatedProjectSlugs ?? existing?.relatedProjectSlugs,
-      seo: { ...existing?.seo, ...service.seo }
+      seo: { ...existing?.seo, ...Object.fromEntries(Object.entries(service.seo || {}).filter(([, value]) => value != null && value !== "")) }
     });
   }
   return Array.from(merged.values()).filter((service) => service.overview?.length);

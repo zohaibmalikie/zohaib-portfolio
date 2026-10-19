@@ -4,11 +4,11 @@ Updated 19 October 2026.
 
 ## Images and interaction
 
-The blog uses six curated high-resolution Unsplash photographs, hosted locally as 2,200px WebP assets. They illustrate planning, development, infrastructure, working environments and measurement. These are illustrative photographs, not evidence of the portfolio owner's clients, systems or results. Readers can enlarge article covers, explore each article's own practical steps, and expand answers to its specific questions.
+The 100-article collection uses 100 individually generated editorial illustrations, each saved as a separate 1,600px WebP asset under `public/assets/img/blogs/artwork`. `content/blog-cover-art.json` records the article-specific brief and descriptive alternative text. Native ImageGen produced the original raster artwork; visible captions identify it as AI-generated. These are conceptual illustrations, not screenshots, client evidence or photographs.
 
-`content/blog-photography.json` records the original photo page, photographer, source download, license and verification date. Photo pages were checked for their free Unsplash license on 19 October 2026; no Unsplash+ assets are used. Visible article credits link to the original photograph and the license. See [Unsplash license](https://unsplash.com/license). No Freepik or Canva paid-account access was assumed.
+`withBlogPhotography` now resolves covers by exact article slug. It never assigns a shared category image. A future article without a bundled illustration retains its own uploaded CMS cover; every publication must supply a unique image and check it against the existing collection. The CMS option **Use this article’s CMS cover** remains available, and the editor is responsible for unique artwork and accurate source/license information when using third-party media.
 
-`withBlogPhotography` selects a relevant photograph. The Sanity post setting **Use this article’s CMS cover** opts an article into its own uploaded cover; editors must provide accurate alternative text and any required credit/license fields. CMS changes remain separate from the bundled local editorial collection. Previous generated SVG covers remain as source archives and are no longer used for the new articles.
+The earlier six-photo Unsplash library and its license ledger remain archived so previously published image URLs stay available. They are no longer the shared cover source. No paid Freepik or Canva asset license is asserted. Article cover enlargement and the article-specific interactive walkthroughs remain available.
 
 ## FAQs and article walkthroughs
 

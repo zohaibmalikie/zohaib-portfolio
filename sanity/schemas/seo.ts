@@ -46,6 +46,15 @@ export const seo = defineType({
       description: "The main search phrase this article should target."
     }),
     defineField({
+      name: "keywords",
+      title: "Topic keywords",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "tags" },
+      description: "A short list of relevant topic phrases. Also use them naturally in the title, description and content. Google ignores the meta keywords tag for ranking.",
+      validation: (Rule) => Rule.max(8)
+    }),
+    defineField({
       name: "canonicalUrl",
       title: "Canonical URL",
       type: "url",

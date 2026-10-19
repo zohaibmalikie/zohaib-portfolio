@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const [service, settings] = await Promise.all([getService(slug), getSiteSettings({ stega: false })]);
   if (!service) notFound();
-  return buildMetadata({ title: service.seo?.metaTitle || service.seo?.title || `${service.title} | Zohaib Ramzan`, description: service.seo?.metaDescription || service.seo?.description || service.description, path: service.seo?.canonicalUrl || `/services/${service.slug}`, image: service.seo?.ogImage || service.seo?.openGraphImage, noIndex: service.seo?.noIndex, openGraphTitle: service.seo?.ogTitle, openGraphDescription: service.seo?.ogDescription, settings });
+  return buildMetadata({ title: service.seo?.metaTitle || service.seo?.title || `${service.title} | Zohaib Ramzan`, keywords: service.seo?.keywords || [service.seo?.focusKeyword || service.title, ...(service.relatedTechnologies || [])], description: service.seo?.metaDescription || service.seo?.description || service.description, path: service.seo?.canonicalUrl || `/services/${service.slug}`, image: service.seo?.ogImage || service.seo?.openGraphImage, noIndex: service.seo?.noIndex, openGraphTitle: service.seo?.ogTitle, openGraphDescription: service.seo?.ogDescription, settings });
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -32,8 +32,9 @@ export default async function ServicePage({ params }: Props) {
   const enquiryHref = `/contact?service=${encodeURIComponent(service.slug)}`;
   const url = absoluteUrl(`/services/${service.slug}`);
   return <main id="main-content" className="main service-pages">
-    <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: service.title, description: service.description, url, serviceType: service.title, provider: { "@type": "Person", name: settings.name, url: absoluteUrl("/") } }} />
+    <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: service.title, description: service.description, url, serviceType: service.title, areaServed: ["United States", "United Kingdom", "Europe"], provider: { "@type": "Person", name: settings.name, url: absoluteUrl("/") } }} />
     <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Services", item: absoluteUrl("/services") }, { "@type": "ListItem", position: 3, name: service.title, item: url }] }} />
+    {service.faqs?.length ? <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: service.faqs.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }} /> : null}
     <article>
       <header className="page-hero"><div className="container">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: service.title }]} />

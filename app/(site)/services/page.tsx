@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RemoteCollaboration } from "@/components/remote-collaboration";
 import { ArrowUpRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
@@ -10,11 +11,11 @@ export const revalidate = 3600;
 
 export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
-  return buildMetadata({ title: "Automation, Next.js & Technical SEO Services | Zohaib Ramzan", description: "Explore focused automation audits, workflow implementation and maintenance, React and Next.js development, and technical SEO. Clear scope and practical next steps.", path: "/services", settings });
+  return buildMetadata({ title: "Automation, Next.js & Technical SEO Services | Zohaib Ramzan", description: "Remote Next.js development, automation audits and API integration repair for US, UK and European businesses. Clear scope, USD pilot prices and a practical handoff.", keywords: ["remote Next.js developer", "workflow automation consultant", "API integration repair"], path: "/services", settings });
 }
 
 export default async function ServicesPage() {
-  const services = await getServices();
+  const [services, settings] = await Promise.all([getServices(), getSiteSettings()]);
   return (
     <main id="main-content" className="main service-pages">
       <JsonLd data={{ "@context": "https://schema.org", "@type": "ItemList", name: "Services", itemListElement: services.map((service, index) => ({ "@type": "ListItem", position: index + 1, name: service.title, url: absoluteUrl(`/services/${service.slug}`) })) }} />
@@ -36,6 +37,7 @@ export default async function ServicesPage() {
           </article>
         ))}</div> : <p className="empty-state">Service details are being updated. <Link href="/contact">Tell me what you need.</Link></p>}
       </div></section>
+      <RemoteCollaboration settings={settings} />
       <section className="section"><div className="container service-bottom-cta"><div><p className="eyebrow">Not sure where to start?</p><h2>Bring the problem.<br />We can define the scope.</h2><p>Share your current tools, the issue and the outcome you want. No passwords or API keys needed.</p></div><Link className="button button-primary" href="/contact">Tell me about your project <ArrowUpRight size={17} aria-hidden="true" /></Link></div></section>
     </main>
   );

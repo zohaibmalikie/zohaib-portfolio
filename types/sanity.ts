@@ -26,6 +26,7 @@ export type SeoFields = {
   metaTitle?: string;
   metaDescription?: string;
   focusKeyword?: string;
+  keywords?: string[];
   canonicalUrl?: string;
   noIndex?: boolean;
   ogTitle?: string;
@@ -139,6 +140,7 @@ export type SocialLink = {
 };
 
 export type SiteSettings = {
+  remoteCollaboration?: { heading?: string; description?: string; faqs?: ArticleFaq[] };
   name: string;
   logo?: SanityImage;
   profileImage?: SanityImage;
@@ -153,6 +155,7 @@ export type SiteSettings = {
   linkedinLink?: string;
   defaultSeoTitle?: string;
   defaultSeoDescription?: string;
+  defaultSeoKeywords?: string[];
   defaultOpenGraphImage?: SanityImage;
 };
 

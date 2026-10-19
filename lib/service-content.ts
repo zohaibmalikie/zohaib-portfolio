@@ -18,13 +18,14 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { title: "Prioritize the repairs", description: "Review the short audit together and separate immediate fixes from optional improvements." }
     ],
     faqs: [
+      { question: "What access is needed for a remote automation audit?", answer: "Start with a workflow summary and sanitized execution examples. Agree the minimum account access needed for the review, use role-based invitations where possible, and remove temporary access after handoff. The audit scope records any checks that cannot be verified with the access provided." },
       { question: "What do I need to provide?", answer: "A description of the workflow, the tools it connects, the expected result, and suitable access to recent execution history. Do not send passwords, API keys, or customer records through the contact form." },
       { question: "Does the health check include implementation?", answer: "The deliverable is an actionable audit. Repairs can be scoped separately after the findings are understood, with explicit acceptance criteria." },
       { question: "Is the $150–$300 range a fixed quote?", answer: "It is an illustrative pilot range in USD. The selected workflow, access requirements, and deliverables are confirmed before work begins." }
     ],
     relatedPostSlugs: ["ai-automation-audit-checklist", "automation-monitoring-metrics", "reduce-ai-workflow-costs"],
     relatedProjectSlugs: [],
-    seo: { metaTitle: "AI Automation Audit & Workflow Health Check | Zohaib Ramzan", metaDescription: "Review one workflow for failures, duplicate actions, missing alerts, privacy risks and unnecessary AI costs. Get a prioritized, actionable automation audit." }
+    seo: { keywords: ["AI automation audit", "workflow health check", "automation consultant"], metaTitle: "AI Automation Audit & Workflow Health Check | Zohaib Ramzan", metaDescription: "Review one workflow for failures, duplicate actions, missing alerts, privacy risks and unnecessary AI costs. Get a prioritized, actionable automation audit." }
   },
   "workflow-implementation-or-repair": {
     headline: "Build a focused automation—or repair the integration holding your team back.",
@@ -41,13 +42,14 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { title: "Verify and hand over", description: "Review acceptance evidence, deploy the agreed workflow, and document safe operation and recovery." }
     ],
     faqs: [
+      { question: "Who owns the workflow and pays ongoing API costs?", answer: "Account ownership, custom deliverables and any third-party licensing are recorded in the scope. Production should use accounts your business controls, with vendor subscriptions and API usage paid directly to those providers. The handoff identifies configuration, exports or source code, and recovery instructions." },
       { question: "Can you repair an existing workflow?", answer: "Yes. The first step is tracing the failure and checking what has already completed. A repair can be scoped around the existing tools when that is the most suitable approach." },
       { question: "Which integrations can you work with?", answer: "Work is scoped around accessible APIs, webhooks, and the connected tools' supported capabilities. Endpoint availability, permissions, rate limits, and account plans are checked before a delivery commitment." },
       { question: "What does the illustrative $400–$1,200+ include?", answer: "It describes a possible range for a focused project in USD, not every integration. The final deliverables, testing, deployment, and exclusions are agreed before work starts." }
     ],
     relatedPostSlugs: ["automation-project-acceptance-criteria", "idempotent-workflows-prevent-duplicates", "api-rate-limit-retry-strategy"],
     relatedProjectSlugs: ["partco-electronics-store"],
-    seo: { metaTitle: "Workflow Automation & API Integration Repair | Zohaib Ramzan", metaDescription: "Build a focused business automation or repair a broken API integration, with duplicate prevention, failure checks, acceptance criteria and a clear handoff." }
+    seo: { keywords: ["workflow automation consultant", "API integration repair", "business process automation"], metaTitle: "Workflow Automation Consultant & API Repair | Zohaib Ramzan", metaDescription: "Build a focused business automation or repair a broken API integration, with duplicate prevention, failure checks, acceptance criteria and a clear handoff." }
   },
   "ongoing-automation-maintenance": {
     headline: "Keep your integrations understandable, monitored, and recoverable.",
@@ -64,13 +66,14 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { title: "Maintain and report", description: "Review agreed signals, investigate issues, record recovery actions, and prioritize recurring causes." }
     ],
     faqs: [
+      { question: "Can maintenance continue across US or European time zones?", answer: "Yes, remote support can be scoped for international teams. Before starting, agree the support timezone, operating hours, escalation route and response expectations. An asynchronous update is distinct from an emergency response; round-the-clock coverage is not implied." },
       { question: "Is this 24/7 support?", answer: "No round-the-clock coverage is implied. Support hours, timezone, escalation routes, and response expectations are agreed for the specific arrangement." },
       { question: "Are new workflows included?", answer: "New integrations and substantial redesigns are scoped separately unless explicitly included. The inventory makes it clear which existing workflows the plan covers." },
       { question: "How is the monthly retainer determined?", answer: "The $150–$400/month range is an illustrative starting range in USD. The number of workflows, business importance, review cadence, and support scope determine the final arrangement." }
     ],
     relatedPostSlugs: ["automation-maintenance-plan", "automation-incident-response-runbook", "automation-documentation-handoff-checklist"],
     relatedProjectSlugs: [],
-    seo: { metaTitle: "Automation Maintenance & Integration Support | Zohaib Ramzan", metaDescription: "Maintain business integrations with agreed support hours, alert review, failure investigation, recovery instructions and clear system-health reporting." }
+    seo: { keywords: ["automation maintenance", "integration support", "workflow monitoring"], metaTitle: "Automation Maintenance & Integration Support | Zohaib Ramzan", metaDescription: "Maintain business integrations with agreed support hours, alert review, failure investigation, recovery instructions and clear system-health reporting." }
   },
   "react-nextjs-frontends": {
     headline: "A fast, editable website that makes your business easier to understand.",
@@ -87,13 +90,14 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { title: "Verify and release", description: "Check mobile layouts, navigation, enquiries, public responses, metadata, and the deployment environment." }
     ],
     faqs: [
+      { question: "How do we manage a Next.js project remotely from the US, UK or Europe?", answer: "Begin with the page or product brief, the current site and the outcome you need. Agree milestones, review checkpoints and a practical meeting window across time zones. Use a staging deployment for feedback and confirm the acceptance checks before the production release." },
       { question: "Can you improve an existing website?", answer: "Yes. A focused scope can address a slow template, unclear service page, CMS problem, frontend feature, or broken enquiry path without rebuilding the entire site." },
       { question: "Can my team edit the website?", answer: "The content that needs ongoing editorial changes can be modeled in a CMS such as Sanity. Editing requirements, preview, and publishing behavior are agreed during scoping." },
       { question: "Does a Next.js website guarantee better rankings?", answer: "No framework guarantees rankings. The implementation can support crawlable content, fast pages, clear metadata, and reliable publishing; search performance also depends on relevance, content, competition, and other signals." }
     ],
     relatedPostSlugs: ["nextjs-technical-seo-checklist", "cms-publishing-workflow-checklist", "accessible-contact-form-checklist"],
     relatedProjectSlugs: ["partco-electronics-store", "warehouse-equipment-b2b-ecommerce", "ledstore"],
-    seo: { metaTitle: "Next.js & React Website Development | Zohaib Ramzan", metaDescription: "Responsive Next.js and React websites with clear service journeys, editable CMS content, accessible interactions and practical technical SEO foundations." }
+    seo: { keywords: ["freelance Next.js developer", "remote React developer", "Sanity CMS development"], metaTitle: "Freelance Next.js & React Developer | Zohaib Ramzan", metaDescription: "Responsive Next.js and React websites with clear service journeys, editable CMS content, accessible interactions and practical technical SEO foundations." }
   },
   "technical-seo-performance": {
     headline: "Fix the website issues that get between your content and potential clients.",
@@ -110,13 +114,14 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { title: "Verify and observe", description: "Check the deployed result and compare subsequent search evidence over suitable reporting windows." }
     ],
     faqs: [
+      { question: "Can an English website target US, UK and European clients?", answer: "Yes. Useful English service pages can serve international buyers when the offer, examples and remote enquiry process are relevant to them. Use real business details and consistent canonical URLs. Translated or region-specific pages should be added only when there is substantive content for that audience; geography keywords alone do not establish relevance." },
       { question: "Can you guarantee a number-one ranking?", answer: "No. Search rankings and lead volume cannot be guaranteed. The work improves specific technical, content, and user-experience foundations and measures the result honestly." },
       { question: "Will you fix every page marked not indexed?", answer: "Not every exclusion is an error. Duplicates, redirects, filters, and intentionally unavailable pages can be correctly excluded. Important canonical pages are reviewed against the actual reported reason." },
       { question: "What access is useful for an SEO review?", answer: "Search Console access, the public site, relevant CMS or repository access, and available analytics can help. Sensitive credentials should be shared through approved account access methods, not the enquiry form." }
     ],
     relatedPostSlugs: ["technical-seo-audit-small-business", "core-web-vitals-prioritization", "search-console-pages-not-indexed"],
     relatedProjectSlugs: ["ledstore", "partco-electronics-store"],
-    seo: { metaTitle: "Technical SEO & Website Performance Services | Zohaib Ramzan", metaDescription: "Improve technical SEO, page performance, metadata, internal links and enquiry journeys with evidence-led fixes for your business website." }
+    seo: { keywords: ["technical SEO consultant", "Next.js SEO services", "Core Web Vitals optimization"], metaTitle: "Technical SEO & Website Performance Services | Zohaib Ramzan", metaDescription: "Improve technical SEO, page performance, metadata, internal links and enquiry journeys with evidence-led fixes for your business website." }
   }
 };
 

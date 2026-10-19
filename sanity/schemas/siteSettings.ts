@@ -11,6 +11,12 @@ export const siteSettings = defineType({
     { name: "seo", title: "SEO" }
   ],
   fields: [
+    defineField({ name: "defaultSeoKeywords", title: "Homepage topic keywords", type: "array", group: "seo", of: [{ type: "string" }], options: { layout: "tags" }, description: "A few relevant homepage phrases. Google does not use the meta keywords tag for rankings.", validation: (Rule) => Rule.max(8) }),
+    defineField({ name: "remoteCollaboration", title: "International collaboration", type: "object", group: "contact", fields: [
+      defineField({ name: "heading", type: "string" }),
+      defineField({ name: "description", type: "text", rows: 4 }),
+      defineField({ name: "faqs", title: "Remote project FAQs", type: "array", of: [defineArrayMember({ type: "object", fields: [defineField({ name: "question", type: "string", validation: (Rule) => Rule.required() }), defineField({ name: "answer", type: "text", validation: (Rule) => Rule.required() })] })] })
+    ] }),
     defineField({
       name: "name",
       title: "Name",

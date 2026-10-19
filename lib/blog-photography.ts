@@ -1,21 +1,19 @@
-import photos from "@/content/blog-photography.json";
+import coverArt from "@/content/blog-cover-art.json";
 import type { Post, SanityImage } from "@/types/sanity";
 
-// Curated, locally hosted Unsplash photographs. Full source/license records are
-// kept alongside the assets; the visible credit travels with every article.
+type CoverBrief = { alt: string; prompt: string; source: string };
+const articleCovers: Record<string, CoverBrief> = coverArt;
+
+/** Each published article has its own original cover; never reuse a category image. */
 export function withBlogPhotography(post: Post): Post {
   if (post.useOriginalImage && post.mainImage?.asset) return post;
-  const subject = `${post.slug} ${post.category?.slug || ""}`;
-  const key = /roi|cost|metrics|monitor|analytics|search-console|seo|index|sitemap|canonical/.test(subject)
-    ? (/cost|roi|business/.test(subject) ? "dashboard" : "analytics")
-    : /strategy|planning|acceptance|audit|handoff|documentation|onboarding|human|workflow|process|migration/.test(subject)
-      ? "planning"
-      : /api|webhook|oauth|json|react|code|typescript|javascript|groq|cache|fetch/.test(subject)
-        ? "code"
-        : /self-host|infrastructure|hardware|server/.test(subject) ? "hardware" : "workspace";
-  const photo = photos.find((item) => item.key === key);
-  if (!photo) return post;
-  const { asset, alt, creditName, creditUrl, licenseUrl } = photo;
-  const mainImage: SanityImage = { asset, alt, creditName, creditUrl, licenseUrl };
+  const cover = articleCovers[post.slug];
+  // Future CMS articles retain their uploaded cover until a unique asset is supplied.
+  if (!cover) return post;
+  const mainImage: SanityImage = {
+    asset: { url: `/assets/img/blogs/artwork/${post.slug}.webp` },
+    alt: cover.alt,
+    caption: "AI-generated editorial illustration created for this article."
+  };
   return { ...post, mainImage };
 }
