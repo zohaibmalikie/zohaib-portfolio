@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 import { ActionLink } from "@/components/ui/action-link";
@@ -13,8 +13,10 @@ export type HeroStat = {
 };
 
 export function Hero({ stats, settings }: { stats: HeroStat[]; settings: SiteSettings }) {
+  const { props: portrait } = getImageProps({ src: "/assets/img/banner.webp", alt: "", width: 1200, height: 620, sizes: "(max-width: 1024px) calc(100vw - 40px), 42vw" });
   return (
     <section className="hero">
+      <link rel="preload" as="image" imageSrcSet={portrait.srcSet} imageSizes={portrait.sizes} media="(min-width: 1025px)" fetchPriority="high" />
       <div className="grid-background" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
       <div className="container hero-inner">
@@ -55,9 +57,9 @@ export function Hero({ stats, settings }: { stats: HeroStat[]; settings: SiteSet
             alt="Zohaib Ramzan portrait alongside website interface previews"
             width={1200}
             height={620}
-            sizes="(max-width: 768px) 100vw, 900px"
+            sizes={portrait.sizes}
             className="hero-banner-image"
-            priority
+            loading="lazy"
           />
         </div>
       </div>

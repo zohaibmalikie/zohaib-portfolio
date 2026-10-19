@@ -19,6 +19,7 @@ const bodyFont = DM_Sans({
 const monoFont = DM_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
+  preload: false,
   variable: "--font-mono",
   display: "swap"
 });

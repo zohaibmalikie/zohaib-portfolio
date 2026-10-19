@@ -92,7 +92,7 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Does a Next.js website guarantee better rankings?", answer: "No framework guarantees rankings. The implementation can support crawlable content, fast pages, clear metadata, and reliable publishing; search performance also depends on relevance, content, competition, and other signals." }
     ],
     relatedPostSlugs: ["nextjs-technical-seo-checklist", "cms-publishing-workflow-checklist", "accessible-contact-form-checklist"],
-    relatedProjectSlugs: ["partco-electronics-store", "warehouse-equipment-b2b-ecommerce", "ledstore-fi-ecommerce-ui-ux"],
+    relatedProjectSlugs: ["partco-electronics-store", "warehouse-equipment-b2b-ecommerce", "ledstore"],
     seo: { metaTitle: "Next.js & React Website Development | Zohaib Ramzan", metaDescription: "Responsive Next.js and React websites with clear service journeys, editable CMS content, accessible interactions and practical technical SEO foundations." }
   },
   "technical-seo-performance": {
@@ -115,7 +115,7 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "What access is useful for an SEO review?", answer: "Search Console access, the public site, relevant CMS or repository access, and available analytics can help. Sensitive credentials should be shared through approved account access methods, not the enquiry form." }
     ],
     relatedPostSlugs: ["technical-seo-audit-small-business", "core-web-vitals-prioritization", "search-console-pages-not-indexed"],
-    relatedProjectSlugs: ["ledstore-fi-ecommerce-ui-ux", "partco-electronics-store"],
+    relatedProjectSlugs: ["ledstore", "partco-electronics-store"],
     seo: { metaTitle: "Technical SEO & Website Performance Services | Zohaib Ramzan", metaDescription: "Improve technical SEO, page performance, metadata, internal links and enquiry journeys with evidence-led fixes for your business website." }
   }
 };
