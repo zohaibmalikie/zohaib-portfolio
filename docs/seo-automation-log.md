@@ -30,3 +30,7 @@ Replaced shared category photographs with 100 distinct, article-specific AI-gene
 Removed the hero's perpetual decorative glow animation while retaining a static glow. The local mobile Speed Index improved from the affected live run's 7.2 seconds to 1.4 seconds; these environments differ, so this is diagnostic evidence rather than a controlled before/after claim. Lighthouse performance scores vary; report live results separately.
 
 Follow-up verification retained the Bricolage heading font while moving body and label typography to native system fonts, removing unnecessary font requests. Optional heading-font rendering avoids a late swap on slow first visits. Desktop/mobile visual checks, content/route checks, lint, TypeScript and the production build passed. Added the real website, services and useful resource links to this public repository's README; no third-party endorsement or acquired ranking benefit is claimed.
+
+## 19 October 2026 — reduce initial route prefetching
+
+Removed speculative prefetching from primary navigation and action buttons. Same-page homepage anchors now use native navigation, retaining real hrefs, keyboard use and the existing mobile menu close behavior. The production build made zero route-prefetch requests before navigation. Local mobile Lighthouse remained 95 performance and 100 in accessibility, best practices and SEO; no 100 mobile claim is made. Existing fonts, article artwork and content remain in place.

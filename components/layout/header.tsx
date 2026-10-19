@@ -18,12 +18,12 @@ export function SiteHeader({ settings }: { settings: SiteSettings }) {
 
   return (
     <header className="site-header">
-      <Link href="/" className="brand" aria-label={`ZR. ${settings.name} home`}>
+      <Link prefetch={false} href="/" className="brand" aria-label={`ZR. ${settings.name} home`}>
         ZR<span>.</span>
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href}>
+          item.href.includes("#") ? <a key={item.href} href={item.href}>{item.label}</a> : <Link key={item.href} href={item.href} prefetch={false}>
             {item.label}
           </Link>
         ))}
@@ -31,6 +31,7 @@ export function SiteHeader({ settings }: { settings: SiteSettings }) {
       <div className="header-actions">
         <Link
           href={hireHref}
+          prefetch={false}
           className="button button-primary button-small"
         >
           Discuss a project <ArrowUpRight size={14} aria-hidden="true" />
