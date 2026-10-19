@@ -2,6 +2,8 @@
 
 Next.js App Router portfolio for Muhammad Zohaib Ramzan, with Sanity CMS-powered articles, case studies, services, FAQs, testimonials, SEO metadata, sitemap generation, and LLM/GEO discovery files.
 
+Live website: [zohaibramzan.com](https://www.zohaibramzan.com/) · [Services](https://www.zohaibramzan.com/services) · [Automation planning resources](https://www.zohaibramzan.com/tools)
+
 ## Stack
 
 - Next.js 16 App Router
