@@ -659,7 +659,9 @@ p {
 
 .marquee-copy {
   display: inline-flex;
+  min-width: 100vw;
   align-items: center;
+  justify-content: space-between;
   gap: 42px;
   padding-right: 42px;
   white-space: nowrap;
@@ -1629,13 +1631,13 @@ p {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-33.333%);
+    transform: translateX(-50%);
   }
 }
 
 @keyframes marqueeReverse {
   from {
-    transform: translateX(-33.333%);
+    transform: translateX(-50%);
   }
   to {
     transform: translateX(0);
