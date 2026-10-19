@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "@/components/growth-tools.css";
 
 import type { SiteSettings } from "@/types/sanity";
 
@@ -37,7 +38,8 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
       <Link href="/" className="brand footer-brand">
         ZR<span>.</span>
       </Link>
-      <p>© {new Date().getFullYear()} Muhammad Zohaib Ramzan — Expert Frontend Developer</p>
+      <p>© {new Date().getFullYear()} {settings.name} · Websites & workflow automation</p>
+      <nav className="footer-site-links" aria-label="Explore the website">{[{ href: "/services", label: "Services" }, { href: "/tools", label: "Free tools" }, { href: "/work", label: "Work" }, { href: "/blog", label: "Blog" }, { href: "/contact", label: "Contact" }].map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}</nav>
       <div className="social-list" aria-label="Social links">
         {links.slice(0, 4).map((link) => (
           <a

@@ -1,12 +1,16 @@
 import { notFound } from "next/navigation";
+import type { PortableTextBlock } from "@portabletext/types";
 
+import { ArticleVisual, ArticleProcess } from "@/components/article-visual";
 import { ArticleToc } from "@/components/article-toc";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { PortableContent } from "@/components/portable-content";
 import { SanityImage } from "@/components/sanity-image";
 import { ActionLink } from "@/components/ui/action-link";
-import { formatDate, getReadingTime } from "@/lib/content-utils";
+import { getTopics } from "@/lib/topics";
+import Link from "next/link";
+import { formatDate, getHeadingId, getReadingTime } from "@/lib/content-utils";
 import { absoluteUrl, buildMetadata, getImageUrl } from "@/lib/seo";
 import {
   getPost,
@@ -16,6 +20,18 @@ import {
 } from "@/sanity/lib/fetchers";
 
 export const revalidate = 3600;
+
+function withoutLegacyFaq(body?: PortableTextBlock[]) {
+  let inFaqSection = false;
+  return body?.filter((block) => {
+    if (block._type === "block" && block.style === "h2") {
+      const title = block.children?.map((child) => "text" in child ? child.text : "").join("").trim() || "";
+      inFaqSection = /^(?:frequently asked questions|faqs?)(?:\s|$)/i.test(title);
+    }
+    return !inFaqSection;
+  });
+}
+
 
 type PostPageProps = {
   params: Promise<{ slug: string }>;
@@ -76,11 +92,17 @@ export default async function PostPage({ params }: PostPageProps) {
 
   if (!post) notFound();
 
-  const relatedPosts = await getRelatedPosts(post);
+  const [relatedPosts, topics, settings] = await Promise.all([getRelatedPosts(post), getTopics(), getSiteSettings({ stega: false })]);
+  const faqs = post.faqs?.filter((faq) => faq.question.trim() && faq.answer.trim()) || [];
+  const articleBody = faqs.length ? withoutLegacyFaq(post.body) : post.body;
+  const faqTitle = "Frequently asked questions";
+  const faqAnchor = getHeadingId(faqTitle);
+  const tocBody = faqs.length ? [...(articleBody || []), { _type: "block", _key: "article-faq-toc", style: "h2", markDefs: [], children: [{ _type: "span", _key: "faq-toc-span", text: faqTitle, marks: [] }] }] : articleBody;
+  const topic = topics.find((candidate) => candidate.slug === post.category?.slug);
   const readingTime = getReadingTime(post);
   const postUrl = absoluteUrl(`/blog/${post.slug}`);
   const seoImage = post.seo?.ogImage || post.seo?.openGraphImage || post.mainImage;
-  const imageUrl = getImageUrl(seoImage);
+  const imageUrl = getImageUrl(post.mainImage || seoImage);
   const absoluteImageUrl = imageUrl ? absoluteUrl(imageUrl) : undefined;
   const schemaDescription =
     post.seo?.metaDescription ||
@@ -90,26 +112,49 @@ export default async function PostPage({ params }: PostPageProps) {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.seo?.metaTitle || post.title,
+    "@id": `${postUrl}#article`,
+    headline: post.title,
     description: schemaDescription,
-    image: absoluteImageUrl ? [absoluteImageUrl] : undefined,
+    image: absoluteImageUrl ? [{
+      "@type": "ImageObject", contentUrl: absoluteImageUrl,
+      caption: post.mainImage?.alt,
+      ...(post.mainImage?.creditName ? {
+        creditText: post.mainImage.creditName,
+        creator: { "@type": "Person", name: post.mainImage.creditName },
+        license: post.mainImage.licenseUrl,
+        acquireLicensePage: post.mainImage.creditUrl
+      } : {})
+    }] : undefined,
     datePublished: post.firstPublishedAt || post.publishedAt,
     dateModified: post.updatedAt || post.firstPublishedAt || post.publishedAt,
     author: post.author?.name
       ? {
           "@type": "Person",
+          "@id": /zohaib/i.test(post.author.name) || post.author.name === settings.name ? absoluteUrl("/#person") : `${postUrl}#author`,
           name: post.author.name
         }
-      : undefined,
+      : { "@id": absoluteUrl("/#person") },
     publisher: {
       "@type": "Person",
-      name: "Muhammad Zohaib Ramzan"
+      "@id": absoluteUrl("/#person"),
+      name: settings.name
     },
     url: postUrl,
     articleSection: post.category?.title,
     keywords: post.tags?.join(", "),
-    mainEntityOfPage: postUrl
+    mainEntityOfPage: { "@id": `${postUrl}#webpage` }
   };
+
+  const pageSchema = {
+    "@context": "https://schema.org", "@type": "WebPage", "@id": `${postUrl}#webpage`, url: postUrl, name: post.title,
+    isPartOf: { "@id": absoluteUrl("/#website") }, mainEntity: { "@id": `${postUrl}#article` },
+    ...(faqs.length ? { hasPart: { "@id": `${postUrl}#faq` } } : {})
+  };
+  const faqSchema = faqs.length ? {
+    "@context": "https://schema.org", "@type": "FAQPage", "@id": `${postUrl}#faq`, url: `${postUrl}#${faqAnchor}`,
+    isPartOf: { "@id": `${postUrl}#webpage` },
+    mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } }))
+  } : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -139,6 +184,8 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <main id="main-content" className="main">
       <JsonLd data={blogSchema} />
+      <JsonLd data={pageSchema} />
+      {faqSchema ? <JsonLd data={faqSchema} /> : null}
       <JsonLd data={breadcrumbSchema} />
       <article>
         <header className="article-header">
@@ -150,7 +197,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 { label: post.title }
               ]}
             />
-            <p className="eyebrow">{post.category?.title || "Article"}</p>
+            <p className="eyebrow">{topic ? <Link href={`/blog/topics/${topic.slug}`}>{topic.title}</Link> : post.category?.title || "Article"}</p>
             <div className="page-heading">
               <h1>{post.title}</h1>
             </div>
@@ -163,19 +210,16 @@ export default async function PostPage({ params }: PostPageProps) {
           </div>
         </header>
 
-        <SanityImage
-          image={post.mainImage}
-          width={1200}
-          height={680}
-          className="article-cover"
-          priority
-          sizes="(max-width: 1200px) calc(100vw - 36px), 1100px"
-        />
+        <ArticleVisual image={post.mainImage} />
 
         <section className="section" style={{ paddingTop: 0 }}>
           <div className="container article-shell">
-            <PortableContent value={post.body} />
-            <ArticleToc body={post.body} />
+            <div className="article-content-column">
+              <ArticleProcess steps={post.visualSteps} />
+              <PortableContent value={articleBody} />
+              {faqs.length ? <section className="article-faqs" id={faqAnchor} aria-labelledby="article-faq-heading"><p className="eyebrow">A few practical answers</p><h2 id="article-faq-heading">{faqTitle}</h2>{faqs.map((faq, index) => <details key={`${faq.question}-${index}`}><summary><h3>{faq.question}</h3></summary><p>{faq.answer}</p></details>)}</section> : null}
+            </div>
+            <ArticleToc body={tocBody} />
           </div>
         </section>
       </article>
@@ -189,8 +233,8 @@ export default async function PostPage({ params }: PostPageProps) {
             you are stuck. Let&apos;s turn the next step into a clear scope.
           </p>
           <div className="button-row">
-            <ActionLink href="/#contact">Discuss your project</ActionLink>
-            <ActionLink href="/#automation-offers" variant="ghost">Explore automation services</ActionLink>
+            <ActionLink href="/contact">Discuss your project</ActionLink>
+            <ActionLink href="/services" variant="ghost">Explore the services</ActionLink>
           </div>
         </div>
       </aside>
@@ -206,7 +250,7 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
             <div className="grid grid-3">
               {relatedPosts.map((related) => (
-                <a href={`/blog/${related.slug}`} className="card post-card" key={related._id}>
+                <Link href={`/blog/${related.slug}`} className="card post-card" key={related._id}>
                   <SanityImage
                     image={related.mainImage}
                     width={760}
@@ -217,7 +261,7 @@ export default async function PostPage({ params }: PostPageProps) {
                     <h3>{related.title}</h3>
                     <p>{related.excerpt}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

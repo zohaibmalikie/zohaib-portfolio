@@ -1,0 +1,2702 @@
+{
+  "ai-automation-audit-checklist": {
+    "source": "content/editorial-articles.json#ai-automation-audit-checklist",
+    "faqs": [
+      {
+        "question": "What evidence should I collect for a workflow audit?",
+        "answer": "Trace recent ordinary, incomplete and failed records using source and destination identifiers. Include execution history and a written definition of the expected business outcome."
+      },
+      {
+        "question": "Why can a successful execution still hide a failed workflow?",
+        "answer": "A run can finish while a branch skips a record or assigns the wrong owner. Reconcile the destination outcome against the original eligible input."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Map one outcome",
+        "description": "Identify the trigger, owner, destination and observable definition of completion."
+      },
+      {
+        "title": "Trace real records",
+        "description": "Compare source and destination identifiers across normal and failed cases."
+      },
+      {
+        "title": "Prioritize findings",
+        "description": "Record impact, an owner, an acceptance test and a recovery action."
+      }
+    ]
+  },
+  "business-process-automation-roi": {
+    "source": "content/editorial-articles.json#business-process-automation-roi",
+    "faqs": [
+      {
+        "question": "Should released staff time count as cash savings?",
+        "answer": "Released capacity is useful, but it becomes cash savings only when spending actually falls. Otherwise describe the benefit as available time, faster service or throughput."
+      },
+      {
+        "question": "Which recurring costs belong in an automation ROI calculation?",
+        "answer": "Include subscriptions, model usage, monitoring, exception handling and maintenance. Compare these costs with measured time released, then test less optimistic volume and exception assumptions."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Measure active work",
+        "description": "Record volume, handling minutes, corrections and exceptions for one process."
+      },
+      {
+        "title": "Subtract operating costs",
+        "description": "Include subscriptions and ongoing review rather than counting every automated action as savings."
+      },
+      {
+        "title": "Validate the pilot",
+        "description": "Compare completion, manual effort and actual usage with the original assumptions."
+      }
+    ]
+  },
+  "automate-or-improve-process-first": {
+    "source": "content/editorial-articles.json#automate-or-improve-process-first",
+    "faqs": [
+      {
+        "question": "When should I simplify a process before automating it?",
+        "answer": "Simplify first when rules are unclear, staff disagree about decisions or several systems overwrite the same fields. Faster execution can spread those problems."
+      },
+      {
+        "question": "What makes a suitable first automation pilot?",
+        "answer": "Choose one team, one input and one destination with stable rules, measurable outcomes and reversible actions. Keep ambiguous cases in a visible review queue."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Map ordinary and difficult records",
+        "description": "Identify judgment calls and disagreements before selecting tools."
+      },
+      {
+        "title": "Remove unnecessary copying",
+        "description": "Choose an authoritative source for each field and eliminate redundant steps."
+      },
+      {
+        "title": "Pilot a bounded path",
+        "description": "Measure completion and correction work before expanding scope."
+      }
+    ]
+  },
+  "automation-project-acceptance-criteria": {
+    "source": "content/editorial-articles.json#automation-project-acceptance-criteria",
+    "faqs": [
+      {
+        "question": "What makes an automation acceptance criterion testable?",
+        "answer": "State the input, trigger, destination outcome and agreed processing window. Include expected handling for missing fields, repeated events and failed dependencies."
+      },
+      {
+        "question": "Does implementation automatically include ongoing support?",
+        "answer": "No. Delivery scope and maintenance commitments should be explicit. Agree support hours, escalation contacts and responsibilities separately from the implementation acceptance evidence."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define observable behavior",
+        "description": "Write what should happen to a valid input at the destination."
+      },
+      {
+        "title": "Exercise failure paths",
+        "description": "Test duplicates, revoked access, temporary outages and safe replay."
+      },
+      {
+        "title": "Package evidence",
+        "description": "Record expected and actual outcomes alongside recovery and handoff instructions."
+      }
+    ]
+  },
+  "automation-maintenance-plan": {
+    "source": "content/editorial-articles.json#automation-maintenance-plan",
+    "faqs": [
+      {
+        "question": "What should an automation maintenance agreement cover?",
+        "answer": "Name the supported workflows, owners, monitoring tasks, support hours, reporting channel and severity definitions. Explain how additional workflows enter the agreement."
+      },
+      {
+        "question": "Is acknowledgement the same as incident resolution?",
+        "answer": "No. Acknowledgement confirms someone has received the issue. Investigation and resolution depend on the cause, available access and external providers; distinguish these expectations."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inventory the estate",
+        "description": "List workflows, schedules, owners, connected applications and criticality."
+      },
+      {
+        "title": "Agree the support boundary",
+        "description": "Define operating hours, escalation routes and response expectations."
+      },
+      {
+        "title": "Rehearse recovery",
+        "description": "Check backups, access and replay instructions with a controlled failure."
+      }
+    ]
+  },
+  "automation-documentation-handoff-checklist": {
+    "source": "content/editorial-articles.json#automation-documentation-handoff-checklist",
+    "faqs": [
+      {
+        "question": "What should a workflow recovery runbook explain?",
+        "answer": "Describe how to find the affected record, identify completed actions, decide whether replay is safe, pause intake and restore processing. Separate authorization, data and outage failures."
+      },
+      {
+        "question": "How can I verify a handoff document is usable?",
+        "answer": "Ask someone who did not build the flow to recover a sanitized failed record using the document. Fix unclear instructions, missing access and outdated references."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Record the operating context",
+        "description": "Name the purpose, trigger, source of truth, owner and production workflow identifier."
+      },
+      {
+        "title": "Explain branch rules",
+        "description": "Document field mappings, transformations and empty-value behavior in ordinary language."
+      },
+      {
+        "title": "Test independent recovery",
+        "description": "Observe another operator using the runbook and resolve the gaps."
+      }
+    ]
+  },
+  "automation-monitoring-metrics": {
+    "source": "content/editorial-articles.json#automation-monitoring-metrics",
+    "faqs": [
+      {
+        "question": "Which metrics reveal problems that execution success rate misses?",
+        "answer": "Track distinct completed outcomes, end-to-end delay, oldest waiting item, backlog, recovery effort and cost per completion. Reconcile eligible source records with destination results."
+      },
+      {
+        "question": "What information belongs in an actionable automation alert?",
+        "answer": "Include the workflow, a redacted record reference, failure class, responsible owner and runbook link. Group related failures and verify the intended person receives the alert."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify the business record",
+        "description": "Track one stable submission or order identifier across states."
+      },
+      {
+        "title": "Measure delay and backlog",
+        "description": "Review completion latency and the age of unresolved work."
+      },
+      {
+        "title": "Test alert ownership",
+        "description": "Trigger a controlled failure and confirm a responsible person can act."
+      }
+    ]
+  },
+  "automation-incident-response-runbook": {
+    "source": "content/editorial-articles.json#automation-incident-response-runbook",
+    "faqs": [
+      {
+        "question": "Why should I inspect the destination before retrying a timed-out write?",
+        "answer": "The provider may have completed the action even though confirmation was lost. Look up the business identifier before replaying to avoid duplicate records or messages."
+      },
+      {
+        "question": "How should I restart processing after repairing a workflow?",
+        "answer": "Reconcile completed and incomplete records, replay a small confirmed-safe batch and inspect destination results. Increase throughput only after the recovery behavior is understood."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Contain the impact",
+        "description": "Record the incident boundary and pause risky actions where the procedure requires it."
+      },
+      {
+        "title": "Classify and reconcile",
+        "description": "Distinguish access, data, pacing and uncertain-write failures."
+      },
+      {
+        "title": "Recover in batches",
+        "description": "Replay verified records and close the incident with destination evidence."
+      }
+    ]
+  },
+  "automation-cost-estimation": {
+    "source": "content/editorial-articles.json#automation-cost-estimation",
+    "faqs": [
+      {
+        "question": "Why is the build quote only part of an automation budget?",
+        "answer": "Recurring usage, exception handling, monitoring and support continue after implementation. Initial discovery, access setup, documentation and deployment also need an explicit scope."
+      },
+      {
+        "question": "How should I estimate billable workflow usage?",
+        "answer": "Map expected records, paid steps, optional branches and retries. For AI, include input size, output limits and repeat attempts; compare the estimate with current provider terms."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define the delivery scope",
+        "description": "List triggers, destinations, transformations, exceptions and acceptance checks."
+      },
+      {
+        "title": "Estimate recurring usage",
+        "description": "Model ordinary records, retries, AI calls and supporting infrastructure."
+      },
+      {
+        "title": "Compare actual cost",
+        "description": "Track cost per completed record and investigate unnecessary repeat work."
+      }
+    ]
+  },
+  "no-code-vs-custom-automation": {
+    "source": "content/editorial-articles.json#no-code-vs-custom-automation",
+    "faqs": [
+      {
+        "question": "What should decide whether an automation uses no-code or custom code?",
+        "answer": "Compare business complexity, recovery requirements, access controls and the skills of the future maintainer. Choose the approach that keeps ownership and operating behavior understandable."
+      },
+      {
+        "question": "Can an automation combine a visual platform and custom code?",
+        "answer": "Yes. A hybrid can keep orchestration visible while isolating complex logic in a tested component. Document that boundary and how failures cross it."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Describe the operating constraints",
+        "description": "Identify volume, branching, permissions and who will maintain the flow."
+      },
+      {
+        "title": "Compare recovery and ownership",
+        "description": "Evaluate how each approach handles errors, change and handoff."
+      },
+      {
+        "title": "Prototype the hard part",
+        "description": "Test the most uncertain integration before committing to a platform."
+      }
+    ]
+  },
+  "idempotent-workflows-prevent-duplicates": {
+    "source": "content/editorial-articles.json#idempotent-workflows-prevent-duplicates",
+    "faqs": [
+      {
+        "question": "Is a customer ID enough to prevent duplicate workflow actions?",
+        "answer": "Not always. A customer may place several legitimate orders or enquiries. Separate delivery identity from the business operation so deduplication does not suppress valid work."
+      },
+      {
+        "question": "Why does checking a deduplication flag before writing still allow duplicates?",
+        "answer": "Two workers can read the same unclaimed state concurrently. Claim the operation atomically with a unique constraint or equivalent mechanism before performing the action."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Choose the operation identity",
+        "description": "Separate the source event from the specific business action."
+      },
+      {
+        "title": "Claim work atomically",
+        "description": "Prevent concurrent workers from accepting the same operation."
+      },
+      {
+        "title": "Reconcile uncertain writes",
+        "description": "Inspect destination state before replaying a request that lost its confirmation."
+      }
+    ]
+  },
+  "webhook-vs-polling-integrations": {
+    "source": "content/editorial-articles.json#webhook-vs-polling-integrations",
+    "faqs": [
+      {
+        "question": "When is polling a reasonable alternative to webhooks?",
+        "answer": "Polling can suit work with a tolerable processing delay, such as periodic reporting. Use incremental checkpoints, stable pagination and deduplication rather than repeatedly scanning everything."
+      },
+      {
+        "question": "Can webhooks and polling run together safely?",
+        "answer": "Yes, when both paths share validation and deduplication. Webhooks can provide prompt updates while periodic reconciliation looks for missed business outcomes."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Set the timing requirement",
+        "description": "Agree how quickly the destination must reflect a source change."
+      },
+      {
+        "title": "Persist accepted work",
+        "description": "Verify webhook intake or checkpoint incremental polling durably."
+      },
+      {
+        "title": "Reconcile missing outcomes",
+        "description": "Use one identity and validation policy across both delivery paths."
+      }
+    ]
+  },
+  "webhook-signature-verification": {
+    "source": "content/editorial-articles.json#webhook-signature-verification",
+    "faqs": [
+      {
+        "question": "Why can a valid webhook signature fail after JSON parsing?",
+        "answer": "Some signatures depend on the exact original request bytes. Parsing and serializing can change whitespace or ordering; use the provider-supported verifier and correct raw body."
+      },
+      {
+        "question": "Does a verified webhook signature prevent duplicate actions?",
+        "answer": "No. Verification establishes authenticity under the signing scheme. Validate event type and account context separately, then deduplicate repeated valid deliveries before business writes."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Preserve original bytes",
+        "description": "Read the request in the form required by the signing scheme."
+      },
+      {
+        "title": "Verify before processing",
+        "description": "Check the correct secret, signature and any documented timestamp requirements."
+      },
+      {
+        "title": "Validate the business event",
+        "description": "Confirm account, event type and identifiers, then enforce deduplication."
+      }
+    ]
+  },
+  "api-rate-limit-retry-strategy": {
+    "source": "content/editorial-articles.json#api-rate-limit-retry-strategy",
+    "faqs": [
+      {
+        "question": "Should every failed API request be retried?",
+        "answer": "No. Classify the failure first. Malformed data or missing permissions generally needs repair, while a temporary rate limit may recover after appropriate pacing."
+      },
+      {
+        "question": "What makes a retry policy bounded?",
+        "answer": "Set a maximum attempt count and recovery window, use capped delays with jitter where appropriate, and route exhausted work to an owned exception queue."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Classify the response",
+        "description": "Separate temporary pacing failures from permanent data and access errors."
+      },
+      {
+        "title": "Apply bounded pacing",
+        "description": "Respect documented delays and cap attempts and elapsed recovery time."
+      },
+      {
+        "title": "Escalate exhausted work",
+        "description": "Keep unresolved records visible with identifiers and an accountable owner."
+      }
+    ]
+  },
+  "api-pagination-checkpoint-design": {
+    "source": "content/editorial-articles.json#api-pagination-checkpoint-design",
+    "faqs": [
+      {
+        "question": "When should a pagination checkpoint be saved?",
+        "answer": "Save progress after the page work is durably recorded or completed. Advancing before writes finish can skip records permanently when the process crashes."
+      },
+      {
+        "question": "Why should row position not be used as a deduplication key?",
+        "answer": "Positions can change as data is inserted or reordered. Use source record identifiers, and apply explicit update rules when a record appears again."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Read the pagination contract",
+        "description": "Confirm cursor behavior, ordering and token expiration."
+      },
+      {
+        "title": "Commit page work first",
+        "description": "Persist or finish the records before advancing the checkpoint."
+      },
+      {
+        "title": "Test interrupted resumes",
+        "description": "Stop at different write boundaries and reconcile the destination after restart."
+      }
+    ]
+  },
+  "oauth-token-expired-integration-repair": {
+    "source": "content/editorial-articles.json#oauth-token-expired-integration-repair",
+    "faqs": [
+      {
+        "question": "Does every authorization failure mean the token has expired?",
+        "answer": "No. Compare the affected endpoint, required scopes, environment and last successful operation. The connection may be valid but lack permission for a particular action."
+      },
+      {
+        "question": "What should be tested before replaying a backlog after reconnecting?",
+        "answer": "Verify a minimal read and a controlled write, then reconcile uncertain previous outcomes. Resume gradually while watching for duplicates, delays and repeated authorization failures."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Capture the access context",
+        "description": "Record the connection, environment, response code and last successful operation."
+      },
+      {
+        "title": "Inspect refresh and scopes",
+        "description": "Check stored token rotation and the permissions required for the failing action."
+      },
+      {
+        "title": "Restore with a small test",
+        "description": "Verify reads and writes before reconciling and replaying pending work."
+      }
+    ]
+  },
+  "crm-lead-routing-automation": {
+    "source": "content/editorial-articles.json#crm-lead-routing-automation",
+    "faqs": [
+      {
+        "question": "Should a repeated email address always suppress a CRM enquiry?",
+        "answer": "No. Email may identify an existing contact, but that person can submit multiple legitimate enquiries. Separate contact matching from the submission or activity identity."
+      },
+      {
+        "question": "Where should enquiries with unknown territory go?",
+        "answer": "Use an agreed fallback owner or review queue. Missing or ambiguous routing information should remain visible rather than being silently dropped or assigned arbitrarily."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Agree ownership rules",
+        "description": "Define required fields, territory logic and fallback responsibility."
+      },
+      {
+        "title": "Separate contact and enquiry identity",
+        "description": "Match existing contacts without losing legitimate new requests."
+      },
+      {
+        "title": "Verify the CRM outcome",
+        "description": "Check owners and source fields for normal, duplicate and outage cases."
+      }
+    ]
+  },
+  "google-sheets-crm-sync": {
+    "source": "content/editorial-articles.json#google-sheets-crm-sync",
+    "faqs": [
+      {
+        "question": "Why is a spreadsheet row number an unsafe sync identity?",
+        "answer": "Sorting or inserting rows changes positions. Use a protected source identifier and retain the matched CRM identifier so edits continue to address the correct record."
+      },
+      {
+        "question": "How can two-way sync avoid overwriting useful CRM changes?",
+        "answer": "Assign a source of truth per field and document empty-value and conflict handling. Avoid allowing both systems to overwrite every field without explicit rules."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Assign durable row identity",
+        "description": "Protect source IDs and record corresponding CRM identifiers."
+      },
+      {
+        "title": "Declare field ownership",
+        "description": "Choose which system controls each field and how conflicts resolve."
+      },
+      {
+        "title": "Test realistic edits",
+        "description": "Insert, sort, clear and retry rows while checking destination identity."
+      }
+    ]
+  },
+  "customer-onboarding-automation": {
+    "source": "content/editorial-articles.json#customer-onboarding-automation",
+    "faqs": [
+      {
+        "question": "What should trigger an onboarding workflow?",
+        "answer": "Choose an authoritative event such as a confirmed order or approved contract. Avoid a frequently reversed sales stage unless its transitions have precise handling rules."
+      },
+      {
+        "question": "How should onboarding handle sensitive actions?",
+        "answer": "Validate the account, plan and recipient before granting access or sending important instructions. Use a review gate when needed and retain resource identifiers for recovery."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define the start and finish",
+        "description": "Use authoritative approval and explicit completion criteria."
+      },
+      {
+        "title": "Separate sensitive actions",
+        "description": "Validate identity and permissions before provisioning or external messages."
+      },
+      {
+        "title": "Track handoff ownership",
+        "description": "Keep missing information and stalled provisioning visible to responsible operators."
+      }
+    ]
+  },
+  "invoice-reminder-automation": {
+    "source": "content/editorial-articles.json#invoice-reminder-automation",
+    "faqs": [
+      {
+        "question": "Why should invoice state be checked again immediately before sending?",
+        "answer": "An invoice may be paid or canceled after candidate selection. Retrieve current authoritative state and apply exclusions before claiming and sending the reminder."
+      },
+      {
+        "question": "What should happen to disputed invoices in a reminder workflow?",
+        "answer": "Route them through the agreed human policy and pause automatic reminders where required. Do not treat disputes, partial payments and ordinary overdue invoices as identical cases."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Read authoritative invoice state",
+        "description": "Use the provider invoice ID and agreed eligibility rules."
+      },
+      {
+        "title": "Claim a specific reminder",
+        "description": "Recheck exclusions and prevent overlapping runs from sending twice."
+      },
+      {
+        "title": "Record and recover",
+        "description": "Store the send reference and keep provider failures recoverable."
+      }
+    ]
+  },
+  "n8n-workflow-error-handling": {
+    "source": "content/editorial-articles.json#n8n-workflow-error-handling",
+    "faqs": [
+      {
+        "question": "Does an n8n error workflow automatically make replay safe?",
+        "answer": "No. Alerting and recovery are separate responsibilities. Determine which writes already completed, then use source identifiers and idempotency before replaying a partial execution."
+      },
+      {
+        "question": "How can I verify the error alert actually works?",
+        "answer": "Associate the error workflow, cause a controlled failure and confirm the correct person receives an actionable reference. Also test an unavailable alert destination."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Separate business exceptions",
+        "description": "Route expected missing data differently from operational failures."
+      },
+      {
+        "title": "Exercise the error route",
+        "description": "Cause a controlled failure and confirm the alert reaches its owner."
+      },
+      {
+        "title": "Reconcile before replay",
+        "description": "Check completed business actions before recovering the failed record."
+      }
+    ]
+  },
+  "make-scenario-incomplete-executions": {
+    "source": "content/editorial-articles.json#make-scenario-incomplete-executions",
+    "faqs": [
+      {
+        "question": "Does an incomplete Make execution mean nothing was written?",
+        "answer": "No. Some modules may already have completed business actions. Inspect the preserved input, failed module and destination state before deciding how to recover."
+      },
+      {
+        "question": "Should an incomplete execution caused by missing data simply be retried?",
+        "answer": "Waiting will not repair a renamed or absent field. Classify the cause, correct the data or mapping and recover a confirmed-safe record before bulk replay."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inspect preserved work",
+        "description": "Identify the failed module and actions that already completed."
+      },
+      {
+        "title": "Classify the cause",
+        "description": "Separate temporary connection problems from data and permission failures."
+      },
+      {
+        "title": "Recover one bundle",
+        "description": "Verify destination correctness before clearing a larger queue."
+      }
+    ]
+  },
+  "automation-platform-migration-checklist": {
+    "source": "content/editorial-articles.json#automation-platform-migration-checklist",
+    "faqs": [
+      {
+        "question": "What state needs to survive an automation platform migration?",
+        "answer": "Preserve deduplication keys, checkpoints, pending approvals and exception ownership where required. Losing that state can repeat old actions or skip unfinished records."
+      },
+      {
+        "question": "How can a replacement workflow be compared without duplicating writes?",
+        "answer": "Use controlled shadow processing or compare proposed changes while suppressing duplicate external actions. Define cutover and rollback responsibilities before moving live intake."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inventory workflows and state",
+        "description": "Include schedules, dependencies, credentials, checkpoints and pending exceptions."
+      },
+      {
+        "title": "Compare without duplicate writes",
+        "description": "Validate the replacement against controlled or shadow inputs."
+      },
+      {
+        "title": "Reconcile and retire",
+        "description": "Check the transition window and disable old triggers after a verified cutover."
+      }
+    ]
+  },
+  "self-hosted-automation-maintenance": {
+    "source": "content/editorial-articles.json#self-hosted-automation-maintenance",
+    "faqs": [
+      {
+        "question": "Does a successful backup job prove an automation system is recoverable?",
+        "answer": "No. Rehearse restoration in an isolated environment and verify application access, workflow execution and controlled credential reconnection. Backups must include the required configuration and state."
+      },
+      {
+        "question": "What should be monitored beyond self-hosted application uptime?",
+        "answer": "Watch worker health, storage, database access, queue age and restore readiness. Also reconcile business outcomes; reachable infrastructure does not prove records reached their destination."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inventory recovery dependencies",
+        "description": "Identify workflow, database, storage and encryption-related configuration requirements."
+      },
+      {
+        "title": "Rehearse an isolated restore",
+        "description": "Verify the application and representative workflows from backup."
+      },
+      {
+        "title": "Make updates reversible",
+        "description": "Test critical flows and confirm rollback before production upgrades."
+      }
+    ]
+  },
+  "reduce-ai-workflow-costs": {
+    "source": "content/editorial-articles.json#reduce-ai-workflow-costs",
+    "faqs": [
+      {
+        "question": "What should I remove before choosing a cheaper AI model?",
+        "answer": "Remove unnecessary calls, repeated processing and inputs that deterministic code can handle. Use ordinary lookups, arithmetic and formatting when interpretation adds no value."
+      },
+      {
+        "question": "How do I know a cheaper AI workflow is actually better?",
+        "answer": "Run the same representative evaluation set and compare correctness, human correction time, latency and cost. Lower call prices can be offset by more retries or review."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Count completed outcomes",
+        "description": "Track calls, retries, rejected outputs and corrections per eligible record."
+      },
+      {
+        "title": "Remove avoidable model work",
+        "description": "Handle explicit rules and exact transformations with deterministic code."
+      },
+      {
+        "title": "Compare quality and total cost",
+        "description": "Retest correctness and operator effort after each change."
+      }
+    ]
+  },
+  "ai-workflow-evaluation-dataset": {
+    "source": "content/editorial-articles.json#ai-workflow-evaluation-dataset",
+    "faqs": [
+      {
+        "question": "What belongs in an AI workflow evaluation dataset?",
+        "answer": "Include ordinary, ambiguous, unsupported and historically failed inputs. Define the expected business outcome and representative language or input variations for the actual supported task."
+      },
+      {
+        "question": "What should happen when human reviewers disagree on the correct label?",
+        "answer": "Record the disagreement and have the business owner clarify the rule. Do not hide an unclear business policy behind a supposedly definitive model score."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define permitted decisions",
+        "description": "Connect each supported label to its intended business action."
+      },
+      {
+        "title": "Label difficult examples",
+        "description": "Include ambiguous and unsupported inputs with documented reviewer guidance."
+      },
+      {
+        "title": "Compare fixed versions",
+        "description": "Run current and proposed configurations on the same regression set."
+      }
+    ]
+  },
+  "validate-ai-json-output": {
+    "source": "content/editorial-articles.json#validate-ai-json-output",
+    "faqs": [
+      {
+        "question": "Is valid JSON enough to trust an AI-generated action?",
+        "answer": "No. Validate the schema and business meaning, including allowed categories, referenced accounts and resource ownership. Correct formatting does not establish permission or factual correctness."
+      },
+      {
+        "question": "How should a workflow handle repeated invalid AI output?",
+        "answer": "Use a bounded retry or human review path with a redacted failure reason. Do not loop indefinitely asking the model to repair an output."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define a narrow schema",
+        "description": "Specify required fields, permitted values and length or type constraints."
+      },
+      {
+        "title": "Check structure and meaning",
+        "description": "Validate ownership, referenced records and business rules after parsing."
+      },
+      {
+        "title": "Bound recovery",
+        "description": "Route repeated failures to a controlled retry limit or review queue."
+      }
+    ]
+  },
+  "human-in-the-loop-automation": {
+    "source": "content/editorial-articles.json#human-in-the-loop-automation",
+    "faqs": [
+      {
+        "question": "What exactly should a human approval authorize?",
+        "answer": "Bind approval to a specific proposed action and version or content hash. If the proposal changes, request another decision rather than reusing stale approval."
+      },
+      {
+        "question": "Where should an approval gate sit in the workflow?",
+        "answer": "Place it before the consequential action, such as sending, publishing or granting access. Preparing a proposal is different from authorization to execute it."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Prepare a versioned proposal",
+        "description": "Capture the exact action and content awaiting approval."
+      },
+      {
+        "title": "Validate the reviewer",
+        "description": "Check authority, expiry and that the approved version still matches."
+      },
+      {
+        "title": "Execute once and reconcile",
+        "description": "Prevent duplicate execution and recover against the approved state."
+      }
+    ]
+  },
+  "ai-automation-data-minimization": {
+    "source": "content/editorial-articles.json#ai-automation-data-minimization",
+    "faqs": [
+      {
+        "question": "Why is removing a customer name sometimes insufficient before an AI call?",
+        "answer": "The remaining payload may still contain identifying or unnecessary details. Review each source field and send only the information needed for the narrow classification or interpretation task."
+      },
+      {
+        "question": "Where should a privacy review look beyond model prompts?",
+        "answer": "Inspect execution history, retry records, alerts and review screens. These operational copies can retain sensitive data even when the model input itself is reduced."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Map every copy",
+        "description": "Trace source fields through prompts, logs, alerts and destination systems."
+      },
+      {
+        "title": "Remove unnecessary input",
+        "description": "Keep identity resolution in trusted systems and narrow the model payload."
+      },
+      {
+        "title": "Trace a synthetic fixture",
+        "description": "Verify excluded fields stay absent across all operational copies."
+      }
+    ]
+  },
+  "ai-support-ticket-triage": {
+    "source": "content/editorial-articles.json#ai-support-ticket-triage",
+    "faqs": [
+      {
+        "question": "What makes a support ticket category useful?",
+        "answer": "A category needs a clear boundary, real destination queue and responsible owner. Include an unknown or review path when a ticket cannot be classified reliably."
+      },
+      {
+        "question": "Should instructions inside a ticket control the automation?",
+        "answer": "No. Incoming ticket text is data to classify. Keep identity, permissions and operational tool instructions under trusted application control rather than customer-supplied wording."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define queues and boundaries",
+        "description": "Agree labels, ownership and when to send a ticket for review."
+      },
+      {
+        "title": "Narrow model responsibility",
+        "description": "Classify relevant text while keeping identity and permissions separate."
+      },
+      {
+        "title": "Test ambiguous tickets",
+        "description": "Include multiple requests, unsupported content and instructions attempting to change the task."
+      }
+    ]
+  },
+  "nextjs-technical-seo-checklist": {
+    "source": "content/editorial-articles.json#nextjs-technical-seo-checklist",
+    "faqs": [
+      {
+        "question": "Which Next.js routes should a technical SEO spot check include?",
+        "answer": "Inspect the homepage, blog listing, article and an unknown route. Check rendered content, indexing signals, navigation and whether a missing article returns the intended 404."
+      },
+      {
+        "question": "Why should generated routes be checked after a publishing change?",
+        "answer": "The article, listing, sitemap and generated text routes may use different queries or caches. A current article page alone does not prove discovery routes updated coherently."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inspect public responses",
+        "description": "Check useful page content and correct missing-route behavior."
+      },
+      {
+        "title": "Align discovery signals",
+        "description": "Compare canonical URLs, robots directives, internal links and sitemap entries."
+      },
+      {
+        "title": "Verify a publishing change",
+        "description": "Confirm one edit appears across detail, listing and generated routes."
+      }
+    ]
+  },
+  "nextjs-cache-revalidation-debugging": {
+    "source": "content/editorial-articles.json#nextjs-cache-revalidation-debugging",
+    "faqs": [
+      {
+        "question": "What should I check before blaming the Next.js cache?",
+        "answer": "Confirm the published CMS response in the same dataset and perspective includes the edit. A saved draft is not necessarily the content the public site fetches."
+      },
+      {
+        "question": "Why might revalidating an article leave its blog card unchanged?",
+        "answer": "The detail and listing may depend on separate cache tags or paths. Trace every consumer of the document and verify the matching invalidation request."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Confirm published source",
+        "description": "Check dataset, document identifier and published content before cache investigation."
+      },
+      {
+        "title": "Map dependent views",
+        "description": "Record the tags or paths for detail, listing and discovery routes."
+      },
+      {
+        "title": "Observe and retest invalidation",
+        "description": "Publish a recognizable edit and inspect the public response after its webhook."
+      }
+    ]
+  },
+  "nextjs-metadata-canonical-urls": {
+    "source": "content/editorial-articles.json#nextjs-metadata-canonical-urls",
+    "faqs": [
+      {
+        "question": "How should metadata handle empty CMS SEO fields?",
+        "answer": "Treat blank manual values as missing and use useful article-level fallbacks. Apply that policy consistently to titles, descriptions and images instead of publishing empty metadata."
+      },
+      {
+        "question": "What should agree with the canonical URL?",
+        "answer": "Internal links, sitemap URLs and redirects should support the preferred public route. Review alternatives and filtered views deliberately instead of allowing production and preview origins to mix."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Choose the public origin",
+        "description": "Keep production canonical construction separate from preview hosts."
+      },
+      {
+        "title": "Resolve useful fallbacks",
+        "description": "Prefer meaningful manual SEO values, then article fields."
+      },
+      {
+        "title": "Inspect rendered signals",
+        "description": "Check canonical, redirects, discovery URLs and unknown-route behavior together."
+      }
+    ]
+  },
+  "sitemap-missing-pages-debugging": {
+    "source": "content/editorial-articles.json#sitemap-missing-pages-debugging",
+    "faqs": [
+      {
+        "question": "Why can a live article be absent from the sitemap?",
+        "answer": "The sitemap may use a limited query, different publication filters or a different CMS/local merge policy. Compare its expected URL set with the source used by listings."
+      },
+      {
+        "question": "Should every route be added to a sitemap?",
+        "answer": "No. Build the set from intended canonical public pages. Exclude drafts and deliberately non-indexable alternatives, then verify the listed URLs resolve to their intended content."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "List expected canonical pages",
+        "description": "Use all public content sources, including any bundled articles."
+      },
+      {
+        "title": "Inspect query and merge rules",
+        "description": "Check limits, publication filters and CMS override behavior."
+      },
+      {
+        "title": "Test publication and retirement",
+        "description": "Verify both additions and intended exclusions in the generated sitemap."
+      }
+    ]
+  },
+  "technical-seo-audit-small-business": {
+    "source": "content/editorial-articles.json#technical-seo-audit-small-business",
+    "faqs": [
+      {
+        "question": "Which SEO problems should a small business fix first?",
+        "answer": "Prioritize broken access and incorrect indexing controls on important pages, then canonical or redirect issues, unusable enquiries and significant performance or content problems."
+      },
+      {
+        "question": "Why should an audit include the contact journey?",
+        "answer": "Search visibility only helps the business if visitors can complete the next step. Test mobile navigation and the actual enquiry destination alongside crawl and metadata checks."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Sample important templates",
+        "description": "Include services, contact, recent and older articles, and a missing URL."
+      },
+      {
+        "title": "Prioritize by impact",
+        "description": "Fix access, discovery and enquiry blockers before minor polish."
+      },
+      {
+        "title": "Verify the repaired journey",
+        "description": "Check neighboring routes and generated files as well as the affected page."
+      }
+    ]
+  },
+  "core-web-vitals-prioritization": {
+    "source": "content/editorial-articles.json#core-web-vitals-prioritization",
+    "faqs": [
+      {
+        "question": "Should every Core Web Vitals issue receive the same fix?",
+        "answer": "No. Slow main content, delayed interactions and shifting layout have different causes. Diagnose the relevant route and interaction before selecting an optimization."
+      },
+      {
+        "question": "Can a faster performance score still represent a worse website?",
+        "answer": "Yes. Deferring a script may break an enquiry or required control. Retest the business journey and visual usability alongside performance measurements."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify the affected experience",
+        "description": "Separate content appearance, interaction delay and layout movement."
+      },
+      {
+        "title": "Trace the main cause",
+        "description": "Inspect resource discovery, long tasks and reserved layout space."
+      },
+      {
+        "title": "Retest useful journeys",
+        "description": "Confirm menus, forms and filters still work after the optimization."
+      }
+    ]
+  },
+  "lcp-image-optimization-nextjs": {
+    "source": "content/editorial-articles.json#lcp-image-optimization-nextjs",
+    "faqs": [
+      {
+        "question": "Should every image be eagerly loaded to improve LCP?",
+        "answer": "No. Identify the actual LCP element for the route and viewport. Prioritizing below-the-fold images can compete with the content visitors need first."
+      },
+      {
+        "question": "Why should image dimensions and responsive sizes be checked together?",
+        "answer": "Dimensions reserve layout space, while responsive sizing helps the browser request an appropriate asset. Verify transfer size and visible quality at the target viewport."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Find the real LCP element",
+        "description": "Measure the route at representative desktop and mobile widths."
+      },
+      {
+        "title": "Size the image appropriately",
+        "description": "Provide dimensions and responsive sizes that match the display."
+      },
+      {
+        "title": "Remove discovery delays",
+        "description": "Make essential content discoverable promptly and compare consistent traces."
+      }
+    ]
+  },
+  "inp-react-interaction-debugging": {
+    "source": "content/editorial-articles.json#inp-react-interaction-debugging",
+    "faqs": [
+      {
+        "question": "How can I investigate a slow React interaction reliably?",
+        "answer": "Choose one action and record a performance trace under consistent conditions. Separate handler work, rendering, layout and external script activity before changing the implementation."
+      },
+      {
+        "question": "What should be checked after reducing interaction work?",
+        "answer": "Verify typing, rapid filter changes, focus and request ownership. A faster response is not a repair if it drops characters or displays stale results."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Reproduce one delayed action",
+        "description": "Trace a specific search, drawer or filter interaction."
+      },
+      {
+        "title": "Inspect expensive work",
+        "description": "Look for repeated transformations, excess updates and layout reads mixed with writes."
+      },
+      {
+        "title": "Verify behavior under speed",
+        "description": "Test rapid inputs, pending requests and keyboard navigation after the change."
+      }
+    ]
+  },
+  "prevent-layout-shift-images-fonts": {
+    "source": "content/editorial-articles.json#prevent-layout-shift-images-fonts",
+    "faqs": [
+      {
+        "question": "How do image dimensions reduce layout movement?",
+        "answer": "Dimensions or an appropriate aspect ratio reserve the final media geometry before loading. Keep placeholders and responsive layout consistent with that reserved space."
+      },
+      {
+        "question": "Can fonts cause layout shifts even when images have dimensions?",
+        "answer": "Yes. Font metric changes can alter line wrapping and move headings, buttons or navigation. Inspect slow font loads and long text at narrow viewport widths."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Reserve media geometry",
+        "description": "Keep placeholder and final image or video dimensions consistent."
+      },
+      {
+        "title": "Inspect font transitions",
+        "description": "Check wrapping and control sizes while fonts load."
+      },
+      {
+        "title": "Test dynamic states",
+        "description": "Observe delayed widgets, missing media and expanding controls on a slow connection."
+      }
+    ]
+  },
+  "third-party-script-performance-audit": {
+    "source": "content/editorial-articles.json#third-party-script-performance-audit",
+    "faqs": [
+      {
+        "question": "Where should I look for third-party scripts beyond the source code?",
+        "answer": "Inspect tag managers, CMS embeds and actual network activity. Record each script’s provider, pages, owner and purpose so duplicated or forgotten integrations become visible."
+      },
+      {
+        "question": "What must be verified after deferring or removing a script?",
+        "answer": "Check affected forms, analytics, chat, video and consent behavior. Confirm events are neither lost nor duplicated and the intended visitor journey still completes."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inventory script ownership",
+        "description": "Find direct integrations, tag manager entries and embedded widgets."
+      },
+      {
+        "title": "Measure controlled comparisons",
+        "description": "Compare key journeys with selected scripts blocked in a test environment."
+      },
+      {
+        "title": "Retest business behavior",
+        "description": "Validate enquiries and dependent controls after changing load timing."
+      }
+    ]
+  },
+  "sanity-content-modeling-blog": {
+    "source": "content/editorial-articles.json#sanity-content-modeling-blog",
+    "faqs": [
+      {
+        "question": "Why should reusable facts be modeled as fields rather than buried in rich text?",
+        "answer": "Structured fields make facts queryable and reusable across listings, metadata and related content. Rich text remains useful for narrative but should not hide every editorial relationship."
+      },
+      {
+        "question": "How can I validate a Sanity blog model before expanding it?",
+        "answer": "Have an editor create, preview and publish a representative article. Check detail, listing, relationships and metadata, and confirm the query actually returns newly modeled fields."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Map editorial tasks",
+        "description": "Identify reusable facts, references and the views that consume them."
+      },
+      {
+        "title": "Align model and projection",
+        "description": "Expose the fields the frontend needs without duplicating content ownership."
+      },
+      {
+        "title": "Test one editorial journey",
+        "description": "Verify editing, preview, publishing and public presentation with missing optional data."
+      }
+    ]
+  },
+  "sanity-groq-query-projections": {
+    "source": "content/editorial-articles.json#sanity-groq-query-projections",
+    "faqs": [
+      {
+        "question": "Why should card and article-detail GROQ projections differ?",
+        "answer": "Cards need a small summary shape, while article pages need body content and detail fields. Explicit projections avoid transferring full bodies unnecessarily and clarify the rendering contract."
+      },
+      {
+        "question": "How should user-selected filters enter a GROQ query?",
+        "answer": "Pass category, tag and slug values as parameters. Define empty-filter behavior explicitly and check missing references rather than constructing queries with untrusted string concatenation."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define the rendering shape",
+        "description": "Separate lightweight card fields from article-only detail fields."
+      },
+      {
+        "title": "Parameterize public filters",
+        "description": "Keep slug and taxonomy inputs separate from query text."
+      },
+      {
+        "title": "Validate representative documents",
+        "description": "Test missing references, optional images and older content against the actual projection."
+      }
+    ]
+  },
+  "cms-publishing-workflow-checklist": {
+    "source": "content/editorial-articles.json#cms-publishing-workflow-checklist",
+    "faqs": [
+      {
+        "question": "Does clicking Publish prove the website has updated?",
+        "answer": "No. Confirm the published CMS response, then verify revalidation and every dependent public view. Detail pages, cards and generated discovery routes may update differently."
+      },
+      {
+        "question": "What should happen before changing a published article slug?",
+        "answer": "Plan the old URL’s behavior and relevant redirect, then check internal links and discovery routes. Also verify retired CMS content is not unexpectedly restored by local fallback rules."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Review and preview",
+        "description": "Check headings, links, images, dates and mobile presentation."
+      },
+      {
+        "title": "Observe one publication",
+        "description": "Confirm an identifiable change in the CMS and revalidation request."
+      },
+      {
+        "title": "Verify dependent routes",
+        "description": "Check article, listings, sitemap and intended retirement behavior."
+      }
+    ]
+  },
+  "react-fetch-race-conditions": {
+    "source": "content/editorial-articles.json#react-fetch-race-conditions",
+    "faqs": [
+      {
+        "question": "Why can an older search response overwrite newer React results?",
+        "answer": "Requests can finish out of order. If each response updates the same state without checking ownership, an obsolete request can replace the result for the current query."
+      },
+      {
+        "question": "Is canceling a fetch the only state protection needed?",
+        "answer": "Cancellation can reduce work, but every result, error, count and loading update must belong to the active request. Use cleanup or request identity as appropriate."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Reproduce response reordering",
+        "description": "Delay an earlier query until after a newer one finishes."
+      },
+      {
+        "title": "Enforce request ownership",
+        "description": "Prevent obsolete responses from updating the active view."
+      },
+      {
+        "title": "Check related state together",
+        "description": "Verify results, counts, errors and loading after rapid changes."
+      }
+    ]
+  },
+  "accessible-contact-form-checklist": {
+    "source": "content/editorial-articles.json#accessible-contact-form-checklist",
+    "faqs": [
+      {
+        "question": "Why are placeholders insufficient as form labels?",
+        "answer": "Placeholder text disappears during entry and may be difficult to read. Use persistent associated labels and short instructions for required formats or unusual fields."
+      },
+      {
+        "question": "When should a form display a successful submission state?",
+        "answer": "Only after the promised acceptance step actually succeeds. If delivery continues asynchronously, provide a recovery owner and avoid implying the email or CRM action already completed."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Make entry understandable",
+        "description": "Use persistent labels, required indicators and appropriate autocomplete."
+      },
+      {
+        "title": "Design recoverable errors",
+        "description": "Preserve valid entries and connect useful messages to affected fields."
+      },
+      {
+        "title": "Verify actual acceptance",
+        "description": "Test slow, failed and repeated submissions and reconcile the enquiry destination."
+      }
+    ]
+  },
+  "ecommerce-product-filter-performance": {
+    "source": "content/editorial-articles.json#ecommerce-product-filter-performance",
+    "faqs": [
+      {
+        "question": "What should filter URLs preserve?",
+        "answer": "Preserve the meaningful search, selected attributes and navigation state according to the product’s contract. Back and forward navigation should restore the expected selection and result set."
+      },
+      {
+        "question": "How should no matching products differ from a network failure?",
+        "answer": "Show active filters and a clear reset path for genuine no-match results. A failed or pending request needs its own state so customers understand what happened."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Agree filter semantics",
+        "description": "Define multi-select, sorting, unavailable combinations and URL behavior."
+      },
+      {
+        "title": "Coordinate active requests",
+        "description": "Keep results and pagination attached to the current filter identity."
+      },
+      {
+        "title": "Test empty and rapid states",
+        "description": "Check reset controls, back navigation and slow responses on realistic catalogs."
+      }
+    ]
+  },
+  "headless-cms-vs-wordpress-business": {
+    "source": "content/editorial-articles.json#headless-cms-vs-wordpress-business",
+    "faqs": [
+      {
+        "question": "Does choosing a headless CMS automatically improve speed or SEO?",
+        "answer": "No. Implementation quality, content and the team’s maintenance capacity determine the result. Compare actual public output and editorial workflows rather than architecture labels alone."
+      },
+      {
+        "question": "Which costs are easy to miss in a CMS comparison?",
+        "answer": "Include migration, media, redirects, preview authentication, forms, hosting, backups and ongoing updates. Identify who owns each responsibility after launch."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Test real editorial tasks",
+        "description": "Use representative articles, service pages and reusable blocks."
+      },
+      {
+        "title": "Map maintenance responsibility",
+        "description": "Assign hosting, previews, backups, forms and updates to named owners."
+      },
+      {
+        "title": "Prove the publishing workflow",
+        "description": "Measure editing and verify public output before selecting the architecture."
+      }
+    ]
+  },
+  "internal-linking-service-blog-strategy": {
+    "source": "content/editorial-articles.json#internal-linking-service-blog-strategy",
+    "faqs": [
+      {
+        "question": "How should I choose internal links in an article?",
+        "answer": "Link where a related explanation or service supports the reader’s next decision. Use descriptive context and ensure the destination fulfills the promise of the link."
+      },
+      {
+        "question": "Does sitemap inclusion solve orphaned article navigation?",
+        "answer": "No. Readers need an ordinary navigable route from listings or relevant pages. Compare published URLs with actual internal links, including paginated and filtered views."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Map related problems",
+        "description": "Group articles around distinct questions that support relevant services."
+      },
+      {
+        "title": "Place contextual links",
+        "description": "Explain why the linked guide helps at that point in the article."
+      },
+      {
+        "title": "Audit discovery paths",
+        "description": "Find orphaned pages and verify listings, pagination and retired URLs."
+      }
+    ]
+  },
+  "service-page-content-that-converts": {
+    "source": "content/editorial-articles.json#service-page-content-that-converts",
+    "faqs": [
+      {
+        "question": "What should a buyer learn from a service page before enquiring?",
+        "answer": "They should understand the intended audience, concrete problem, deliverable, scope and next step. Useful evidence and a transparent delivery process help assess whether the service fits."
+      },
+      {
+        "question": "How should illustrative service pricing be presented?",
+        "answer": "Label the range as illustrative, state the currency and explain scope assumptions. Keep structured data consistent and separate maintenance support expectations from implementation pricing."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Describe the concrete problem",
+        "description": "Explain who needs the work and the deliverable they receive."
+      },
+      {
+        "title": "Show honest scope and evidence",
+        "description": "Distinguish observed outcomes, projected benefits and illustrative prices."
+      },
+      {
+        "title": "Make contact straightforward",
+        "description": "Ask for tools, the problem and the desired outcome, then test mobile entry."
+      }
+    ]
+  },
+  "search-console-pages-not-indexed": {
+    "source": "content/editorial-articles.json#search-console-pages-not-indexed",
+    "faqs": [
+      {
+        "question": "Should every URL in the not-indexed count be fixed?",
+        "answer": "No. Duplicates, redirects and intentionally excluded alternatives may be correct. Inspect the reason breakdown and focus on important canonical pages intended for search."
+      },
+      {
+        "question": "What should I check when a key page is accessible but not indexed?",
+        "answer": "Review canonical and robots signals, internal discovery, duplication and whether the page offers a distinct useful answer. Use URL Inspection instead of assuming more articles will resolve it."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inspect reasons and examples",
+        "description": "Group excluded URLs by template and intended public behavior."
+      },
+      {
+        "title": "Investigate important canonicals",
+        "description": "Separate technical blockers from duplication and weak page value."
+      },
+      {
+        "title": "Measure a focused action list",
+        "description": "Verify deployed changes and compare relevant queries and pages over time."
+      }
+    ]
+  },
+  "building-an-ai-powered-knowledge-base-with-nextjs-and-sanity": {
+    "source": "https://www.zohaibramzan.com/blog/building-an-ai-powered-knowledge-base-with-nextjs-and-sanity",
+    "faqs": [
+      {
+        "question": "Should the vector index replace Sanity as the knowledge source?",
+        "answer": "No. Keep Sanity as the authoritative content store and treat embeddings as a derived index. Retain document identifiers and source links so answers can be traced."
+      },
+      {
+        "question": "How should knowledge-base updates and deletions reach retrieval?",
+        "answer": "Re-index changed documents and remove vectors for deleted content. Verify indexing independently from answer generation so stale retrieval is not mistaken for a prompting problem."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Model knowledge articles",
+        "description": "Store titles, source identity, body and useful metadata in the CMS."
+      },
+      {
+        "title": "Index searchable chunks",
+        "description": "Serialize content, preserve source references and generate compatible embeddings."
+      },
+      {
+        "title": "Retrieve with citations",
+        "description": "Use relevant chunks to answer and expose the source documents."
+      }
+    ]
+  },
+  "nextjs-app-router-seo-guide-for-ai-and-cms-websites": {
+    "source": "https://www.zohaibramzan.com/blog/nextjs-app-router-seo-guide-for-ai-and-cms-websites",
+    "faqs": [
+      {
+        "question": "When should a CMS route use dynamic metadata?",
+        "answer": "Use dynamic metadata when title, description or sharing images depend on fetched content. Keep sensible layout defaults and inspect the final output of representative routes."
+      },
+      {
+        "question": "What should a sitemap and robots review verify together?",
+        "answer": "Confirm intended public canonical pages are discoverable and not accidentally blocked or marked noindex. Treat preview and staging behavior separately from the public production site."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define metadata defaults",
+        "description": "Set useful site-level titles, descriptions and public URL construction."
+      },
+      {
+        "title": "Resolve page-specific content",
+        "description": "Build article metadata from the same CMS content as the page."
+      },
+      {
+        "title": "Verify discovery routes",
+        "description": "Inspect canonical URLs, sitemap entries and robots controls together."
+      }
+    ]
+  },
+  "how-to-add-schema-markup-to-nextjs-blog-articles": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-add-schema-markup-to-nextjs-blog-articles",
+    "faqs": [
+      {
+        "question": "Can a blog article include multiple structured-data types?",
+        "answer": "Yes. Article, breadcrumb and other appropriate entities can coexist. Keep their identifiers and relationships consistent, and ensure each description reflects visible page content."
+      },
+      {
+        "question": "Does valid schema guarantee higher rankings or rich results?",
+        "answer": "No. Validation checks markup and supported eligibility requirements, not a promised search outcome. Publish accurate visible information and verify the rendered JSON-LD."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Describe the article entity",
+        "description": "Use real title, author, dates and canonical page references."
+      },
+      {
+        "title": "Connect visible context",
+        "description": "Add matching breadcrumb and applicable content entities."
+      },
+      {
+        "title": "Validate public JSON-LD",
+        "description": "Inspect syntax, relationships and agreement with the rendered page."
+      }
+    ]
+  },
+  "how-to-automate-blog-publishing-with-sanity-n8n-and-nextjs": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-automate-blog-publishing-with-sanity-n8n-and-nextjs",
+    "faqs": [
+      {
+        "question": "What separates content approval from cache revalidation?",
+        "answer": "Approval determines whether content should be published. Revalidation refreshes the website after a publication change; it does not establish editorial quality or permission to publish."
+      },
+      {
+        "question": "How should an automated publishing failure be investigated?",
+        "answer": "Identify the failed workflow stage and inspect the CMS document and public route. Alert an owner with a useful reference before replaying partially completed work."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Prepare and approve content",
+        "description": "Validate the article and record the editorial decision."
+      },
+      {
+        "title": "Write the CMS document",
+        "description": "Persist the intended structured fields and publication state."
+      },
+      {
+        "title": "Refresh and verify routes",
+        "description": "Trigger the authorized cache update and check article and listing output."
+      }
+    ]
+  },
+  "ai-coding-assistants-in-2026-benefits-risks-and-best-practices": {
+    "source": "https://www.zohaibramzan.com/blog/ai-coding-assistants-in-2026-benefits-risks-and-best-practices",
+    "faqs": [
+      {
+        "question": "What should be checked before accepting an AI-generated change?",
+        "answer": "Read the diff, verify requirements and assess security-sensitive paths. Run relevant checks and confirm the behavior in the actual project rather than relying on confident explanations."
+      },
+      {
+        "question": "How can a team introduce AI assistance without losing ownership?",
+        "answer": "Define approved tools, data handling and review requirements. Start with bounded tasks and keep a human responsible for architecture, acceptance and maintenance."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Choose a bounded task",
+        "description": "Give the assistant project context and clear acceptance conditions."
+      },
+      {
+        "title": "Inspect the generated diff",
+        "description": "Check logic, dependencies and sensitive data handling."
+      },
+      {
+        "title": "Verify and review",
+        "description": "Run meaningful checks and require accountable human acceptance."
+      }
+    ]
+  },
+  "why-human-code-review-still-matters-in-ai-generated-code": {
+    "source": "https://www.zohaibramzan.com/blog/why-human-code-review-still-matters-in-ai-generated-code",
+    "faqs": [
+      {
+        "question": "Why is an additional AI reviewer insufficient by itself?",
+        "answer": "Automated review can identify useful issues, but it may share the generator’s blind spots. Human reviewers provide business context, assess intent and own acceptance."
+      },
+      {
+        "question": "Should AI-generated changes receive less review because they were produced quickly?",
+        "answer": "No. Review according to consequence and complexity, especially around permissions, data handling and business rules. Generation speed does not establish correctness."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Read for business intent",
+        "description": "Compare the diff with requirements and architectural context."
+      },
+      {
+        "title": "Inspect consequential paths",
+        "description": "Check logic, security boundaries and dependency or licensing concerns."
+      },
+      {
+        "title": "Verify acceptance evidence",
+        "description": "Review meaningful tests and retain clear human ownership."
+      }
+    ]
+  },
+  "building-a-type-safe-sanity-client-in-nextjs-with-typescript-and-groq": {
+    "source": "https://www.zohaibramzan.com/blog/building-a-type-safe-sanity-client-in-nextjs-with-typescript-and-groq",
+    "faqs": [
+      {
+        "question": "Why should query result types follow the GROQ projection?",
+        "answer": "The projection determines the returned shape. Types based only on the full document can incorrectly assume fields or references that the actual query does not return."
+      },
+      {
+        "question": "What should happen after changing a Sanity schema or typed query?",
+        "answer": "Regenerate the relevant types and run TypeScript checks. Then verify representative returned data, including nullable fields, before trusting the component integration."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Configure the content client",
+        "description": "Keep environment and public-versus-private fetching responsibilities explicit."
+      },
+      {
+        "title": "Generate projection types",
+        "description": "Derive result types from schemas and the queries actually used."
+      },
+      {
+        "title": "Carry types into rendering",
+        "description": "Use the result contract across fetchers and component props."
+      }
+    ]
+  },
+  "llmops-explained-how-to-deploy-and-monitor-ai-applications": {
+    "source": "https://www.zohaibramzan.com/blog/llmops-explained-how-to-deploy-and-monitor-ai-applications",
+    "faqs": [
+      {
+        "question": "How is LLMOps broader than prompt engineering?",
+        "answer": "Prompt design is one part of the system. LLMOps also covers evaluation, deployment, observability, usage costs, incident handling and changes across the application lifecycle."
+      },
+      {
+        "question": "How should production AI output quality be evaluated?",
+        "answer": "Combine deterministic format and rule checks with task-specific scoring and calibrated human review. Keep representative examples so prompt or model changes can be compared."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Version the application behavior",
+        "description": "Track prompts, model configuration and evaluation examples."
+      },
+      {
+        "title": "Observe quality and cost",
+        "description": "Trace failures, latency and usage without exposing unnecessary sensitive input."
+      },
+      {
+        "title": "Gate and monitor changes",
+        "description": "Compare regressions before release and review production failures afterward."
+      }
+    ]
+  },
+  "how-to-generate-seo-blog-articles-automatically-with-ai-and-sanity": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-generate-seo-blog-articles-automatically-with-ai-and-sanity",
+    "faqs": [
+      {
+        "question": "Which parts of AI article production need editorial verification?",
+        "answer": "Verify factual claims, technical examples, originality, links and the reader’s actual question. A generated outline or populated metadata does not establish that an article is useful."
+      },
+      {
+        "question": "What should the CMS receive from an article automation pipeline?",
+        "answer": "Store structured article content, a stable slug, useful summary, image information and appropriate SEO fields. Keep editorial review and publication decisions explicit."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Build a reader-focused brief",
+        "description": "Define the question, evidence and scope before drafting."
+      },
+      {
+        "title": "Create structured CMS content",
+        "description": "Convert the draft into valid fields and rich content."
+      },
+      {
+        "title": "Review before publication",
+        "description": "Check accuracy, useful detail and internal links before releasing the article."
+      }
+    ]
+  },
+  "how-to-improve-ai-chatbot-accuracy-with-rag-and-structured-content": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-improve-ai-chatbot-accuracy-with-rag-and-structured-content",
+    "faqs": [
+      {
+        "question": "Why can a chatbot remain inaccurate after adding retrieval?",
+        "answer": "The relevant content may be absent, stale or poorly chunked, or the retriever may return irrelevant passages. Evaluate retrieval separately before changing the answer prompt."
+      },
+      {
+        "question": "How can structured CMS fields help chatbot accuracy?",
+        "answer": "Explicit facts, relationships and metadata let the retrieval pipeline select relevant content more precisely. Preserve source identity and update the index when the underlying content changes."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Structure authoritative knowledge",
+        "description": "Keep explicit facts, relationships and source metadata in the CMS."
+      },
+      {
+        "title": "Retrieve relevant evidence",
+        "description": "Index useful chunks and inspect which passages reach the model."
+      },
+      {
+        "title": "Measure answer grounding",
+        "description": "Compare representative questions, citations and unsupported-answer behavior."
+      }
+    ]
+  },
+  "dynamic-metadata-nextjs-complete-seo-guide-developers": {
+    "source": "https://www.zohaibramzan.com/blog/dynamic-metadata-nextjs-complete-seo-guide-developers",
+    "faqs": [
+      {
+        "question": "Should static and dynamic metadata both be exported from one segment?",
+        "answer": "Choose the approach appropriate to that segment. Use a metadata object for fixed values or generateMetadata when values depend on route content."
+      },
+      {
+        "question": "Why should inherited sharing metadata be inspected after an override?",
+        "answer": "Nested metadata can replace fields that were supplied by a parent. Check resolved titles, descriptions, images and canonical URLs on the actual public response."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Choose fixed or fetched metadata",
+        "description": "Match the metadata approach to the route’s content dependencies."
+      },
+      {
+        "title": "Resolve useful CMS values",
+        "description": "Apply meaningful article fields and explicit fallbacks."
+      },
+      {
+        "title": "Inspect the final head",
+        "description": "Verify canonical URLs and inherited sharing information on representative routes."
+      }
+    ]
+  },
+  "how-freelance-developers-can-use-ai-to-deliver-projects-faster": {
+    "source": "https://www.zohaibramzan.com/blog/how-freelance-developers-can-use-ai-to-deliver-projects-faster",
+    "faqs": [
+      {
+        "question": "Where can AI assist a freelance project beyond writing code?",
+        "answer": "It can help draft scopes, clarify questions, prepare documentation and summarize client communication. The freelancer must still validate estimates, commitments and final deliverables."
+      },
+      {
+        "question": "How can a solo developer preserve quality with AI assistance?",
+        "answer": "Use bounded tasks, read generated changes and run relevant checks. Maintain an acceptance checklist so rapid implementation does not bypass behavior, security or handoff requirements."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Clarify scope and unknowns",
+        "description": "Turn the client brief into deliverables and unresolved questions."
+      },
+      {
+        "title": "Draft in small increments",
+        "description": "Use project context for implementation and supporting documentation."
+      },
+      {
+        "title": "Validate the deliverable",
+        "description": "Check real behavior and communicate verified outcomes and limitations."
+      }
+    ]
+  },
+  "how-to-build-ai-agents-with-nextjs-typescript-and-apis": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-build-ai-agents-with-nextjs-typescript-and-apis",
+    "faqs": [
+      {
+        "question": "How does an agent differ from a single-response chatbot?",
+        "answer": "An agent can choose and invoke tools over several steps toward a goal. The application still needs explicit tool contracts, limits and responsibility for consequential actions."
+      },
+      {
+        "question": "Why should an agent have a step or execution limit?",
+        "answer": "Unbounded tool loops can waste time, increase usage and repeat actions. Bound execution, validate inputs and make failures observable before granting broader tool access."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define narrow tools",
+        "description": "Specify typed inputs, outputs and allowed external operations."
+      },
+      {
+        "title": "Bound the execution loop",
+        "description": "Track state and stop conditions rather than permitting unlimited tool calls."
+      },
+      {
+        "title": "Observe real outcomes",
+        "description": "Inspect tool results, failures and the final business action."
+      }
+    ]
+  },
+  "mastering-portable-text-in-react-rendering-rich-content-from-sanity": {
+    "source": "https://www.zohaibramzan.com/blog/mastering-portable-text-in-react-rendering-rich-content-from-sanity",
+    "faqs": [
+      {
+        "question": "Why is Portable Text different from stored HTML?",
+        "answer": "Portable Text represents rich content as structured blocks, spans and annotations. React renderers map that structure into the semantic elements and custom components the site needs."
+      },
+      {
+        "question": "How should a site handle custom Portable Text blocks?",
+        "answer": "Provide deliberate renderers for schema-defined block types and marks. Test representative content so missing renderers, references or styles do not break the public reading experience."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inspect block structure",
+        "description": "Identify styles, spans, annotations and custom object types."
+      },
+      {
+        "title": "Map semantic renderers",
+        "description": "Render headings, links, lists and custom blocks through explicit components."
+      },
+      {
+        "title": "Verify real editorial content",
+        "description": "Check styling and behavior across rich content and optional values."
+      }
+    ]
+  },
+  "how-ai-is-transforming-frontend-development-workflows": {
+    "source": "https://www.zohaibramzan.com/blog/how-ai-is-transforming-frontend-development-workflows",
+    "faqs": [
+      {
+        "question": "Which frontend work still needs direct verification after AI generation?",
+        "answer": "Responsive layout, accessibility, interaction states and integration behavior need checking in the application. A plausible component does not prove the complete user journey works."
+      },
+      {
+        "question": "How can a team make AI-assisted frontend work repeatable?",
+        "answer": "Provide design and code conventions, keep tasks bounded and review the resulting diff. Use appropriate browser and code checks rather than measuring progress by generated code volume."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Supply design and code context",
+        "description": "Describe the UI task, conventions and intended behavior."
+      },
+      {
+        "title": "Generate a focused increment",
+        "description": "Keep component changes small enough to inspect."
+      },
+      {
+        "title": "Check the user journey",
+        "description": "Verify responsiveness, interactions and accessibility in the actual application."
+      }
+    ]
+  },
+  "how-structured-data-helps-ai-agents-understand-your-website": {
+    "source": "https://www.zohaibramzan.com/blog/how-structured-data-helps-ai-agents-understand-your-website",
+    "faqs": [
+      {
+        "question": "What should structured data describe on a content website?",
+        "answer": "Describe real entities such as articles, people and breadcrumbs, with clear relationships and canonical references. Keep the information consistent with what readers can actually see."
+      },
+      {
+        "question": "Does publishing llms.txt guarantee that AI systems will cite a site?",
+        "answer": "No. A machine-readable content summary can provide context, but inclusion and citation are external outcomes. Maintain useful public content and validate structured data independently."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Model visible entities",
+        "description": "Identify the article, author, organization and navigation relationships."
+      },
+      {
+        "title": "Publish consistent JSON-LD",
+        "description": "Use accurate properties and stable references that match public content."
+      },
+      {
+        "title": "Verify machine-readable output",
+        "description": "Check rendered schema and generated text routes after content changes."
+      }
+    ]
+  },
+  "why-type-safety-matters-in-ai-powered-nextjs-applications": {
+    "source": "https://www.zohaibramzan.com/blog/why-type-safety-matters-in-ai-powered-nextjs-applications",
+    "faqs": [
+      {
+        "question": "Can TypeScript guarantee that an AI response matches a declared interface?",
+        "answer": "No. TypeScript checks code assumptions but does not validate arbitrary runtime input. Parse and validate external data before using it as a trusted domain value."
+      },
+      {
+        "question": "What is the benefit of end-to-end types from CMS to UI?",
+        "answer": "A shared projection contract exposes incompatible field changes across fetchers and component props. It reduces assumptions, while nullable data and external responses still require appropriate handling."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Type the content boundary",
+        "description": "Use query-result types for the data actually fetched."
+      },
+      {
+        "title": "Validate AI output at runtime",
+        "description": "Check external values before treating them as trusted structures."
+      },
+      {
+        "title": "Preserve contracts in the UI",
+        "description": "Carry typed data through fetchers and props with explicit missing-data states."
+      }
+    ]
+  },
+  "how-to-safely-use-ai-tools-like-cursor-claude-code-and-codex": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-safely-use-ai-tools-like-cursor-claude-code-and-codex",
+    "faqs": [
+      {
+        "question": "What project information should stay out of AI tool prompts?",
+        "answer": "Do not casually include credentials or sensitive customer data. Follow the project’s approved data-handling policy and review tool configuration before providing private code or context."
+      },
+      {
+        "question": "How should changes from an autonomous coding tool be accepted?",
+        "answer": "Inspect the diff and commands, understand consequential changes and run relevant checks. Keep permissions and execution scope deliberate rather than treating generated output as automatic approval."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Set access boundaries",
+        "description": "Configure the allowed workspace and sensitive-data handling."
+      },
+      {
+        "title": "Keep tasks reviewable",
+        "description": "Provide clear requirements and inspect proposed commands and diffs."
+      },
+      {
+        "title": "Verify before acceptance",
+        "description": "Check actual behavior and accountable review of consequential changes."
+      }
+    ]
+  },
+  "how-ai-automation-helps-saas-teams-build-faster-workflows": {
+    "source": "https://www.zohaibramzan.com/blog/how-ai-automation-helps-saas-teams-build-faster-workflows",
+    "faqs": [
+      {
+        "question": "How should a SaaS team choose its first AI automation?",
+        "answer": "Start with a repetitive, measurable workflow and an explicit owner. Compare current handling effort and exceptions before adding model-driven interpretation or connecting more systems."
+      },
+      {
+        "question": "What should automation ROI measure beyond the number of tasks run?",
+        "answer": "Compare useful outcomes, staff time, errors, review effort and ongoing costs. Establish a baseline so faster execution is not confused with an actual operational improvement."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify a repeated bottleneck",
+        "description": "Choose a bounded process with measurable handling effort."
+      },
+      {
+        "title": "Integrate around existing systems",
+        "description": "Keep tool responsibilities, exception paths and ownership explicit."
+      },
+      {
+        "title": "Compare operating results",
+        "description": "Measure completed work, manual effort and usage costs against the baseline."
+      }
+    ]
+  },
+  "building-an-ai-content-workflow-with-sanity-cms-and-n8n": {
+    "source": "https://www.zohaibramzan.com/blog/building-an-ai-content-workflow-with-sanity-cms-and-n8n",
+    "faqs": [
+      {
+        "question": "Where should human approval sit in a Sanity and n8n content workflow?",
+        "answer": "Place approval after draft generation and validation, before publication. Make the proposed content and the final publishing decision visible rather than relying on an unreviewed model output."
+      },
+      {
+        "question": "Why should content workflow monitoring include CMS writes?",
+        "answer": "A generated draft may not have been saved, published or reflected on the website. Trace document identifiers and each stage so partial success does not hide a failed handoff."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "React to a content event",
+        "description": "Identify the document and prepare the relevant workflow input."
+      },
+      {
+        "title": "Generate and save a draft",
+        "description": "Validate structured fields before writing content back to the CMS."
+      },
+      {
+        "title": "Approve and monitor publication",
+        "description": "Track the review decision and verify the public result."
+      }
+    ]
+  },
+  "how-to-use-sanity-typegen-for-type-safe-content-queries": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-use-sanity-typegen-for-type-safe-content-queries",
+    "faqs": [
+      {
+        "question": "When should Sanity query types be regenerated?",
+        "answer": "Regenerate after schema or analyzed query changes, then run TypeScript checks. Generated files should describe the current projection rather than a historical shape."
+      },
+      {
+        "question": "Why use generated query types in React props?",
+        "answer": "They carry the actual selected fields and nullable relationships into rendering. This helps detect mismatches when editors’ content models or GROQ projections change."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Extract the schema context",
+        "description": "Make the project’s content model available to type generation."
+      },
+      {
+        "title": "Analyze explicit queries",
+        "description": "Generate result contracts for the GROQ projections the app uses."
+      },
+      {
+        "title": "Check consuming components",
+        "description": "Run TypeScript and handle optional content before publishing the change."
+      }
+    ]
+  },
+  "how-to-build-seo-friendly-blog-pages-with-nextjs-and-sanity": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-build-seo-friendly-blog-pages-with-nextjs-and-sanity",
+    "faqs": [
+      {
+        "question": "What must be consistent across an article route and its metadata?",
+        "answer": "Use the same intended public content and canonical route. Keep title, summary, image, author and dates coherent across the page, sharing metadata and structured data."
+      },
+      {
+        "question": "Why should blog listings and sitemap queries share a publication policy?",
+        "answer": "Different filters or merge rules can expose pages in one place and omit them elsewhere. Define public content consistently across detail routes, discovery and navigation."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Model and query article content",
+        "description": "Expose the fields needed by both reading and discovery views."
+      },
+      {
+        "title": "Render semantic article pages",
+        "description": "Use clear headings, rich-content components and reliable unknown-route handling."
+      },
+      {
+        "title": "Verify metadata and discovery",
+        "description": "Check canonical links, JSON-LD and sitemap coverage after publication."
+      }
+    ]
+  },
+  "rag-vs-fine-tuning-which-is-better-for-ai-applications": {
+    "source": "https://www.zohaibramzan.com/blog/rag-vs-fine-tuning-which-is-better-for-ai-applications",
+    "faqs": [
+      {
+        "question": "Should changing factual content usually require fine-tuning?",
+        "answer": "Retrieval can supply updated documents without modifying model weights. Fine-tuning addresses learned behavior or task patterns; distinguish that need from keeping a knowledge source current."
+      },
+      {
+        "question": "Can retrieval and fine-tuning be combined?",
+        "answer": "Yes. A system can retrieve current evidence while using a model adapted to a task or response style. Evaluate the combination against the actual failure being addressed."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify the failure mode",
+        "description": "Separate missing knowledge from unwanted behavior or output style."
+      },
+      {
+        "title": "Choose a targeted approach",
+        "description": "Use retrieval for evidence and training where task adaptation is justified."
+      },
+      {
+        "title": "Evaluate the complete system",
+        "description": "Compare correctness, update effort and operating complexity on representative cases."
+      }
+    ]
+  },
+  "vector-databases-explained-for-full-stack-developers": {
+    "source": "https://www.zohaibramzan.com/blog/vector-databases-explained-for-full-stack-developers",
+    "faqs": [
+      {
+        "question": "Can vector search be useful without generating an LLM answer?",
+        "answer": "Yes. Semantic search and recommendation systems can retrieve similar items directly. An LLM is an optional consumer of retrieved results, not a requirement for similarity search."
+      },
+      {
+        "question": "What metadata should accompany content embeddings?",
+        "answer": "Retain source identifiers and useful filters such as document type, category or ownership. Track update and embedding context so records can be replaced and retrieval scoped correctly."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Represent content as vectors",
+        "description": "Generate embeddings suited to the documents and search task."
+      },
+      {
+        "title": "Store identity and filters",
+        "description": "Keep source references and metadata beside each vector."
+      },
+      {
+        "title": "Evaluate retrieval quality",
+        "description": "Test relevant results, update behavior and operating constraints on real data."
+      }
+    ]
+  },
+  "rag-explained-for-developers-how-retrieval-augmented-generation-works": {
+    "source": "https://www.zohaibramzan.com/blog/rag-explained-for-developers-how-retrieval-augmented-generation-works",
+    "faqs": [
+      {
+        "question": "What are the two main phases of RAG?",
+        "answer": "Indexing prepares searchable content through chunking and embeddings. At query time, retrieval finds relevant passages and generation uses them as evidence for the response."
+      },
+      {
+        "question": "Does RAG eliminate hallucination?",
+        "answer": "No. Missing evidence or weak retrieval can still produce unsupported answers. Evaluate retrieval and answer grounding, expose sources and support an insufficient-evidence response."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Index coherent content",
+        "description": "Chunk source material and preserve useful source metadata."
+      },
+      {
+        "title": "Retrieve compatible evidence",
+        "description": "Embed the query consistently and select relevant passages."
+      },
+      {
+        "title": "Generate and evaluate",
+        "description": "Answer from retrieved context and check support for the claims."
+      }
+    ]
+  },
+  "vibe-coding-vs-professional-software-engineering": {
+    "source": "https://www.zohaibramzan.com/blog/vibe-coding-vs-professional-software-engineering",
+    "faqs": [
+      {
+        "question": "When is a quick AI-built prototype useful?",
+        "answer": "It can explore an idea or interaction quickly when scope and consequences are limited. Treat the prototype as evidence to review before expanding it into a maintained application."
+      },
+      {
+        "question": "What must change before an AI prototype becomes production software?",
+        "answer": "Review architecture, data handling, error states and maintainability. Add the verification, documentation and ownership required for the application’s actual risks and users."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Explore a bounded idea",
+        "description": "Use rapid generation to test an assumption or interaction."
+      },
+      {
+        "title": "Inspect the implementation",
+        "description": "Understand architecture and failure modes before increasing scope."
+      },
+      {
+        "title": "Engineer for maintenance",
+        "description": "Add appropriate checks, documentation and accountable ownership."
+      }
+    ]
+  },
+  "nextjs-app-router-on-demand-revalidation-and-live-preview-with-sanity": {
+    "source": "https://www.zohaibramzan.com/blog/nextjs-app-router-on-demand-revalidation-and-live-preview-with-sanity",
+    "faqs": [
+      {
+        "question": "How does live preview differ from on-demand revalidation?",
+        "answer": "Preview lets authorized editors inspect draft content. Revalidation refreshes cached public views after intended publication changes; the two flows have different access and content responsibilities."
+      },
+      {
+        "question": "Why should a revalidation webhook be authenticated?",
+        "answer": "It changes public cache behavior and should accept only intended requests. Verify the event and affected content before invalidating the relevant paths or tags."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Connect the publication event",
+        "description": "Identify the CMS document and authorized webhook request."
+      },
+      {
+        "title": "Invalidate dependent content",
+        "description": "Refresh the relevant public queries or paths."
+      },
+      {
+        "title": "Verify preview and production",
+        "description": "Check draft visibility separately from the published site result."
+      }
+    ]
+  },
+  "how-ai-agents-are-changing-software-development-in-2026": {
+    "source": "https://www.zohaibramzan.com/blog/how-ai-agents-are-changing-software-development-in-2026",
+    "faqs": [
+      {
+        "question": "What distinguishes an agent workflow from autocomplete?",
+        "answer": "Agents can plan steps and invoke tools toward a task, while autocomplete suggests code during editing. Tool access creates additional needs for boundaries, review and observability."
+      },
+      {
+        "question": "What makes an agent task easier to verify?",
+        "answer": "A narrow goal, explicit permitted actions and observable acceptance criteria make the result reviewable. Check produced changes and actual outcomes rather than accepting a completion message alone."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define a narrow developer task",
+        "description": "State permitted tools, workspace context and acceptance conditions."
+      },
+      {
+        "title": "Observe the tool sequence",
+        "description": "Track actions and inspect changes as the agent works."
+      },
+      {
+        "title": "Verify the resulting behavior",
+        "description": "Use relevant checks and human judgment before accepting the deliverable."
+      }
+    ]
+  },
+  "how-to-connect-sanity-cms-content-with-ai-search-and-rag": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-connect-sanity-cms-content-with-ai-search-and-rag",
+    "faqs": [
+      {
+        "question": "What should a CMS export for a retrieval index include?",
+        "answer": "Export usable content text with stable document identifiers, titles, source URLs and useful metadata. Keep enough structure to support relevant chunks and trace search results."
+      },
+      {
+        "question": "How should semantic search handle changed CMS content?",
+        "answer": "Update derived embeddings when source content changes and remove obsolete records. Verify the search result against the current CMS source rather than assuming an old index is still accurate."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Export structured source content",
+        "description": "Query the fields and identities needed for search."
+      },
+      {
+        "title": "Create and refresh embeddings",
+        "description": "Store coherent chunks with metadata and handle changed documents."
+      },
+      {
+        "title": "Render traceable results",
+        "description": "Return relevant content with usable links to the authoritative source."
+      }
+    ]
+  },
+  "groq-vs-graphql-which-query-language-sanity": {
+    "source": "https://www.zohaibramzan.com/blog/groq-vs-graphql-which-query-language-sanity",
+    "faqs": [
+      {
+        "question": "What should drive the choice between GROQ and GraphQL?",
+        "answer": "Compare the required data shape, relationship queries, team knowledge and client ecosystem. Test representative queries instead of treating either language as universally better."
+      },
+      {
+        "question": "Can one Sanity project use both query approaches?",
+        "answer": "The approaches can serve different consumers. Keep content ownership and query responsibilities clear so parallel interfaces do not produce inconsistent public fields or behavior."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Describe the consumer’s data shape",
+        "description": "List required fields, references and filters."
+      },
+      {
+        "title": "Compare representative queries",
+        "description": "Evaluate maintainability, flexibility and ecosystem fit on actual content."
+      },
+      {
+        "title": "Verify a consistent contract",
+        "description": "Keep returned shapes and public content behavior clear across consumers."
+      }
+    ]
+  },
+  "how-to-use-structured-cms-content-for-better-ai-answers": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-use-structured-cms-content-for-better-ai-answers",
+    "faqs": [
+      {
+        "question": "Which facts should be explicit CMS fields for AI use?",
+        "answer": "Model discrete facts and relationships that need reliable retrieval, filtering or reuse. Keep narrative in rich text while retaining source identity and update information."
+      },
+      {
+        "question": "How should CMS-grounded answers be tested?",
+        "answer": "Use representative questions with known source facts. Check whether the relevant evidence was retrieved and whether the answer stays within that evidence, including unsupported questions."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Model facts and relationships",
+        "description": "Separate reusable structured values from narrative content."
+      },
+      {
+        "title": "Project focused context",
+        "description": "Fetch the fields and references relevant to the AI task."
+      },
+      {
+        "title": "Test answer support",
+        "description": "Compare retrieval and responses with the authoritative CMS facts."
+      }
+    ]
+  },
+  "typed-groq-queries-nextjs-practical-guide-developers": {
+    "source": "https://www.zohaibramzan.com/blog/typed-groq-queries-nextjs-practical-guide-developers",
+    "faqs": [
+      {
+        "question": "Why can dereferenced GROQ relationships need nullable handling?",
+        "answer": "A reference may be absent or resolve differently from the assumed full document. Use result types matching the projection and verify how missing references appear."
+      },
+      {
+        "question": "Does adding caching change the need for typed query results?",
+        "answer": "No. Caching and type correctness solve different problems. Carry the selected result shape through cached fetchers and handle missing data regardless of refresh strategy."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Declare explicit projections",
+        "description": "Specify the selected fields and reference expansions."
+      },
+      {
+        "title": "Generate and use result types",
+        "description": "Keep fetchers aligned with the actual GROQ return shape."
+      },
+      {
+        "title": "Verify cached consumers",
+        "description": "Test optional relationships and rendering across refresh behavior."
+      }
+    ]
+  },
+  "how-to-prevent-runtime-errors-in-cms-driven-nextjs-websites": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-prevent-runtime-errors-in-cms-driven-nextjs-websites",
+    "faqs": [
+      {
+        "question": "Why can a correctly typed CMS page still fail at runtime?",
+        "answer": "External content may be missing, nullable or older than the current schema. Type assertions do not validate arbitrary data; rendering needs deliberate handling of those states."
+      },
+      {
+        "question": "Should every missing CMS field cause an error page?",
+        "answer": "No. Choose sensible optional-field fallbacks while treating missing required documents differently. Use error boundaries for unexpected failures and verify incomplete content cases."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify missing-data boundaries",
+        "description": "Inspect optional fields, references and absent documents."
+      },
+      {
+        "title": "Handle expected absence",
+        "description": "Use explicit fallbacks or missing-route behavior appropriate to the content."
+      },
+      {
+        "title": "Test varied CMS shapes",
+        "description": "Render complete, partial, null and historical documents before release."
+      }
+    ]
+  },
+  "nextjs-sanity-seo-friendly-business-websites": {
+    "source": "https://www.zohaibramzan.com/blog/nextjs-sanity-seo-friendly-business-websites",
+    "faqs": [
+      {
+        "question": "What responsibility belongs to Next.js and what belongs to Sanity?",
+        "answer": "Next.js renders the website and visitor interactions. Sanity manages structured content that editors can update; the integration must connect publication with the public presentation."
+      },
+      {
+        "question": "Does using Next.js and Sanity guarantee enquiries or rankings?",
+        "answer": "No. Useful content, clear services, reliable enquiries, performance and ongoing measurement still matter. The stack supports implementation but does not establish the business outcome."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Model editable business content",
+        "description": "Define the pages and facts the business needs to maintain."
+      },
+      {
+        "title": "Build useful visitor journeys",
+        "description": "Render services, content and contact actions clearly across devices."
+      },
+      {
+        "title": "Verify published output",
+        "description": "Check performance, metadata and the enquiry path after content updates."
+      }
+    ]
+  },
+  "technical-seo-checklist-nextjs-websites-2026": {
+    "source": "https://www.zohaibramzan.com/blog/technical-seo-checklist-nextjs-websites-2026",
+    "faqs": [
+      {
+        "question": "Which indexing signals should a Next.js audit compare?",
+        "answer": "Check canonical URLs, redirects, robots directives and sitemap membership together. Important public pages should present a coherent preferred route rather than conflicting discovery instructions."
+      },
+      {
+        "question": "Why include image handling in a technical SEO review?",
+        "answer": "Incorrect sizing and loading can delay important content or shift the layout. Check visible quality, reserved space and actual loading behavior on representative routes."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Inspect public metadata",
+        "description": "Check page titles, sharing images and canonical references."
+      },
+      {
+        "title": "Align discovery and routing",
+        "description": "Verify sitemap, robots behavior and preferred URL redirects."
+      },
+      {
+        "title": "Measure the page experience",
+        "description": "Review image loading, layout stability and important visitor interactions."
+      }
+    ]
+  },
+  "ai-security-for-developers-risks-in-ai-generated-code": {
+    "source": "https://www.zohaibramzan.com/blog/ai-security-for-developers-risks-in-ai-generated-code",
+    "faqs": [
+      {
+        "question": "Which AI-generated code paths deserve focused security review?",
+        "answer": "Inspect authorization, database access, secrets, input handling and dependencies. A convincing implementation can still apply the wrong trust boundary or reuse an unsafe pattern."
+      },
+      {
+        "question": "Should static scanning replace human review of AI code?",
+        "answer": "No. Scanners can catch useful classes of issues, while people must assess business permissions, intent and broader design. Combine appropriate tooling with accountable review."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify sensitive boundaries",
+        "description": "Locate authentication, data access and secret handling changes."
+      },
+      {
+        "title": "Inspect and scan the diff",
+        "description": "Check validation, permissions and dependencies with appropriate tools."
+      },
+      {
+        "title": "Verify protections",
+        "description": "Exercise relevant failure cases and review the actual access behavior."
+      }
+    ]
+  },
+  "how-to-auto-publish-ai-generated-articles-safely-in-nextjs": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-auto-publish-ai-generated-articles-safely-in-nextjs",
+    "faqs": [
+      {
+        "question": "What should block an AI-generated article from automatic publication?",
+        "answer": "Failed factual, structural or editorial checks should stop release with a visible reason. Keep review responsibility explicit for content that cannot be validated automatically."
+      },
+      {
+        "question": "Why does a publishing workflow need rollback?",
+        "answer": "Checks can miss problems. Retain the previous content state and a way to restore it, then verify the public route and caches after the correction."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Apply explicit quality gates",
+        "description": "Check content structure, evidence and required editorial conditions."
+      },
+      {
+        "title": "Approve and publish deliberately",
+        "description": "Record the decision before releasing content and refreshing caches."
+      },
+      {
+        "title": "Verify and support rollback",
+        "description": "Check the public result and keep a recoverable previous version."
+      }
+    ]
+  },
+  "typescript-best-practices-for-ai-and-cms-driven-apps": {
+    "source": "https://www.zohaibramzan.com/blog/typescript-best-practices-for-ai-and-cms-driven-apps",
+    "faqs": [
+      {
+        "question": "Why use unknown instead of any for unvalidated external data?",
+        "answer": "Unknown requires deliberate narrowing before use. Any bypasses useful checks and can hide incorrect assumptions about AI responses or CMS fields."
+      },
+      {
+        "question": "Where does runtime validation belong in an AI application?",
+        "answer": "Validate at external boundaries before treating input as a trusted domain structure. Generated types document code contracts, while validators check actual returned values."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Preserve strict contracts",
+        "description": "Use generated or explicit types for query and API boundaries."
+      },
+      {
+        "title": "Validate untrusted values",
+        "description": "Parse and narrow external responses before application use."
+      },
+      {
+        "title": "Reuse typed components",
+        "description": "Carry safe domain values through generic utilities and UI props."
+      }
+    ]
+  },
+  "the-future-of-full-stack-development-in-the-age-of-ai": {
+    "source": "https://www.zohaibramzan.com/blog/the-future-of-full-stack-development-in-the-age-of-ai",
+    "faqs": [
+      {
+        "question": "Which full-stack responsibilities remain essential with AI assistance?",
+        "answer": "Developers still need architecture, data modeling, debugging, security judgment and understanding of user needs. Generated implementation does not take responsibility for how the whole system behaves."
+      },
+      {
+        "question": "How should AI adoption fit into an existing stack?",
+        "answer": "Identify a concrete bottleneck and integrate assistance around clear boundaries. Keep verification, deployment and operational ownership explicit rather than adding tools solely for novelty."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify the actual bottleneck",
+        "description": "Choose where assistance could reduce repetitive development work."
+      },
+      {
+        "title": "Preserve system responsibilities",
+        "description": "Keep data, architecture and deployment boundaries understandable."
+      },
+      {
+        "title": "Measure maintained quality",
+        "description": "Review outcomes, operational behavior and the ability to change the system."
+      }
+    ]
+  },
+  "best-ai-tools-web-developers-2026": {
+    "source": "https://www.zohaibramzan.com/blog/best-ai-tools-web-developers-2026",
+    "faqs": [
+      {
+        "question": "How should I compare AI tools without relying on a universal ranking?",
+        "answer": "Choose a representative task and compare workflow fit, output quality, privacy requirements and review effort. Current features and terms should be checked before committing."
+      },
+      {
+        "question": "Why can adopting too many AI tools reduce productivity?",
+        "answer": "Overlapping tools add context switching, costs and inconsistent workflows. Add a tool to resolve an observed bottleneck and evaluate the effect on the whole delivery process."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Choose a real bottleneck",
+        "description": "Identify coding, testing, documentation or operations work to improve."
+      },
+      {
+        "title": "Trial a representative task",
+        "description": "Compare useful output and the effort required to review it."
+      },
+      {
+        "title": "Review the working setup",
+        "description": "Keep tools that improve delivery and remove redundant steps."
+      }
+    ]
+  },
+  "vibe-coding-with-ai-how-i-use-claude-cursor-and-copilot-to-build-faster": {
+    "source": "https://www.zohaibramzan.com/blog/vibe-coding-with-ai-how-i-use-claude-cursor-and-copilot-to-build-faster",
+    "faqs": [
+      {
+        "question": "What makes a coding prompt more useful than a broad feature request?",
+        "answer": "Provide project context, a bounded change and concrete acceptance criteria. Smaller inspectable increments make it easier to find incorrect assumptions before they spread."
+      },
+      {
+        "question": "Which decisions should stay under developer judgment in an AI-assisted workflow?",
+        "answer": "Architecture, requirements, consequential data handling and final acceptance need deliberate ownership. Read generated code and verify behavior even when the implementation was quick."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "State the concrete task",
+        "description": "Give architecture context and a clear definition of completion."
+      },
+      {
+        "title": "Work in inspectable increments",
+        "description": "Review the generated change before requesting further expansion."
+      },
+      {
+        "title": "Verify the real behavior",
+        "description": "Test the relevant journey and retain responsibility for the final result."
+      }
+    ]
+  },
+  "how-to-build-a-rag-app-with-nextjs-and-a-vector-database": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-build-a-rag-app-with-nextjs-and-a-vector-database",
+    "faqs": [
+      {
+        "question": "Why must document and query embeddings be compatible?",
+        "answer": "Similarity search compares vectors in the same embedding space. A different incompatible model at query time can make retrieved results meaningless even when the API request succeeds."
+      },
+      {
+        "question": "What should a RAG app preserve for source citations?",
+        "answer": "Retain document identity, content references and usable source URLs with indexed chunks. Return relevant sources alongside the generated answer so readers can verify its evidence."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Prepare source embeddings",
+        "description": "Chunk content and retain source metadata in the vector index."
+      },
+      {
+        "title": "Retrieve relevant context",
+        "description": "Embed the query compatibly and apply the appropriate scope."
+      },
+      {
+        "title": "Stream a grounded answer",
+        "description": "Use retrieved passages and present source references in the interface."
+      }
+    ]
+  },
+  "ai-driven-development-how-to-build-faster-without-creating-technical-debt": {
+    "source": "https://www.zohaibramzan.com/blog/ai-driven-development-how-to-build-faster-without-creating-technical-debt",
+    "faqs": [
+      {
+        "question": "Does using AI necessarily create technical debt?",
+        "answer": "No. Risk increases when output is accepted without understanding, review or architectural consistency. Apply the same maintainability expectations to generated and manually written code."
+      },
+      {
+        "question": "How can prompts reduce obsolete framework patterns?",
+        "answer": "Provide the project’s actual framework version, router and conventions. Verify proposed APIs against the current project and documentation rather than trusting the generated example."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Supply project conventions",
+        "description": "State the actual stack, boundaries and acceptance conditions."
+      },
+      {
+        "title": "Review architectural consistency",
+        "description": "Inspect abstractions and avoid unnecessary duplicated patterns."
+      },
+      {
+        "title": "Track quality over changes",
+        "description": "Watch regressions and maintenance effort as AI use expands."
+      }
+    ]
+  },
+  "prompt-injection-explained-for-web-developers": {
+    "source": "https://www.zohaibramzan.com/blog/prompt-injection-explained-for-web-developers",
+    "faqs": [
+      {
+        "question": "Is a system prompt an access-control boundary?",
+        "answer": "No. Instructions influence model behavior but should not authorize privileged operations. Enforce permissions, tool scope and validation in trusted application code."
+      },
+      {
+        "question": "How can retrieved documents introduce prompt injection?",
+        "answer": "External passages may contain instructions aimed at changing the model’s task. Treat retrieved content as untrusted data and limit what resulting tool calls can do."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify untrusted inputs",
+        "description": "Include user messages, retrieved documents and external tool results."
+      },
+      {
+        "title": "Constrain tool authority",
+        "description": "Keep permissions and allowed actions under application control."
+      },
+      {
+        "title": "Inspect outputs and actions",
+        "description": "Validate proposed operations and monitor attempts to cross the intended boundary."
+      }
+    ]
+  },
+  "how-to-create-an-editorial-ai-workflow-for-developer-blogs": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-create-an-editorial-ai-workflow-for-developer-blogs",
+    "faqs": [
+      {
+        "question": "What should a human technical editor verify in an AI draft?",
+        "answer": "Run relevant code examples, check API references and version assumptions, inspect factual claims and verify links. Editing prose alone does not establish technical accuracy."
+      },
+      {
+        "question": "How can a solo developer start an editorial AI workflow?",
+        "answer": "Begin with a small repeatable path from brief to draft, verification and publication. Expand automation around proven bottlenecks rather than creating a large unattended pipeline immediately."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Plan a focused brief",
+        "description": "Define the audience question, required evidence and editorial scope."
+      },
+      {
+        "title": "Draft with source context",
+        "description": "Use assistance for research organization and writing."
+      },
+      {
+        "title": "Verify and publish",
+        "description": "Check technical details, then measure whether the article supports useful reader actions."
+      }
+    ]
+  },
+  "ai-seo-how-to-optimize-your-website-for-google-and-ai-search": {
+    "source": "https://www.zohaibramzan.com/blog/ai-seo-how-to-optimize-your-website-for-google-and-ai-search",
+    "faqs": [
+      {
+        "question": "Does AI assistance in writing remove the need for original value?",
+        "answer": "No. Useful detail, accurate claims, clear authorship and editorial review still matter. Undifferentiated drafts do not become valuable merely by adding metadata or more keywords."
+      },
+      {
+        "question": "Can a website guarantee inclusion in AI-generated search answers?",
+        "answer": "No. Improve accessibility, clarity, source support and public content quality, then observe citations and referrals. Search inclusion remains an external outcome rather than a controllable deliverable."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Answer a real reader question",
+        "description": "Provide clear explanations supported by useful evidence."
+      },
+      {
+        "title": "Keep public content legible",
+        "description": "Verify crawl access, semantic structure and accurate metadata."
+      },
+      {
+        "title": "Measure observed discovery",
+        "description": "Compare relevant search and referral outcomes after substantive improvements."
+      }
+    ]
+  },
+  "geo-vs-seo-how-generative-engine-optimization-is-changing-search": {
+    "source": "https://www.zohaibramzan.com/blog/geo-vs-seo-how-generative-engine-optimization-is-changing-search",
+    "faqs": [
+      {
+        "question": "Should GEO replace conventional SEO work?",
+        "answer": "No. Discoverable pages, useful content and credible evidence support both. Treat generative-answer visibility as another observed channel, not a reason to abandon the public site’s fundamentals."
+      },
+      {
+        "question": "How can I measure whether AI-answer visibility produces useful traffic?",
+        "answer": "Review attributable referrals and check whether they reach meaningful next steps. Citation checks can provide context, but they do not by themselves establish enquiries or revenue."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Maintain search fundamentals",
+        "description": "Keep important pages crawlable, coherent and useful to visitors."
+      },
+      {
+        "title": "Make evidence easy to understand",
+        "description": "Use clear explanations, source support and accurate entity information."
+      },
+      {
+        "title": "Observe channel outcomes",
+        "description": "Track citations where possible and assess qualified referrals and enquiries."
+      }
+    ]
+  },
+  "how-to-evaluate-ai-responses-in-production-applications": {
+    "source": "https://www.zohaibramzan.com/blog/how-to-evaluate-ai-responses-in-production-applications",
+    "faqs": [
+      {
+        "question": "How do offline and online AI evaluations differ?",
+        "answer": "Offline evaluation compares versions on a fixed dataset before release. Online monitoring examines real traffic and emerging failures; use both to catch regressions and unexpected inputs."
+      },
+      {
+        "question": "How should an AI judge’s scores be checked?",
+        "answer": "Compare the judge with human ratings on a calibration sample. Define the rubric clearly and inspect consequential disagreements instead of treating model-generated scores as objective truth."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Build representative examples",
+        "description": "Define expected behavior and include meaningful failure cases."
+      },
+      {
+        "title": "Compare before release",
+        "description": "Run the same rubric and dataset across proposed changes."
+      },
+      {
+        "title": "Calibrate with production review",
+        "description": "Inspect real failures and compare automated scoring with human judgment."
+      }
+    ]
+  },
+  "cursor-vs-claude-code-vs-codex-which-ai-coding-tool-is-best": {
+    "source": "https://www.zohaibramzan.com/blog/cursor-vs-claude-code-vs-codex-which-ai-coding-tool-is-best",
+    "faqs": [
+      {
+        "question": "What should decide the choice between coding assistants?",
+        "answer": "Evaluate representative work, preferred interface, repository context, privacy requirements and the effort needed to review changes. Verify current features rather than relying on a permanent winner."
+      },
+      {
+        "question": "What stays the developer’s responsibility across these tools?",
+        "answer": "Clear task scope, protecting sensitive context, inspecting changes and verifying behavior remain essential. Tool choice does not replace architectural judgment or final acceptance."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define your evaluation task",
+        "description": "Choose a realistic change and explicit success criteria."
+      },
+      {
+        "title": "Compare workflow and boundaries",
+        "description": "Inspect output, context handling and review effort for each tool."
+      },
+      {
+        "title": "Verify independent of the assistant",
+        "description": "Run the project’s checks and assess the resulting behavior yourself."
+      }
+    ]
+  },
+  "what-does-a-web-developer-do-how-do-i-become-one": {
+    "source": "lib/fallback-data.ts#post-web-developer",
+    "faqs": [
+      {
+        "question": "What work does a frontend developer focus on?",
+        "answer": "Frontend work covers the interface people use, including accessibility, responsive layouts, interactions and performance across browsers and devices."
+      },
+      {
+        "question": "Which fundamentals should a new web developer learn first?",
+        "answer": "Begin with HTML, CSS, JavaScript, responsive design, version control and debugging. Understanding how browsers render pages helps connect these skills into reliable websites."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Learn browser fundamentals",
+        "description": "Build understanding of HTML, CSS, JavaScript and page rendering."
+      },
+      {
+        "title": "Build responsive interfaces",
+        "description": "Practice layouts and interactions across device sizes and browsers."
+      },
+      {
+        "title": "Debug and maintain",
+        "description": "Use version control and investigate behavior instead of relying on visual appearance."
+      }
+    ]
+  }
+}

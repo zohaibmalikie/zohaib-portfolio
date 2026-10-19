@@ -224,6 +224,9 @@ function imageFromAsset(assetId, article) {
     _type: "image",
     alt: article.imageAlt || article.title,
     caption: article.imageCaption || "",
+    creditName: article.imageCreditName,
+    creditUrl: article.imageCreditUrl,
+    licenseUrl: article.imageLicenseUrl,
     asset: reference(assetId)
   };
 }
@@ -238,6 +241,9 @@ async function uploadImage(imagePathOrUrl, article, jsonDir) {
       _type: "image",
       alt: article.imageAlt || article.title,
       caption: article.imageCaption || "",
+    creditName: article.imageCreditName,
+    creditUrl: article.imageCreditUrl,
+    licenseUrl: article.imageLicenseUrl,
       asset: reference("dry-run-image-asset")
     };
   }
@@ -335,6 +341,8 @@ async function buildPostDocument(article, index, jsonDir) {
     readingTime: article.readingTime || readingTime(body),
     featured: Boolean(article.featured),
     body,
+    faqs: article.faqs?.map((item, index) => ({ ...item, _type: "object", _key: `faq-${index}` })) || existing?.faqs,
+    visualSteps: article.visualSteps?.map((item, index) => ({ ...item, _type: "object", _key: `step-${index}` })) || existing?.visualSteps,
     seo: buildSeo(article, excerpt)
   };
 }

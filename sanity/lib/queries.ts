@@ -4,6 +4,9 @@ const imageProjection = `
   ...,
   alt,
   caption,
+  creditName,
+  creditUrl,
+  licenseUrl,
   asset->{
     _id,
     url,
@@ -45,6 +48,8 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     logo { ${imageProjection} },
     profileImage { ${imageProjection} },
     heroHeadline,
+    conversionHeadline,
+    conversionDescription,
     heroDescription,
     email,
     socialLinks[] {
@@ -66,6 +71,7 @@ export const POST_CARD_PROJECTION = `
   "slug": slug.current,
   excerpt,
   mainImage { ${imageProjection} },
+  useOriginalImage,
   author->{
     _id,
     name,
@@ -77,7 +83,10 @@ export const POST_CARD_PROJECTION = `
     _id,
     title,
     "slug": slug.current,
-    description
+    description,
+    introParagraphs,
+    recommendedServiceSlugs,
+    featuredPostSlugs
   },
   tags,
   publishedAt,
@@ -90,7 +99,9 @@ export const POST_CARD_PROJECTION = `
 
 export const POST_DETAIL_PROJECTION = `
   ${POST_CARD_PROJECTION},
-  body
+  body,
+  faqs[]{question, answer},
+  visualSteps[]{title, description}
 `;
 
 export const PROJECT_CARD_PROJECTION = `
@@ -116,6 +127,14 @@ export const PROJECT_DETAIL_PROJECTION = `
 `;
 
 export const SERVICE_PROJECTION = `
+  headline,
+  audience,
+  overview,
+  deliverables,
+  process[] { title, description },
+  faqs[] { question, answer },
+  relatedPostSlugs,
+  relatedProjectSlugs,
   _id,
   title,
   "slug": slug.current,
@@ -218,5 +237,11 @@ export const PROJECT_QUERY = defineQuery(`
 export const PROJECT_SLUGS_QUERY = defineQuery(`
   *[_type == "project" && defined(slug.current)] {
     "slug": slug.current
+  }
+`);
+
+export const SERVICES_QUERY = defineQuery(`
+  *[_type == "service" && defined(slug.current)] | order(title asc) {
+    ${SERVICE_PROJECTION}
   }
 `);

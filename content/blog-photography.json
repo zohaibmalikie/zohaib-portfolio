@@ -1,0 +1,80 @@
+[
+  {
+    "key": "code",
+    "asset": {
+      "url": "/assets/img/blogs/photos/code.webp"
+    },
+    "alt": "Colorful programming code on a computer screen",
+    "creditName": "Chris Ried",
+    "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "licenseUrl": "https://unsplash.com/license",
+    "sourceUrl": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2200&q=85&fm=webp",
+    "licenseVerifiedAt": "2026-10-19",
+    "bytes": 736038
+  },
+  {
+    "key": "planning",
+    "asset": {
+      "url": "/assets/img/blogs/photos/planning.webp"
+    },
+    "alt": "Two people mapping ideas on a whiteboard",
+    "creditName": "Kaleidico",
+    "creditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "licenseUrl": "https://unsplash.com/license",
+    "sourceUrl": "https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?auto=format&fit=crop&w=2200&q=85&fm=webp",
+    "licenseVerifiedAt": "2026-10-19",
+    "bytes": 233712
+  },
+  {
+    "key": "hardware",
+    "asset": {
+      "url": "/assets/img/blogs/photos/hardware.webp"
+    },
+    "alt": "Electronic circuit boards and connectors on a light surface",
+    "creditName": "Dai",
+    "creditUrl": "https://unsplash.com/photos/yellow-black-and-blue-circuit-boards-isolated-on-white-background-ogxlyCA1BQc",
+    "licenseUrl": "https://unsplash.com/license",
+    "sourceUrl": "https://images.unsplash.com/photo-1537151377170-9c19a791bbea?auto=format&fit=crop&w=2200&q=85&fm=webp",
+    "licenseVerifiedAt": "2026-10-19",
+    "bytes": 335944
+  },
+  {
+    "key": "workspace",
+    "asset": {
+      "url": "/assets/img/blogs/photos/workspace.webp"
+    },
+    "alt": "Laptop and desktop monitor in a bright workspace",
+    "creditName": "Domenico Loia",
+    "creditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "licenseUrl": "https://unsplash.com/license",
+    "sourceUrl": "https://images.unsplash.com/photo-1604486383422-396b88b04687?auto=format&fit=crop&w=2200&q=85&fm=webp",
+    "licenseVerifiedAt": "2026-10-19",
+    "bytes": 394668
+  },
+  {
+    "key": "analytics",
+    "asset": {
+      "url": "/assets/img/blogs/photos/analytics.webp"
+    },
+    "alt": "Performance analytics charts displayed on a laptop screen",
+    "creditName": "Luke Chesser",
+    "creditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "licenseUrl": "https://unsplash.com/license",
+    "sourceUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2200&q=85&fm=webp",
+    "licenseVerifiedAt": "2026-10-19",
+    "bytes": 339002
+  },
+  {
+    "key": "dashboard",
+    "asset": {
+      "url": "/assets/img/blogs/photos/dashboard.webp"
+    },
+    "alt": "Analytics dashboard on a laptop reflected in a glass table",
+    "creditName": "Carlos Muza",
+    "creditUrl": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU",
+    "licenseUrl": "https://unsplash.com/license",
+    "sourceUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2200&q=85&fm=webp",
+    "licenseVerifiedAt": "2026-10-19",
+    "bytes": 204330
+  }
+]

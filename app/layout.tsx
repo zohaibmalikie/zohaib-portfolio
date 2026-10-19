@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   applicationName: "Muhammad Zohaib Ramzan Portfolio",
   manifest: "/manifest.webmanifest",
   title: {
-    default: "Muhammad Zohaib Ramzan | Frontend, SEO, GEO and AEO Expert",
+    default: "Muhammad Zohaib Ramzan | Next.js & Workflow Automation",
     template: "%s | Muhammad Zohaib Ramzan"
   },
   description:
-    "Frontend, SEO, GEO, and AEO expert for fast Next.js, React, Sanity CMS, structured data, Core Web Vitals, and AI-ready websites.",
+    "Responsive Next.js websites, reliable workflow automation, API integration repair and technical SEO for businesses.",
   authors: [{ name: "Muhammad Zohaib Ramzan", url: siteUrl }],
   creator: "Muhammad Zohaib Ramzan",
   publisher: "Muhammad Zohaib Ramzan",
@@ -42,43 +42,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: [{ url: "/icon-180.png", sizes: "180x180", type: "image/png" }]
   },
-  keywords: [
-    "Muhammad Zohaib Ramzan",
-    "Frontend developer",
-    "Next.js developer",
-    "React developer",
-    "AI automation expert",
-    "AI integration expert",
-    "AI native developer",
-    "SvelteKit developer",
-    "Sanity CMS",
-    "Builder.io",
-    "shadcn",
-    "shadcn-ui",
-    "WordPress developer",
-    "technical SEO",
-    "on-page SEO",
-    "off-page SEO",
-    "SEO expert",
-    "SEO audit",
-    "SEO optimization",
-    "technical SEO expert",
-    "on-page SEO expert",
-    "off-page SEO expert",
-    "GEO expert",
-    "generative engine optimization",
-    "AEO expert",
-    "answer engine optimization",
-    "AI search optimization",
-    "LLM optimization",
-    "structured data SEO",
-    "schema markup",
-    "Core Web Vitals",
-    "website performance optimization",
-    "ecommerce optimization",
-    "SaaS frontend architecture",
-    "AI automation"
-  ],
   robots: {
     index: true,
     follow: true,
@@ -97,13 +60,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Muhammad Zohaib Ramzan | Frontend, SEO, GEO and AEO Expert",
+    title: "Muhammad Zohaib Ramzan | Next.js & Workflow Automation",
     description:
-      "Frontend, SEO, GEO, and AEO expert for fast Next.js, React, Sanity CMS, structured data, Core Web Vitals, and AI-ready websites.",
-    siteName: "Muhammad Zohaib Ramzan"
+      "Responsive Next.js websites, reliable workflow automation, API integration repair and technical SEO for businesses.",
+    siteName: "Muhammad Zohaib Ramzan",
+    images: [{ url: "/assets/img/social/site-card.png", width: 1200, height: 630, alt: "Zohaib Ramzan — websites and workflow automation" }]
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/assets/img/social/site-card.png"],
     site: "@ZohaibM87432701",
     creator: "@ZohaibM87432701"
   },

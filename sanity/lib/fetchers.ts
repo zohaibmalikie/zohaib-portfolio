@@ -1,6 +1,10 @@
+import { enrichPost } from "@/lib/blog-enrichment";
+import { withBlogPhotography } from "@/lib/blog-photography";
+
 import { draftMode } from "next/headers";
 
 import { getAutomationOffers, isAutomationOffer } from "@/lib/automation-offers";
+import { additionalServices, serviceDetails } from "@/lib/service-content";
 import { matchesPostFilters, mergePosts } from "@/lib/post-collections";
 
 import {
@@ -22,13 +26,15 @@ import {
   PROJECT_QUERY,
   PROJECT_SLUGS_QUERY,
   PROJECTS_QUERY,
-  SITE_SETTINGS_QUERY
+  SITE_SETTINGS_QUERY,
+  SERVICES_QUERY
 } from "@/sanity/lib/queries";
 import type {
   HomePageData,
   Post,
   Project,
-  SiteSettings
+  SiteSettings,
+  Service
 } from "@/types/sanity";
 
 type SlugResult = { slug: string };
@@ -52,18 +58,20 @@ async function getData<T>({
   params,
   tags,
   fallback,
-  stega
+  stega,
+  publishedOnly
 }: {
   query: string;
   params?: Record<string, string | string[] | null>;
   tags?: string[];
   fallback: T;
   stega?: boolean;
+  publishedOnly?: boolean;
 }): Promise<T> {
   if (!hasSanityConfig) return fallback;
 
   try {
-    const draft = await draftMode();
+    const draft = publishedOnly ? { isEnabled: false } : await draftMode();
     const data = draft.isEnabled
       ? (
           await import("@/sanity/lib/live").then(({ sanityFetch }) =>
@@ -124,11 +132,13 @@ export async function getHomePageData() {
 export async function getPosts({
   category,
   tag,
-  stega
+  stega,
+  publishedOnly
 }: {
   category?: string;
   tag?: string;
   stega?: boolean;
+  publishedOnly?: boolean;
 } = {}) {
   // Merge the complete CMS collection before filtering so a CMS override that
   // changes taxonomy cannot leave its bundled version in the old category.
@@ -137,20 +147,22 @@ export async function getPosts({
     params: { category: null, tag: null },
     tags: ["posts"],
     fallback: fallbackPosts,
-    stega
+    stega,
+    publishedOnly
   });
 
-  return mergePosts(posts, fallbackPosts).filter((post) => matchesPostFilters(post, category, tag));
+  return mergePosts(posts, fallbackPosts).map(enrichPost).map(withBlogPhotography).filter((post) => matchesPostFilters(post, category, tag));
 }
 
-export function getPost(slug: string, options?: { stega?: boolean }) {
-  return getData<Post | null>({
+export async function getPost(slug: string, options?: { stega?: boolean }) {
+  const post = await getData<Post | null>({
     query: POST_QUERY,
     params: { slug },
     tags: ["posts", `post:${slug}`],
     fallback: fallbackPosts.find((post) => post.slug === slug) || null,
     stega: options?.stega
   });
+  return post ? withBlogPhotography(enrichPost(post)) : null;
 }
 
 export async function getRelatedPosts(post: Post) {
@@ -218,4 +230,42 @@ async function getStaticSlugs({
     console.warn("Sanity slug fetch failed, using fallback slugs.", error);
     return fallback;
   }
+}
+
+export async function getServices({ publishedOnly = false }: { publishedOnly?: boolean } = {}) {
+  const bundled = [...fallbackServices, ...additionalServices].map((service) => ({
+    ...service,
+    ...serviceDetails[service.slug]
+  }));
+  const managed = await getData<Service[]>({
+    query: SERVICES_QUERY,
+    publishedOnly,
+    tags: ["service"],
+    fallback: []
+  });
+  const merged = new Map(bundled.map((service) => [service.slug, service]));
+  for (const service of managed) {
+    const existing = merged.get(service.slug);
+    merged.set(service.slug, {
+      ...existing,
+      ...Object.fromEntries(Object.entries(service).filter(([, value]) => value != null && value !== "")),
+      _id: service._id,
+      slug: service.slug,
+      title: service.title,
+      headline: service.headline || existing?.headline,
+      audience: service.audience || existing?.audience,
+      overview: service.overview?.length ? service.overview : existing?.overview,
+      deliverables: service.deliverables?.length ? service.deliverables : existing?.deliverables,
+      process: service.process?.length ? service.process : existing?.process,
+      faqs: service.faqs?.length ? service.faqs : existing?.faqs,
+      relatedPostSlugs: service.relatedPostSlugs ?? existing?.relatedPostSlugs,
+      relatedProjectSlugs: service.relatedProjectSlugs ?? existing?.relatedProjectSlugs,
+      seo: { ...existing?.seo, ...service.seo }
+    });
+  }
+  return Array.from(merged.values()).filter((service) => service.overview?.length);
+}
+
+export async function getService(slug: string) {
+  return (await getServices()).find((service) => service.slug === slug) || null;
 }

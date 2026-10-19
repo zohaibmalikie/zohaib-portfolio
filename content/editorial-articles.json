@@ -9,13 +9,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "AI automation audit checklist"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "An AI automation audit should answer three questions: does the workflow finish the right job, can somebody recover when it fails, and is its ongoing cost justified? Start with one workflow and trace real records from trigger to final destination.\n\n## Map the business outcome\nWrite down the trigger, applications involved, owner, expected completion time, and definition of success. “A Zap ran” is not an outcome. “A qualified enquiry appeared once in the CRM with the correct owner” is an outcome you can verify.\n\nChoose ten recent records covering normal, incomplete, and failed inputs. Record the source identifier and destination identifier for each. This small reconciliation often exposes skipped branches that a green execution dashboard hides. Use a protected worksheet containing references rather than copies of customer messages.\n\n## Inspect five failure surfaces\n- Reliability: expired credentials, timeouts, changed fields, and retries that never stop.\n- Duplication: repeated triggers, overlapping schedules, and writes without a unique business key.\n- Visibility: failures with no alert recipient, no run identifier, or no recovery instructions.\n- Privacy: unnecessary payloads sent to AI services or retained in execution logs.\n- Cost: repeated model calls, oversized inputs, and paid steps that do no useful work.\n\nFor each finding, capture evidence and impact separately. An exposed credential requires a different response from an inefficient formatting step. Prioritize by affected customers, recoverability, and frequency, rather than the complexity of the proposed fix.\n\n## Turn findings into an actionable audit\nA useful finding reads: “When the CRM request times out after creation, retrying creates another contact. Add a unique source identifier and reconcile before retry. Verify by replaying one enquiry three times.” Include an owner, proposed acceptance test, and estimated effort range.\n\nKeep immediate repairs separate from redesign ideas. An audit of one workflow should not quietly become a migration of the entire business. If access is limited, label unverified findings and specify the evidence needed to resolve them.\n\n## Decide what happens next\nThe deliverable can be a short report with a workflow map, prioritized findings, and a recovery checklist. After changes, rerun the original sample and the failure cases. Compare destination outcomes, not just execution counts.\n\nIf you need a bounded starting point, the [AI / Automation Health Check](/#automation-offers) reviews one existing workflow and produces an actionable audit. Bring the workflow export, recent execution history, and a description of what the business expects to happen.\n\n## Further reading\n[Workflow execution investigation in n8n](https://docs.n8n.io/workflows/executions/all-executions/) explains the platform's execution view; the checklist above is a proposed audit method you can apply across tools.",
-    "image": "../public/assets/img/blogs/guides/ai-automation-audit-checklist.svg",
-    "imageAlt": "AI Automation Audit Checklist for Small Business Workflows — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Business Process Automation ROI: Calculate Value Before You Build",
@@ -27,13 +30,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "business process automation ROI"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Business process automation ROI depends on recovered time, error reduction, and ongoing operating cost. Counting every automated click as a saving makes weak projects look attractive. Start with the work people will actually stop doing after launch.\n\n## Establish a measurable baseline\nFor one process, measure monthly volume, minutes per record, correction time, and the percentage of exceptions requiring human attention. Observe a representative week rather than asking the busiest person for a guess. Separate active work from time spent waiting for an approval.\n\nFor an illustrative example, suppose a team processes 200 enquiries monthly and spends six active minutes copying each record. That is 20 hours. At an internal planning value of $20 per hour, the maximum time value is $400 monthly, before exceptions and operating costs.\n\n## Model the realistic saving\nIf automation handles 80% of records and the remaining 20% still take six minutes, it releases 16 hours. At the same planning value, that is $320. Subtract an illustrative $50 tool bill and two hours of monthly maintenance valued at $20 per hour: the estimated net monthly value becomes $230.\n\nA $900 implementation would then have a simple payback of about 3.9 months, assuming these inputs hold. These are planning assumptions, not market prices or promised savings. Released capacity only becomes cash savings if spending actually falls; otherwise it may enable faster service or more throughput.\n\n## Include the costs people miss\n- Initial discovery, data cleanup, and access setup.\n- Review of incorrect matches or incomplete records.\n- Vendor subscriptions, model usage, storage, and monitoring.\n- Maintenance after field, permission, or API changes.\n- Training, documentation, and eventual replacement.\n\nRun a pessimistic case with half the volume and twice the exception rate. If the project only works with optimistic inputs, reduce scope or collect better evidence. Avoid giving unverified revenue gains the same certainty as measured labor time.\n\n## Validate with a pilot\nRun the new flow alongside the existing process using controlled records. Measure completion rate, exception minutes, and actual vendor usage. Keep one person responsible for resolving mismatches so they do not disappear into a shared inbox.\n\nYour go-live criterion should be an observed operating result, such as correctly routing at least the agreed share of eligible enquiries while producing no duplicate contacts in the pilot sample. Recalculate the business case after a month of real operation.\n\n## Further reading\nUse [workflow acceptance criteria](/blog/automation-project-acceptance-criteria) to translate the business case into delivery checks. For a review of a current process, see the [automation offers](/#automation-offers).",
-    "image": "../public/assets/img/blogs/guides/business-process-automation-roi.svg",
-    "imageAlt": "Business Process Automation ROI: Calculate Value Before You Build — practical guide"
+    "image": "../public/assets/img/blogs/photos/dashboard.webp",
+    "imageAlt": "Analytics dashboard on a laptop reflected in a glass table",
+    "imageCreditName": "Carlos Muza",
+    "imageCreditUrl": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Should You Automate a Process or Improve It First?",
@@ -45,13 +51,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "what business processes should be automated"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Automate a process when its rules are sufficiently clear, its inputs are usable, and its exceptions have an owner. A confusing manual process usually becomes a confusing automated process that runs faster. First remove decisions nobody can explain consistently.\n\n## Look for the right starting conditions\nGood early candidates have repeated volume, stable inputs, reversible actions, and a measurable destination outcome. Moving validated website enquiries into a CRM is easier to bound than letting AI negotiate discounts across every customer account.\n\nMap three ordinary records and three difficult records with the people doing the work. Ask where judgment enters the process. If two experienced operators disagree, write down the competing rules and resolve them before selecting an automation platform.\n\n## Remove unnecessary work\nConsider a process where an employee copies a customer address into a spreadsheet, another person checks it, and a third person copies it into the delivery tool. The first improvement may be eliminating the spreadsheet rather than automating both copying steps.\n\nDefine one authoritative source for each field. If the CRM and spreadsheet can both overwrite the delivery address, a faster synchronization can spread mistakes. Choose ownership and update rules before creating a connection between applications.\n\n## Use a small readiness scorecard\n- Input quality: are required identifiers and fields usually present?\n- Rule clarity: can a new team member explain the decision from written instructions?\n- Exception handling: is there a named person and queue for ambiguous records?\n- Reversibility: can a mistaken update be corrected without disproportionate harm?\n- Measurement: can you prove a record reached its intended destination?\n\nA weak answer is not an automatic rejection. It identifies preparation work. For example, add a stable submission identifier and clear consent field to a form before building the CRM sync. That preparation may be cheaper than repeatedly repairing downstream duplicates.\n\n## Pilot the smallest useful path\nChoose one form, one destination, and one team. Keep uncertain cases in a visible review queue. Log why a record was excluded so the business can decide whether the rule should change later.\n\nAfter a representative trial, compare completion time and correction work against the baseline. Expand only when the process remains understandable and recoverable. A successful first automation often does less than the original wish list, while reliably finishing the most valuable task.\n\n## Further reading\nThe [automation ROI calculation](/blog/business-process-automation-roi) helps decide whether the remaining work is worth automating. A scoped [workflow implementation](/#automation-offers) can then use those agreed rules as acceptance criteria.",
-    "image": "../public/assets/img/blogs/guides/automate-or-improve-process-first.svg",
-    "imageAlt": "Should You Automate a Process or Improve It First? — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Automation Project Acceptance Criteria: A Practical Delivery Checklist",
@@ -63,13 +72,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "automation project acceptance criteria"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Automation acceptance criteria describe observable business behavior, including failure and recovery. They turn “connect our tools” into a deliverable both the client and developer can assess. Write them before implementation so demonstrations cannot quietly replace evidence.\n\n## Describe inputs and outcomes\nUse a concrete statement: “Given a valid enquiry with a unique submission ID, when the form is submitted, create or update one CRM contact and assign the agreed owner within the target processing window.” Define the window together; do not assume every workflow needs instant delivery.\n\nSpecify the required fields and what happens when each is absent. A missing company name might be acceptable. A missing contact address might require review. The automation should follow business rules rather than invent placeholder customer data to satisfy an API.\n\n## Cover the difficult paths\n- Submit the same event twice and check that only one business action occurs.\n- Simulate a temporary destination failure and inspect bounded retries.\n- Remove a required field and confirm that the record enters a visible exception queue.\n- Revoke access and verify that an owner receives a useful alert.\n- Replay a failed record and confirm that previously completed actions are preserved.\n\nGive each test an expected destination state. “No error appeared” is insufficient when the workflow silently drops a branch. For a notification, inspect the recipient and content; for a record update, inspect the actual changed fields.\n\n## Separate delivery from service commitments\nDocument the supported applications, account access, operating environment, volume assumptions, and excluded cases. State who pays subscriptions and who owns credentials. Include which future changes require a separate estimate.\n\nSupport hours and response expectations belong in the maintenance agreement. A successful implementation does not imply continuous monitoring or round-the-clock response. Put the handoff date and escalation route in writing so neither side has to infer the arrangement.\n\n## Package the evidence\nDeliver a short test record with input identifiers, expected results, actual results, and any unresolved limitations. Include the workflow export or version reference, a recovery guide, and instructions for disabling the flow safely.\n\nUse sanitized fixtures so the client can repeat the demonstration without exposing real customer information. Have the business owner confirm that the destination state matches how their team actually works. Technical validity and business correctness are separate checks.\n\n## Further reading\nPair these criteria with an [automation handoff document](/blog/automation-documentation-handoff-checklist). The [implementation or repair offer](/#automation-offers) uses a narrowly agreed scope so delivery stays reviewable.",
-    "image": "../public/assets/img/blogs/guides/automation-project-acceptance-criteria.svg",
-    "imageAlt": "Automation Project Acceptance Criteria: A Practical Delivery Checklist — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "What an Automation Maintenance Plan Should Include",
@@ -81,13 +93,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "automation maintenance plan"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "An automation maintenance plan should define what is monitored, who investigates failures, and when support is available. A monthly retainer without these boundaries leaves both sides guessing. Begin with an inventory of the workflows covered by the agreement.\n\n## Define the supported estate\nFor every workflow, record its business purpose, owner, connected applications, expected schedule, credential owner, and criticality. Include links to run history and recovery instructions. Mark experimental or retired workflows so they do not receive the same attention as revenue-critical integrations.\n\nAgree how a new workflow enters the plan. Otherwise a retainer that started with two integrations can gradually inherit twenty. Vendor subscription fees, major redesigns, and emergency work outside agreed hours should have an explicit treatment.\n\n## Make the routine work visible\nA useful maintenance cycle checks failed runs, unusual completion delays, credential warnings, queue growth, and unexpected usage. It also verifies outcomes with a small reconciliation sample. A dashboard can look healthy while a mapping sends leads to the wrong team.\n\nProduce a short monthly report covering incidents, records recovered, recurring causes, usage changes, and proposed improvements. Distinguish “no alerts received” from “health verified.” The report should explain what evidence was checked.\n\n## Agree response expectations\n- Support days, hours, and timezone.\n- How incidents are reported and which channel is monitored.\n- Severity definitions tied to business impact.\n- Response targets and the difference between acknowledgement and resolution.\n- Access requirements and escalation contacts at the client.\n\nAvoid promising resolution times for vendor outages you cannot control. Instead, agree an investigation and communication process, plus temporary workarounds where feasible. Identify when the client must approve pausing a workflow or replaying a backlog.\n\n## Maintain recovery capacity\nPeriodically rehearse a controlled failure and restore. Verify that the backup configuration exists, the responsible person can access it, and replay instructions still match current fields. Remove former staff access and rotate credentials through the organization's normal process.\n\nReview the scope when transaction volume, connected tools, or business criticality changes. A flow that once handled occasional enquiries may need stronger monitoring after it becomes the main sales intake path. Maintenance should adapt to actual usage rather than remain a static checklist.\n\n## Further reading\nUse [automation monitoring metrics](/blog/automation-monitoring-metrics) to choose the report's measurements. The [maintenance offer](/#automation-offers) starts with agreed support hours and response expectations.",
-    "image": "../public/assets/img/blogs/guides/automation-maintenance-plan.svg",
-    "imageAlt": "What an Automation Maintenance Plan Should Include — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Automation Documentation and Handoff Checklist",
@@ -99,13 +114,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "automation documentation checklist"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Automation documentation should let another responsible person understand, stop, diagnose, and recover the workflow. A screenshot of connected boxes is useful context, but it does not explain business rules or safe replay. Build the handoff around actions someone may need during an incident.\n\n## Write a one-page operating overview\nState the purpose, trigger, source of truth, destination, expected volume, and success condition. Name a business owner and technical contact. Include the workflow's production identifier and a link to execution history rather than a screenshot that will quickly become outdated.\n\nList the prerequisites: application accounts, permissions, subscriptions, and required fields. Reference the approved secret manager for credentials; never copy tokens into the document. Explain which account owns each connection so offboarding does not unexpectedly break the flow.\n\n## Document the business decisions\nFor each branch, explain the rule in ordinary language. “If region is missing, route to operations review” is more useful than “false output from condition node.” Record why a non-obvious rule exists and who can approve changing it.\n\nInclude a field mapping with source name, destination name, transformation, and empty-value behavior. This is especially valuable when a CRM administrator renames a field without realizing that an integration depends on it.\n\n## Provide a recovery runbook\n- How to recognize a failed or delayed business outcome.\n- Where to find the run and source record identifiers.\n- How to determine which actions already completed.\n- When replay is safe and when manual reconciliation is required.\n- How to pause intake and restore normal processing.\n\nDescribe common failure classes separately: authorization problems, malformed records, vendor outages, and duplicate deliveries need different responses. A single instruction to “rerun the workflow” can create further damage after a partial success.\n\n## Prove the handoff works\nAsk someone who did not build the flow to handle a sanitized failed record using only the document. Observe where they hesitate. Fix missing access, unclear terminology, and outdated screenshots before calling the handoff complete.\n\nStore the document beside versioned configuration and acceptance evidence. Add a review date and change log. After each significant incident, update the runbook with the decision that would have shortened recovery; this makes documentation part of maintenance rather than an abandoned project artifact.\n\n## Further reading\nThe [acceptance criteria checklist](/blog/automation-project-acceptance-criteria) defines the behavior this handoff should preserve. If instructions are missing for a live workflow, a [health check](/#automation-offers) can identify the most urgent gaps.",
-    "image": "../public/assets/img/blogs/guides/automation-documentation-handoff-checklist.svg",
-    "imageAlt": "Automation Documentation and Handoff Checklist — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Automation Monitoring Metrics That Reveal Real Failures",
@@ -117,13 +135,16 @@
       "slug": "automation-reliability"
     },
     "tags": [
-      "Automation Reliability",
-      "automation monitoring metrics"
+      "Automation",
+      "Reliability"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Monitor automation outcomes, latency, backlog, and recovery effort together. Execution success rate alone can conceal missing records or broken routing. The strongest signals connect a source event to its intended business result.\n\n## Start with the unit of work\nChoose a stable business identifier, such as a submission ID or order ID. Track received, completed, waiting, rejected, and failed states for that identifier. Keep duplicate deliveries separate from distinct business records so retries do not inflate your throughput figures.\n\nFor a CRM intake flow, compare the number of eligible form submissions against contacts correctly created or updated. Document legitimate exclusions, such as test submissions, so the reconciliation does not generate constant false alarms.\n\n## Measure delay as well as failure\nA workflow can report no errors while falling several hours behind. Track time from source creation to destination completion and the age of the oldest unresolved item. Review a high percentile of latency alongside the median because averages can hide a small group of badly delayed customers.\n\nSet thresholds from business needs. A daily reporting job and a lead distribution flow have different tolerances. Begin with an observation period and adjust noisy thresholds based on real traffic rather than choosing arbitrary red lines.\n\n## Build a compact operating view\n- Completion rate for distinct eligible records.\n- End-to-end processing latency.\n- Oldest waiting record and queue size.\n- Retry rate and failures by dependency.\n- Manual recovery minutes and repeated incident causes.\n- Cost per completed business outcome.\n\nUse consistent time windows and denominators. “Five failures” means little without volume and severity. A single lost high-priority lead can matter more than a hundred harmless retries that completed within the expected window.\n\n## Give every alert an action\nAn actionable alert names the workflow, affected record reference, failure class, owner, and runbook link. Avoid including full customer payloads. Group related failures during a vendor outage so the team receives one incident with updates rather than hundreds of identical notifications.\n\nTest the alert route with a controlled failure, then verify that a responsible person actually receives it. Track stale credentials and lack of expected traffic as separate signals. Silence may mean healthy operation, but it can also mean the trigger stopped running entirely.\n\n## Further reading\nSee the [maintenance plan checklist](/blog/automation-maintenance-plan) for reporting and ownership. For n8n-specific diagnostics, its [execution documentation](https://docs.n8n.io/workflows/executions/all-executions/) describes the available run history.",
-    "image": "../public/assets/img/blogs/guides/automation-monitoring-metrics.svg",
-    "imageAlt": "Automation Monitoring Metrics That Reveal Real Failures — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Automation Incident Response: A Runbook for Broken Workflows",
@@ -135,13 +156,16 @@
       "slug": "automation-reliability"
     },
     "tags": [
-      "Automation Reliability",
-      "automation incident response"
+      "Automation",
+      "Reliability"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "When a workflow breaks, first contain the impact, preserve evidence, and identify completed actions. Repeatedly clicking retry before understanding the failure can create duplicate records or messages. A short response sequence makes recovery more deliberate.\n\n## Establish the incident boundary\nRecord when the issue started, which workflow version was running, the affected applications, and the business owner. Determine whether intake is still accepting records and whether customers are receiving incorrect outputs. Pause risky outbound actions when the agreed incident procedure calls for it.\n\nPreserve execution identifiers and sanitized error details. Avoid editing several nodes at once before capturing the original configuration. A version snapshot lets you compare a proposed repair against the state that produced the failure.\n\n## Classify the failure\nAuthorization failures usually need access repair. Validation failures need corrected data or mapping. Rate limits need controlled pacing. A destination timeout may represent an uncertain result: the provider could have completed the write even though your workflow never received confirmation.\n\nFor uncertain writes, inspect the destination using the business identifier before replaying. This step can prevent recovery from becoming a second incident. If the destination has no searchable correlation field, document the manual checks needed to identify completed actions.\n\n## Recover in controlled batches\n- Fix the cause in a test copy or with a sanitized fixture.\n- Verify ordinary, duplicate, and failure inputs.\n- Reconcile completed and incomplete records.\n- Replay a small confirmed-safe batch.\n- Check destination outcomes before increasing throughput.\n\nKeep a recovery ledger with source ID, original state, action taken, and result. Use the same deduplication mechanism for recovery as normal processing. Do not bypass validation simply to clear the queue more quickly.\n\n## Close with evidence\nCompare eligible source records to destination results for the affected window. Confirm that alerts and schedules are restored. Tell the business owner what was affected, what remains unresolved, and whether any manual follow-up is required.\n\nWrite a brief incident review without assigning blame: trigger, impact, contributing conditions, detection gap, and preventive action. A useful improvement might be a unique identifier or a clearer alert, rather than replacing the entire automation platform. Add the successful recovery steps to the runbook while they are still fresh.\n\n## Further reading\nPair this process with [idempotent workflow design](/blog/idempotent-workflows-prevent-duplicates) and a scoped [workflow repair](/#automation-offers).",
-    "image": "../public/assets/img/blogs/guides/automation-incident-response-runbook.svg",
-    "imageAlt": "Automation Incident Response: A Runbook for Broken Workflows — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Automation Cost Estimation: Budget for Build, Usage and Support",
@@ -153,13 +177,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "workflow automation cost"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A workflow automation budget has three parts: implementation, recurring platform usage, and ongoing support. A low build quote can still create an expensive system if every record triggers unnecessary paid steps. Estimate the complete operating path before comparing proposals.\n\n## Price the scope before the platform\nDescribe one trigger, the required destinations, transformations, exception paths, and acceptance tests. Count the unknowns: undocumented APIs, inconsistent data, missing permissions, and multiple account environments all add investigation work.\n\nAsk whether the estimate includes discovery, deployment, credentials setup, documentation, and handoff. A proposal for connecting two existing supported apps is not directly comparable to one that includes a custom API adapter and data cleanup.\n\n## Estimate recurring usage\nSuppose an illustrative flow processes 3,000 records monthly and makes four billable steps per record. That suggests 12,000 step executions before retries or optional branches. The actual billing unit varies by vendor, so map this model to the provider's current plan terms.\n\nFor AI steps, estimate input size, output limits, repeat attempts, and the proportion of records that truly need a model. Include storage, observability, and any paid API tier. Avoid inserting remembered vendor prices into a budget; verify them when purchasing.\n\n## Build a scope comparison sheet\n- Business result and supported input types.\n- Expected monthly volume and peak burst size.\n- Connected accounts and permission requirements.\n- Error handling, replay, and duplicate prevention.\n- Acceptance evidence and handoff documentation.\n- Support hours, recurring tasks, and excluded changes.\n\nUse ranges when uncertainty remains and list what would narrow them. A short audit can sometimes remove enough uncertainty to make the implementation estimate much more reliable. Treat optional enhancements as separate lines rather than hiding them in an ambiguous fixed total.\n\n## Control costs after launch\nCompare the forecast against actual cost per completed record. Investigate repeated retries, unused enrichment, and loops that process the same items repeatedly. Assign an owner for vendor billing alerts so surprises are detected before the next monthly review.\n\nFor this portfolio, the [automation offers](/#automation-offers) show illustrative USD ranges for a health check, implementation or repair, and maintenance. Final scope should establish what fits inside the estimate and which subscriptions or changes are additional. The right budget is one the business can explain in terms of useful outcomes.\n\n## Further reading\nUse the [automation ROI worksheet method](/blog/business-process-automation-roi) to compare the estimated operating cost with measured value.",
-    "image": "../public/assets/img/blogs/guides/automation-cost-estimation.svg",
-    "imageAlt": "Automation Cost Estimation: Budget for Build, Usage and Support — practical guide"
+    "image": "../public/assets/img/blogs/photos/dashboard.webp",
+    "imageAlt": "Analytics dashboard on a laptop reflected in a glass table",
+    "imageCreditName": "Carlos Muza",
+    "imageCreditUrl": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "No-Code vs Custom Automation: Choose by Failure and Ownership Needs",
@@ -171,13 +198,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "no code vs custom automation"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Choose no-code or custom automation by evaluating complexity, recovery, access control, and ownership. The number of boxes on a workflow canvas is a poor measure of production difficulty. A three-step flow that sends irreversible instructions may need more care than a long reporting pipeline.\n\n## When a visual platform fits\nA visual tool can suit stable integrations with supported connectors, modest transformation needs, and a team comfortable operating the platform. Its main advantage is often shorter setup and easier inspection by non-specialists, provided the workflow remains understandable.\n\nPrototype the hardest required behavior first. Test pagination, attachment handling, credential ownership, and replay. A connector existing in a marketplace does not establish that it exposes the specific API fields or actions your process needs.\n\n## When code earns its complexity\nCustom code can help when you need strong validation, sophisticated matching, reusable adapters, versioned tests, or precise concurrency control. It also creates responsibilities: deployment, monitoring, dependency updates, and a team that can maintain the code.\n\nAn illustrative lead sync might use a visual platform for scheduling and notifications, with a small service for deterministic identity matching. This hybrid keeps the operational map visible while giving complex rules a more testable home.\n\n## Compare the operating model\n- Can failed records be inspected and replayed safely?\n- Can access be limited by environment and responsibility?\n- Can someone review changes before production?\n- What happens when monthly volume grows tenfold?\n- Who can diagnose the system if the original builder leaves?\n\nConsider export and portability too. A workflow export may preserve structure while leaving credentials, hosted state, and platform-specific behavior behind. A code repository likewise is not a complete handoff without environment configuration and runbooks.\n\n## Make a bounded decision\nBuild one representative path with both the normal case and a deliberate failure. Compare setup effort, debugging clarity, and estimated operating cost. Use the result to choose an approach rather than selecting a tool solely from a feature checklist.\n\nDocument why the choice fits the current team and what change would trigger reconsideration. Growing volume or stricter audit needs may justify moving a component later. The goal is a system the business can reliably operate, with enough flexibility to evolve when the underlying requirements change.\n\n## Further reading\nStart with the [process readiness checklist](/blog/automate-or-improve-process-first), then use [acceptance criteria](/blog/automation-project-acceptance-criteria) to compare actual behavior across approaches.",
-    "image": "../public/assets/img/blogs/guides/no-code-vs-custom-automation.svg",
-    "imageAlt": "No-Code vs Custom Automation: Choose by Failure and Ownership Needs — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Idempotent Workflows: Prevent Duplicate Contacts, Orders and Messages",
@@ -189,13 +219,16 @@
       "slug": "automation-reliability"
     },
     "tags": [
-      "Automation Reliability",
-      "idempotent workflow automation"
+      "Automation",
+      "Reliability"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "An idempotent workflow produces the intended business effect once even when the same request arrives repeatedly. Duplicate delivery is normal enough that it should be a design input. The difficult part is coordinating the deduplication record with the actual external action.\n\n## Choose the right identity\nUse a stable source event ID for delivery deduplication and a business key for the operation you intend to perform. A customer ID alone is too broad if the customer can place many orders. An order ID plus action type may be appropriate for one shipment notification.\n\nDefine how long the key must remain valid. A five-minute cache can suppress a rapid duplicate while failing to protect against tomorrow's manual replay. Retention should match the provider's delivery window and your own recovery practices.\n\n## Claim work atomically\nA fragile implementation reads “has this key been processed?” and then writes it later. Two concurrent workers can both read “no” and perform the action. Use storage with a unique constraint or another atomic claim mechanism.\n\nTrack processing, completed, and unresolved states. If a worker crashes after claiming the key, a permanent lock would lose the record. Add a recovery procedure that distinguishes an abandoned claim from an external action that succeeded but was never acknowledged.\n\n## Handle the uncertain outcome\nConsider a CRM create request that times out. The CRM may have saved the contact. Before sending another create request, look up the source identifier or use the provider's supported idempotency feature where available. Your local flag alone cannot make an arbitrary remote write exactly once.\n\nFor messages, record the destination message reference if the provider returns one. If the provider offers no deduplication or searchable correlation, document the remaining duplication risk and choose a conservative manual recovery policy for important actions.\n\n## Verify under concurrency\n- Deliver one event three times sequentially.\n- Deliver two copies at the same time.\n- Crash after the external write but before local completion.\n- Retry after the normal deduplication cache would expire.\n- Reuse a customer ID for a genuinely new business operation.\n\nThe expected outcome is one intended effect per business operation, with unresolved cases visible. Check actual destination records after every case. Avoid declaring success solely because the second execution returned a green status.\n\n## Further reading\n[Stripe's webhook documentation](https://docs.stripe.com/webhooks) discusses duplicate event delivery. Combine deduplication with the [incident response runbook](/blog/automation-incident-response-runbook) so manual recovery respects the same safeguards.",
-    "image": "../public/assets/img/blogs/guides/idempotent-workflows-prevent-duplicates.svg",
-    "imageAlt": "Idempotent Workflows: Prevent Duplicate Contacts, Orders and Messages — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Webhooks vs Polling: Choose the Right Integration Trigger",
@@ -207,13 +240,16 @@
       "slug": "api-integrations"
     },
     "tags": [
-      "API Integrations",
-      "webhooks vs polling"
+      "APIs",
+      "Integration"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Webhooks notify your system when a provider emits an event; polling asks the provider for changes on a schedule. Neither approach eliminates reconciliation. Choose based on delivery behavior, acceptable delay, rate limits, and the source system's capabilities.\n\n## Understand the business timing\nA daily reporting workflow may work well with scheduled polling. A user expecting an account update shortly after payment may need webhook-driven processing. Define an acceptable processing window before deciding that every integration must be real time.\n\nEstimate polling volume. Checking an endpoint every minute means 1,440 checks per day even when nothing changes. That is an arithmetic estimate, not a vendor billing prediction; pagination and account count can multiply the actual requests.\n\n## Design webhook intake carefully\nVerify authenticity using the provider's documented method. Validate the event, persist accepted work durably, and return a timely response. Move slow processing into a worker when the architecture supports it. An acknowledgement should mean you have accepted responsibility for the event, not merely printed it to a log.\n\nExpect duplicates and potentially out-of-order delivery. Use stable identifiers and state rules that prevent an older event from overwriting newer information. A webhook is a notification to act or inspect state, not proof that its embedded snapshot is the latest version.\n\n## Make polling incremental\nStore a durable cursor or checkpoint. Use stable pagination and an overlap window where necessary to avoid losing records updated at a boundary. Deduplicate records encountered twice. Only advance the checkpoint after the page's work is safely recorded.\n\nFor a source that supports only timestamps, consider records sharing the same update time and late-arriving changes. Document the limits of the strategy. A nightly full reconciliation may catch gaps that a short rolling window cannot.\n\n## Use both when reliability needs it\nA practical pattern is webhooks for fast updates plus periodic reconciliation for missing outcomes. Keep both paths behind the same validation and deduplication logic so reconciliation does not create a second source of duplicates.\n\nTest a disabled webhook endpoint, a repeated event, an empty polling page, and an interrupted pagination run. The system should catch up predictably and make delayed records visible. Select the simpler approach when its delivery delay meets the actual business requirement.\n\n## Further reading\n[Stripe's webhook guide](https://docs.stripe.com/webhooks) describes its event delivery behavior. See [pagination and checkpoints](/blog/api-pagination-checkpoint-design) for a safe scheduled synchronization pattern.",
-    "image": "../public/assets/img/blogs/guides/webhook-vs-polling-integrations.svg",
-    "imageAlt": "Webhooks vs Polling: Choose the Right Integration Trigger — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Webhook Signature Verification: Diagnose Rejected Events Safely",
@@ -225,13 +261,16 @@
       "slug": "api-integrations"
     },
     "tags": [
-      "API Integrations",
-      "webhook signature verification"
+      "APIs",
+      "Integration"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Webhook signature verification checks whether a request matches the sending provider's authentication scheme. A valid signature is necessary for many integrations, but it does not validate the business meaning of the event. Verify authenticity before accepting work, then validate the payload separately.\n\n## Start with the exact request bytes\nMany signature schemes depend on the original request body. Parsing JSON and serializing it again can change whitespace or ordering. Use the provider's supported verification library and the raw body format it expects rather than inventing a compatible-looking calculation.\n\nKeep test and production endpoint secrets separate. A frequent diagnostic mistake is checking a production request against a local development secret. Record the environment and endpoint identifier in operational notes without exposing the secret value.\n\n## Diagnose failures systematically\nCheck whether middleware consumed or altered the body, whether the correct signing secret is loaded, and whether timestamp validation is affected by clock drift. Examine the provider's delivery log to confirm which endpoint actually received the request.\n\nNever resolve a production signature failure by permanently disabling verification. Reproduce the issue with a provider test event and a sanitized local fixture. Avoid copying a real signed customer payload into a shared chat or public issue.\n\n## Keep authentication and processing separate\nAfter verification, check the event type, required identifiers, account context, and supported version. Ignore unsupported event types deliberately rather than assuming every signed request should trigger an action. A provider can legitimately send events outside your workflow's intended scope.\n\nPersist accepted work and deduplicate using a stable identifier. Signature checks do not prevent a legitimate event from being delivered more than once. If you operate multiple connected customer accounts, include the account boundary in routing and storage keys.\n\n## Verify the rejection paths\n- A modified body must fail verification.\n- A request signed with another environment's secret must fail.\n- A valid event must reach the intended account only.\n- A repeated valid event must not repeat the business action.\n- A malformed payload must produce a controlled response without leaking secrets.\n\nDocument the credential rotation procedure and how overlapping old and new secrets are handled if the provider supports that transition. After rotation, verify a real test delivery before removing the previous configuration.\n\n## Further reading\nFollow the provider-specific details in [Stripe's signature verification documentation](https://docs.stripe.com/webhooks/signature). Related guidance: [idempotent workflows](/blog/idempotent-workflows-prevent-duplicates).",
-    "image": "../public/assets/img/blogs/guides/webhook-signature-verification.svg",
-    "imageAlt": "Webhook Signature Verification: Diagnose Rejected Events Safely — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "API Rate Limits and Retry Strategy for Reliable Automations",
@@ -243,13 +282,16 @@
       "slug": "api-integrations"
     },
     "tags": [
-      "API Integrations",
-      "API rate limit retry strategy"
+      "APIs",
+      "Integration"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A useful retry strategy distinguishes temporary failures from requests that need correction. Retrying every error quickly can overload a dependency and increase costs. Build a bounded policy around the provider's documented response and the safety of repeating the operation.\n\n## Classify before retrying\nA rate-limit response may be recoverable after waiting. A malformed field generally needs a mapping or data fix. An authorization error may require reconnecting an account. A timeout on a write has an uncertain outcome and needs deduplication or reconciliation before another attempt.\n\nAvoid assuming every server error is safe to repeat. A provider might complete a write before returning an error through a proxy. Use supported idempotency keys or inspect the destination by business identifier when the result is unclear.\n\n## Respect the provider's pacing\nUse a documented retry delay when available. Otherwise apply a capped increasing delay with jitter, a maximum attempt count, and a maximum elapsed recovery window. Keep these configurable so a change in provider policy does not require rebuilding the whole workflow.\n\nIf multiple workers share one account quota, independent retry loops can collide repeatedly. Coordinate request throughput at the account boundary. Track both request rate and concurrency because a limit on simultaneous work behaves differently from a per-minute allowance.\n\n## Prevent backlog spirals\nSeparate new intake from retry work. Give both queues visibility and avoid letting one bad record block all subsequent records unless ordering requires it. After the retry budget is exhausted, move the item to an exception queue with an owner.\n\nA useful alert includes the dependency, status class, affected record reference, next retry time, and final escalation point. It should not include credentials or a complete customer payload. Group repeated failures during one vendor incident.\n\n## Test the policy deliberately\nSimulate a rate limit, a transient timeout, a permanent validation error, and a recovery after several failed attempts. Inspect spacing between attempts and verify that the maximum is enforced. Confirm that one source event still causes only one business effect.\n\nMeasure retry rate after launch. A permanently elevated retry count can indicate that normal throughput exceeds the provider's capacity or that the polling design is wasteful. Increasing the retry budget may hide the underlying mismatch while making recovery slower.\n\n## Further reading\n[HubSpot's API usage guidelines](https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines) illustrate why limits must be checked for the actual account and API. See [workflow monitoring](/blog/automation-monitoring-metrics) for backlog signals.",
-    "image": "../public/assets/img/blogs/guides/api-rate-limit-retry-strategy.svg",
-    "imageAlt": "API Rate Limits and Retry Strategy for Reliable Automations — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "API Pagination and Checkpoints: Sync Every Record Without Starting Over",
@@ -261,13 +303,16 @@
       "slug": "api-integrations"
     },
     "tags": [
-      "API Integrations",
-      "API pagination checkpoint"
+      "APIs",
+      "Integration"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A reliable paginated sync records progress durably and can resume without skipping unfinished work. Fetching the first page successfully is only the beginning. Design for interrupted runs, changing source data, and repeated pages before increasing the dataset size.\n\n## Understand the pagination contract\nDetermine whether the provider uses offsets, page numbers, cursors, or continuation tokens. Check ordering guarantees and whether the token expires. Avoid assuming that an endpoint's default order remains stable while records are added or updated.\n\nAn offset-based export can shift under concurrent inserts. A cursor may be safer for some APIs, but its exact guarantees are provider-specific. For a critical migration, consider a bounded snapshot or time window and reconcile the final record count.\n\n## Commit work before progress\nA safe sequence is fetch page, validate records, persist or complete the page's work, then store the next checkpoint. If you save the checkpoint first and crash before writing the records, the next run may skip data silently.\n\nIf some records fail, decide whether the page stops or individual records enter a durable exception queue. The checkpoint must not imply those failures were completed. Keep their source identifiers and error reasons available for targeted replay.\n\n## Separate identity from position\nUse source record identifiers for deduplication, not page position. The same record may legitimately appear again after an overlap query or a restarted page. Updates should follow an explicit version or timestamp rule so older data does not overwrite newer destination state.\n\nFor incremental sync, define the boundary carefully. Records can share timestamps, and clocks can differ. An overlap window plus deduplication can reduce missed changes, while periodic reconciliation checks whether that strategy remains sufficient.\n\n## Verify the resume behavior\n- Stop immediately after a page fetch.\n- Stop midway through destination writes.\n- Stop after writes but before saving the checkpoint.\n- Add or change source records during the run.\n- Resume using an expired or invalid continuation token.\n\nExpected results should include the final destination set, not just the number of successful requests. Compare missing identifiers, duplicates, and changed fields. Keep a reconciliation report until the business owner accepts the sync outcome.\n\n## Further reading\nThe [webhooks vs polling guide](/blog/webhook-vs-polling-integrations) explains when scheduled synchronization fits. [HubSpot's API documentation](https://developers.hubspot.com/docs/api/overview) is a starting point for checking endpoint-specific pagination behavior.",
-    "image": "../public/assets/img/blogs/guides/api-pagination-checkpoint-design.svg",
-    "imageAlt": "API Pagination and Checkpoints: Sync Every Record Without Starting Over — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "OAuth Token Expired? A Methodical Integration Repair Checklist",
@@ -279,13 +324,16 @@
       "slug": "api-integrations"
     },
     "tags": [
-      "API Integrations",
-      "OAuth token expired integration"
+      "APIs",
+      "Integration"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "When an integration loses access, identify whether the problem is token expiry, revoked authorization, insufficient permissions, or the wrong account. Reconnecting immediately may restore service, but it can also hide a recurring refresh or ownership problem.\n\n## Capture the failure context\nRecord the connection name, environment, provider response code, and time of the last successful operation. Check whether every request fails or only particular endpoints. A connection that can read contacts but cannot update them may have a scope problem rather than a general authentication failure.\n\nKeep token values out of screenshots and incident reports. Use credential identifiers and redacted error messages. Confirm which person or service account owns the connection before changing authorization on a shared production workflow.\n\n## Check the refresh path\nFor providers using refresh tokens, inspect whether the application stores the latest token set safely and handles provider-specific rotation. Parallel refresh attempts can cause problems in some schemes if one worker keeps using an obsolete token.\n\nDo not assume a refresh token is permanent. Revocation, account changes, provider policy, or inactivity can require renewed consent. Follow the actual provider's documentation and preserve a clear reconnect path for the authorized account owner.\n\n## Repair permissions deliberately\nCompare required operations with the permissions granted. Request only the access the workflow needs. If a provider requires renewed consent for additional scopes, plan that change with the account owner and test it in the correct environment.\n\nVerify that an employee departure or password policy change did not remove the underlying access. Where supported and appropriate, use an organizational ownership model rather than a personal account that nobody else can maintain.\n\n## Restore and reconcile\nTest a minimal read and a controlled write before replaying the backlog. Inspect destination records that might have succeeded before the authentication failure became visible. Resume in small batches and track any records requiring manual intervention.\n\nAdd an alert for persistent authorization failures and document who can reconnect the account. Repeated failures deserve a root-cause review; a monthly ritual of reconnecting is evidence that the operating model needs attention, not a normal maintenance success.\n\n## Further reading\nSee the [OAuth 2.0 authorization framework](https://www.rfc-editor.org/rfc/rfc6749) for the underlying roles and token concepts. Pair credential repair with the [incident recovery runbook](/blog/automation-incident-response-runbook).",
-    "image": "../public/assets/img/blogs/guides/oauth-token-expired-integration-repair.svg",
-    "imageAlt": "OAuth Token Expired? A Methodical Integration Repair Checklist — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "CRM Lead Routing Automation: Validate, Deduplicate and Assign Reliably",
@@ -297,13 +345,16 @@
       "slug": "business-workflows"
     },
     "tags": [
-      "Business Workflows",
-      "CRM lead routing automation"
+      "Automation",
+      "Operations"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "CRM lead routing automation should create a usable record, assign the right owner, and make exceptions visible. Copying form fields is the easy part. Identity, incomplete submissions, routing rules, and retries determine whether the sales team can trust the result.\n\n## Agree the routing contract\nList required fields, supported lead sources, territory rules, and fallback ownership. Define what happens outside business hours and when a named salesperson is unavailable. A missing region should have a deliberate destination instead of falling through an empty branch.\n\nRecord consent and source information only as required by the business process and applicable policy. Preserve an immutable submission identifier so the flow can track one enquiry across the form, integration, and CRM without relying on a person's name.\n\n## Deduplicate with business context\nEmail can help identify a contact, but it does not uniquely identify an enquiry. One person may submit several legitimate requests. Separate the contact match from the lead or activity record so repeat interest does not disappear during deduplication.\n\nDefine conflict rules for existing data. A new form submission should not automatically overwrite a manually verified account owner or replace a valid phone number with an empty value. Track the source of changes where the CRM supports it.\n\n## Build exception routing\n- Missing essential contact information goes to review.\n- Unknown territory goes to a designated fallback owner.\n- A temporary CRM failure enters a bounded retry path.\n- An uncertain write is reconciled before another create.\n- Duplicate delivery updates processing history without creating another lead.\n\nNotify sales after the CRM write is confirmed. A message announcing a lead that never reached the system creates false confidence. Include a record link rather than distributing the full customer enquiry across multiple chat channels.\n\n## Verify the whole journey\nUse fixtures for a new contact, an existing contact, repeated submission, unknown region, and a destination outage. Confirm ownership and source fields in the CRM itself. Check that the fallback queue has a real operator and an expected review cadence.\n\nAfter launch, reconcile eligible submissions against CRM outcomes and measure assignment delay. This catches silent mapping errors that run history alone may miss. Expand to additional forms only after the first source's rules and recovery process are stable.\n\n## Further reading\nUse [idempotent workflow design](/blog/idempotent-workflows-prevent-duplicates) for repeat delivery and [acceptance criteria](/blog/automation-project-acceptance-criteria) for a client-reviewable delivery checklist.",
-    "image": "../public/assets/img/blogs/guides/crm-lead-routing-automation.svg",
-    "imageAlt": "CRM Lead Routing Automation: Validate, Deduplicate and Assign Reliably — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Google Sheets to CRM Sync: Avoid Duplicates and Overwritten Data",
@@ -315,13 +366,16 @@
       "slug": "business-workflows"
     },
     "tags": [
-      "Business Workflows",
-      "Google Sheets CRM integration"
+      "Automation",
+      "Operations"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A Google Sheets to CRM integration needs a stable record key and clear field ownership. Row numbers and display names are unreliable identities because people insert, sort, and rename rows. Decide how records match before scheduling the first synchronization.\n\n## Give each row a durable identity\nAdd a protected source ID column and store the destination CRM ID after a successful match or create. Avoid using the current row index as the sync key. A reordered sheet should not look like a completely new set of customers.\n\nIf existing rows lack identifiers, perform a reviewed matching pass. Separate exact matches from ambiguous ones. Do not let a fuzzy name match silently merge two people with similar names or two branches of the same company.\n\n## Choose a source of truth per field\nA sheet might own campaign labels while the CRM owns contact status and account assignment. Write those rules down. A blanket two-way sync can produce loops or erase a salesperson's correction with yesterday's spreadsheet value.\n\nDefine empty values explicitly. Does a blank cell mean “leave unchanged,” “clear the destination,” or “missing required data”? The correct answer can vary by field. Use a controlled status column for intentional deletions or clears rather than guessing intent from blanks.\n\n## Make processing observable\nTrack last successful sync, status, and a short redacted error reference. Keep operational columns protected from accidental editing where feasible. Do not place API keys or customer payload logs in hidden spreadsheet tabs; hidden is not an access-control boundary.\n\nProcess changes in batches that fit provider limits. For interrupted runs, checkpoint progress and deduplicate by source ID. If multiple editors can change records during a sync, define how version conflicts are detected or reviewed.\n\n## Verify with realistic edits\nTest inserting a row, sorting the sheet, updating an existing contact, clearing a field, and retrying a partially completed batch. Confirm that these operations preserve identity and field ownership. Include a record containing punctuation and non-English characters.\n\nWhen the sheet becomes a critical operational database with many concurrent editors, review whether it still fits the workload. Migration may be worthwhile, but it should follow measured limitations rather than an assumption that spreadsheets are always unsuitable.\n\n## Further reading\nThe [Google Sheets API usage limits](https://developers.google.com/workspace/sheets/api/limits) explain why batching and pacing matter. Related: [pagination and checkpoints](/blog/api-pagination-checkpoint-design).",
-    "image": "../public/assets/img/blogs/guides/google-sheets-crm-sync.svg",
-    "imageAlt": "Google Sheets to CRM Sync: Avoid Duplicates and Overwritten Data — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Customer Onboarding Automation Without Lost Handoffs",
@@ -333,13 +387,16 @@
       "slug": "business-workflows"
     },
     "tags": [
-      "Business Workflows",
-      "customer onboarding automation workflow"
+      "Automation",
+      "Operations"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Customer onboarding automation works best as a visible sequence of confirmed milestones. Sending a welcome email is only one step. Access provisioning, information collection, internal assignment, and exception handling need their own completion states.\n\n## Define the start and finish\nChoose an authoritative start event, such as a confirmed order or an approved contract record. Avoid triggering the full workflow from a sales stage that staff frequently move backward and forward during negotiation.\n\nDefine what “onboarded” means: account created, required information received, responsible team assigned, and customer told what happens next. Some steps may require human approval. Model them as waiting states with owners rather than forcing everything through a single immediate execution.\n\n## Separate reversible and sensitive actions\nCreating an internal checklist is relatively easy to undo. Granting access or sending contractual instructions needs stronger checks. Validate the account, plan, and recipient before performing these actions. Use deterministic rules for entitlements rather than allowing a language model to infer access levels from free text.\n\nAssign each milestone a stable key. If a payment event repeats, the customer should not receive several welcome messages or duplicate workspaces. If provisioning succeeds but notification fails, recovery should resume the notification without creating another account.\n\n## Make handoffs explicit\n- Sales confirms the required purchase or approval state.\n- Operations reviews missing information.\n- Provisioning records the created resource identifier.\n- The customer receives the correct next-step instructions.\n- The account owner confirms completion or escalates a delay.\n\nUse reminders carefully. Stop them when the requested information arrives, and avoid sending private details to every internal participant. Store the minimum references required to follow the process.\n\n## Test the stalled paths\nTry an existing customer buying another service, a duplicate start event, incomplete intake information, and a provisioning outage. Verify that the workflow distinguishes an additional purchase from an accidental duplicate. Check that reminders do not continue after completion.\n\nMeasure time spent waiting at each milestone. An automation that accelerates email delivery while leaving ownership unclear may not improve onboarding at all. The operating view should show who needs to act next, not merely how many runs finished.\n\n## Further reading\nSee [workflow acceptance criteria](/blog/automation-project-acceptance-criteria) and [incident recovery](/blog/automation-incident-response-runbook) to make onboarding behavior and repairs reviewable.",
-    "image": "../public/assets/img/blogs/guides/customer-onboarding-automation.svg",
-    "imageAlt": "Customer Onboarding Automation Without Lost Handoffs — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Invoice Reminder Automation: Stop Chasing Customers Who Already Paid",
@@ -351,13 +408,16 @@
       "slug": "business-workflows"
     },
     "tags": [
-      "Business Workflows",
-      "invoice reminder automation"
+      "Automation",
+      "Operations"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Invoice reminder automation should check the current payment state immediately before sending a reminder. A scheduled list created yesterday may already be stale. The main reliability goal is avoiding incorrect or repeated messages while keeping genuinely overdue invoices visible.\n\n## Use the invoicing system as authority\nIdentify the invoice by its stable provider ID, not a customer name or spreadsheet row. Confirm which statuses are eligible and how disputes, payment plans, partial payments, and canceled invoices are treated. Have the business owner approve those rules.\n\nKeep financial decisions with the appropriate people. The workflow can prepare or send approved reminders, but it should not invent payment terms, waive balances, or change customer status based on an AI interpretation of an email.\n\n## Check before each send\nA practical sequence is find candidate invoices, retrieve current state, apply exclusions, claim the reminder action, then send and record the provider reference. Use a key combining invoice ID and reminder stage to protect against repeated execution.\n\nThere is still a possible race between checking payment and sending a message. Minimize the gap, follow provider-supported controls where available, and explain the remaining edge case in the operating procedure. Avoid claiming perfect timing across independent systems.\n\n## Give exceptions a human path\n- A disputed invoice pauses automated reminders.\n- A partial payment follows an agreed policy.\n- An invalid recipient goes to account review.\n- A provider outage leaves a recoverable pending action.\n- An uncertain email result is checked before another send.\n\nUse approved templates and avoid placing sensitive invoice details in broad internal alerts. Include a secure invoice link where the platform supports it. Keep a record of which template version and stage produced each reminder.\n\n## Verify with changing states\nTest an invoice that is paid after candidate selection, a canceled invoice, two overlapping scheduler runs, and a temporary email failure. Confirm that paid and excluded invoices do not proceed through ordinary reminder paths.\n\nReconcile sent reminder records against provider message references and investigate customer complaints as reliability signals. Review the cadence periodically with the business owner; an automation should implement a deliberate communication policy rather than make collection messages more aggressive by default.\n\n## Further reading\nFor event-driven payment updates, [Stripe's webhook documentation](https://docs.stripe.com/webhooks) explains its delivery model. See [idempotency](/blog/idempotent-workflows-prevent-duplicates) for protecting reminder stages.",
-    "image": "../public/assets/img/blogs/guides/invoice-reminder-automation.svg",
-    "imageAlt": "Invoice Reminder Automation: Stop Chasing Customers Who Already Paid — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "n8n Workflow Error Handling: Alerts, Recovery and Safe Replay",
@@ -369,13 +429,16 @@
       "slug": "automation-reliability"
     },
     "tags": [
-      "Automation Reliability",
-      "n8n workflow error handling"
+      "Automation",
+      "Reliability"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Useful n8n error handling does two jobs: it tells an owner what failed and preserves enough context to recover safely. A notification without a record reference creates investigation work. A replay without checking completed actions can repeat customer-facing side effects.\n\n## Separate errors from business exceptions\nA missing optional field may be a normal business condition. An unavailable destination is an operational failure. Route expected exceptions explicitly so they are visible without pretending that invalid records completed successfully.\n\nFor example, a lead without a supported region can enter a review queue, while a CRM timeout follows the technical retry path. Store a short reason code and source identifier for both cases. This makes reporting easier than searching free-text error messages.\n\n## Configure and test an error workflow\nn8n supports an error workflow starting with an Error Trigger. Associate it with the workflow you want to monitor. Confirm the current setup details in the [official error-handling documentation](https://docs.n8n.io/flow-logic/error-handling/), since navigation and behavior can change between releases.\n\nSend the workflow name, failure class, execution reference when available, and a runbook link to the agreed owner. Avoid attaching an entire input payload. Some trigger-related failures have different available context, so the alert must tolerate missing execution fields.\n\n## Design recovery separately\nAn error workflow is not automatically a safe retry system. Before replaying, identify which destination writes and messages already completed. Use source identifiers and idempotency controls to prevent repeated actions.\n\nKeep a durable exception queue for records that cannot be resolved automatically. A notification can be dismissed or lost; the queue should remain an authoritative list of unfinished business work. Include ownership and the next planned action.\n\n## Verify with a failure drill\n- Force a controlled failure after a harmless test input.\n- Confirm the correct person receives the alert.\n- Simulate an unavailable alert destination.\n- Replay a partially completed record.\n- Verify only one intended destination outcome exists.\n\nAlso test the absence of expected traffic. An error alert may never fire if a schedule is disabled or a webhook stops reaching the system. Reconciliation and freshness checks cover gaps that exception notifications alone cannot detect.\n\n## Define the operating boundary\nDocument retention, access to execution history, and how long an operator has to recover records before supporting data is removed. Review these settings against the sensitivity of the payloads. Useful logs and minimal data collection should be designed together.\n\n## Further reading\nUse the [incident response runbook](/blog/automation-incident-response-runbook) and [monitoring metrics](/blog/automation-monitoring-metrics) to turn platform diagnostics into a maintainable operating process.",
-    "image": "../public/assets/img/blogs/guides/n8n-workflow-error-handling.svg",
-    "imageAlt": "n8n Workflow Error Handling: Alerts, Recovery and Safe Replay — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Make Scenario Incomplete Executions: Recover Without Repeating Actions",
@@ -387,13 +450,16 @@
       "slug": "automation-reliability"
     },
     "tags": [
-      "Automation Reliability",
-      "Make incomplete executions"
+      "Automation",
+      "Reliability"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "An incomplete execution in Make is a recovery item that deserves an owner and a clear next step. Treating the queue as permanent storage for unexplained failures makes the scenario increasingly difficult to operate. First determine whether the problem is temporary or needs corrected data.\n\n## Understand what was preserved\nReview the failed module, available input, completed actions, and scenario configuration associated with the execution. Make's [incomplete execution documentation](https://help.make.com/incomplete-executions) describes its platform recovery feature. Check your actual scenario settings and account limits before relying on retention.\n\nFor a CRM sync, identify whether the contact was created before a later notification failed. Recovery should finish the missing work, not necessarily repeat every prior action. Use destination record references rather than guessing from the module's apparent position.\n\n## Classify the queue\nSeparate rate limits and connection problems from missing fields, permission changes, and unsupported business cases. Waiting can help some temporary failures. It will not fix a required field that the source never collected.\n\nCreate an owner and resolution policy for each class. An operations person may correct a missing region, while a developer repairs an authentication configuration. Do not insert fabricated customer data merely to make a module accept the record.\n\n## Choose handling deliberately\nAn error handler changes how a scenario proceeds, but it does not change the meaning of the business result. If a failed bundle is skipped, downstream reporting must not count it as a completed customer task.\n\nA substitute value can be appropriate for an optional display field. It is a poor default for routing, billing, or permissions. Review the current [error-handling guide](https://help.make.com/Overview-of-error-handling) before selecting a handler and verify the resulting scenario state with test records.\n\n## Rehearse controlled recovery\n- Cause a temporary connection failure in a safe test path.\n- Send a record with a missing required field.\n- Inspect whether already completed writes remain correct.\n- Recover one item and compare the destination result.\n- Confirm the queue item is resolved and traceable.\n\nTrack the age of the oldest incomplete execution, recurring error categories, and manual recovery time. These measurements show whether the scenario is becoming more reliable. Clearing a backlog once is useful; removing its repeated cause is what lowers ongoing maintenance effort.\n\n## Further reading\nThe [workflow acceptance checklist](/blog/automation-project-acceptance-criteria) helps define expected recovery behavior, while an [automation maintenance plan](/blog/automation-maintenance-plan) assigns responsibility for the queue.",
-    "image": "../public/assets/img/blogs/guides/make-scenario-incomplete-executions.svg",
-    "imageAlt": "Make Scenario Incomplete Executions: Recover Without Repeating Actions — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Automation Platform Migration Checklist: Move Workflows Without Losing Records",
@@ -405,13 +471,16 @@
       "slug": "automation-strategy"
     },
     "tags": [
-      "Automation Strategy",
-      "automation platform migration checklist"
+      "Automation",
+      "Planning"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Migrate an automation platform by preserving business behavior, identifiers, and recovery state. Rebuilding a diagram in another tool does not establish equivalence. A safe plan accounts for records arriving during the transition and for actions already completed by the old system.\n\n## Inventory before rebuilding\nList active workflows, schedules, webhook destinations, credentials, external dependencies, stored state, and exception queues. Identify undocumented workflows still running under personal accounts. Separate obsolete flows from ones the business still needs.\n\nFor every active workflow, collect representative sanitized fixtures and expected destination outcomes. Include edge cases such as duplicate events, missing fields, and a temporary outage. These become portable acceptance checks across the two platforms.\n\n## Move state deliberately\nDetermine which deduplication keys, checkpoints, and pending approvals must survive. A new platform with an empty deduplication store may treat replayed events as new business. A reset pagination checkpoint may repeat an entire historical import.\n\nTranslate field types and time handling carefully. Test null values, arrays, decimal amounts, timestamps, and character encoding. A transformation that “looks the same” in an editor can still serialize data differently at the API boundary.\n\n## Plan the cutover window\nUse shadow processing or a controlled comparison where feasible, while preventing the replacement from performing duplicate external writes. Compare proposed destination changes before enabling them. Keep production credentials and side effects separate from a test copy.\n\nChoose a cutover sequence that captures events arriving between the old system stopping and the new one starting. Depending on the provider, this may require a temporary intake queue or a reconciliation pull. Document how to roll back without replaying completed actions.\n\n## Verify and retire\n- Compare eligible source records across the transition window.\n- Check destination identifiers and important mapped fields.\n- Resolve old exception queues or transfer their ownership.\n- Update webhook registrations and alert destinations.\n- Remove unused credentials and subscriptions after acceptance.\n\nKeep the old configuration export and recovery notes for an agreed retention period. Record the final checkpoint and the time at which ownership changed. A migration is complete when the business outcomes reconcile and the team can operate the replacement, not merely when the old tool is turned off.\n\n## Further reading\nSee [idempotent workflow design](/blog/idempotent-workflows-prevent-duplicates) and [handoff documentation](/blog/automation-documentation-handoff-checklist) for two common migration gaps.",
-    "image": "../public/assets/img/blogs/guides/automation-platform-migration-checklist.svg",
-    "imageAlt": "Automation Platform Migration Checklist: Move Workflows Without Losing Records — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Self-Hosted Automation Maintenance: Backups, Updates and Recovery",
@@ -423,13 +492,16 @@
       "slug": "automation-reliability"
     },
     "tags": [
-      "Automation Reliability",
-      "self hosted automation maintenance"
+      "Automation",
+      "Reliability"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Self-hosted automation gives a team more operational control and more operational responsibility. Budget for backups, updates, monitoring, and recovery tests alongside workflow development. A server that responds to a health endpoint can still contain broken customer-facing automations.\n\n## Know what must be recoverable\nInventory application configuration, workflow definitions, database state, encryption-related configuration, credential dependencies, and file storage. Follow the platform's documented backup requirements rather than assuming a workflow export contains everything needed for restoration.\n\nFor n8n specifically, start with its [self-hosting documentation](https://docs.n8n.io/hosting/). Hosting choices and deployment details vary; check the instructions for the version and architecture actually in use. Keep administrative access restricted and documented.\n\n## Test restoration, not just backup creation\nA backup job reporting success does not prove the system can be restored. Rehearse recovery into an isolated environment and verify that the application opens, representative workflows are present, and credentials can be handled according to the platform's design.\n\nDisable live schedules and outbound customer actions in the recovery environment. A restored system should not send real reminders or duplicate CRM records during a drill. Use sanitized fixtures to test behavior after restoration.\n\n## Make updates reversible\nReview release notes and compatibility requirements before upgrading. Capture a versioned configuration snapshot and confirm the rollback procedure. Test critical workflows in an environment that resembles production, including dependencies and permissions.\n\nSchedule changes during an agreed support window and identify who can approve a pause. Back up relevant state before migration steps. Rolling back an application binary may not undo a database schema change, so establish the supported recovery path first.\n\n## Monitor infrastructure and outcomes\n- Application availability and worker health.\n- Storage capacity and database connectivity.\n- Queue depth and age of pending work.\n- Backup completion and last successful restore drill.\n- Distinct business records completed and unresolved.\n\nAdd a check for expected workflow activity so a disabled schedule does not look healthy. Review log retention and access because execution history may contain customer data. The maintenance owner should be able to explain both the infrastructure status and the business processing status in the same incident.\n\n## Further reading\nThe [automation maintenance plan](/blog/automation-maintenance-plan) defines support ownership. Use [monitoring metrics](/blog/automation-monitoring-metrics) to connect infrastructure signals to actual workflow outcomes.",
-    "image": "../public/assets/img/blogs/guides/self-hosted-automation-maintenance.svg",
-    "imageAlt": "Self-Hosted Automation Maintenance: Backups, Updates and Recovery — practical guide"
+    "image": "../public/assets/img/blogs/photos/hardware.webp",
+    "imageAlt": "Electronic circuit boards and connectors on a light surface",
+    "imageCreditName": "Dai",
+    "imageCreditUrl": "https://unsplash.com/photos/yellow-black-and-blue-circuit-boards-isolated-on-white-background-ogxlyCA1BQc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Reduce AI Workflow Costs Without Breaking Output Quality",
@@ -441,13 +513,16 @@
       "slug": "ai-workflows"
     },
     "tags": [
-      "AI Workflows",
-      "reduce AI workflow costs"
+      "AI",
+      "Quality"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Reduce AI workflow costs by removing unnecessary calls, limiting irrelevant input, and measuring cost per useful result. Switching models before understanding the workload can reduce a unit price while increasing review effort. Establish a quality baseline before optimizing.\n\n## Count useful outcomes\nTrack the number of eligible records, model calls, retries, rejected outputs, and human corrections. A workflow that makes three attempts per record may cost much more than its nominal one-call design suggests.\n\nFor an illustrative calculation, 5,000 records at two calls per record means 10,000 calls. If a deterministic rule safely handles 40% of those records and each remaining record still needs two calls, the model call count falls to 6,000. Actual spending also depends on input and output size and the provider's current pricing.\n\n## Remove work before changing models\nUse ordinary code for exact lookups, arithmetic, formatting, and routing based on explicit fields. Send ambiguous text to a model only when interpretation adds value. Validate inputs before making a paid request so empty or malformed records do not consume the same processing budget.\n\nReduce context to relevant fields and excerpts. Avoid repeatedly sending the complete customer history when one recent message is sufficient. Apply output limits consistent with the business task, while allowing enough space for a valid response.\n\n## Cache with boundaries\nCaching may help for repeated non-sensitive inputs whose expected answer does not change. Include relevant configuration and prompt versions in the cache key. Define expiration and invalidation so a policy update does not keep returning obsolete guidance.\n\nDo not accidentally share cached responses across customers or organizations. If the same text can mean different things under different account policies, the account context belongs in the key. Cache design must preserve the meaning and access boundaries of the result.\n\n## Verify quality after every change\nUse a representative evaluation set containing ordinary, ambiguous, and unsupported inputs. Compare correctness, review minutes, latency, and cost. A cheaper workflow that routes more records incorrectly may be worse for the business.\n\nSet budgets and alerts around completed outcomes. Investigate sudden changes in retry rate or average input length. Keep an explicit human fallback for cases that no longer meet quality requirements, and record the reason so optimization does not silently reduce service quality.\n\n## Further reading\nUse the [AI evaluation dataset guide](/blog/ai-workflow-evaluation-dataset) to establish quality checks, and [automation cost estimation](/blog/automation-cost-estimation) to model total operating expense.",
-    "image": "../public/assets/img/blogs/guides/reduce-ai-workflow-costs.svg",
-    "imageAlt": "Reduce AI Workflow Costs Without Breaking Output Quality — practical guide"
+    "image": "../public/assets/img/blogs/photos/dashboard.webp",
+    "imageAlt": "Analytics dashboard on a laptop reflected in a glass table",
+    "imageCreditName": "Carlos Muza",
+    "imageCreditUrl": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Build an AI Workflow Evaluation Dataset Before You Launch",
@@ -459,13 +534,16 @@
       "slug": "ai-workflows"
     },
     "tags": [
-      "AI Workflows",
-      "AI workflow evaluation dataset"
+      "AI",
+      "Quality"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "An AI workflow evaluation dataset is a set of representative inputs with explicit expected behavior. It lets you compare prompts, models, and routing changes against the same business requirements. Start with a small carefully labeled set rather than a large pile of unreviewed examples.\n\n## Define the decision being evaluated\nFor an enquiry classifier, list the permitted labels and the action attached to each label. Define unsupported requests and ambiguous cases. If labels overlap, resolve the business rule before asking a model to follow it.\n\nExpected behavior does not always mean one exact sentence. A summarization task may require that specific facts are preserved and unsupported claims are absent. A routing task may require an exact category plus a valid destination identifier.\n\n## Sample the difficult records\nInclude ordinary inputs, short messages, long messages, typos, multiple languages where supported, conflicting instructions, and irrelevant text. Add historical failures when you have appropriate permission and can remove unnecessary personal information.\n\nKeep a held-out set for checking changes after tuning. Repeatedly adjusting a prompt to fit every visible example can create false confidence. Record how the dataset was selected so its limits are clear; a small sample cannot prove universal reliability.\n\n## Label consistently\nHave the business owner define the expected outcome for disputed cases. Write short labeling notes that another reviewer can follow. If people disagree, keep that disagreement visible rather than turning one person's guess into a supposedly objective answer.\n\nTrack model result, validation status, human decision, and failure category. Distinguish invalid structure from a valid-looking but wrong decision. Both matter operationally, but they often require different repairs.\n\n## Compare before deployment\n- Run the current and proposed versions on the same fixed set.\n- Compare error types and consequential mistakes.\n- Measure latency, usage, and manual review effort.\n- Inspect regressions even if the average score improves.\n- Record the chosen configuration and unresolved limitations.\n\nUse a staged rollout with human review for consequential actions. Keep the previous version available for rollback where feasible. After launch, collect real exceptions and periodically refresh the dataset so it continues to reflect the work the system receives.\n\n## Further reading\nPair evaluations with [structured output validation](/blog/validate-ai-json-output) and [human approval gates](/blog/human-in-the-loop-automation). For a scoped review, see the [AI health check](/#automation-offers).",
-    "image": "../public/assets/img/blogs/guides/ai-workflow-evaluation-dataset.svg",
-    "imageAlt": "Build an AI Workflow Evaluation Dataset Before You Launch — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Validate AI JSON Output Before It Reaches Your Business Systems",
@@ -477,13 +555,16 @@
       "slug": "ai-workflows"
     },
     "tags": [
-      "AI Workflows",
-      "validate AI JSON output"
+      "AI",
+      "Quality"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Valid JSON is only the first check on an AI response. A response can parse successfully while containing unsupported labels, nonexistent identifiers, or missing business facts. Treat model output as untrusted input at the boundary to your application.\n\n## Define a narrow contract\nSpecify required fields, allowed values, types, length limits, and whether additional properties are accepted. For a lead classifier, that might mean a permitted category, a short explanation, and a flag indicating that human review is needed.\n\nDo not ask the model to generate internal account IDs if it can select from a trusted list instead. Resolve destinations through deterministic code after classification. This reduces the chance that a plausible-looking fabricated identifier reaches a CRM or provisioning API.\n\n## Validate structure and meaning\nParse the output, validate it against your schema, then enforce business rules. Check that referenced objects exist and belong to the correct account. Verify that amounts or dates match authoritative source data when the workflow uses them.\n\nA model's confidence statement is not a calibrated probability by default. Do not use a self-reported “99% confident” field as the sole justification for an irreversible action. Evaluate the decision against labeled examples and the consequences of being wrong.\n\n## Bound recovery behavior\nIf validation fails, route to a controlled retry or human review. Limit the retry count and preserve a redacted reason code. Repeatedly asking the model to “fix the JSON” can consume budget while changing a previously correct business decision.\n\nKeep the original input reference and configuration version. That information makes it possible to investigate whether a failure came from the source, the prompt, the model response, or a later transformation. Avoid storing sensitive content longer than necessary just for debugging convenience.\n\n## Test adversarial and ordinary mistakes\n- A valid object with an unsupported category.\n- A number returned as a string.\n- A missing required field and an unexpected extra field.\n- A correct format containing another customer's identifier.\n- An input requesting that the model ignore the task rules.\n\nConfirm that rejected output cannot reach the side-effecting action. The strongest acceptance check inspects the destination system after each invalid case. A logged validation error is not enough if the next step still executes.\n\n## Further reading\nUse an [evaluation dataset](/blog/ai-workflow-evaluation-dataset) to compare output correctness, and [human approval gates](/blog/human-in-the-loop-automation) for decisions needing review.",
-    "image": "../public/assets/img/blogs/guides/validate-ai-json-output.svg",
-    "imageAlt": "Validate AI JSON Output Before It Reaches Your Business Systems — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Human-in-the-Loop Automation: Design Approval Gates People Can Use",
@@ -495,13 +576,16 @@
       "slug": "ai-workflows"
     },
     "tags": [
-      "AI Workflows",
-      "human in the loop automation"
+      "AI",
+      "Quality"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A human-in-the-loop workflow should tell the reviewer what is proposed, why it matters, and what happens after approval. Adding a button to a notification is insufficient if the reviewer lacks evidence or if an old approval can execute a changed action.\n\n## Put the gate before the consequence\nIdentify which actions need explicit review: sending a customer message, changing access, publishing content, or updating a critical business record. Let automation prepare the work, but stop before the action that requires human judgment.\n\nShow a concise proposed change with source references. For a draft reply, include the recipient, the exact message, and any unresolved facts. A reviewer should not need to open five tools simply to understand what they are approving.\n\n## Bind approval to a version\nStore the proposed action with a stable identifier and version or content hash. An approval should authorize that specific proposal. If the draft changes, require a new decision rather than reusing an earlier approval.\n\nRecord the reviewer, decision time, and action reference. Enforce account boundaries and permissions so a forwarded link cannot grant unintended authority. Define an expiration period appropriate to the workflow; stale customer data may make an old proposal unsafe or simply incorrect.\n\n## Design rejection and waiting states\n- Reject with a reason and return to the responsible operator.\n- Request changes without treating the action as approved.\n- Expire unanswered proposals into a visible queue.\n- Prevent repeated clicks from repeating the action.\n- Allow cancellation before execution where feasible.\n\nChoose a review channel the team actually monitors. Sending every trivial decision for approval creates fatigue and encourages superficial acceptance. Use deterministic rules to handle low-risk cases when the business has explicitly agreed those rules.\n\n## Verify the entire approval journey\nTest an unauthorized reviewer, an expired approval, a modified proposal, two simultaneous approvals, and an execution failure after approval. Check that recovery uses the approved version and does not accidentally send a newer draft.\n\nMeasure review waiting time and rejection reasons. These signals show whether the preparation step is useful and whether the rules need improvement. Human review is most effective when the workflow reduces the reviewer's work while preserving a meaningful decision.\n\n## Further reading\nSee [structured output validation](/blog/validate-ai-json-output) and [customer onboarding automation](/blog/customer-onboarding-automation) for practical places to separate preparation from consequential action.",
-    "image": "../public/assets/img/blogs/guides/human-in-the-loop-automation.svg",
-    "imageAlt": "Human-in-the-Loop Automation: Design Approval Gates People Can Use — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "AI Automation Data Minimization: Send Only What the Task Needs",
@@ -513,13 +597,16 @@
       "slug": "ai-workflows"
     },
     "tags": [
-      "AI Workflows",
-      "AI automation data privacy checklist"
+      "AI",
+      "Quality"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Data minimization in AI automation means sending and retaining only the information required for the task. Start with a field-level map of what leaves each application. A prompt containing the entire source record can expose far more context than a classifier or summarizer needs.\n\n## Map the data path\nList the source fields, transformation steps, model provider, logs, review tools, and final destination. Include execution history and alert messages; these secondary copies often outlive the original processing need.\n\nClassify information according to your organization's policy. Determine whether the task needs names, contact details, account references, message text, or only a small excerpt. Where business or contractual requirements are unclear, involve the responsible owner rather than making policy decisions inside a workflow node.\n\n## Remove fields before the model call\nFor a support-topic classifier, a sanitized subject and relevant message excerpt may be enough. Resolve customer identity separately through trusted identifiers. Masking a name alone does not make a detailed customer story anonymous; unusual combinations can still identify someone.\n\nApply minimization at the earliest practical boundary. Redacting only the final prompt log does not remove sensitive fields already copied into execution history or sent through an intermediate enrichment service. Inspect real configuration paths, not just the final model request.\n\n## Control operational copies\n- Keep secrets in the approved credential system.\n- Use record references in alerts rather than complete payloads.\n- Limit access to execution history and review queues.\n- Define retention for prompts, responses, and debugging fixtures.\n- Review export and deletion procedures for stored records.\n\nCheck the provider's current data handling settings and the organization's applicable agreements before processing production records. This article provides an engineering review method; it does not establish that a particular configuration meets legal or contractual requirements.\n\n## Verify with a synthetic sensitive record\nCreate a fixture containing recognizable test contact details and trace where each field appears. Inspect prompts, logs, alerts, retry records, and review screens. Confirm that fields excluded from the model request are also absent from unnecessary operational copies.\n\nRepeat the trace after adding a new connector or debugging feature. Data exposure often grows through convenient troubleshooting changes rather than an explicit product decision. Keeping the field map current makes later audits much easier.\n\n## Further reading\nPair minimization with [workflow audit checks](/blog/ai-automation-audit-checklist) and [handoff documentation](/blog/automation-documentation-handoff-checklist). The [health check offer](/#automation-offers) includes reviewing privacy risks in one workflow.",
-    "image": "../public/assets/img/blogs/guides/ai-automation-data-minimization.svg",
-    "imageAlt": "AI Automation Data Minimization: Send Only What the Task Needs — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "AI Support Ticket Triage: Route Requests Without Inventing Answers",
@@ -531,13 +618,16 @@
       "slug": "ai-workflows"
     },
     "tags": [
-      "AI Workflows",
-      "AI support ticket triage automation"
+      "AI",
+      "Quality"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "AI support ticket triage can classify requests and prepare context while leaving account changes and uncertain replies to authorized staff. The first useful version usually routes tickets well rather than attempting to solve every issue automatically.\n\n## Define the categories operationally\nChoose labels that correspond to real teams or queues. “Billing,” “access,” and “technical issue” are useful only if their boundaries and owners are clear. Include an unknown or needs-review outcome so the model is not forced to guess.\n\nWrite examples for messages that mention several problems. Decide whether the system chooses one primary queue or creates a review task. Avoid splitting a ticket into several customer-facing threads unless the support team actually wants that behavior.\n\n## Keep the model's role narrow\nProvide the relevant message text and permitted categories. Resolve customer identity and permissions through trusted systems. Do not allow text inside an incoming ticket to become an instruction to change workflow rules or reveal internal context.\n\nValidate the returned category before routing. A correctly formatted response can still choose the wrong queue, so evaluate it against reviewed examples. Escalate categories with meaningful consequences when the evidence is ambiguous.\n\n## Add useful operator context\nPrepare a short summary distinguishing what the customer said from any system observations. Link the original ticket and known account record. If the model suggests a response, label it as a draft and require the appropriate review before sending.\n\nMeasure assignment delay, rerouting frequency, and reviewer correction time. An automation that creates polished summaries but repeatedly sends tickets to the wrong team may increase workload despite appearing productive.\n\n## Test the failure cases\n- A message containing two unrelated requests.\n- A short or empty message.\n- Unsupported language or an attachment with no usable text.\n- An instruction to ignore the classification rules.\n- A model or ticketing API outage.\n\nKeep intake durable and route processing failures to a visible fallback queue. Customers should not lose their place because an AI dependency is temporarily unavailable. Replay must preserve the original ticket identifier and avoid creating another ticket.\n\n## Further reading\nBuild an [AI evaluation dataset](/blog/ai-workflow-evaluation-dataset), enforce [structured output validation](/blog/validate-ai-json-output), and use [human approval gates](/blog/human-in-the-loop-automation) before customer-facing actions.",
-    "image": "../public/assets/img/blogs/guides/ai-support-ticket-triage.svg",
-    "imageAlt": "AI Support Ticket Triage: Route Requests Without Inventing Answers — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Next.js Technical SEO Checklist for a CMS-Powered Website",
@@ -549,13 +639,16 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "Next.js technical SEO checklist"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A Next.js technical SEO review should inspect the rendered response, metadata, crawl controls, and generated discovery routes. A page that looks correct in the browser can still publish the wrong canonical URL or disappear from the sitemap when CMS data changes.\n\n## Inspect the public response\nChoose a homepage, a blog listing, an article, and a missing route. Confirm meaningful content is available through the intended rendering strategy and that a missing article returns the correct not-found behavior. Check production-like builds because development behavior can differ.\n\nVerify titles and descriptions against the CMS fields and fallback rules. An empty manual SEO field should not erase a useful default. Use the public hostname for canonical and social URLs, particularly when preview environments have their own domains.\n\n## Keep indexing signals consistent\nInspect robots directives, canonical links, redirects, and sitemap membership together. A page intended for indexing should not accidentally inherit a noindex setting from a preview template. A filtered listing may deliberately use different indexing rules from the main blog.\n\nDefine the handling of trailing slashes, alternate hostnames, and old slugs. Redirect retired URLs when there is a relevant replacement. Avoid redirecting every missing article to the homepage, which obscures the actual state for users and crawlers.\n\n## Verify generated content routes\n- The sitemap contains canonical published article URLs.\n- Robots rules allow intended public routes and protect private areas appropriately.\n- Social metadata uses absolute usable image URLs.\n- Article structured data matches visible content and dates.\n- Any LLM-readable files reflect the same current services and articles.\n\nThese files should consume a consistent content set. If a CMS query returns only managed posts while local articles remain publicly accessible, the sitemap can omit valid pages. Test both configured and unconfigured CMS behavior.\n\n## Review publishing changes\nEdit one test article, trigger the intended revalidation flow, and confirm the title, body, listing, and machine-readable routes update coherently. Check the old slug if it changed. A successful webhook response does not prove all cached views refreshed.\n\nUse search performance data after deployment to assess impressions and queries. Technical correctness enables discovery but does not guarantee a particular ranking. The next content decision should follow evidence about the audience rather than a promise that framework settings alone will win search results.\n\n## Further reading\nUse [Next.js metadata documentation](https://nextjs.org/docs/app/api-reference/functions/generate-metadata) for implementation details and Google's [SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) for search fundamentals.",
-    "image": "../public/assets/img/blogs/guides/nextjs-technical-seo-checklist.svg",
-    "imageAlt": "Next.js Technical SEO Checklist for a CMS-Powered Website — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Next.js Cache Revalidation Debugging for CMS Updates",
@@ -567,13 +660,16 @@
       "slug": "frontend-engineering"
     },
     "tags": [
-      "Frontend Engineering",
-      "Next.js cache revalidation not updating"
+      "React",
+      "User experience"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "When a CMS edit does not appear in Next.js, identify which layer is stale before changing cache settings. The CMS response, application data cache, rendered route, CDN, and browser can each retain different state. A blanket cache bypass may conceal the original problem.\n\n## Confirm the source changed\nFetch the published CMS document through the same perspective and dataset as the public site. A draft edit does not necessarily change published content. Check the document identifier, slug, and update time without printing access tokens.\n\nVerify that the application is using the intended project and environment. Preview and production deployments can point at different datasets or hosts. A correct revalidation request against the wrong deployment will not update the page you are inspecting.\n\n## Trace one content dependency\nMap the article detail, blog listing, homepage preview, sitemap, and any generated text routes that depend on the document. Record the cache tags or paths used by each query. Revalidation should cover every relevant view, not only the article body.\n\nConsult the [current Next.js caching documentation](https://nextjs.org/docs/app/getting-started/caching-and-revalidating) for your installed version and configuration. Caching behavior depends on the APIs and rendering features used; avoid applying an older recipe without checking its assumptions.\n\n## Inspect the invalidation request\nConfirm the CMS webhook reaches the expected endpoint, passes authentication, identifies the document type correctly, and requests the relevant invalidation. Log redacted identifiers and outcomes rather than complete webhook payloads.\n\nReturn useful failure statuses when authentication or payload validation fails. A handler that always returns success makes a broken publishing path difficult to diagnose. Check provider delivery history and application logs for the same event identifier.\n\n## Verify after the fix\n- Publish a clearly identifiable test edit.\n- Confirm the CMS response includes it.\n- Observe the matching invalidation event.\n- Request article and listing pages through the public route.\n- Inspect sitemap and generated metadata where the edit affects them.\n\nDistinguish immediate expiration from behavior that serves stale content while refreshing, according to the actual API in use. Verify the user-visible result after the relevant refresh cycle. If only one path remains stale, investigate that path's dependencies rather than disabling caching site-wide.\n\n## Further reading\nSee the [CMS publishing workflow](/blog/cms-publishing-workflow-checklist) and [technical SEO checklist](/blog/nextjs-technical-seo-checklist) for a complete editorial verification path.",
-    "image": "../public/assets/img/blogs/guides/nextjs-cache-revalidation-debugging.svg",
-    "imageAlt": "Next.js Cache Revalidation Debugging for CMS Updates — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Next.js Metadata and Canonical URLs: Avoid Conflicting Search Signals",
@@ -585,13 +681,16 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "Next.js canonical URL metadata"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Canonical URLs identify the preferred version of content, while metadata describes the page for browsers and discovery systems. In a CMS-powered Next.js site, both should follow explicit fallback and validation rules. Do not derive public canonical hosts from an arbitrary incoming request.\n\n## Establish one public base URL\nConfigure the production origin intentionally and keep preview hosts separate. Normalize equivalent hostnames and trailing-slash behavior according to the site's routing policy. Review generated absolute URLs after deployment rather than assuming environment configuration is correct.\n\nFor an article with no manual canonical override, derive the URL from the stable public slug. If editors can set an override, validate its format and explain the field's purpose. A mistaken external canonical can signal that another site is the preferred version.\n\n## Make fallback behavior predictable\nUse the manual SEO title when it contains useful text, then fall back to the article title. Apply the same approach to description and image. Treat empty strings differently from meaningful overrides so clearing an optional field does not erase metadata entirely.\n\nKeep the displayed headline accurate even if the search title is shorter. Avoid titles that promise a result the article does not deliver. A technical fix can make metadata consistent, but misleading wording remains a content problem.\n\n## Align the signals\n- Canonical links reference the preferred public URL.\n- Internal article links use that same route.\n- Sitemap entries omit deliberately non-indexable alternatives.\n- Redirects resolve old slugs consistently.\n- Open Graph and article schema describe the visible page.\n\nFiltered listings need a deliberate policy. If filters create many near-duplicate URL combinations, review their indexing treatment and navigation. Do not automatically canonicalize every unique useful article to a category page simply because they share a topic.\n\n## Verify rendered output\nInspect the production response for a normal article, an article with a manual override, and a filtered listing. Check for duplicate or conflicting canonical elements. Confirm unknown slugs return the intended status rather than a generic successful page.\n\nUse the [Next.js metadata API reference](https://nextjs.org/docs/app/api-reference/functions/generate-metadata) for the framework mechanism. Google's [canonicalization guidance](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls) explains how canonical signals are used; a declared canonical is a signal rather than a guaranteed selection.\n\n## Further reading\nSee [sitemap troubleshooting](/blog/sitemap-missing-pages-debugging) and [CMS publishing checks](/blog/cms-publishing-workflow-checklist) to keep content and discovery routes aligned.",
-    "image": "../public/assets/img/blogs/guides/nextjs-metadata-canonical-urls.svg",
-    "imageAlt": "Next.js Metadata and Canonical URLs: Avoid Conflicting Search Signals — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Sitemap Missing Pages? Debug CMS Queries, Fallbacks and Indexing Rules",
@@ -603,13 +702,16 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "sitemap missing pages"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "When a sitemap is missing pages, trace the content collection used to generate it. A common problem is that detail routes support more content than the sitemap query returns. A successful XML response does not prove the URL inventory is complete.\n\n## Establish the expected set\nList canonical public routes from the same content sources used by the site. Include managed CMS documents and any bundled articles that remain live. Exclude drafts, deliberately noindex pages, invalid slugs, and URLs that redirect to another canonical route.\n\nCompare identifiers and slugs rather than only counts. Two collections can contain the same number of items while one misses a new article and includes a retired one. Save the difference as a small report you can review.\n\n## Inspect query and merge behavior\nCheck pagination limits, publication filters, dataset configuration, and empty-response fallback logic. If the site merges CMS and local posts by slug but the sitemap chooses only one source, valid pages can disappear from discovery.\n\nUse the same canonicalization policy throughout. A CMS override should replace the local article with the same slug rather than create a duplicate sitemap entry. If a document is deliberately excluded from indexing, its fallback copy should not silently reintroduce the route into the sitemap.\n\n## Validate the URL output\n- Each entry uses the public production origin.\n- Slugs are valid and uniquely identify the intended page.\n- URLs return the expected page rather than a redirect chain.\n- Modification dates reflect meaningful content changes where known.\n- XML escaping and response headers are valid.\n\nDo not update every article's modification date to the current request time just to make it appear fresh. Prefer actual content dates. For static navigation pages, choose a defensible update policy rather than implying an editorial change on every generation.\n\n## Check publication and caching\nPublish one test article and verify its detail page, listing entry, and sitemap inclusion. Remove or noindex a test document and check the opposite path. Test with a nonempty CMS dataset because “works with fallback data” does not prove merge behavior.\n\nInspect the public sitemap after the configured revalidation cycle. Local success does not establish that the deployed environment has the same CMS project or cache state. Keep the reconciliation check repeatable so future content batches cannot quietly regress coverage.\n\n## Further reading\nGoogle's [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview) covers the format and discovery role. Related: [Next.js technical SEO](/blog/nextjs-technical-seo-checklist).",
-    "image": "../public/assets/img/blogs/guides/sitemap-missing-pages-debugging.svg",
-    "imageAlt": "Sitemap Missing Pages? Debug CMS Queries, Fallbacks and Indexing Rules — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Technical SEO Audit for Small Business Websites: Prioritize What Blocks Users",
@@ -621,13 +723,16 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "technical SEO audit small business"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A small-business technical SEO audit should prioritize problems that block access, discovery, or conversion. A long export of warnings is not a repair plan. Start with the pages that explain the business, attract enquiries, and support the customer journey.\n\n## Review a representative sample\nChoose the homepage, main service page, contact page, a recent article, an older article, and a missing URL. Check mobile navigation, content visibility, response behavior, and the actual enquiry path. Record evidence with the affected URL and reproduction steps.\n\nSeparate site-wide issues from isolated defects. A template that emits an incorrect canonical on every article deserves different priority from one missing image description. The number of affected pages and the business importance should shape the order of work.\n\n## Inspect discovery and indexing\nCheck robots directives, sitemap coverage, canonical links, redirects, and internal navigation. Verify that important pages can be reached through ordinary links. A page listed only in a sitemap may still have weak context within the site.\n\nUse available search-console evidence to investigate exclusions and query performance. Do not assume every unindexed page has a technical defect; duplicate or low-value content can also need editorial work. Keep confirmed findings separate from hypotheses.\n\n## Prioritize the fixes\n- Broken access or incorrect indexing controls on important pages.\n- Incorrect redirects, canonicals, and missing public URLs.\n- Unusable mobile interactions or enquiry forms.\n- Large performance bottlenecks on key journeys.\n- Metadata, structured content, and internal-link improvements.\n\nFor each item, state the user impact, affected scope, proposed fix, and validation. Avoid presenting a tool's severity label as the final business priority. A form that fails silently may deserve attention before a cosmetic metadata warning.\n\n## Verify changes in context\nAfter a repair, test the affected template and at least one neighboring route. Inspect generated files as well as visible pages. A routing change can fix a browser journey while accidentally removing URLs from the sitemap.\n\nTrack the implementation date and relevant search or conversion measurements. Ranking changes take observation and cannot be attributed confidently to one fix without considering other changes. The audit should deliver a clear foundation for improvement, with honest limits on what the evidence establishes.\n\n## Further reading\nGoogle's [SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) provides foundational checks. Use [Core Web Vitals prioritization](/blog/core-web-vitals-prioritization) for performance work.",
-    "image": "../public/assets/img/blogs/guides/technical-seo-audit-small-business.svg",
-    "imageAlt": "Technical SEO Audit for Small Business Websites: Prioritize What Blocks Users — practical guide"
+    "image": "../public/assets/img/blogs/photos/dashboard.webp",
+    "imageAlt": "Analytics dashboard on a laptop reflected in a glass table",
+    "imageCreditName": "Carlos Muza",
+    "imageCreditUrl": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Core Web Vitals Optimization: Prioritize LCP, INP and CLS by User Impact",
@@ -639,13 +744,16 @@
       "slug": "web-performance"
     },
     "tags": [
-      "Web Performance",
-      "Core Web Vitals optimization checklist"
+      "Performance",
+      "Core Web Vitals"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Prioritize Core Web Vitals work by identifying which user experience is slow or unstable and which pages affect the business most. A single lab score does not describe every visitor. Combine repeatable local diagnostics with real-user evidence where available.\n\n## Understand the three experiences\nLargest Contentful Paint concerns the appearance of the main visible content. Interaction to Next Paint concerns responsiveness to user interaction. Cumulative Layout Shift concerns unexpected visual movement. Google's [Web Vitals guide](https://web.dev/articles/vitals) defines these metrics and their measurement context.\n\nGroup pages by template and journey. A blog article and a product listing can have different bottlenecks. Start with a high-traffic or conversion-critical template so an improvement benefits meaningful usage rather than only a synthetic demonstration page.\n\n## Diagnose before optimizing\nFor slow content appearance, inspect server response, resource discovery, image size, and render-blocking dependencies. For slow interactions, inspect long tasks, expensive handlers, and unnecessary rendering. For layout movement, inspect missing dimensions, delayed content insertion, and font behavior.\n\nChange one meaningful variable at a time and compare traces under consistent conditions. A faster network in the second run can make an ineffective change look successful. Document the device, viewport, throttling, and route used for local comparisons.\n\n## Rank the opportunities\n- Fix missing dimensions on large visible media.\n- Ensure important content resources are discovered promptly.\n- Remove or defer unnecessary third-party work.\n- Reduce expensive interaction processing.\n- Review shared layout and component costs across templates.\n\nChoose from measured evidence rather than treating the list as a universal order. A site dominated by a slow external chat script needs a different first fix from one serving an oversized hero image.\n\n## Verify the business journey\nRetest menus, forms, galleries, and filters after performance changes. A deferred script that breaks consent handling or an enquiry form is not a successful optimization. Confirm visual quality and accessibility at the same time.\n\nMonitor field evidence over an appropriate period after deployment. Lab traces help explain causes; real-user measurements show whether the change benefits actual traffic. Keep a small performance budget for newly added widgets so future features do not quietly undo the improvement.\n\n## Further reading\nSee [LCP image optimization](/blog/lcp-image-optimization-nextjs), [INP debugging](/blog/inp-react-interaction-debugging), and [layout shift prevention](/blog/prevent-layout-shift-images-fonts).",
-    "image": "../public/assets/img/blogs/guides/core-web-vitals-prioritization.svg",
-    "imageAlt": "Core Web Vitals Optimization: Prioritize LCP, INP and CLS by User Impact — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "LCP Image Optimization in Next.js: Find the Actual Bottleneck",
@@ -657,13 +765,16 @@
       "slug": "web-performance"
     },
     "tags": [
-      "Web Performance",
-      "Next.js LCP image optimization"
+      "Performance",
+      "Core Web Vitals"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Optimize the image that actually drives Largest Contentful Paint on the affected page. Compressing every asset is not always the fastest route to improvement. First inspect whether the delay comes from server response, late discovery, download size, or rendering.\n\n## Identify the real LCP element\nUse a performance trace for the target viewport and route. The largest visible element can change between desktop and mobile. A hero heading may be the candidate on one screen while a large image is the candidate on another.\n\nRecord when the resource is requested and when it finishes. If the request starts late, a smaller file alone may not fix the main delay. If the request starts early but transfers slowly, dimensions, format, and quality become stronger candidates.\n\n## Serve an appropriate image\nProvide useful intrinsic dimensions and responsive sizing. The browser should not fetch a desktop-sized image for a narrow card when a smaller variant can meet the display requirement. Inspect the selected resource in network tools rather than assuming the component generated the expected result.\n\nUse the current [Next.js Image reference](https://nextjs.org/docs/app/api-reference/components/image) for supported configuration and loading behavior. Apply early-loading treatment deliberately to the important image rather than marking every card as equally urgent.\n\n## Remove discovery delays\nKeep the main visual in the initial rendering path when the page design calls for it. Loading essential hero content only after client-side fetching can postpone discovery. Review whether a carousel or animation hides the content behind unnecessary work.\n\nCheck fonts, styles, and overlays too. An image can finish downloading while rendering waits for another dependency or an entrance animation. Measure the entire path from navigation to visible content, not just the image request duration.\n\n## Verify the result\n- Compare the same route and viewport before and after.\n- Check the chosen image dimensions and transfer size.\n- Inspect visual quality at common device pixel ratios.\n- Confirm image boxes reserve the correct space.\n- Review neighboring pages sharing the component.\n\nAvoid turning an LCP fix into excessive preloading across the entire site. Competing urgent resources can hurt other important work. After deployment, observe real-user performance and revisit the diagnosis if the improvement only appears in one local test environment.\n\n## Further reading\nThe [Core Web Vitals guide](https://web.dev/articles/vitals) supplies metric context. See [layout shift prevention](/blog/prevent-layout-shift-images-fonts) for preserving stable image space.",
-    "image": "../public/assets/img/blogs/guides/lcp-image-optimization-nextjs.svg",
-    "imageAlt": "LCP Image Optimization in Next.js: Find the Actual Bottleneck — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Debug Slow React Interactions and Improve INP",
@@ -675,13 +786,16 @@
       "slug": "web-performance"
     },
     "tags": [
-      "Web Performance",
-      "React INP optimization"
+      "Performance",
+      "Core Web Vitals"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Debug slow React interactions by following one user action through event handling, rendering, and paint. An interface can load quickly yet respond poorly when a customer opens a menu or filters a large list. Optimize the interaction people actually experience.\n\n## Reproduce one specific delay\nChoose a concrete action: typing into search, opening a drawer, or selecting a filter. Record a browser performance trace on a representative device profile. Repeat under consistent conditions and note whether the delay grows with data size.\n\nSeparate network waiting from main-thread blocking. A search request can take time without freezing the input if the interface is designed appropriately. Conversely, a local filter can feel slow because it performs expensive work synchronously on every keystroke.\n\n## Inspect the event path\nLook for heavy transformations inside handlers, repeated sorting, excessive component updates, and layout reads interleaved with writes. Check whether a third-party widget performs work during the same interaction.\n\nUse React profiling where it helps identify rendering work, but keep the browser trace in view. Not every interaction problem is a React rerender. Parsing a large response or running an expensive validation function can block paint outside the component tree.\n\n## Reduce and schedule work\nMove invariant calculations out of repeated paths. Render only the information needed for the current view when large datasets justify it. Keep direct input feedback responsive while handling less urgent derived updates through appropriate framework patterns.\n\nAvoid adding memoization everywhere without evidence. Caches create their own complexity and can be ineffective when dependencies change every render. Prefer a clear data flow and measure the specific expensive operation after each change.\n\n## Test behavior as well as speed\n- Type quickly and confirm no characters are dropped.\n- Change filters while a previous request is pending.\n- Navigate with a keyboard and inspect focus.\n- Test empty, small, and large result sets.\n- Confirm old responses cannot overwrite newer results.\n\nReview loading and error states so performance work does not make the interface misleading. A fast-looking UI that shows stale results can be worse than an honest pending state. Observe field responsiveness after deployment to see whether the fix helps users beyond the development machine.\n\n## Further reading\nGoogle's [INP documentation](https://web.dev/articles/inp) explains the metric. See [React async request races](/blog/react-fetch-race-conditions) for another common interaction failure.",
-    "image": "../public/assets/img/blogs/guides/inp-react-interaction-debugging.svg",
-    "imageAlt": "Debug Slow React Interactions and Improve INP — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Prevent Layout Shift from Images, Fonts and Dynamic Content",
@@ -693,13 +807,16 @@
       "slug": "web-performance"
     },
     "tags": [
-      "Web Performance",
-      "prevent cumulative layout shift"
+      "Performance",
+      "Core Web Vitals"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Prevent layout shift by reserving space and controlling when content changes the page geometry. The most frustrating movement often happens just as someone tries to click. Start by observing the page during loading and interaction rather than only reviewing a finished screenshot.\n\n## Reserve media space\nProvide dimensions or an appropriate aspect ratio for images and video. Keep placeholder and final media geometry consistent. Responsive layouts need to preserve the intended relationship between width and height at every breakpoint.\n\nTest missing and slow images. A card whose image disappears on failure can change the entire grid height. Decide whether the design should retain a stable placeholder or intentionally collapse the space in a controlled way.\n\n## Review font transitions\nDifferent font metrics can change line wrapping and push content down. Inspect headings, navigation, and buttons during font loading, especially at narrow widths where one extra line has a large effect.\n\nUse the framework's supported font loading approach and appropriate fallbacks. Avoid treating a font-loading setting as a universal fix; compare the actual fallback and final layout. The correct choice depends on the typeface and rendering strategy.\n\n## Keep dynamic insertions predictable\nConsent banners, promotions, review widgets, and asynchronously loaded notices can move important content. Prefer stable reserved regions or overlays designed with accessible dismissal and focus behavior when that fits the product.\n\nFor expandable content initiated by the user, make the interaction clear and preserve a sensible reading position. Do not use animation as a substitute for correct layout. Smooth movement can still be disruptive if it shifts the target someone is trying to activate.\n\n## Verify at different states\n- Load the page with a slow network and disabled cache.\n- Test long titles and localized text.\n- Open and close navigation and disclosures.\n- Simulate missing media and delayed widgets.\n- Check a narrow mobile viewport and larger text settings.\n\nUse performance tooling to identify layout-shift sources, then confirm the visual behavior manually. A metric improvement should correspond to a page that feels steadier. Track shared components so a fix in one template also benefits other routes without creating new clipping or overflow.\n\n## Further reading\nThe [CLS guide](https://web.dev/articles/cls) provides measurement context. Pair this work with [LCP image optimization](/blog/lcp-image-optimization-nextjs) so images become both faster and more stable.",
-    "image": "../public/assets/img/blogs/guides/prevent-layout-shift-images-fonts.svg",
-    "imageAlt": "Prevent Layout Shift from Images, Fonts and Dynamic Content — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Third-Party Script Performance Audit for Marketing Websites",
@@ -711,13 +828,16 @@
       "slug": "web-performance"
     },
     "tags": [
-      "Web Performance",
-      "third party scripts performance audit"
+      "Performance",
+      "Core Web Vitals"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A third-party script audit should explain the business purpose, loading cost, and ownership of every external widget. Analytics, chat, experimentation, and embedded media can accumulate long after their original campaigns end. Remove abandoned work before attempting complicated optimization.\n\n## Build an ownership inventory\nList each script, its provider, pages loaded, business owner, and required user interaction. Include scripts added through tag managers and CMS embeds. Inspect network activity because the code repository may not reveal everything injected at runtime.\n\nCheck whether two tools serve the same purpose. Duplicate analytics tags can distort reporting as well as consume resources. Confirm with the marketing owner before removing an active integration, and preserve the measurement requirements that matter to the business.\n\n## Measure under realistic conditions\nCompare key journeys with scripts enabled and selectively blocked in a controlled environment. Inspect download size, main-thread work, network contention, and interaction delay. Do not judge only by the external file's size; a small loader can fetch a large dependency chain.\n\nTest on a representative mobile profile. A widget that appears harmless on a fast workstation may compete with navigation and form interactions on slower devices. Record the trace and affected action so findings remain reproducible.\n\n## Choose the right treatment\n- Remove obsolete or duplicated integrations.\n- Limit widgets to pages where they add value.\n- Load optional embeds after a clear user action when appropriate.\n- Defer nonessential work without breaking required behavior.\n- Assign an owner and review date to new scripts.\n\nSome loading decisions interact with consent or contractual requirements. Follow the site's established policy and involve the responsible owner for changes. A performance audit should not quietly redefine data collection behavior.\n\n## Verify business behavior after changes\nCheck enquiry forms, analytics events, chat opening, video playback, and any experiments affected by loading order. Confirm that events are neither lost nor duplicated. A faster page with broken lead measurement is an incomplete result.\n\nCreate a small admission checklist for future widgets: purpose, owner, affected pages, performance evidence, and removal condition. This prevents the site from returning to the same state a few months later. The most maintainable optimization is often reducing the amount of work the page needs to do.\n\n## Further reading\nUse [Core Web Vitals prioritization](/blog/core-web-vitals-prioritization) to connect script work to user experience. Google's [web performance guidance](https://web.dev/learn/performance) provides background on loading and rendering costs.",
-    "image": "../public/assets/img/blogs/guides/third-party-script-performance-audit.svg",
-    "imageAlt": "Third-Party Script Performance Audit for Marketing Websites — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Sanity Content Modeling for a Blog Editors Can Maintain",
@@ -729,13 +849,16 @@
       "slug": "cms-engineering"
     },
     "tags": [
-      "CMS Engineering",
-      "Sanity blog content model"
+      "Sanity",
+      "Publishing"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A maintainable Sanity blog model should express editorial intent clearly and validate the fields the public site relies on. Treat the schema as part of the publishing interface. Optional fields, references, and defaults need a deliberate relationship with frontend fallback behavior.\n\n## Model the recurring concepts\nSeparate articles, authors, and categories when they have independent meaning. Keep article-specific data such as title, slug, excerpt, body, publication date, and SEO overrides together. Use references where editors need shared entities rather than repeated text copies.\n\nAvoid creating a new document type for every small string. The structure should make the editorial workflow easier, not force people through unnecessary screens. Review the actual tasks editors perform before designing a highly abstract model.\n\n## Validate the public contract\nRequire a stable slug and meaningful body. Add helpful limits for titles and excerpts, and validate image descriptions when an image conveys information. Explain why a field matters in the Studio description rather than leaving editors to infer frontend behavior.\n\nFor SEO overrides, distinguish optional customization from required content. The frontend should still derive useful metadata when the optional override is absent. A validation warning can guide editors without unnecessarily blocking a legitimate article.\n\n## Design for safe changes\n- Keep published slugs stable or plan redirects.\n- Preserve existing field names unless migration is deliberate.\n- Use explicit defaults for new optional behavior.\n- Check how references behave when linked documents are missing.\n- Test old documents against new frontend assumptions.\n\nA schema update does not automatically populate every existing document. If a new required field is introduced, plan migration or temporary fallback behavior. Otherwise an apparently simple Studio change can leave the public site with missing data.\n\n## Verify with an editor's task\nCreate, preview, publish, revise, and retire a sample article. Check the detail page, listing, related content, and generated metadata. Ask whether the Studio labels match the language the editor uses to describe the task.\n\nKeep the content model and query projection aligned. A field added to the schema cannot affect the public site if the query never returns it. Conversely, a frontend-only field that editors cannot manage undermines the goal of an editable CMS.\n\n## Further reading\n[Sanity's schema documentation](https://www.sanity.io/docs/schema-types) describes the modeling primitives. Pair this with [GROQ projection design](/blog/sanity-groq-query-projections) and [publishing verification](/blog/cms-publishing-workflow-checklist).",
-    "image": "../public/assets/img/blogs/guides/sanity-content-modeling-blog.svg",
-    "imageAlt": "Sanity Content Modeling for a Blog Editors Can Maintain — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Sanity GROQ Query Projections: Keep Blog Cards Fast and Consistent",
@@ -747,13 +870,16 @@
       "slug": "cms-engineering"
     },
     "tags": [
-      "CMS Engineering",
-      "Sanity GROQ query projections"
+      "Sanity",
+      "Publishing"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "GROQ projections define the content shape your frontend receives. Design separate card and detail projections so a listing does not fetch every article body. Share the fields that must stay consistent, such as slug, title, summary, image, and publication date.\n\n## Start from the rendering requirement\nList what a blog card actually displays and what its metadata needs. Fetch those fields and the specific referenced author or category data required. Avoid dereferencing large documents simply because they are connected to the article.\n\nKeep the detail projection explicit too. It can extend the card shape with the body and other article-only fields. This makes the relationship visible and reduces the chance that one route uses a different slug or date convention.\n\n## Parameterize filters\nUse query parameters for user-selected categories, tags, and slugs. Do not concatenate untrusted filter text into a query string. Define empty-filter behavior clearly so the all-articles view and filtered view use compatible semantics.\n\nCheck how missing references and optional arrays affect the result. An article with no category should not crash the listing. Related-content queries should exclude the current slug and handle an empty tag list without producing surprising matches.\n\n## Preserve one public content policy\n- Define what counts as a public article.\n- Reuse that filter across listing, detail, and slug queries.\n- Apply a stable ordering rule.\n- Make pagination or result limits visible.\n- Keep draft and published perspectives intentional.\n\nIf the application also bundles local articles, specify where they are merged and how a CMS document overrides the same slug. Independent fallback rules across routes can produce pages that exist but never appear in the sitemap or category filter.\n\n## Validate the returned shape\nUse representative documents: complete metadata, missing image, missing reference, empty tags, and an old document created before the latest schema changes. Inspect the actual result and render those cases in a production-like build.\n\nKeep TypeScript types aligned with what the projection returns, including flattened slugs and nullable values. Types help document the contract, but they do not validate arbitrary remote data by themselves. Preserve defensive handling at the boundary where missing fields are expected.\n\n## Further reading\n[How GROQ queries work](https://www.sanity.io/docs/content-lake/how-queries-work) explains projection and reference concepts. See [sitemap debugging](/blog/sitemap-missing-pages-debugging) for a common consequence of inconsistent public queries.",
-    "image": "../public/assets/img/blogs/guides/sanity-groq-query-projections.svg",
-    "imageAlt": "Sanity GROQ Query Projections: Keep Blog Cards Fast and Consistent — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "CMS Publishing Workflow Checklist: Preview, Publish and Verify Every View",
@@ -765,13 +891,16 @@
       "slug": "cms-engineering"
     },
     "tags": [
-      "CMS Engineering",
-      "CMS publishing workflow checklist"
+      "Sanity",
+      "Publishing"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A CMS publishing workflow should verify the public result across every view that uses the content. Clicking Publish confirms an editorial action, but it does not establish that caches, listings, and discovery routes all reflect the change.\n\n## Review before publishing\nCheck the title, stable slug, excerpt, headings, image description, links, and publication dates. Confirm that examples are clearly illustrative and claims have appropriate evidence. Preview the article at a narrow viewport as well as a desktop width.\n\nUse the preview environment intentionally. Draft content should be available to authorized editors without becoming a public indexable version. Keep preview controls and published routes clearly distinguishable so an editor does not mistake draft success for public delivery.\n\n## Publish one identifiable change\nFor a workflow test, use an edit that is easy to locate without altering the article's meaning. Record the document identifier and update time. Confirm that the published CMS response includes the change before investigating application caching.\n\nObserve the webhook or revalidation request and its response. Authentication failures and unsupported document types should be visible. Avoid logging full content payloads when a document reference and status are sufficient.\n\n## Verify the dependent views\n- Article detail includes the current body and metadata.\n- Blog cards show the correct title and excerpt.\n- Category and tag filters include the article appropriately.\n- Related content excludes the current article.\n- Sitemap and generated text routes use the intended canonical URL.\n\nCheck social image URLs if the featured image changes. A correct browser image does not necessarily mean the metadata points at a usable absolute resource. Keep date updates honest; publishing a formatting correction does not require pretending the article is newly written.\n\n## Test revision and retirement\nChange a slug only with a redirect plan. If content is unpublished or marked noindex, verify that discovery routes respond according to the site's policy. Local fallback content should not unexpectedly resurrect an intentionally retired CMS article.\n\nDocument the small sequence editors should follow and the technical contact for failed updates. A repeatable publishing checklist is more useful than requiring an editor to understand cache internals. The implementation should make the intended public outcome easy to confirm.\n\n## Further reading\nSee [Next.js revalidation debugging](/blog/nextjs-cache-revalidation-debugging) and [metadata consistency](/blog/nextjs-metadata-canonical-urls) when the public result differs from the CMS preview.",
-    "image": "../public/assets/img/blogs/guides/cms-publishing-workflow-checklist.svg",
-    "imageAlt": "CMS Publishing Workflow Checklist: Preview, Publish and Verify Every View — practical guide"
+    "image": "../public/assets/img/blogs/photos/planning.webp",
+    "imageAlt": "Two people mapping ideas on a whiteboard",
+    "imageCreditName": "Kaleidico",
+    "imageCreditUrl": "https://unsplash.com/photos/two-people-drawing-on-whiteboard-26MJGnCM0Wc",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "React Fetch Race Conditions: Stop Old Responses Replacing New Results",
@@ -783,13 +912,16 @@
       "slug": "frontend-engineering"
     },
     "tags": [
-      "Frontend Engineering",
-      "React fetch race condition"
+      "React",
+      "User experience"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A React fetch race happens when requests finish in a different order from the user's actions. A slow response for an old search can overwrite a newer result. Correctness requires tying each response to the request state that still matters.\n\n## Reproduce the ordering problem\nImagine a user searches for “react,” then quickly changes the query to “next.” The second request may finish first. If both responses simply set the same results state, the older “react” response can appear after the interface already shows “next” in the input.\n\nUse controlled response delays to reproduce this consistently. Random manual testing often misses the issue because network timing varies. Keep the input text, request identifier, and displayed result query visible in a development diagnostic view.\n\n## Manage request ownership\nWhen fetching in an effect, ensure its cleanup prevents an obsolete result from updating the active view. Cancellation can reduce wasted work, while a request identity or ignore mechanism can protect state updates where cancellation alone is insufficient.\n\nReact's [useEffect documentation](https://react.dev/reference/react/useEffect) includes guidance on fetching and cleanup. Depending on the application, a framework data-loading mechanism or established query library may handle some of this coordination more consistently.\n\n## Keep states related\nDo not let an old request clear the loading state for a new one. Error messages, pagination cursors, and total counts must belong to the same active request as the results. Otherwise the interface can combine data from several searches into one misleading screen.\n\nReset page state when filter identity changes, according to the product's navigation rules. If cached data is shown while refreshing, communicate that state deliberately rather than presenting it as a completed response to the current query.\n\n## Verify rapid interaction\n- Change the query before the first response finishes.\n- Return to a previous query with a cache hit.\n- Trigger an error for an obsolete request.\n- Navigate away while processing is pending.\n- Change filters and pagination in quick succession.\n\nInspect the final displayed query, results, count, and loading state together. A test that only checks whether a request was canceled can miss a stale state update elsewhere. Preserve keyboard focus and accessible loading feedback while fixing the ordering behavior.\n\n## Further reading\nSee [slow interaction debugging](/blog/inp-react-interaction-debugging) for performance analysis. Reliable search needs both responsive input and correct ownership of asynchronous results.",
-    "image": "../public/assets/img/blogs/guides/react-fetch-race-conditions.svg",
-    "imageAlt": "React Fetch Race Conditions: Stop Old Responses Replacing New Results — practical guide"
+    "image": "../public/assets/img/blogs/photos/code.webp",
+    "imageAlt": "Colorful programming code on a computer screen",
+    "imageCreditName": "Chris Ried",
+    "imageCreditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Accessible Contact Form Checklist: Errors, Focus and Reliable Submission",
@@ -801,13 +933,16 @@
       "slug": "frontend-engineering"
     },
     "tags": [
-      "Frontend Engineering",
-      "accessible contact form checklist"
+      "React",
+      "User experience"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "An accessible contact form helps people understand what to enter, recover from errors, and know whether submission succeeded. Visual polish cannot replace labels, useful feedback, and reliable server handling. Test the complete enquiry journey with a keyboard and realistic invalid inputs.\n\n## Make the fields understandable\nUse persistent labels associated with inputs. Add short instructions where a format or requirement is not obvious. Do not rely on placeholder text as the only label, because it disappears while typing and may be difficult to read.\n\nMark required fields consistently and ask only for information needed for the enquiry. Choose appropriate input types and autocomplete values. A small form that collects useful context is often easier to complete than a long qualification questionnaire.\n\n## Design recoverable errors\nValidate on the server even when the browser provides client-side checks. Return specific messages near affected fields and associate them programmatically. Preserve the user's valid entries after a failed submission.\n\nFor multiple errors, consider a focusable summary linking to the fields. Avoid moving focus unexpectedly on every keystroke. Announce submission results appropriately without forcing users to discover a small color change at the bottom of the page.\n\n## Prevent misleading success\n- Disable or guard repeated submissions while processing.\n- Give each accepted enquiry a stable identifier.\n- Confirm durable acceptance before showing success.\n- Handle email or CRM delivery failures through a recovery path.\n- Keep sensitive content out of broad error logs.\n\nA success banner should not mean only that an API handler started. If downstream delivery is asynchronous, the system needs responsibility for completing it. Distinguish customer acceptance from internal notification completion in the operating model.\n\n## Test the important states\nUse keyboard navigation, empty required fields, invalid email, long text, server failure, slow submission, and repeated clicks. Check that focus remains visible and the user can retry without losing the message. Test a narrow viewport and increased text size.\n\nVerify that the received enquiry contains the expected data and source reference. Browser-level success plus destination reconciliation provides stronger evidence than either alone. Keep a monitored fallback contact method visible when the form is business-critical.\n\n## Further reading\nThe [W3C forms tutorial](https://www.w3.org/WAI/tutorials/forms/) explains accessible form patterns. For downstream reliability, see [CRM lead routing](/blog/crm-lead-routing-automation).",
-    "image": "../public/assets/img/blogs/guides/accessible-contact-form-checklist.svg",
-    "imageAlt": "Accessible Contact Form Checklist: Errors, Focus and Reliable Submission — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Ecommerce Product Filters: Fast Results, Stable URLs and Clear Empty States",
@@ -819,13 +954,16 @@
       "slug": "frontend-engineering"
     },
     "tags": [
-      "Frontend Engineering",
-      "ecommerce product filter optimization"
+      "React",
+      "User experience"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Product filters should help customers narrow a catalog without losing context. Performance, URL state, and empty results all affect usability. A filter that responds instantly but applies the wrong combination of values is still broken.\n\n## Define the filter contract\nSpecify supported attributes, multi-select behavior, sorting, and how unavailable combinations are shown. Decide whether selecting two values within one attribute means either value or both. Keep those rules consistent between the interface and backend query.\n\nUse stable identifiers for filter values and preserve a meaningful URL representation when shareable state matters. Browser back and forward should restore the expected selection and results. Avoid making users reconstruct a long filter sequence after opening a product.\n\n## Keep requests coherent\nDebounce or coordinate rapid changes where appropriate, but preserve immediate control feedback. Associate responses with the active filter identity so an older result cannot overwrite a newer selection. Handle pagination resets deliberately when the result set changes.\n\nValidate query parameters on the server. Unknown values should have a controlled outcome instead of producing a malformed query or a confusing empty page. Keep canonical and indexing rules for filter combinations explicit.\n\n## Design the empty state\n- Show which filters are active.\n- Offer a clear way to remove one or all filters.\n- Distinguish no matches from a loading or network error.\n- Preserve the search term and navigation context.\n- Suggest a useful next step without inventing availability.\n\nAvoid automatically removing a customer's selections without explanation. If some filters become unavailable, explain their state and ensure keyboard users can understand it. A disabled checkbox with no context can be as confusing as an empty grid.\n\n## Measure the real interaction\nTest a large catalog, narrow viewport, slow response, rapid filter changes, and navigation back from a product. Inspect response size, query time, rendering work, and result correctness. Confirm that images reserve space as the grid updates.\n\nEvaluate outcomes such as successful product discovery and filter abandonment alongside performance signals. A fast interaction is valuable when it helps the customer reach a relevant product. Keep analytics events consistent so repeated renders do not inflate selection counts.\n\n## Further reading\nSee [React request races](/blog/react-fetch-race-conditions), [INP debugging](/blog/inp-react-interaction-debugging), and [canonical URL design](/blog/nextjs-metadata-canonical-urls) for the technical boundaries behind reliable filters.",
-    "image": "../public/assets/img/blogs/guides/ecommerce-product-filter-performance.svg",
-    "imageAlt": "Ecommerce Product Filters: Fast Results, Stable URLs and Clear Empty States — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Headless CMS vs WordPress: Choose for Your Editorial Team and Website",
@@ -837,13 +975,16 @@
       "slug": "cms-engineering"
     },
     "tags": [
-      "CMS Engineering",
-      "headless CMS vs WordPress"
+      "Sanity",
+      "Publishing"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Choose a headless CMS or WordPress by examining publishing needs, frontend flexibility, maintenance capacity, and total operating cost. Neither architecture automatically produces a faster or more discoverable website. The implementation and the team's ability to maintain it matter.\n\n## Start with editorial tasks\nList who creates content, who reviews it, how previews work, and how often layouts change. A team publishing ordinary pages may value a familiar integrated editor. A business distributing structured content across several frontends may benefit from a headless model.\n\nTest the actual editor experience with a representative article, service page, and reusable content block. Feature lists rarely reveal whether staff can confidently preview a change or recover from a mistaken edit.\n\n## Compare responsibility boundaries\nAn integrated CMS can provide a broad publishing system in one place, while plugins and custom themes still need maintenance. A headless arrangement separates content management from rendering, which can improve flexibility while adding frontend deployment and integration responsibilities.\n\nMap hosting, backups, updates, preview authentication, search, forms, and media handling. Ask who owns each piece. A proposal that prices only the frontend build understates the work needed to operate a complete publishing system.\n\n## Evaluate real constraints\n- Required content structures and reusable relationships.\n- Layout control needed by editors.\n- Preview and approval workflow.\n- Existing content migration and redirects.\n- Team skills and ongoing support budget.\n- Integration needs beyond the public website.\n\nAvoid selecting an architecture solely because a framework is fashionable. A highly customized system can be a poor fit when the client depends on frequent developer help for simple editorial changes.\n\n## Run a small proof of workflow\nBuild or demonstrate one content type from editing through publication. Measure how long common tasks take and document where technical support is needed. Inspect the public output for accessibility, performance, metadata, and cache refresh behavior.\n\nEstimate migration separately, including media, URL preservation, metadata, and historical content quality. The best option is the one that meets the site's needs with a support model the team can sustain. Revisit the choice when distribution channels or editorial responsibilities change materially.\n\n## Further reading\nUse [Sanity content modeling](/blog/sanity-content-modeling-blog) for a structured-content example and the [publishing checklist](/blog/cms-publishing-workflow-checklist) to compare complete editorial journeys.",
-    "image": "../public/assets/img/blogs/guides/headless-cms-vs-wordpress-business.svg",
-    "imageAlt": "Headless CMS vs WordPress: Choose for Your Editorial Team and Website — practical guide"
+    "image": "../public/assets/img/blogs/photos/workspace.webp",
+    "imageAlt": "Laptop and desktop monitor in a bright workspace",
+    "imageCreditName": "Domenico Loia",
+    "imageCreditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-beside-white-plastic-bottle-LybZOVwpYIo",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Internal Linking for Service Businesses: Connect Articles to Useful Next Steps",
@@ -855,13 +996,16 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "internal linking strategy service business"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "Internal linking should help a visitor move from a question to a relevant explanation or service. Begin with the relationship between pages, not a target number of links. A useful article can support a service page without turning every paragraph into a sales pitch.\n\n## Map the topic relationships\nGroup articles around genuine service problems. An automation audit article can lead to guides on duplicate prevention, alerting, and maintenance. Those guides can link back to the service that helps implement the work.\n\nKeep each article's purpose distinct. If several pages answer the same question with nearly identical content, adding more links does not resolve the overlap. Consolidate or differentiate them before building a complicated topic map.\n\n## Use descriptive links in context\nLink where the reader encounters a decision or needs a deeper explanation. “Idempotent workflow design” is more informative anchor text than “click here.” Keep the linked page's promise accurate so the next step feels like a continuation of the answer.\n\nAvoid forcing an exact keyword into every anchor. Natural descriptions often communicate the relationship better. Use ordinary crawlable links for important navigation and verify that they work without requiring a special interaction.\n\n## Connect discovery and conversion\n- Link foundational guides from relevant advanced articles.\n- Link specific troubleshooting steps where they solve a likely next problem.\n- Offer a service CTA after explaining the scope of help.\n- Keep the main blog and category navigation usable.\n- Remove links to retired routes or provide relevant redirects.\n\nRelated-post cards can supplement these links, but a generic block is not always as useful as an explanation placed at the exact point of need. Choose related content by topic relevance rather than only recency.\n\n## Audit for orphaned content\nCompare published article URLs with links from the listing and other relevant pages. A sitemap entry provides discovery information, but readers still need a navigable route. Review filtered and paginated listings to ensure older content remains accessible.\n\nMeasure whether visitors reach relevant next steps and whether important pages receive impressions. Internal links improve navigation and context; they do not guarantee top rankings. Keep improving the underlying answers and service clarity so the links connect genuinely useful material.\n\n## Further reading\nGoogle's [link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable) explain crawlable links and anchor text. See [service page content](/blog/service-page-content-that-converts) for making the destination useful.",
-    "image": "../public/assets/img/blogs/guides/internal-linking-service-blog-strategy.svg",
-    "imageAlt": "Internal Linking for Service Businesses: Connect Articles to Useful Next Steps — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Service Page Content That Converts: Scope, Evidence and Clear Pricing",
@@ -873,13 +1017,16 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "service page content checklist"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A useful service page explains who the service is for, the problem it addresses, the deliverable, and the next step. Search keywords help describe the offer, but they cannot substitute for a clear scope. A visitor should be able to decide whether an enquiry is worth making.\n\n## Describe one concrete problem\nFor an automation health check, say that you review one workflow for failures, duplicate actions, missing alerts, privacy risks, and unnecessary AI costs. This gives the buyer more information than a broad claim about transforming their business with technology.\n\nExplain the output: a short actionable audit, an implementation with acceptance checks, or a maintenance report. Avoid implying that every service includes all three. Distinct deliverables make the buying decision and eventual handoff easier.\n\n## Make price context explicit\nIf prices are illustrative, label them that way and state the currency. Explain which scope assumptions affect the final estimate. A monthly starting range should include a reminder that support hours and response expectations are agreed separately.\n\nDo not turn an estimate into a guarantee through structured data or a headline. Keep visible wording and machine-readable descriptions aligned. If subscriptions or third-party charges are additional, establish that during scoping rather than surprising the client later.\n\n## Use evidence honestly\n- Show relevant work with specific contributions.\n- Distinguish observed results from projected benefits.\n- Use real testimonials only with appropriate permission.\n- Explain the delivery process and acceptance criteria.\n- State the information needed for an initial enquiry.\n\nA small verified example can be more persuasive than an unsupported percentage improvement. If a case study cannot disclose client details, describe the technical challenge and the work accurately without inventing credentials or outcomes.\n\n## Make the next step easy\nPlace a clear contact action beside enough context to understand the offer. Ask for the workflow or business problem, connected tools, and desired outcome. Avoid making the first enquiry require a full technical specification.\n\nCheck the page at mobile widths and with keyboard navigation. Pricing, deliverables, and contact controls should remain readable without horizontal scrolling. After launch, review enquiry quality as well as volume; the page should attract work that matches the actual service.\n\n## Further reading\nSee the [automation offers](/#automation-offers) for an example of bounded service packages and [acceptance criteria](/blog/automation-project-acceptance-criteria) for making delivery verifiable.",
-    "image": "../public/assets/img/blogs/guides/service-page-content-that-converts.svg",
-    "imageAlt": "Service Page Content That Converts: Scope, Evidence and Clear Pricing — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   },
   {
     "title": "Search Console “Pages Not Indexed”: What to Check Before Writing More Content",
@@ -891,12 +1038,15 @@
       "slug": "technical-seo"
     },
     "tags": [
-      "Technical SEO",
-      "Google Search Console pages not indexed"
+      "SEO",
+      "Search"
     ],
-    "publishedAt": "2026-10-19T00:00:00.000Z",
+    "publishedAt": "2026-10-19T02:22:05+05:00",
     "markdown": "A “pages not indexed” count is a starting point for investigation, not a diagnosis. Some excluded URLs are duplicates, redirects, or intentionally unavailable pages. Focus on whether the important canonical pages are eligible, discoverable, and useful.\n\n## Open the reason breakdown\nIn the Page indexing report, inspect the reasons and example URLs behind the total. Group them by template and intended behavior. Do not assume that every excluded URL should become indexed.\n\nGoogle's [Page indexing report documentation](https://support.google.com/webmasters/answer/7440203) distinguishes legitimate exclusions from problems that need attention. Use URL Inspection for a particular important page and compare the reported state with what the site currently serves.\n\n## Separate technical and editorial investigation\nIf a key page has an unintended noindex directive, broken response, or incorrect canonical, fix the technical cause and verify the public result. If a URL is a deliberate filter combination or retired page, exclusion may be correct.\n\nFor pages that are accessible but not selected for indexing, inspect originality, duplication, internal links, and whether the page adds a distinct useful answer. Adding many similar articles can make the editorial problem larger rather than resolve it.\n\n## Compare performance at a useful level\n- Queries: what people searched when the site appeared.\n- Pages: which landing pages received impressions and clicks.\n- Countries and devices: which audiences saw the results.\n- Time periods: whether changes persist across comparable windows.\n- Indexing reasons: which important canonical URLs need action.\n\nA total click count alone does not identify the best keyword opportunity. A query with impressions and a relevant service page may deserve a clearer answer or title. A query unrelated to your services may bring traffic without suitable enquiries.\n\n## Create a measured action list\nPick a few important affected URLs. Record the current reason, intended behavior, proposed fix, and validation step. After deployment, inspect the live page, sitemap, canonical, and internal links. Request validation only where the report and fix support it.\n\nThen review outcomes over a sensible period. Indexing and rankings are not immediate guarantees. Use the evidence to improve a focused set of pages, and expand content where it answers a distinct audience question with enough substance to be worth visiting.\n\n## Further reading\nPair this investigation with [sitemap debugging](/blog/sitemap-missing-pages-debugging), [technical SEO auditing](/blog/technical-seo-audit-small-business), and [internal linking](/blog/internal-linking-service-blog-strategy).",
-    "image": "../public/assets/img/blogs/guides/search-console-pages-not-indexed.svg",
-    "imageAlt": "Search Console “Pages Not Indexed”: What to Check Before Writing More Content — practical guide"
+    "image": "../public/assets/img/blogs/photos/analytics.webp",
+    "imageAlt": "Performance analytics charts displayed on a laptop screen",
+    "imageCreditName": "Luke Chesser",
+    "imageCreditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+    "imageLicenseUrl": "https://unsplash.com/license"
   }
 ]

@@ -47,6 +47,8 @@ export const fallbackSettings: SiteSettings = {
     "/assets/img/zohaib-profile-portrait.webp",
     "Muhammad Zohaib Ramzan portrait"
   ),
+  conversionHeadline: "Fast websites. Reliable workflows. Less manual work.",
+  conversionDescription: "I help businesses turn slow websites and repetitive processes into clear, responsive web experiences and dependable automations. From Next.js and CMS development to API repairs, we start with the outcome your team needs.",
   heroHeadline:
     "Senior frontend developer building AI-native web products and automated systems.",
   heroDescription:

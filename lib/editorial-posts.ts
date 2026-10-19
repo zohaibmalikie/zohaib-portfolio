@@ -7,7 +7,7 @@ import type { Post } from "@/types/sanity";
 // The bundled editorial format intentionally supports paragraphs, h2/h3,
 // bullet/numbered lists and inline links. CMS content remains Portable Text.
 function toPortableText(markdown: string): PortableTextBlock[] {
-  return markdown.split(/\n\s*\n/).flatMap((paragraph, index) => {
+  return markdown.replace(/^(#{2,3} [^\n]+)\n(?!\n)/gm, "$1\n\n").split(/\n\s*\n/).flatMap((paragraph, index) => {
     const lines = paragraph.trim().split("\n");
     const isList = lines.every((line) => /^(?:- |\d+\. )/.test(line));
     return (isList ? lines : [paragraph]).map((text, itemIndex) => {
@@ -51,8 +51,11 @@ export const editorialPosts: Post[] = articles.map((article) => {
     slug: article.slug,
     excerpt: article.excerpt,
     mainImage: {
-      asset: { url: `/assets/img/blogs/guides/${article.slug}.svg` },
-      alt: article.imageAlt
+      asset: { url: article.image.replace("../public", "") },
+      alt: article.imageAlt,
+      creditName: article.imageCreditName,
+      creditUrl: article.imageCreditUrl,
+      licenseUrl: article.imageLicenseUrl
     },
     author: { name: "Muhammad Zohaib Ramzan", slug: "zohaib-ramzan" },
     category: article.category,

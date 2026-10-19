@@ -1,0 +1,24 @@
+{
+  "template": "One-workflow acceptance criteria",
+  "source": "https://www.zohaibramzan.com/tools",
+  "instructions": "Replace these synthetic examples with agreed business rules. This file defines proposed checks; it does not execute tests or prove a workflow passed.",
+  "workflow": {
+    "name": "Example enquiry-to-CRM workflow",
+    "owner": "Assign a responsible person",
+    "source": "Website form",
+    "destination": "CRM",
+    "businessKey": "submissionId",
+    "processingWindow": "Agree a target before implementation",
+    "excludedCases": ["Define unsupported inputs and accounts"]
+  },
+  "checks": [
+    {"id": "valid-enquiry", "input": {"submissionId": "synthetic-001", "email": "person@example.com", "region": "supported-region"}, "expected": "One correctly mapped and assigned destination record; completion reference is retained."},
+    {"id": "duplicate-delivery", "action": "Deliver synthetic-001 twice sequentially and concurrently.", "expected": "The intended business action occurs once; duplicate delivery is traceable."},
+    {"id": "missing-required-field", "action": "Submit a fixture missing a required contact field.", "expected": "No invalid CRM write; a visible review item with a reason and owner exists."},
+    {"id": "temporary-outage", "action": "Simulate an unavailable destination in a controlled environment.", "expected": "Bounded retries and an actionable alert; accepted work remains recoverable."},
+    {"id": "uncertain-write", "action": "Simulate loss of confirmation after a destination write.", "expected": "Recovery checks existing destination state before another create."},
+    {"id": "revoked-access", "action": "Use a controlled invalid test credential.", "expected": "An owner receives a redacted authorization failure and reconnect instructions."},
+    {"id": "handoff", "action": "Have another responsible person use the runbook with a synthetic failed record.", "expected": "They can identify completed actions and explain a safe recovery path."}
+  ],
+  "evidencePerCheck": ["configuration version", "synthetic input reference", "expected result", "observed destination result", "pass/fail", "reviewer", "date", "unresolved limitations"]
+}

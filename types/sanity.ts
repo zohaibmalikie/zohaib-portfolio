@@ -15,6 +15,9 @@ export type SanityImage = {
   };
   alt?: string;
   caption?: string;
+  creditName?: string;
+  creditUrl?: string;
+  licenseUrl?: string;
 };
 
 export type SeoFields = {
@@ -40,13 +43,22 @@ export type Author = {
 };
 
 export type Category = {
+  introParagraphs?: string[];
+  recommendedServiceSlugs?: string[];
+  featuredPostSlugs?: string[];
   _id?: string;
   title: string;
   slug?: string;
   description?: string;
 };
 
+export type ArticleFaq = { question: string; answer: string };
+export type ArticleVisualStep = { title: string; description: string };
+
 export type Post = {
+  useOriginalImage?: boolean;
+  faqs?: ArticleFaq[];
+  visualSteps?: ArticleVisualStep[];
   _id: string;
   title: string;
   slug: string;
@@ -87,6 +99,14 @@ export type Service = {
   title: string;
   slug: string;
   description?: string;
+  headline?: string;
+  audience?: string;
+  overview?: string[];
+  deliverables?: string[];
+  process?: { title: string; description: string }[];
+  faqs?: { question: string; answer: string }[];
+  relatedPostSlugs?: string[];
+  relatedProjectSlugs?: string[];
   offerLabel?: string;
   priceRange?: string;
   priceNote?: string;
@@ -123,6 +143,8 @@ export type SiteSettings = {
   logo?: SanityImage;
   profileImage?: SanityImage;
   heroHeadline?: string;
+  conversionHeadline?: string;
+  conversionDescription?: string;
   heroDescription?: string;
   email?: string;
   socialLinks?: SocialLink[];

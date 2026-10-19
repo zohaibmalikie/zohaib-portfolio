@@ -4,13 +4,15 @@ import { ArrowUpRight } from "lucide-react";
 import { ActionLink } from "@/components/ui/action-link";
 import { AnimatedText } from "@/components/ui/animated-text";
 import { Badge } from "@/components/ui/badge";
+import type { SiteSettings } from "@/types/sanity";
+import "@/components/growth-tools.css";
 
 export type HeroStat = {
   value: string;
   label: string;
 };
 
-export function Hero({ stats }: { stats: HeroStat[] }) {
+export function Hero({ stats, settings }: { stats: HeroStat[]; settings: SiteSettings }) {
   return (
     <section className="hero">
       <div className="grid-background" aria-hidden="true" />
@@ -21,25 +23,21 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
             <span aria-hidden="true" /> Available for new projects
           </Badge>
           <AnimatedText
-            className="hero-title-enter"
-            lines={[
-              { text: "Frontend" },
-              { text: "Developer", accent: true },
-              { text: "& Partner" }
-            ]}
+            className="hero-title-enter conversion-title"
+            lines={settings.conversionHeadline
+              ? [{ text: settings.conversionHeadline }]
+              : [{ text: "Fast websites." }, { text: "Reliable workflows.", accent: true }, { text: "Less manual work." }]}
           />
           <p className="hero-summary">
-            I build fast, SEO-friendly web experiences for SaaS, ecommerce, CMS,
-            and growing businesses using Next.js, React, SvelteKit, TypeScript,
-            Sanity, Vercel, technical SEO, GEO, AEO, structured data, and
-            AI-ready content architecture.
+            {settings.conversionDescription || "I help small businesses, SaaS teams, and ecommerce stores build better websites, connect their tools, and make everyday work run more smoothly."}
           </p>
+          <p className="hero-identity">{settings.name} · Frontend developer & automation partner</p>
           <div className="hero-actions">
-            <ActionLink href="/#work">
-              View My Work <ArrowUpRight size={16} aria-hidden="true" />
+            <ActionLink href="/services">
+              Explore Services <ArrowUpRight size={16} aria-hidden="true" />
             </ActionLink>
-            <ActionLink href="/#contact" variant="ghost">
-              Let&apos;s Talk
+            <ActionLink href="/work" variant="ghost">
+              See My Work
             </ActionLink>
           </div>
           <div className="hero-proof-grid">
@@ -54,7 +52,7 @@ export function Hero({ stats }: { stats: HeroStat[] }) {
         <div className="hero-banner">
           <Image
             src="/assets/img/banner.webp"
-            alt="Illustrated project banner showing modern web design"
+            alt="Zohaib Ramzan portrait alongside website interface previews"
             width={1200}
             height={620}
             sizes="(max-width: 768px) 100vw, 900px"

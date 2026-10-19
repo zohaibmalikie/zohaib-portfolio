@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
@@ -35,7 +36,7 @@ export function Services({ services }: { services: ServiceRow[] }) {
                   <Icon size={22} aria-hidden="true" />
                 </span>
                 <div>
-                  <h3>{service.title}</h3>
+                  <h3><Link href={/react|next|frontend/i.test(service.title) ? "/services/react-nextjs-frontends" : /seo|performance/i.test(service.title) ? "/services/technical-seo-performance" : "/services"}>{service.title}</Link></h3>
                   {service.description ? <p>{service.description}</p> : null}
                 </div>
               </StaggerItem>

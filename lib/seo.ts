@@ -22,6 +22,18 @@ export function getImageUrl(image?: SanityImage, width = 1200, height = 630) {
   }
 
   if (image.asset?.url) {
+    // GROQ projects resolved asset URLs, rather than _ref. Resize those CDN
+    // assets too so card images do not fetch multi-megabyte originals.
+    try {
+      const url = new URL(image.asset.url);
+      if (url.hostname === "cdn.sanity.io" && url.pathname.startsWith("/images/")) {
+        url.searchParams.set("w", String(width));
+        url.searchParams.set("h", String(height));
+        url.searchParams.set("fit", "crop");
+        url.searchParams.set("auto", "format");
+        return url.toString();
+      }
+    } catch { /* Local public assets keep their relative path. */ }
     return image.asset.url;
   }
 
@@ -70,8 +82,8 @@ export function buildMetadata({
     settings?.defaultSeoDescription ||
     "Frontend development, responsive UI, technical SEO, and CMS implementation for high-performing websites.";
   const resolvedUrl = absoluteUrl(path || "/");
-  const resolvedImage =
-    getImageUrl(image) || getImageUrl(settings?.defaultOpenGraphImage);
+  const imagePath = getImageUrl(image) || getImageUrl(settings?.defaultOpenGraphImage) || "/assets/img/social/site-card.png";
+  const resolvedImage = absoluteUrl(imagePath);
 
   const metadata: Metadata = {
     title: {
@@ -84,10 +96,10 @@ export function buildMetadata({
     robots: noIndex
       ? {
           index: false,
-          follow: false,
+          follow: true,
           googleBot: {
             index: false,
-            follow: false
+            follow: true
           }
         }
       : undefined,
@@ -126,7 +138,7 @@ export function buildMetadata({
       modifiedTime: modifiedDate,
       authors: author ? [author] : undefined,
       tags
-    } as any;
+    };
   }
 
   return metadata;

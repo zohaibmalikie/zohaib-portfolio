@@ -9,7 +9,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { formatProjectDate } from "@/lib/content-utils";
 import type { Project } from "@/types/sanity";
 
-const fallbackLabels = ["Marketplace Platform", "Operations Software", "Federation Platform"];
 
 export function Work({ projects }: { projects: Project[] }) {
   const visualProjects = projects.filter(
@@ -35,7 +34,7 @@ export function Work({ projects }: { projects: Project[] }) {
           </SectionHeading>
         </Reveal>
         <Stagger className="project-grid">
-          {featuredProjects.slice(0, 3).map((project, index) => (
+          {featuredProjects.slice(0, 3).map((project) => (
             <StaggerItem key={project._id}>
               <Link href={`/work/${project.slug}`} className="project-card">
                 <SanityImage
@@ -47,7 +46,7 @@ export function Work({ projects }: { projects: Project[] }) {
                 />
                 <div className="project-card-body">
                   <div className="project-meta">
-                    <span>{fallbackLabels[index] || "Case Study"}</span>
+                    <span>{project.servicesProvided?.[0] || "Website development"}</span>
                     {project.projectDate ? <span>{formatProjectDate(project.projectDate)}</span> : null}
                   </div>
                   <h3>{project.title}</h3>
