@@ -161,6 +161,30 @@ p {
   padding: clamp(60px, 7vw, 110px) 0;
 }
 
+/* Keep the long homepage in the DOM while deferring offscreen layout/paint.
+   The browser remembers each section's real height after rendering it. */
+.home-page > .section {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 1100px;
+}
+
+/* Resolve every preceding section's height before scrolling to a fragment. */
+.home-page:has(:target) > .section {
+  content-visibility: visible;
+}
+
+@media (max-width: 760px) {
+  .home-page > .section {
+    contain-intrinsic-block-size: auto 1800px;
+  }
+}
+
+@media print {
+  .home-page > .section {
+    content-visibility: visible;
+  }
+}
+
 .section-dark {
   background: var(--bg);
 }

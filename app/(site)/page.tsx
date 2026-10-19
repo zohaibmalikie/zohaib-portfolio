@@ -330,7 +330,7 @@ export default async function HomePage() {
   };
 
   return (
-    <main id="main-content" className="main">
+    <main id="main-content" className="main home-page">
       <JsonLd data={websiteSchema} />
       <JsonLd data={personSchema} />
       <JsonLd data={professionalServiceSchema} />
