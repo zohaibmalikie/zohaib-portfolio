@@ -16,7 +16,7 @@ function getSlug(slug?: WebhookPayload["slug"]) {
 }
 
 function getPathsForPayload(type?: string, slug?: string) {
-  const paths = new Set<string>();
+  const paths = new Set<string>(["/sitemap.xml", "/llms.txt", "/llms-full.txt"]);
 
   if (type === "post") {
     paths.add("/");
@@ -25,6 +25,7 @@ function getPathsForPayload(type?: string, slug?: string) {
   }
 
   if (type === "project") {
+    paths.add("/");
     paths.add("/work");
     if (slug) paths.add(`/work/${slug}`);
   }
@@ -33,10 +34,26 @@ function getPathsForPayload(type?: string, slug?: string) {
     paths.add("/");
   }
 
+  if (type === "service") {
+    paths.add("/services");
+    paths.add("/tools");
+    paths.add("/contact");
+    if (slug) paths.add(`/services/${slug}`);
+  }
+
+  if (type === "category" || type === "post") {
+    paths.add("/blog/topics");
+    if (type === "category" && slug) paths.add(`/blog/topics/${slug}`);
+  }
+
   if (type === "siteSettings") {
     paths.add("/");
     paths.add("/blog");
     paths.add("/work");
+    paths.add("/services");
+    paths.add("/contact");
+    paths.add("/tools");
+    paths.add("/blog/topics");
   }
 
   return Array.from(paths);
@@ -48,6 +65,8 @@ function getTagsForPayload(type?: string, slug?: string) {
   if (type === "post") {
     tags.add("posts");
     if (slug) tags.add(`post:${slug}`);
+  } else if (type === "category" || type === "author") {
+    tags.add("posts");
   } else if (type) {
     tags.add(type);
   }
@@ -102,6 +121,8 @@ export async function POST(request: NextRequest) {
     const type = payload._type;
     const slug = getSlug(payload.slug);
     const paths = getPathsForPayload(type, slug);
+    if (type === "post" || type === "category") revalidatePath("/blog/topics/[slug]", "page");
+    if (type === "siteSettings") revalidatePath("/", "layout");
     const tags = getTagsForPayload(type, slug);
 
     for (const tag of tags) {

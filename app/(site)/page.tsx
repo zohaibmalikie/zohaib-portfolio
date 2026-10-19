@@ -7,6 +7,7 @@ import { AutomationOffers } from "@/components/sections/automation-offers";
 import { BlogPreview } from "@/components/sections/blog-preview";
 import { Contact } from "@/components/sections/contact";
 import { FAQ } from "@/components/sections/faq";
+import { GrowthTools } from "@/components/sections/growth-tools";
 import { Hero, type HeroStat } from "@/components/sections/hero";
 import { Services, type ServiceRow } from "@/components/sections/services";
 import { TechMarquee } from "@/components/sections/tech-marquee";
@@ -145,11 +146,11 @@ function getHomeServices(services: Service[]) {
 export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
   return buildMetadata({
-    title: "Frontend, SEO, GEO and AEO Expert",
+    title: "Next.js Development & Workflow Automation | Zohaib Ramzan",
     description:
-      "Frontend, SEO, GEO, and AEO expert for fast Next.js, React, Sanity CMS, structured data, Core Web Vitals, and AI-ready websites.",
+      "Fast Next.js websites, practical workflow automation, and technical SEO for small businesses, SaaS teams, and ecommerce stores. Explore services and real projects.",
     path: "/",
-    image: settings.defaultOpenGraphImage || settings.profileImage,
+    image: settings.defaultOpenGraphImage || { asset: { url: absoluteUrl("/assets/img/social/site-card.png") }, alt: "Zohaib Ramzan — websites that work, workflows that last" },
     settings
   });
 }
@@ -215,10 +216,11 @@ export default async function HomePage() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": absoluteUrl("/#person"),
     name: settings.name,
     url: absoluteUrl("/"),
     jobTitle:
-      "Frontend Developer, SEO Expert, GEO Expert, AEO Expert, AI Automation and Integration Expert",
+      "Frontend Developer and Automation Partner",
     email: settings.email,
     knowsAbout: [
       "Frontend development",
@@ -240,6 +242,7 @@ export default async function HomePage() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
     name: settings.name,
     url: absoluteUrl("/"),
     description: settings.defaultSeoDescription || settings.heroDescription,
@@ -253,6 +256,7 @@ export default async function HomePage() {
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": absoluteUrl("/#service"),
     name: `${settings.name} Frontend and AI Automation Development`,
     url: absoluteUrl("/"),
     image: settings.profileImage?.asset?.url
@@ -301,7 +305,7 @@ export default async function HomePage() {
   const projectItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Featured frontend and AI case studies",
+    name: "Featured website development case studies",
     itemListElement: projects.map((project, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -333,10 +337,11 @@ export default async function HomePage() {
       {posts.length ? <JsonLd data={articleItemListSchema} /> : null}
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
 
-      <Hero stats={heroStats} />
+      <Hero stats={heroStats} settings={settings} />
       <TechMarquee technologies={technologyStack} />
       <Services services={getHomeServices(generalServices)} />
       <AutomationOffers offers={automationOffers} />
+      <GrowthTools />
       <Work projects={projects} />
       <BlogPreview posts={posts} />
       <About settings={settings} />

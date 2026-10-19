@@ -6,16 +6,15 @@ import type { SiteSettings } from "@/types/sanity";
 
 const navItems: NavItem[] = [
   { label: "Work", href: "/work" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/#about" },
-  { label: "FAQ", href: "/#faqs" },
-  { label: "Contact", href: "/#contact" }
+  { label: "Tools", href: "/tools" },
+  { label: "Contact", href: "/contact" }
 ];
 
 export function SiteHeader({ settings }: { settings: SiteSettings }) {
-  const hireHref = "/#contact";
-  const isExternalHireLink = /^https?:\/\//.test(hireHref);
+  const hireHref = "/contact";
 
   return (
     <header className="site-header">
@@ -30,14 +29,12 @@ export function SiteHeader({ settings }: { settings: SiteSettings }) {
         ))}
       </nav>
       <div className="header-actions">
-        <a
+        <Link
           href={hireHref}
           className="button button-primary button-small"
-          target={isExternalHireLink ? "_blank" : undefined}
-          rel={isExternalHireLink ? "noopener noreferrer" : undefined}
         >
-          Hire Me <ArrowUpRight size={14} aria-hidden="true" />
-        </a>
+          Discuss a project <ArrowUpRight size={14} aria-hidden="true" />
+        </Link>
         <MobileMenu navItems={navItems} hireHref={hireHref} />
       </div>
     </header>

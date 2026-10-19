@@ -1,0 +1,97 @@
+.service-pages { --service-line: rgba(255,255,255,.13); }
+.service-pages .page-hero { padding-bottom: 64px; }
+.service-pages .page-heading { max-width: 1000px; }
+.service-pages .lead { max-width: 770px; }
+.service-pages h2 { font-size: clamp(26px, 3.4vw, 43px); line-height: 1.18; letter-spacing: -.04em; }
+.service-catalogue { padding-top: 0; }
+.service-catalogue-heading { display: flex; justify-content: space-between; gap: 40px; margin-bottom: 34px; align-items: flex-end; }
+.service-catalogue-heading h2 { max-width: 520px; }
+.service-catalogue-heading p { max-width: 360px; color: var(--muted-2); font-size: 14px; }
+.service-offer-list { border-top: 1px solid var(--service-line); }
+.service-offer-row { display: grid; grid-template-columns: 45px minmax(0,1fr) 245px; gap: 28px; padding: 39px 0; border-bottom: 1px solid var(--service-line); }
+.service-number { color: var(--primary); font-family: var(--font-mono), monospace; font-size: 14px; padding-top: 6px; }
+.service-offer-row h3 { font-size: clamp(23px,2.5vw,31px); margin-bottom: 12px; line-height: 1.25; letter-spacing: -.035em; }
+.service-offer-row p { color: var(--muted-2); max-width: 660px; }
+.service-offer-row .service-audience { font-size: 14px; margin-top: 12px; }
+.service-text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--primary); font-size: 14px; margin-top: 20px; }
+.service-offer-price { border-left: 1px solid var(--service-line); padding-left: 28px; }
+.service-offer-price > span,.service-price-label { display: block; font-family: var(--font-mono),monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted-2); }
+.service-offer-price strong { font-size: 25px; display: block; margin: 10px 0; line-height: 1.3; }
+.service-offer-price p { font-size: 13px; }
+.service-bottom-cta { border-top: 1px solid var(--service-line); padding-top: 50px; display: flex; justify-content: space-between; align-items: center; gap: 45px; }
+.service-bottom-cta p:not(.eyebrow) { color: var(--muted-2); max-width: 590px; margin-top: 18px; }
+.service-bottom-cta .button { flex-shrink: 0; max-width: 400px; }
+.service-scope-section { padding-top: 0; }
+.service-scope-grid { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(280px,.8fr); gap: 80px; align-items: start; }
+.service-overview > p:not(.eyebrow) { font-size: 17px; line-height: 1.85; color: var(--muted-2); margin-top: 22px; }
+.service-scope-summary { background: var(--surface); border: 1px solid var(--service-line); border-top: 3px solid var(--primary); padding: 32px; }
+.service-scope-summary h2 { font-size: 21px; margin-bottom: 12px; }
+.service-scope-summary > p:not(.eyebrow) { color: var(--muted-2); font-size: 14px; }
+.service-price-label { margin-top: 32px; }
+.service-price { display: block; font-size: 32px; margin: 8px 0; line-height: 1.3; }
+.service-scope-summary .service-price-footnote { font-size: 12px !important; padding-top: 16px; border-top: 1px solid var(--service-line); margin-top: 20px; }
+.service-scope-summary .chip-list { margin-top: 24px; }
+.service-deliverables-grid,.service-faq-grid { display: grid; grid-template-columns: .85fr 1.25fr; gap: 90px; }
+.service-deliverables { list-style: none; margin: 0; padding: 0; }
+.service-deliverables li { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--service-line); color: var(--muted-2); }
+.service-deliverables li:first-child { padding-top: 0; }
+.service-deliverables svg { color: var(--primary); flex-shrink: 0; margin-top: 4px; }
+.service-section-title { margin-bottom: 38px; max-width: 760px; }
+.service-process { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--service-line); }
+.service-process li { display: grid; grid-template-columns: 65px 1fr; gap: 24px; padding: 27px 0; border-bottom: 1px solid var(--service-line); }
+.service-process h3 { font-size: 22px; margin-bottom: 8px; }
+.service-process p { color: var(--muted-2); max-width: 800px; }
+.service-related-work { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; }
+.service-project-link { display: block; min-width: 0; }
+.service-project-link > div { padding: 22px 0; }
+.service-project-link h3 { font-size: 23px; margin-bottom: 10px; }
+.service-project-link h3 svg,.service-reading h3 svg { color: var(--primary); vertical-align: middle; }
+.service-project-link p,.service-reading p { color: var(--muted-2); font-size: 15px; }
+.service-project-link .card-image { aspect-ratio: 800/460; object-fit: cover; width: 100%; border: 1px solid var(--service-line); }
+.service-faqs details { border-bottom: 1px solid var(--service-line); }
+.service-faqs details:first-child { border-top: 1px solid var(--service-line); }
+.service-faqs summary { padding: 22px 30px 22px 0; cursor: pointer; font-size: 18px; }
+.service-faqs details p { padding: 0 0 22px; color: var(--muted-2); line-height: 1.8; }
+.service-faqs details[open] summary { color: var(--primary); }
+.service-reading { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; }
+.service-reading > a { border-top: 2px solid var(--service-line); padding-top: 25px; }
+.service-reading h3 { font-size: 20px; line-height: 1.4; margin-bottom: 15px; }
+.service-pages a:focus-visible,.service-pages summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+.service-pages .service-text-link:hover,.service-pages h3 a:hover,.service-direct-contact a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 5px; }
+.service-contact-section { padding-top: 0; }
+.service-contact-grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.3fr); gap: 75px; align-items: start; }
+.service-contact-notes ol { padding: 0; list-style: none; counter-reset: contact-step; margin: 30px 0; }
+.service-contact-notes li { counter-increment: contact-step; position: relative; padding: 19px 0 19px 40px; border-top: 1px solid var(--service-line); }
+.service-contact-notes li::before { content: '0' counter(contact-step); position: absolute; left: 0; top: 22px; color: var(--primary); font-family: var(--font-mono),monospace; font-size: 12px; }
+.service-contact-notes li strong,.service-contact-notes li span { display: block; }
+.service-contact-notes li span { color: var(--muted-2); font-size: 14px; margin-top: 7px; }
+.service-contact-notes > p:not(.eyebrow) { color: var(--muted-2); font-size: 13px; }
+.service-direct-contact { margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--service-line); }
+.service-direct-contact h3 { font-size: 16px; margin-bottom: 15px; }
+.service-direct-contact a { display: flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 14px; overflow-wrap: anywhere; }
+.service-direct-contact a svg { flex-shrink: 0; }
+.service-contact-form { background: var(--surface); border: 1px solid var(--service-line); padding: 38px; }
+.service-contact-form > h2 { font-size: 27px; margin-bottom: 15px; }
+.service-contact-form > p { color: var(--muted-2); font-size: 14px; }
+.service-contact-form .service-selected-context a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.service-contact-form .enquiry-form-row { grid-template-columns: 1fr; }
+.service-contact-explanation { padding-top: 24px; border-top: 1px solid var(--service-line); font-size: 12px !important; margin-top: 24px; }
+@media(max-width:900px) {
+  .service-offer-row { grid-template-columns: 32px minmax(0,1fr); gap: 20px; }
+  .service-offer-price { grid-column: 2; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--service-line); }
+  .service-scope-grid,.service-contact-grid { gap: 35px; }
+  .service-deliverables-grid,.service-faq-grid { gap: 35px; grid-template-columns: 1fr 1.3fr; }
+  .service-contact-form { padding: 25px; }
+  .service-bottom-cta { align-items: flex-start; flex-direction: column; }
+}
+@media(max-width:650px) {
+  .service-catalogue-heading { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .service-catalogue-heading p { max-width: none; }
+  .service-scope-grid,.service-deliverables-grid,.service-faq-grid,.service-related-work,.service-reading,.service-contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .service-offer-row { padding: 30px 0; gap: 16px; }
+  .service-scope-summary { padding: 25px; }
+  .service-contact-form { padding: 22px; }
+  .service-process li { grid-template-columns: 35px 1fr; gap: 15px; }
+  .service-pages .page-hero { padding-bottom: 40px; }
+  .service-pages .breadcrumbs { font-size: 11px; }
+}

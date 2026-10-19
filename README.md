@@ -110,8 +110,18 @@ Set `NEXT_PUBLIC_SITE_URL` to the production domain. This controls canonical URL
 
 ## Bundled editorial guides and growth workflow
 
-The 50 practical guides in `content/editorial-articles.json` are merged with CMS posts by slug; CMS content wins for a matching slug. Their covers live in `public/assets/img/blogs/guides`. This keeps the site useful without a Sanity write connection. Topic filters and crawlable pagination organize the expanded collection.
+The 50 practical guides in `content/editorial-articles.json` are merged with CMS posts by slug; CMS content wins for a matching slug. Their active covers use the locally hosted licensed photography library in `public/assets/img/blogs/photos`; source/license records are in `content/blog-photography.json`. This keeps the site useful without a Sanity write connection. Topic filters and crawlable pagination organize the expanded collection.
 
 Run `npm run validate:content` to check article structure, schema limits, unique slugs/keywords, cover assets and internal article links. `node scripts/export-editorial-posts.mjs` prepares an optional import JSON in a temporary folder; use the existing importer in dry-run mode with configured author/category references before any CMS write. Existing published CMS articles are not overwritten automatically.
 
 See `docs/search-growth-plan.md` for the baseline, unmeasured keyword inventory and reporting priorities, and `docs/seo-automation.md` for the recurring publishing and maintenance workflow. Rankings and enquiry volume are goals rather than guarantees. The contact form prepares a WhatsApp message for visitor review and does not claim to save or deliver it.
+
+## Services, planning tools and topic hubs
+
+Five public service pages use `lib/service-content.ts` as editorial defaults, overridden by matching Sanity service documents. The new overview, deliverable, process, FAQ and related-link fields are editable in Studio. Curated category introductions and reading paths use `lib/topics.ts` with optional category overrides.
+
+`/tools` contains a deterministic service finder, a browser-based automation value calculator and two downloadable templates. `/contact?service=<slug>` carries a validated service selection into the WhatsApp enquiry flow. No test messages, backend lead storage, confirmed conversion tracking or external API calls are implied by the tools.
+
+The sitemap uses the same merged public content as the site and excludes noindex or externally canonicalized pages. Filter views remain crawlable to expose their noindex instruction. Social previews use absolute URLs, optimized WebP article photography and a branded PNG site card. See `docs/off-page-seo-plan.md` for verified opportunities and prepared outreach drafts; no third-party placements are claimed.
+
+Article FAQs, interactive visual walkthroughs, CMS image overrides and structured data are documented in `docs/blog-imagery-and-schema.md`.

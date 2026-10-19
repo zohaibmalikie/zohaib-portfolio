@@ -1,0 +1,10 @@
+.home-faq-disclosure.faq-row { display: block; }
+.home-faq-disclosure summary { display: grid; grid-template-columns: 72px 1fr 24px; gap: 24px; align-items: baseline; cursor: pointer; list-style: none; }
+.home-faq-disclosure summary::-webkit-details-marker { display: none; }
+.home-faq-disclosure summary::after { content: "+"; color: var(--primary); font-size: 1.3rem; justify-self: end; }
+.home-faq-disclosure[open] summary::after { content: "−"; }
+.home-faq-disclosure summary h3 { margin: 0; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.5; }
+.home-faq-number { color: var(--primary); font-family: var(--font-mono); font-size: .9rem; }
+.home-faq-disclosure.faq-row > p { margin: 18px 48px 0 96px; color: var(--muted-2); line-height: 1.8; }
+.home-faq-disclosure summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 8px; }
+@media (max-width: 600px) { .home-faq-disclosure summary { grid-template-columns: 30px 1fr 18px; gap: 14px; } .home-faq-disclosure.faq-row > p { margin: 18px 0 0 44px; } }

@@ -22,11 +22,24 @@ for (const article of articles) {
   assert((article.markdown.match(/^## /gm) || []).length >= 3, `${article.slug}: missing useful structure`);
   assert(!article.markdown.includes("@@ "), `${article.slug}: manuscript marker leaked`);
   wordCount += words;
-  await fs.access(path.join(root, "public/assets/img/blogs/guides", `${article.slug}.svg`));
+  await fs.access(path.resolve(root, "content", article.image));
 }
 for (const article of articles) {
   for (const match of article.markdown.matchAll(/\]\(\/blog\/([^)?#]+)\)/g)) {
     assert(slugs.has(match[1]), `${article.slug}: broken internal article link ${match[1]}`);
   }
 }
+const enrichments = JSON.parse(await fs.readFile(path.join(root, "content/blog-enrichment.json"), "utf8"));
+const questions = new Set();
+for (const [slug, entry] of Object.entries(enrichments)) {
+  assert(entry.faqs.length >= 2 && entry.visualSteps.length >= 3, `${slug}: missing article enhancements`);
+  for (const faq of entry.faqs) {
+    assert(faq.question.trim() && faq.answer.trim(), `${slug}: empty FAQ`);
+    assert(!questions.has(faq.question), `${slug}: repeated FAQ question`);
+    questions.add(faq.question);
+  }
+  assert(entry.visualSteps.every((step) => step.title.trim() && step.description.trim()), `${slug}: empty visual stage`);
+}
+for (const slug of slugs) assert(enrichments[slug], `${slug}: missing FAQs and visual stages`);
+console.log(`Validated ${Object.keys(enrichments).length} enriched articles and ${questions.size} unique FAQ questions.`);
 console.log(`Validated ${articles.length} articles, unique slugs/keywords, ${wordCount} words, covers, schema limits and internal article links.`);

@@ -1,3 +1,6 @@
+import { JsonLd } from "@/components/json-ld";
+import { absoluteUrl } from "@/lib/seo";
+
 import { draftMode } from "next/headers";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
@@ -31,6 +34,16 @@ export default async function SiteLayout({
 
   return (
     <>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          { "@type": "Person", "@id": absoluteUrl("/#person"), name: settings.name,
+            url: absoluteUrl("/"), image: settings.profileImage?.asset?.url,
+            sameAs: [settings.githubLink, settings.linkedinLink, settings.upworkLink].filter(Boolean) },
+          { "@type": "WebSite", "@id": absoluteUrl("/#website"), name: settings.name,
+            url: absoluteUrl("/"), inLanguage: "en", publisher: { "@id": absoluteUrl("/#person") } }
+        ]
+      }} />
       <SiteHeader settings={settings} />
       {children}
       <SiteFooter settings={settings} />

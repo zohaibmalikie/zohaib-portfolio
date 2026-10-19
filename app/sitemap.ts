@@ -1,110 +1,41 @@
 import type { MetadataRoute } from "next";
 
-import { mergePosts } from "@/lib/post-collections";
-
-import {
-  fallbackPosts,
-  fallbackProjects,
-  fallbackSettings
-} from "@/lib/fallback-data";
+import { isCanonicalPublicPage } from "@/lib/indexing";
 import { absoluteUrl, getImageUrl } from "@/lib/seo";
-import { hasSanityConfig } from "@/sanity/env";
-import { siteUrl } from "@/sanity/env";
-import { metadataClient } from "@/sanity/lib/client";
-import { POSTS_QUERY, PROJECTS_QUERY } from "@/sanity/lib/queries";
-import type { Post, Project } from "@/types/sanity";
-
-function url(path: string) {
-  return new URL(path, siteUrl).toString();
-}
+import { getTopics } from "@/lib/topics";
+import { getPosts, getProjects, getServices } from "@/sanity/lib/fetchers";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [posts, projects] = await Promise.all([
-    getSitemapData<Post[]>(POSTS_QUERY, fallbackPosts, {
-      category: null,
-      tag: null
-    }),
-    getSitemapData<Project[]>(PROJECTS_QUERY, fallbackProjects)
+  const [posts, projects, services, topics] = await Promise.all([
+    getPosts({ stega: false, publishedOnly: true }), getProjects({ stega: false }), getServices({ publishedOnly: true }), getTopics({ publishedOnly: true })
   ]);
-  const now = new Date();
-  const defaultImage = getImageUrl(fallbackSettings.defaultOpenGraphImage);
-
   return [
-    {
-      url: url("/"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1,
-      images: defaultImage ? [absoluteUrl(defaultImage)] : undefined
-    },
-    {
-      url: url("/blog"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8
-    },
-    {
-      url: url("/work"),
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8
-    },
-    ...mergePosts(posts, fallbackPosts).filter((post) => !post.seo?.noIndex && (!post.seo?.canonicalUrl || post.seo.canonicalUrl === url(`/blog/${post.slug}`) || post.seo.canonicalUrl === `/blog/${post.slug}`)).map((post) => ({
-      url: url(`/blog/${post.slug}`),
-      lastModified: post.updatedAt || post.publishedAt || now,
+    ...["/", "/services", "/work", "/blog", "/blog/topics", "/tools", "/contact"].map((path) => ({
+      url: absoluteUrl(path),
+      changeFrequency: "weekly" as const,
+      priority: path === "/" ? 1 : 0.8
+    })),
+    ...services.filter((service) => isCanonicalPublicPage(`/services/${service.slug}`, service.seo)).map((service) => ({
+      url: absoluteUrl(`/services/${service.slug}`), changeFrequency: "monthly" as const, priority: 0.8
+    })),
+    ...topics.map((topic) => ({ url: absoluteUrl(`/blog/topics/${topic.slug}`), changeFrequency: "weekly" as const, priority: 0.7 })),
+    ...posts.filter((post) => isCanonicalPublicPage(`/blog/${post.slug}`, post.seo)).map((post) => ({
+      url: absoluteUrl(`/blog/${post.slug}`),
+      lastModified: post.updatedAt || post.firstPublishedAt || post.publishedAt || undefined,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-      images: getSitemapImages(post.mainImage)
+      images: sitemapImages(post.mainImage)
     })),
-    ...projects.map((project) => ({
-      url: url(`/work/${project.slug}`),
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-      images: getSitemapImages(project.mainImage)
+    ...projects.filter((project) => isCanonicalPublicPage(`/work/${project.slug}`, project.seo)).map((project) => ({
+      url: absoluteUrl(`/work/${project.slug}`), changeFrequency: "monthly" as const, priority: 0.7, images: sitemapImages(project.mainImage)
     })),
-    {
-      url: url("/llms.txt"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.4
-    },
-    {
-      url: url("/llms-full.txt"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.4
-    },
-    {
-      url: url("/humans.txt"),
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.2
-    }
+    ...["/llms.txt", "/llms-full.txt", "/humans.txt"].map((path) => ({ url: absoluteUrl(path), changeFrequency: "monthly" as const, priority: 0.3 }))
   ];
 }
 
-async function getSitemapData<T>(
-  query: string,
-  fallback: T,
-  params: Record<string, string | null> = {}
-) {
-  if (!hasSanityConfig) return fallback;
-
-  try {
-    const data = await metadataClient.fetch<T>(query, params, {
-      next: {
-        tags: ["sitemap"]
-      }
-    });
-    return Array.isArray(data) && data.length === 0 ? fallback : data || fallback;
-  } catch (error) {
-    console.warn("Sanity sitemap fetch failed, using fallback data.", error);
-    return fallback;
-  }
-}
-
-function getSitemapImages(image: Parameters<typeof getImageUrl>[0]) {
-  const imageUrl = getImageUrl(image);
-  return imageUrl ? [absoluteUrl(imageUrl)] : undefined;
+function sitemapImages(image: Parameters<typeof getImageUrl>[0]) {
+  const value = getImageUrl(image);
+  // Next's metadata sitemap serializer writes image URLs verbatim. Escape
+  // query separators here so transformed Sanity URLs remain valid XML.
+  return value ? [absoluteUrl(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")] : undefined;
 }

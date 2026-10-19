@@ -62,7 +62,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         .map((post) => [post.category?.slug, post.category])
     ).values()
   );
-  const tags = Array.from(new Set(allPosts.flatMap((post) => post.tags || [])));
   const blogListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -113,6 +112,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="container">
+          <p><Link href="/blog/topics">Browse the topic guides →</Link></p>
           <div className="filter-bar">
             <Link href="/blog" aria-current={!filters.category && !filters.tag}>
               All
@@ -121,22 +121,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               category?.slug ? (
                 <Link
                   key={category.slug}
-                  href={`/blog?category=${category.slug}`}
+                  href={["automation-strategy", "automation-reliability", "api-integrations", "business-workflows", "ai-workflows", "technical-seo", "frontend-engineering", "web-performance", "cms-engineering"].includes(category.slug) ? `/blog/topics/${category.slug}` : `/blog?category=${category.slug}`}
                   aria-current={filters.category === category.slug}
                 >
                   {category.title}
                 </Link>
               ) : null
             )}
-            {tags.slice(0, 6).map((tag) => (
-              <Link
-                key={tag}
-                href={`/blog?tag=${encodeURIComponent(tag)}`}
-                aria-current={filters.tag === tag}
-              >
-                {tag}
-              </Link>
-            ))}
+
           </div>
 
           <p className="blog-result-count" aria-live="polite">

@@ -1,8 +1,6 @@
-import Link from "next/link";
+import { ProjectExplorer } from "@/components/project-explorer";
 
 import { JsonLd } from "@/components/json-ld";
-import { SanityImage } from "@/components/sanity-image";
-import { formatProjectDate } from "@/lib/content-utils";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { getProjects, getSiteSettings } from "@/sanity/lib/fetchers";
 
@@ -24,7 +22,7 @@ export default async function WorkPage() {
   const workListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Frontend and AI development case studies by Muhammad Zohaib Ramzan",
+    name: "Website development case studies by Muhammad Zohaib Ramzan",
     itemListElement: projects.map((project, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -60,50 +58,18 @@ export default async function WorkPage() {
         <div className="container">
           <p className="eyebrow">Work</p>
           <div className="page-heading">
-            <h1>Case studies with editable outcomes, stacks, and SEO.</h1>
+            <h1>Real projects. Thoughtful solutions.</h1>
           </div>
           <p className="lead">
-            Portfolio entries are powered by Sanity and structured around the
-            problem, role, solution, technologies, results, screenshots, and CTA.
+            Explore ecommerce experiences, content-managed websites, and application
+            interfaces. See the problem, my contribution, and the work delivered.
           </p>
         </div>
       </section>
 
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="container">
-          <div className="grid grid-3">
-            {projects.map((project) => (
-              <Link
-                href={`/work/${project.slug}`}
-                className="card project-card"
-                key={project._id}
-              >
-                <SanityImage
-                  image={project.mainImage}
-                  width={760}
-                  height={475}
-                  className="card-image"
-                />
-                <div className="card-body">
-                  {project.projectDate ? (
-                    <div className="project-meta">
-                      <span>Case Study</span>
-                      <span>{formatProjectDate(project.projectDate)}</span>
-                    </div>
-                  ) : null}
-                  <h2>{project.title}</h2>
-                  <p>{project.shortDescription}</p>
-                  <div className="chip-list">
-                    {project.techStack?.slice(0, 4).map((tech) => (
-                      <span className="tag" key={tech}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ProjectExplorer projects={projects} />
         </div>
       </section>
     </main>

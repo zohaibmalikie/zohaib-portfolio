@@ -11,7 +11,8 @@ const services = [
   { value: "other", label: "Something else" }
 ];
 
-export function EnquiryForm() {
+export function EnquiryForm({ defaultService = "" }: { defaultService?: string }) {
+  const initialService = services.some((service) => service.value === defaultService) ? defaultService : "";
   function continueInWhatsApp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -52,7 +53,7 @@ export function EnquiryForm() {
         </div>
         <div className="enquiry-field">
           <label htmlFor="enquiry-service">What do you need? <span>(required)</span></label>
-          <select id="enquiry-service" name="service" required defaultValue="">
+          <select id="enquiry-service" name="service" required defaultValue={initialService}>
             <option value="" disabled>Select a service</option>
             {services.map((service) => (
               <option key={service.value} value={service.value}>{service.label}</option>

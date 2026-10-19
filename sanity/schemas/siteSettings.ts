@@ -46,6 +46,8 @@ export const siteSettings = defineType({
         })
       ]
     }),
+    defineField({ name: "conversionHeadline", group: "hero", title: "Homepage outcome headline", type: "string", description: "A short headline about the value for clients, rather than a list of technologies." }),
+    defineField({ name: "conversionDescription", group: "hero", title: "Homepage client introduction", type: "text", rows: 3 }),
     defineField({
       name: "heroHeadline",
       title: "Hero headline",

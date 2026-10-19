@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
@@ -28,7 +29,7 @@ export function AutomationOffers({ offers }: { offers: Service[] }) {
                 <span className="automation-offer-number">0{index + 1}</span>
                 <span>{["Review", "Build & repair", "Maintain"][index]}</span>
               </div>
-              <h3>{offer.title}</h3>
+              <h3><Link href={`/services/${offer.slug}`}>{offer.title}</Link></h3>
               <p className="automation-offer-description">{offer.description}</p>
               <div className="automation-offer-pricing">
                 <p className="automation-offer-label">{offer.offerLabel}</p>
@@ -41,7 +42,8 @@ export function AutomationOffers({ offers }: { offers: Service[] }) {
                   <li key={benefit}><Check size={16} aria-hidden="true" />{benefit}</li>
                 ))}
               </ul>
-              <ActionLink href="#contact" variant="secondary" className="automation-offer-cta">
+              <Link href={`/services/${offer.slug}`} className="offer-details-link">Explore scope and deliverables <ArrowUpRight size={14} aria-hidden="true" /></Link>
+              <ActionLink href={`/contact?service=${offer.slug}`} variant="secondary" className="automation-offer-cta">
                 {["Discuss a health check", "Discuss your workflow", "Discuss ongoing support"][index]}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </ActionLink>

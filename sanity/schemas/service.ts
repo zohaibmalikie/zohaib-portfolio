@@ -32,6 +32,14 @@ export const service = defineType({
       group: "content",
       validation: (Rule) => Rule.required().max(320)
     }),
+    defineField({ name: "headline", title: "Page headline", type: "string", group: "content" }),
+    defineField({ name: "audience", title: "Who this is for", type: "text", rows: 3, group: "content" }),
+    defineField({ name: "overview", title: "Service overview paragraphs", type: "array", group: "content", of: [defineArrayMember({ type: "text" })] }),
+    defineField({ name: "deliverables", title: "Deliverables", type: "array", group: "content", of: [defineArrayMember({ type: "string" })] }),
+    defineField({ name: "process", title: "Delivery process", type: "array", group: "content", of: [defineArrayMember({ type: "object", fields: [defineField({ name: "title", type: "string", validation: (Rule) => Rule.required() }), defineField({ name: "description", type: "text", validation: (Rule) => Rule.required() })] })] }),
+    defineField({ name: "faqs", title: "Service questions", type: "array", group: "content", of: [defineArrayMember({ type: "object", fields: [defineField({ name: "question", type: "string", validation: (Rule) => Rule.required() }), defineField({ name: "answer", type: "text", validation: (Rule) => Rule.required() })] })] }),
+    defineField({ name: "relatedPostSlugs", title: "Related article slugs", type: "array", group: "content", of: [defineArrayMember({ type: "string" })] }),
+    defineField({ name: "relatedProjectSlugs", title: "Related case-study slugs", type: "array", group: "content", of: [defineArrayMember({ type: "string" })] }),
     defineField({
       name: "offerLabel",
       title: "Offer price label",

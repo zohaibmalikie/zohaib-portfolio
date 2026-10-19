@@ -87,8 +87,30 @@ export const post = defineType({
           name: "caption",
           title: "Caption",
           type: "string"
-        })
+        }),
+        defineField({ name: "creditName", title: "Photographer", type: "string" }),
+        defineField({ name: "creditUrl", title: "Original photo URL", type: "url" }),
+        defineField({ name: "licenseUrl", title: "License URL", type: "url" })
       ]
+    }),
+    defineField({ name: "useOriginalImage", title: "Use this article’s CMS cover", type: "boolean", group: "content", initialValue: false, description: "Use the uploaded main image instead of the site’s curated licensed photography. Supply accurate alt text and credits." }),
+    defineField({
+      name: "faqs", title: "Article FAQs", type: "array", group: "content",
+      description: "Specific questions answered by this article. Visible answers and structured data use the same content.",
+      validation: (Rule) => Rule.max(8),
+      of: [defineArrayMember({ type: "object", fields: [
+        defineField({ name: "question", type: "string", validation: (Rule) => Rule.required() }),
+        defineField({ name: "answer", type: "text", rows: 4, validation: (Rule) => Rule.required() })
+      ] })]
+    }),
+    defineField({
+      name: "visualSteps", title: "Interactive visual walkthrough", type: "array", group: "content",
+      description: "Three to five concise stages explaining this article's method. Avoid claims not supported in the article.",
+      validation: (Rule) => Rule.min(3).max(5),
+      of: [defineArrayMember({ type: "object", fields: [
+        defineField({ name: "title", type: "string", validation: (Rule) => Rule.required().max(70) }),
+        defineField({ name: "description", type: "text", rows: 3, validation: (Rule) => Rule.required() })
+      ] })]
     }),
     defineField({
       name: "author",
