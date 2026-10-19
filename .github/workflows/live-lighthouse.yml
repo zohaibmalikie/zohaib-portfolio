@@ -57,9 +57,12 @@ jobs:
           const report = JSON.parse(fs.readFileSync('reports/' + profile + '.report.json', 'utf8'));
           if (report.runtimeError) throw new Error(report.runtimeError.message);
           const rows = Object.values(report.categories).map(category => '| ' + category.title + ' | ' + Math.round(category.score * 100) + ' |');
+          const metrics = ['first-contentful-paint', 'largest-contentful-paint', 'total-blocking-time', 'cumulative-layout-shift', 'speed-index']
+            .map(key => '| ' + report.audits[key].title + ' | ' + report.audits[key].displayValue + ' |');
           const summary = '## ' + profile + ' — live Lighthouse\n\n' +
             'Target: ' + report.finalDisplayedUrl + '\n\n' +
             '| Category | Score |\n| --- | ---: |\n' + rows.join('\n') +
+            '\n\n| Metric | Measured value |\n| --- | ---: |\n' + metrics.join('\n') +
             '\n\nA successful job means the audit completed; it does not mean every category scored 100. These are lab measurements, not guaranteed field performance or Google PageSpeed results.\n';
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
           console.log(summary);
