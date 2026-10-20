@@ -2,6 +2,7 @@ import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 
 import { EnquiryForm } from "@/components/enquiry-form";
 import { ActionLink } from "@/components/ui/action-link";
+import { LinkedInIcon } from "@/components/ui/linkedin-icon";
 import { Container } from "@/components/ui/container";
 import type { SiteSettings } from "@/types/sanity";
 
@@ -45,7 +46,7 @@ export function Contact({ settings }: { settings: SiteSettings }) {
                 target="_blank"
                 rel="me noopener noreferrer"
               >
-                LinkedIn <ArrowUpRight size={17} aria-hidden="true" />
+                <LinkedInIcon size={17} /> LinkedIn <ArrowUpRight size={17} aria-hidden="true" />
               </ActionLink>
             ) : null}
           </div>

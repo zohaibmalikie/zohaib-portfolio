@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LinkedInIcon } from "@/components/ui/linkedin-icon";
 
 import type { SiteSettings } from "@/types/sanity";
 
@@ -47,6 +48,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             target="_blank"
             rel="me noopener noreferrer"
           >
+            {/^https?:\/\/(?:www\.)?linkedin\.com(?:\/|$)/i.test(link.url) ? <LinkedInIcon size={16} /> : null}
             {link.label}
           </a>
         ))}

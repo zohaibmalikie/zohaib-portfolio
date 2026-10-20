@@ -1608,6 +1608,12 @@ p {
   font-size: 0.86rem;
 }
 
+.social-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .draft-mode-button {
   position: fixed;
   right: 18px;
