@@ -2,7 +2,7 @@
 
 Date: 20 October 2026 (Asia/Karachi). Site: https://www.zohaibramzan.com/. Working branch: `codex/technical-seo-audit`.
 
-**Release authorized by the owner on 20 October 2026:** “publish all of them.” The reviewed technical SEO implementation, performance changes and five service-buyer guides are approved for production release. The earlier audit brief required explicit authorization; this subsequent approval satisfies that requirement. The pre-release production commit was `a0874c06978f739fe9b539019c3e638bac973682`. Sections below preserve the evidence and local/publication limits as recorded during the audit; final release confirmation must match the intended Git revision and READY deployment on the real domain. Exact release verification is recorded in ignored `.seo-reports/` and the chat. No ranking, field-performance or enquiry-volume guarantee is implied.
+**Published and verified on 20 October 2026.** The owner explicitly approved “publish all of them.” PR #10 merged as `33043b8892a9b1f9484f3210c65313054c540d4a`; production deployment `dpl_9iiSTjBgn5xVdHmms9pWaDqnpmhL` reached READY on `www.zohaibramzan.com` and `zohaibramzan.com`. All reviewed product changes and five buyer guides are live. Earlier local/unpublished statements below describe the audit's historical validation stages; the original release hold is satisfied and lifted. Private traffic/enquiry reports remain excluded. Final publication evidence and limitations follow at the end. No ranking or enquiry-volume guarantee is implied.
 
 ## Project discovery
 
@@ -382,3 +382,9 @@ Mobile LCP is still slightly above 2.5 seconds. The earlier 2.8-second result re
 Validation passed again: lint, TypeScript, production build, content validation, five SEO regression tests, 140-page canonical HTTP audit and 132-page content/schema crawl. Mobile keyboard menu open/Escape close, service-finder selection to the SEO service, native FAQ expansion and overflow checks passed. No messages were sent. The release remains unpublished under the supplied brief.
 
 Release addendum: the owner subsequently approved all reviewed changes and guides. Earlier “unpublished” statements describe their status at validation time; they are not a renewed permission requirement. Private metrics remain excluded from the release.
+
+## Production publication verification
+
+Published through merged [PR #10](https://github.com/zohaibmalikie/zohaib-portfolio/pull/10), with the deployed revision verified through Vercel domain aliases. The live HTTP audit passed 132 sitemap pages, 140 canonical pages and 149 internal destinations with no checked errors or orphans. The content crawl verified 105 articles and 255 FAQ/schema answer pairs. All five new guides and individual WebP assets returned HTTP 200. The live contact journey selected `website-or-seo` for the frontend service, exposed email and WhatsApp links and had no sampled mobile overflow; no message was submitted. Short-window runtime error inspection returned no clusters. This is not ongoing error monitoring or confirmed enquiry tracking.
+
+[Independent production Lighthouse run](https://github.com/zohaibmalikie/zohaib-portfolio/actions/runs/39431294210): desktop performance 100, mobile 87; accessibility, best practices and SEO 100 on both. Mobile LCP 2.2 seconds, TBT 460 ms, CLS 0; desktop LCP 0.5 seconds, TBT 40 ms, CLS 0. The completed cloud run does not establish 100 mobile performance or field INP. Local mobile 97 is retained as separate diagnostic evidence. Main-thread blocking remains an optimization item; no field Core Web Vitals pass is asserted.

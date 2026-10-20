@@ -32,3 +32,5 @@ Run `npm run validate:content`, `npm run lint`, `npm run typecheck` and `npm run
 Local verification passed: 132 public pages, 105 articles and 255 matching visible/schema FAQ answers. All five service backlinks, service/enquiry links and sitemap/full discovery entries passed. Content validation confirms 105 distinct cover hashes and 224 unique enrichment questions. Lint, TypeScript and production build passed. Mobile cover zoom/Escape, walkthrough selection, FAQ expansion and desktop/mobile layouts were checked before release.
 
 Publication authorization: the owner approved all five guides on 20 October 2026. The release uses that first-publication date; verify live routes and deployed revision before reporting completion.
+
+Publication verified: all five guides and their unique cover assets returned HTTP 200 on the production domain after PR #10 / commit `33043b8` reached READY. The site now renders 105 articles. The live content/schema crawl passed.
