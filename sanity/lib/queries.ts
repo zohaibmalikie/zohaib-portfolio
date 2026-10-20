@@ -49,6 +49,8 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     logo { ${imageProjection} },
     profileImage { ${imageProjection} },
     heroHeadline,
+    professionalHeadline,
+    professionalSummary,
     conversionHeadline,
     conversionDescription,
     remoteCollaboration { heading, description, faqs[]{question, answer} },
@@ -138,6 +140,7 @@ export const SERVICE_PROJECTION = `
   faqs[] { question, answer },
   relatedPostSlugs,
   relatedProjectSlugs,
+  relatedServiceSlugs,
   _id,
   title,
   "slug": slug.current,
@@ -232,7 +235,7 @@ export const PROJECTS_QUERY = defineQuery(`
 `);
 
 export const PROJECT_QUERY = defineQuery(`
-  *[_type == "project" && slug.current == $slug][0] {
+  *[_type == "project" && slug.current in [$slug, $legacySlug]] | order((slug.current == $slug) desc)[0] {
     ${PROJECT_DETAIL_PROJECTION}
   }
 `);

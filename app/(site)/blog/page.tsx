@@ -1,3 +1,5 @@
+import { isCanonicalPublicPage } from "@/lib/indexing";
+import { parseBlogPage } from "@/lib/pagination";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,11 +13,6 @@ import { getPosts, getSiteSettings } from "@/sanity/lib/fetchers";
 export const revalidate = 3600;
 const PAGE_SIZE = 12;
 
-function getPage(value?: string) {
-  const page = Number(value);
-  return Number.isSafeInteger(page) && page > 0 ? page : 1;
-}
-
 type BlogPageProps = {
   searchParams: Promise<{
     category?: string;
@@ -27,13 +24,17 @@ type BlogPageProps = {
 export async function generateMetadata({ searchParams }: BlogPageProps) {
   const filters = await searchParams;
   const isFiltered = Boolean(filters.category || filters.tag);
-  const page = getPage(filters.page);
+  const page = parseBlogPage(filters.page);
+  if (page === null) notFound();
   const settings = await getSiteSettings({ stega: false });
 
   return buildMetadata({
     title: isFiltered ? "Filtered Blog Articles" : page > 1 ? `Blog — Page ${page}` : "Automation, Frontend & Technical SEO Guides",
-    description:
-      "Practical guides to workflow automation, API integration repair, AI costs, Next.js, Sanity CMS, technical SEO, and web performance.",
+    description: isFiltered
+      ? "Browse guides matching your selected topic, or explore curated paths for automation, development and technical SEO."
+      : page > 1
+        ? `Page ${page} of practical automation, API integration, Next.js and technical SEO guides. Browse supporting articles and relevant development services.`
+        : "Practical guides to workflow automation, API integration repair, AI costs, Next.js, Sanity CMS, technical SEO, and web performance.",
     path: page > 1 ? `/blog?page=${page}` : "/blog",
     settings,
     noIndex: isFiltered
@@ -42,9 +43,10 @@ export async function generateMetadata({ searchParams }: BlogPageProps) {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const filters = await searchParams;
-  const allPosts = await getPosts();
+  const allPosts = (await getPosts()).filter((post) => isCanonicalPublicPage(`/blog/${post.slug}`, post.seo));
   const matchingPosts = allPosts.filter((post) => matchesPostFilters(post, filters.category, filters.tag));
-  const page = getPage(filters.page);
+  const page = parseBlogPage(filters.page);
+  if (page === null) notFound();
   const pageCount = Math.max(1, Math.ceil(matchingPosts.length / PAGE_SIZE));
   if (page > pageCount) notFound();
   const posts = matchingPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);

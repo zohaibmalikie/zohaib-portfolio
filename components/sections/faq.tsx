@@ -1,7 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { Faq } from "@/types/sanity";
-import "@/components/sections/faq.css";
 
 export function FAQ({ faqs }: { faqs: Faq[] }) {
   if (!faqs.length) return null;

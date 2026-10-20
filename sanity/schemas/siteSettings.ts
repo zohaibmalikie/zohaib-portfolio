@@ -52,6 +52,8 @@ export const siteSettings = defineType({
         })
       ]
     }),
+    defineField({ name: "professionalHeadline", title: "Professional homepage H1", type: "string", group: "hero", initialValue: "Senior Next.js & SvelteKit Developer for SaaS and Ecommerce", description: "The main visible heading. Use an accurate role and client focus.", validation: (Rule) => Rule.max(120) }),
+    defineField({ name: "professionalSummary", title: "Professional homepage introduction", type: "text", group: "hero", rows: 3, validation: (Rule) => Rule.max(320) }),
     defineField({ name: "conversionHeadline", group: "hero", title: "Homepage outcome headline", type: "string", description: "A short headline about the value for clients, rather than a list of technologies." }),
     defineField({ name: "conversionDescription", group: "hero", title: "Homepage client introduction", type: "text", rows: 3 }),
     defineField({

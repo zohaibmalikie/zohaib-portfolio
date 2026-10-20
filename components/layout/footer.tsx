@@ -1,5 +1,4 @@
 import Link from "next/link";
-import "@/components/growth-tools.css";
 
 import type { SiteSettings } from "@/types/sanity";
 

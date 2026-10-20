@@ -39,6 +39,7 @@ export const service = defineType({
     defineField({ name: "process", title: "Delivery process", type: "array", group: "content", of: [defineArrayMember({ type: "object", fields: [defineField({ name: "title", type: "string", validation: (Rule) => Rule.required() }), defineField({ name: "description", type: "text", validation: (Rule) => Rule.required() })] })] }),
     defineField({ name: "faqs", title: "Service questions", type: "array", group: "content", of: [defineArrayMember({ type: "object", fields: [defineField({ name: "question", type: "string", validation: (Rule) => Rule.required() }), defineField({ name: "answer", type: "text", validation: (Rule) => Rule.required() })] })] }),
     defineField({ name: "relatedPostSlugs", title: "Related article slugs", type: "array", group: "content", of: [defineArrayMember({ type: "string" })] }),
+    defineField({ name: "relatedServiceSlugs", title: "Related service slugs", type: "array", group: "content", of: [defineArrayMember({ type: "string" })] }),
     defineField({ name: "relatedProjectSlugs", title: "Related case-study slugs", type: "array", group: "content", of: [defineArrayMember({ type: "string" })] }),
     defineField({
       name: "offerLabel",

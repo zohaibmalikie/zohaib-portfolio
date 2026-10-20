@@ -52,14 +52,14 @@ export function About({ settings }: { settings: SiteSettings }) {
           <Reveal delay={0.12}>
             <div className="about-copy">
               <p>
-                I&apos;m Muhammad Zohaib Ramzan, a senior frontend developer with 5+ years building
+                I&apos;m Muhammad Zohaib Ramzan, a senior full stack SaaS and AI developer with 5+ years building
                 high-quality, responsive, and user-friendly interfaces. I work
                 closely with designers, back-end teams, founders, and marketing
                 teams to turn complex requirements into clean, maintainable code.
               </p>
               <p>
-                My work focuses on premium frontend development, CMS architecture,
-                AI integrations, technical SEO, Core Web Vitals, and conversion
+                My work includes Next.js, React and SvelteKit development, CMS architecture,
+                SaaS applications, API and AI integrations, technical SEO, and conversion
                 details that help SaaS, ecommerce, and growing businesses ship
                 with confidence.
               </p>

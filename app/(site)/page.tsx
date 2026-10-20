@@ -36,7 +36,7 @@ const technologyStack = [
   "Webflow",
   "React Native",
   "GraphQL",
-  "Svelte",
+  "SvelteKit",
   "Elementor",
   "Divi",
   "Material UI",
@@ -147,9 +147,9 @@ export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
   return buildMetadata({
     keywords: settings.defaultSeoKeywords?.length ? settings.defaultSeoKeywords : ["freelance Next.js developer", "workflow automation consultant", "API integration repair", "Sanity CMS development"],
-    title: "Freelance Next.js Developer & Automation | Zohaib Ramzan",
+    title: "Freelance Next.js & SvelteKit Developer | Zohaib Ramzan",
     description:
-      "Remote Next.js development, workflow automation and API repair for US, UK and European businesses. Explore real work, clear scopes and practical next steps.",
+      "Hire Muhammad Zohaib Ramzan for Next.js, React, SvelteKit and SaaS development. Building fast websites, ecommerce platforms and reliable AI integrations.",
     path: "/",
     image: settings.defaultOpenGraphImage || { asset: { url: absoluteUrl("/assets/img/social/site-card.png") }, alt: "Zohaib Ramzan — websites that work, workflows that last" },
     settings
@@ -221,7 +221,7 @@ export default async function HomePage() {
     name: settings.name,
     url: absoluteUrl("/"),
     jobTitle:
-      "Frontend Developer and Automation Partner",
+      "Senior Full Stack SaaS & AI Developer",
     email: settings.email,
     knowsAbout: [
       "Frontend development",
@@ -234,6 +234,8 @@ export default async function HomePage() {
       "Core Web Vitals",
       "AI search optimization",
       "Next.js",
+      "SvelteKit",
+      "SaaS application development",
       "React",
       "Sanity CMS"
     ],
@@ -333,6 +335,7 @@ export default async function HomePage() {
     <main id="main-content" className="main home-page">
       <JsonLd data={websiteSchema} />
       <JsonLd data={personSchema} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "ProfilePage", "@id": absoluteUrl("/#profile"), url: absoluteUrl("/"), name: `${settings.name} — developer portfolio`, mainEntity: { "@id": absoluteUrl("/#person") }, isPartOf: { "@id": absoluteUrl("/#website") } }} />
       <JsonLd data={professionalServiceSchema} />
       {projects.length ? <JsonLd data={projectItemListSchema} /> : null}
       {posts.length ? <JsonLd data={articleItemListSchema} /> : null}

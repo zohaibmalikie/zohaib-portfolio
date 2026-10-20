@@ -4,13 +4,13 @@ import { getSiteSettings } from "@/sanity/lib/fetchers";
 export const revalidate = 3600;
 
 export async function GET() {
-  const settings = await getSiteSettings({ stega: false });
+  const settings = await getSiteSettings({ stega: false, publishedOnly: true });
 
   return new Response(
     `
 /* TEAM */
 Owner: ${settings.name}
-Role: Frontend developer
+Role: Senior Full Stack SaaS & AI Developer
 Site: ${absoluteUrl("/")}
 ${settings.email ? `Contact: ${settings.email}` : ""}
 ${settings.linkedinLink ? `LinkedIn: ${settings.linkedinLink}` : ""}

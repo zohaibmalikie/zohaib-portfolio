@@ -6,16 +6,17 @@ import { ArrowUpRight } from "lucide-react";
 import { SanityImage } from "@/components/sanity-image";
 import { formatProjectDate } from "@/lib/content-utils";
 import type { Project } from "@/types/sanity";
-import "@/components/growth-tools.css";
 
 const categories = [
   { label: "Ecommerce", pattern: /ecommerce|e-commerce|commerce|catalog|storefront/i },
   { label: "CMS", pattern: /\bcms\b|sanity|wordpress|webflow|content management/i },
   { label: "Web apps", pattern: /application|web app|dashboard|saas|software/i }
 ];
-const matches = (project: Project, pattern: RegExp) => pattern.test([project.title, project.shortDescription, ...(project.servicesProvided || []), ...(project.techStack || [])].join(" "));
+export type ExplorerProject = Pick<Project, "_id" | "title" | "slug" | "shortDescription" | "projectDate" | "mainImage" | "techStack" | "servicesProvided" | "results">;
 
-export function ProjectExplorer({ projects }: { projects: Project[] }) {
+const matches = (project: ExplorerProject, pattern: RegExp) => pattern.test([project.title, project.shortDescription, ...(project.servicesProvided || []), ...(project.techStack || [])].join(" "));
+
+export function ProjectExplorer({ projects }: { projects: ExplorerProject[] }) {
   const [active, setActive] = useState("All");
   const available = categories.filter((category) => projects.some((project) => matches(project, category.pattern)));
   const category = available.find((item) => item.label === active);

@@ -43,7 +43,7 @@ export const seo = defineType({
       name: "focusKeyword",
       title: "Focus keyword",
       type: "string",
-      description: "The main search phrase this article should target."
+      description: "The main search phrase this page should target."
     }),
     defineField({
       name: "keywords",
@@ -59,14 +59,14 @@ export const seo = defineType({
       title: "Canonical URL",
       type: "url",
       description:
-        "Optional. Use only when this article should point search engines to a different canonical URL."
+        "Optional. Use only when this page should point search engines to a different canonical URL."
     }),
     defineField({
       name: "noIndex",
       title: "No index",
       type: "boolean",
       description:
-        "Turn on only when this article should not appear in search engines.",
+        "Turn on only when this page should not appear in search engines.",
       initialValue: false
     }),
     defineField({

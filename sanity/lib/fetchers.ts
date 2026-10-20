@@ -1,3 +1,4 @@
+import { isCanonicalPublicPage } from "@/lib/indexing";
 import { enrichPost } from "@/lib/blog-enrichment";
 import { withBlogPhotography } from "@/lib/blog-photography";
 
@@ -26,6 +27,7 @@ import {
   POST_SLUGS_QUERY,
   POSTS_QUERY,
   PROJECTS_QUERY,
+  PROJECT_QUERY,
   SITE_SETTINGS_QUERY,
   SERVICES_QUERY
 } from "@/sanity/lib/queries";
@@ -59,7 +61,8 @@ async function getData<T>({
   tags,
   fallback,
   stega,
-  publishedOnly
+  publishedOnly,
+  throwOnError = false
 }: {
   query: string;
   params?: Record<string, string | string[] | null>;
@@ -67,6 +70,7 @@ async function getData<T>({
   fallback: T;
   stega?: boolean;
   publishedOnly?: boolean;
+  throwOnError?: boolean;
 }): Promise<T> {
   if (!hasSanityConfig) return fallback;
 
@@ -93,26 +97,31 @@ async function getData<T>({
     if (Array.isArray(data) && data.length === 0) return fallback;
     return data ?? fallback;
   } catch (error) {
+    // A failed CMS request does not prove that a CMS-only detail page is absent.
+    // Let Next retain a previously generated page rather than caching a false 404.
+    if (throwOnError) throw error;
     console.warn("Sanity fetch failed, using fallback data.", error);
     return fallback;
   }
 }
 
-export function getSiteSettings(options?: { stega?: boolean }) {
+export function getSiteSettings(options?: { stega?: boolean; publishedOnly?: boolean }) {
   return getData<SiteSettings>({
     query: SITE_SETTINGS_QUERY,
     tags: ["siteSettings"],
     fallback: fallbackSettings,
+    publishedOnly: options?.publishedOnly,
     stega: options?.stega
   });
 }
 
-export async function getHomePageData() {
+export async function getHomePageData({ publishedOnly = false }: { publishedOnly?: boolean } = {}) {
   const [data, posts] = await Promise.all([getData<HomePageData>({
     query: HOME_QUERY,
+    publishedOnly,
     tags: ["siteSettings", "service", "project", "posts", "faq", "testimonial"],
     fallback: fallbackHomePageData
-  }), getPosts()]);
+  }), getPosts({ publishedOnly })]);
 
   return {
     settings: data.settings || fallbackSettings,
@@ -121,7 +130,7 @@ export async function getHomePageData() {
       ...getAutomationOffers(data.services || [])
     ],
     projects: mergeProjects(data.projects || [], fallbackProjects),
-    posts: posts.slice(0, 4),
+    posts: posts.filter((post) => isCanonicalPublicPage(`/blog/${post.slug}`, post.seo)).slice(0, 4),
     faqs: data.faqs?.length ? data.faqs : fallbackFaqs,
     testimonials: data.testimonials?.length
       ? data.testimonials
@@ -155,11 +164,13 @@ export async function getPosts({
 }
 
 export async function getPost(slug: string, options?: { stega?: boolean }) {
+  const fallback = fallbackPosts.find((post) => post.slug === slug) || null;
   const post = await getData<Post | null>({
     query: POST_QUERY,
     params: { slug },
     tags: ["posts", `post:${slug}`],
-    fallback: fallbackPosts.find((post) => post.slug === slug) || null,
+    fallback,
+    throwOnError: !fallback,
     stega: options?.stega
   });
   return post ? withBlogPhotography(enrichPost(post)) : null;
@@ -168,12 +179,13 @@ export async function getPost(slug: string, options?: { stega?: boolean }) {
 export async function getRelatedPosts(post: Post) {
   const posts = await getPosts();
   return posts
-    .filter((candidate) => candidate.slug !== post.slug)
+    .filter((candidate) => candidate.slug !== post.slug && isCanonicalPublicPage(`/blog/${candidate.slug}`, candidate.seo))
     .map((candidate) => ({
       candidate,
       score: (candidate.category?.slug && candidate.category.slug === post.category?.slug ? 2 : 0) +
         (candidate.tags?.filter((tag) => post.tags?.includes(tag)).length || 0)
     }))
+    .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, 3)
     .map(({ candidate }) => candidate);
@@ -199,7 +211,17 @@ export async function getProjects(options?: { stega?: boolean; publishedOnly?: b
 }
 
 export async function getProject(slug: string, options?: { stega?: boolean }) {
-  return (await getProjects(options)).find((project) => project.slug === canonicalProjectSlug(slug)) || null;
+  const canonicalSlug = canonicalProjectSlug(slug);
+  const fallback = fallbackProjects.filter((project) => project.slug === canonicalSlug);
+  const project = await getData<Project | null>({
+    query: PROJECT_QUERY,
+    params: { slug: canonicalSlug, legacySlug: canonicalSlug === "ledstore" ? "ledstore-fi-ecommerce-ui-ux" : canonicalSlug },
+    tags: ["project"],
+    fallback: fallback[0] || null,
+    throwOnError: !fallback.length,
+    stega: options?.stega
+  });
+  return project ? mergeProjects([project], fallback)[0] : null;
 }
 
 export async function getProjectSlugs() {
@@ -252,6 +274,7 @@ export async function getServices({ publishedOnly = false }: { publishedOnly?: b
       faqs: service.faqs?.length ? service.faqs : existing?.faqs,
       relatedPostSlugs: service.relatedPostSlugs ?? existing?.relatedPostSlugs,
       relatedProjectSlugs: service.relatedProjectSlugs ?? existing?.relatedProjectSlugs,
+      relatedServiceSlugs: service.relatedServiceSlugs ?? existing?.relatedServiceSlugs,
       seo: { ...existing?.seo, ...Object.fromEntries(Object.entries(service.seo || {}).filter(([, value]) => value != null && value !== "")) }
     });
   }

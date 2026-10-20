@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="main">
+    <main id="main-content" className="main">
       <section className="section">
         <div className="container-narrow">
           <p className="eyebrow">404</p>

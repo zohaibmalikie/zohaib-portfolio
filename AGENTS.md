@@ -14,7 +14,7 @@ Use the scripts defined in `package.json`:
 - `npm run lint` runs ESLint.
 - `npm run typecheck` runs `tsc --noEmit`.
 
-There is no test script or test framework configured in this repo. Validate changes with `npm run lint`, `npm run typecheck`, and `npm run build`.
+There is no third-party test framework. `npm run test:seo` uses the built-in Node test runner and TypeScript stripping (Node 22.19+). `npm run audit:seo -- http://localhost:3000` checks a running production server for metadata, canonical, schema, crawl and navigation regressions. Validate changes with these SEO checks where applicable, plus `npm run lint`, `npm run typecheck`, and `npm run build`.
 
 ## Coding Style & Naming Conventions
 

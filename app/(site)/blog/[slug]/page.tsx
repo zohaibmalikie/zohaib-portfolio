@@ -11,7 +11,7 @@ import { ActionLink } from "@/components/ui/action-link";
 import { getTopics } from "@/lib/topics";
 import Link from "next/link";
 import { formatDate, getHeadingId, getReadingTime } from "@/lib/content-utils";
-import { absoluteUrl, buildMetadata, getImageUrl } from "@/lib/seo";
+import { absoluteUrl, buildMetadata, canonicalUrlFor, getImageUrl } from "@/lib/seo";
 import {
   getPost,
   getPostSlugs,
@@ -48,13 +48,7 @@ export async function generateMetadata({ params }: PostPageProps) {
     getSiteSettings({ stega: false })
   ]);
 
-  if (!post) {
-    return buildMetadata({
-      title: "Article not found",
-      path: "/blog",
-      settings
-    });
-  }
+  if (!post) notFound();
 
   const seoTitle = post.seo?.metaTitle || post.seo?.title || post.title;
   const seoDescription =
@@ -66,7 +60,7 @@ export async function generateMetadata({ params }: PostPageProps) {
   return buildMetadata({
     title: seoTitle,
     description: seoDescription,
-    path: post.seo?.canonicalUrl || `/blog/${post.slug}`,
+    path: `/blog/${post.slug}`, canonicalUrl: post.seo?.canonicalUrl,
     image: seoImage,
     settings,
     type: "article",
@@ -101,7 +95,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const tocBody = faqs.length ? [...(articleBody || []), { _type: "block", _key: "article-faq-toc", style: "h2", markDefs: [], children: [{ _type: "span", _key: "faq-toc-span", text: faqTitle, marks: [] }] }] : articleBody;
   const topic = topics.find((candidate) => candidate.slug === post.category?.slug);
   const readingTime = getReadingTime(post);
-  const postUrl = absoluteUrl(`/blog/${post.slug}`);
+  const postUrl = canonicalUrlFor(`/blog/${post.slug}`, post.seo?.canonicalUrl);
   const seoImage = post.seo?.ogImage || post.seo?.openGraphImage || post.mainImage;
   const imageUrl = getImageUrl(post.mainImage || seoImage);
   const absoluteImageUrl = imageUrl ? absoluteUrl(imageUrl) : undefined;

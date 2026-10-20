@@ -42,3 +42,21 @@ Consolidated Bricolage display typography on the bold 800 face, reducing its Lat
 ## 20 October 2026 — independent performance verification
 
 Added a manual cloud Lighthouse workflow with standard mobile and desktop profiles, pinned Node/action versions, public-page HTML/JSON artifacts and explicit measured-score summaries. It uses a hosted Ubuntu runner independently of the local connection and has no repository checkout or Search Console inputs. Runtime validation is required after the workflow is available on the default branch; no cloud score is claimed before that run.
+
+## 20 October 2026 — maintenance inspection during pending audit release
+
+Verified the connected domain property through Windsor.ai and reviewed equal complete 28-day daily, query, page and country reports with unfinalized data excluded. Private exports and comparisons remain in ignored `.seo-reports/`; the connector does not expose URL-level indexing exclusion reasons. Reviewed sitemap reporting without interpreting submitted counts as indexed counts. No new maintenance article was created, no outreach was sent, and no changes were published. The current technical SEO audit and five preceding service guides remain under the owner's explicit release hold.
+
+Local audit work covers canonical/indexing/CMS/schema fixes, professional positioning, service links and a smaller Work page client payload. A later Sanity timeout exposed false article 404s; CMS-only detail error handling was corrected so failed requests are not treated as successful missing-document results. Validation and remaining limits are recorded in `SEO_AUDIT.md`.
+
+Final local checks passed: content validation, lint, TypeScript, five native SEO tests, production build, 132-page content/FAQ crawl and 140-page canonical HTTP audit. Read-only live checks returned 200 for home, services, contact, robots and sitemap; no enquiry was sent. The final Work filter keyboard check passed. No pending audit change was deployed.
+
+## 20 October 2026 — follow-up performance fixes, unpublished
+
+Moved existing shared growth and FAQ styles to the root layout, reducing homepage stylesheet requests from three to one. Retained Bricolage typography and optional display while disabling font preload. Local mobile Lighthouse measured 97 performance in two final runs with LCP 2.526–2.546 seconds and zero CLS; desktop measured 100 in all four standard categories. Mobile accessibility, best practices and SEO remained 100. These are local lab results, not production or field results.
+
+Lint, typecheck, build, content validation, five SEO tests, the 140-page HTTP audit and 132-page content/schema crawl passed. Mobile menu, service-finder and native FAQ keyboard behavior checked. No publication, CMS writes or enquiry messages occurred; the pending manual release hold remains.
+
+## 20 October 2026 — authorized production release
+
+The owner explicitly requested “publish all of them,” authorizing the reviewed technical SEO fixes, shared CSS/font-priority changes and five new service guides. Lifted the temporary automation release hold and set first-release timestamps for the five guides; preserved existing articles' dates. Verified the existing repository, Vercel team/project, production branch and domain aliases. Release must use the tested revision; exact deployment and live-verification results are stored privately under `.seo-reports/` and reported in the chat once confirmed. Private Search Console exports, enquiry data and environment secrets are excluded.

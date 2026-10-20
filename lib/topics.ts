@@ -1,3 +1,4 @@
+import { isCanonicalPublicPage } from "@/lib/indexing";
 import { getPosts } from "@/sanity/lib/fetchers";
 
 const topicContent = [
@@ -15,7 +16,7 @@ const topicContent = [
 export async function getTopics({ publishedOnly = false }: { publishedOnly?: boolean } = {}) {
   const posts = await getPosts({ publishedOnly });
   return topicContent.map((topic) => {
-    const matching = posts.filter((post) => post.category?.slug === topic.slug && !post.seo?.noIndex);
+    const matching = posts.filter((post) => post.category?.slug === topic.slug && isCanonicalPublicPage(`/blog/${post.slug}`, post.seo));
     const managed = matching.find((post) => post.category?.description)?.category;
     return {
       ...topic,

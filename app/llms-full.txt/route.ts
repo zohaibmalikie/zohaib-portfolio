@@ -6,7 +6,7 @@ import { getHomePageData, getPosts, getServices } from "@/sanity/lib/fetchers";
 export const revalidate = 3600;
 
 export async function GET() {
-  const [data, posts, services, topics] = await Promise.all([getHomePageData(), getPosts(), getServices(), getTopics()]);
+  const [data, posts, services, topics] = await Promise.all([getHomePageData({ publishedOnly: true }), getPosts({ publishedOnly: true }), getServices({ publishedOnly: true }), getTopics({ publishedOnly: true })]);
   return textResponse(buildLlmsFullTxt({
     ...data,
     topics,

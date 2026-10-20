@@ -15,7 +15,7 @@ export function textResponse(body: string) {
 export function buildLlmsTxt({ settings, services, projects, posts, topics = [] }: DiscoveryData) {
   return `# ${settings.name}
 
-> ${clean(settings.conversionDescription || settings.heroDescription || settings.defaultSeoDescription)}
+> ${clean(settings.professionalSummary || settings.conversionDescription || settings.heroDescription || settings.defaultSeoDescription)}
 
 ## Primary pages
 
