@@ -2743,5 +2743,165 @@
         "description": "Use version control and investigate behavior instead of relying on visual appearance."
       }
     ]
+  },
+  "automation-audit-deliverables-business-owner": {
+    "source": "content/editorial-articles.json#automation-audit-deliverables-business-owner",
+    "updatedAt": "2026-10-20T01:50:27+05:00",
+    "faqs": [
+      {
+        "question": "Can I commission an automation audit before approving any repairs?",
+        "answer": "Yes. Scope the audit as a separate deliverable with a workflow boundary, evidence requirements and findings report. Implementation can then be estimated and approved after the findings are reviewed."
+      },
+      {
+        "question": "How should an audit describe checks blocked by missing access?",
+        "answer": "It should identify the unavailable evidence, label the conclusion unverified and explain what access or test would resolve it. An assumption should not be presented as an observed failure."
+      },
+      {
+        "question": "Should an automation audit report include raw customer records?",
+        "answer": "Usually record references and redacted examples are more appropriate. Agree the minimum evidence needed, access controls and retention rather than copying full customer payloads into the report."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define the review boundary",
+        "description": "Name one workflow, its expected business outcome, available evidence and permitted tests."
+      },
+      {
+        "title": "Inspect the deliverables",
+        "description": "Check that the outcome map and findings connect observed evidence to a repair decision."
+      },
+      {
+        "title": "Approve a bounded next step",
+        "description": "Separate confirmed repairs from optional redesign and agree how each repair will be accepted."
+      }
+    ]
+  },
+  "api-integration-repair-or-rebuild": {
+    "source": "content/editorial-articles.json#api-integration-repair-or-rebuild",
+    "updatedAt": "2026-10-20T01:50:27+05:00",
+    "faqs": [
+      {
+        "question": "Does a broken integration mean I should migrate to a different automation platform?",
+        "answer": "No. First identify whether the failure is a bounded issue such as authorization, mapping or recovery behavior. A platform replacement needs its own evidence, migration plan and operating rationale."
+      },
+      {
+        "question": "What happens to records handled manually while an integration is paused?",
+        "answer": "Track their source identifiers and completed destination actions. Reconcile those records before replaying the backlog so the repaired integration does not repeat work already completed manually."
+      },
+      {
+        "question": "Can part of an API integration be rebuilt while the rest stays in place?",
+        "answer": "Yes, when its boundaries and interfaces are clear. A partial rebuild can replace a fragile transformation or recovery segment while retaining supported source and destination connections."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Describe the failure",
+        "description": "Compare the expected business outcome with missing, repeated or delayed destination records."
+      },
+      {
+        "title": "Compare bounded options",
+        "description": "Evaluate repair, partial rebuild and replacement against the same acceptance checks and dependencies."
+      },
+      {
+        "title": "Recover and reconcile",
+        "description": "Control the cutover and verify both new work and any backlog without repeating completed actions."
+      }
+    ]
+  },
+  "automation-maintenance-support-hours": {
+    "source": "content/editorial-articles.json#automation-maintenance-support-hours",
+    "updatedAt": "2026-10-20T01:50:27+05:00",
+    "faqs": [
+      {
+        "question": "Does an automation maintenance retainer include support at every hour?",
+        "answer": "Only if that coverage is explicitly agreed. Confirm the support window, time zone, out-of-hours escalation and capacity before relying on a maintenance arrangement."
+      },
+      {
+        "question": "Why is an acknowledgement target different from a recovery target?",
+        "answer": "Acknowledgement confirms that investigation has started. Recovery depends on the cause, access, vendor availability and reconciliation work, so the two milestones should be defined and reported separately."
+      },
+      {
+        "question": "Who handles the backlog after a connected vendor recovers?",
+        "answer": "Name that responsibility in the support scope. The operator should reconcile source and destination records before replaying work, with business approval where recovery could repeat customer-facing actions."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "List the supported workflows",
+        "description": "Record business owners, vendor dependencies, schedules and the cost of delayed outcomes."
+      },
+      {
+        "title": "Agree coverage and escalation",
+        "description": "Define support hours, incident channels and the difference between acknowledgement and recovery."
+      },
+      {
+        "title": "Review operating evidence",
+        "description": "Report actual incidents, backlog reconciliation, usage changes and decisions needed from the business."
+      }
+    ]
+  },
+  "hire-freelance-nextjs-developer-project-brief": {
+    "source": "content/editorial-articles.json#hire-freelance-nextjs-developer-project-brief",
+    "updatedAt": "2026-10-20T01:50:27+05:00",
+    "faqs": [
+      {
+        "question": "Do I need complete designs before contacting a freelance Next.js developer?",
+        "answer": "No. Start with the audience, desired action, current website and required pages or features. The proposal can then separate discovery or design work from implementation and identify the inputs needed for each phase."
+      },
+      {
+        "question": "What should a business website handoff demonstrate to a CMS editor?",
+        "answer": "It should demonstrate the agreed editing tasks, preview and publishing flow, image handling and where important page metadata is managed. Editors also need to know which changes require developer support."
+      },
+      {
+        "question": "How can I compare two Next.js website proposals fairly?",
+        "answer": "Compare them against the same page types, integrations, content responsibilities, migration needs and acceptance checks. Confirm account ownership, review milestones and post-launch scope alongside the implementation price."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Describe the customer journey",
+        "description": "Name the audience, important pages and the action the website should help a visitor complete."
+      },
+      {
+        "title": "Define delivery boundaries",
+        "description": "Separate CMS editing, content, integrations, migration and ownership responsibilities."
+      },
+      {
+        "title": "Review observable outcomes",
+        "description": "Check mobile enquiries, publishing tasks, page metadata and representative performance before handoff."
+      }
+    ]
+  },
+  "technical-seo-audit-vs-monthly-seo": {
+    "source": "content/editorial-articles.json#technical-seo-audit-vs-monthly-seo",
+    "updatedAt": "2026-10-20T01:50:27+05:00",
+    "faqs": [
+      {
+        "question": "Should I buy monthly SEO before the audit recommendations can be implemented?",
+        "answer": "Confirm who can implement the recommendations and whether the business can supply the required content or decisions. A retainer has limited value if the agreed work is repeatedly blocked without a plan to resolve those dependencies."
+      },
+      {
+        "question": "Does a technical SEO audit include fixing every issue it identifies?",
+        "answer": "Only when implementation is part of the agreed scope. Otherwise the audit should provide actionable findings and verification steps that can be estimated and approved as separate work."
+      },
+      {
+        "question": "What should I compare after a technical SEO repair is deployed?",
+        "answer": "First verify the specific public behavior that changed, such as a redirect, canonical URL or interaction. Then monitor relevant indexing, query and enquiry evidence over complete comparable periods without treating a technical check as a guaranteed traffic outcome."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Identify the current obstacle",
+        "description": "Review important business pages, discovery evidence and the route to a confirmed enquiry."
+      },
+      {
+        "title": "Choose an actionable scope",
+        "description": "Separate investigation, implementation and repeatable ongoing work with clear responsibilities."
+      },
+      {
+        "title": "Verify and revisit",
+        "description": "Check deployed behavior and compare meaningful search and enquiry evidence over time."
+      }
+    ]
   }
 }

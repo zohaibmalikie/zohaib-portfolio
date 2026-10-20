@@ -6,10 +6,11 @@ import { JsonLd } from "@/components/json-ld";
 import { PortableContent } from "@/components/portable-content";
 import { SanityImage } from "@/components/sanity-image";
 import { formatProjectDate } from "@/lib/content-utils";
-import { absoluteUrl, buildMetadata, getImageUrl } from "@/lib/seo";
+import { absoluteUrl, buildMetadata, canonicalUrlFor, getImageUrl } from "@/lib/seo";
 import {
   getProject,
   getProjectSlugs,
+  getServices,
   getSiteSettings
 } from "@/sanity/lib/fetchers";
 
@@ -21,6 +22,8 @@ type ProjectPageProps = {
 
 function getProjectSeoTitle(project: {
   title: string;
+  techStack?: string[];
+  shortDescription?: string;
   seo?: {
     title?: string;
     metaTitle?: string;
@@ -29,48 +32,11 @@ function getProjectSeoTitle(project: {
   const seoTitle = project.seo?.metaTitle || project.seo?.title;
   if (seoTitle && seoTitle.trim() !== project.title.trim()) return seoTitle;
 
-  return `${project.title} Case Study | Frontend Development Portfolio`;
-}
-
-function getFallbackProblem(project: {
-  title: string;
-  shortDescription?: string;
-  techStack?: string[];
-}) {
-  const stack = project.techStack?.length
-    ? ` The work needed to fit the project's stack, including ${project.techStack.join(", ")}.`
-    : "";
-
-  return `${project.title} needed a clear, reliable digital experience that could communicate the value of the project quickly and support users across desktop and mobile screens. ${project.shortDescription || ""}${stack}`;
-}
-
-function getFallbackSolution(project: {
-  servicesProvided?: string[];
-  results?: string[];
-}) {
-  const services = project.servicesProvided?.length
-    ? ` My role focused on ${project.servicesProvided.join(", ").toLowerCase()}.`
-    : "";
-  const results = project.results?.length
-    ? ` The outcome included ${project.results.join(", ").toLowerCase()}.`
-    : "";
-
-  return `I approached the project with a frontend-first implementation process: clarify the content structure, shape responsive layouts, keep important actions easy to find, and polish the interface for practical user journeys.${services}${results}`;
-}
-
-function getProjectScope(project: {
-  title: string;
-  techStack?: string[];
-  servicesProvided?: string[];
-}) {
-  const services = project.servicesProvided?.length
-    ? project.servicesProvided.join(", ").toLowerCase()
-    : "frontend implementation, responsive design, and user experience polish";
-  const stack = project.techStack?.length
-    ? ` The implementation used ${project.techStack.join(", ")} to support a maintainable and responsive delivery.`
-    : "";
-
-  return `For ${project.title}, the scope covered ${services}. The focus was to make the interface easier to understand, easier to navigate, and more useful for the people arriving from search, referrals, or direct client workflows.${stack}`;
+  const shortName = project.title.split("—")[0].trim();
+  const context = /ecommerce/i.test(`${project.title} ${project.shortDescription || ""}`)
+    ? "Ecommerce UI/UX"
+    : project.techStack?.[0] || "Website Development";
+  return `${shortName} ${context} Case Study | Zohaib Ramzan`;
 }
 
 export async function generateStaticParams() {
@@ -84,13 +50,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     getSiteSettings({ stega: false })
   ]);
 
-  if (!project) {
-    return buildMetadata({
-      title: "Case study not found",
-      path: "/work",
-      settings
-    });
-  }
+  if (!project) notFound();
 
   return buildMetadata({
     title: getProjectSeoTitle(project),
@@ -98,8 +58,12 @@ export async function generateMetadata({ params }: ProjectPageProps) {
       project.seo?.metaDescription ||
       project.seo?.description ||
       project.shortDescription,
-    path: project.seo?.canonicalUrl || `/work/${project.slug}`,
+    path: `/work/${project.slug}`, canonicalUrl: project.seo?.canonicalUrl,
     image: project.seo?.ogImage || project.seo?.openGraphImage || project.mainImage,
+    noIndex: project.seo?.noIndex,
+    keywords: project.seo?.keywords || project.techStack,
+    openGraphTitle: project.seo?.ogTitle,
+    openGraphDescription: project.seo?.ogDescription,
     settings
   });
 }
@@ -110,8 +74,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project) notFound();
 
+  const [services, settings] = await Promise.all([getServices(), getSiteSettings()]);
+  const relatedServices = services.filter((service) => !service.seo?.noIndex && service.relatedProjectSlugs?.includes(project.slug));
   const imageUrl = getImageUrl(project.mainImage);
-  const projectUrl = absoluteUrl(`/work/${project.slug}`);
+  const projectUrl = canonicalUrlFor(`/work/${project.slug}`, project.seo?.canonicalUrl);
   const hasProblem = Boolean(project.problem?.length);
   const hasSolution = Boolean(project.solution?.length);
   const projectSchema = {
@@ -123,9 +89,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     image: imageUrl ? absoluteUrl(imageUrl) : undefined,
     creator: {
       "@type": "Person",
-      name: "Muhammad Zohaib Ramzan"
+      name: settings.name,
+      "@id": absoluteUrl("/#person")
     },
-    datePublished: project.projectDate,
     keywords: project.techStack?.join(", "),
     sameAs: project.projectUrl
   };
@@ -174,7 +140,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
             <p className="lead">{project.shortDescription}</p>
             <div className="button-row">
-              <Link href="/#contact" className="button">
+              <Link href="/contact" className="button">
                 Start a similar project
               </Link>
               {project.projectUrl ? (
@@ -235,23 +201,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </aside>
 
             <div className="rich-text">
-              <h2>Challenge</h2>
-              {hasProblem ? (
-                <PortableContent value={project.problem} />
-              ) : (
-                <p>{getFallbackProblem(project)}</p>
-              )}
-              <h2>Solution</h2>
-              {hasSolution ? (
-                <PortableContent value={project.solution} />
-              ) : (
-                <p>{getFallbackSolution(project)}</p>
-              )}
-              <h2>Project scope</h2>
-              <p>{getProjectScope(project)}</p>
+              {hasProblem ? <><h2>Challenge</h2><PortableContent value={project.problem} /></> : project.shortDescription ? <><h2>Project context</h2><p>{project.shortDescription}</p></> : null}
+              {hasSolution ? <><h2>Solution</h2><PortableContent value={project.solution} /></> : null}
+              {project.servicesProvided?.length ? <><h2>Documented scope</h2><ul className="outcome-list">{project.servicesProvided.map((item) => <li key={item}>{item}</li>)}</ul></> : null}
               {project.results?.length ? (
                 <>
-                  <h2>Results</h2>
+                  <h2>Documented delivery</h2>
                   <ul className="outcome-list">
                     {project.results.map((result) => (
                       <li key={result}>{result}</li>
@@ -262,6 +217,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
         </section>
+
+        {relatedServices.length ? <section className="section section-muted"><div className="container"><h2>Discuss a related service.</h2><p>Explore the scope and delivery process for a similar project.</p><div className="button-row">{relatedServices.map((service) => <Link className="button button-secondary" key={service.slug} href={`/services/${service.slug}`}>{service.title}</Link>)}</div></div></section> : null}
 
         {project.screenshots?.length ? (
           <section className="section section-muted">

@@ -1,3 +1,4 @@
+import { isCanonicalPublicPage } from "@/lib/indexing";
 import Link from "next/link";
 import { RemoteCollaboration } from "@/components/remote-collaboration";
 import { ArrowUpRight } from "lucide-react";
@@ -11,11 +12,12 @@ export const revalidate = 3600;
 
 export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
-  return buildMetadata({ title: "Automation, Next.js & Technical SEO Services | Zohaib Ramzan", description: "Remote Next.js development, automation audits and API integration repair for US, UK and European businesses. Clear scope, USD pilot prices and a practical handoff.", keywords: ["remote Next.js developer", "workflow automation consultant", "API integration repair"], path: "/services", settings });
+  return buildMetadata({ title: "Next.js, SvelteKit & Automation Services | Zohaib Ramzan", description: "Next.js, React and SvelteKit development for SaaS and ecommerce, workflow automation, API repair and technical SEO. Remote delivery with clear scope and ownership.", keywords: ["remote Next.js developer", "workflow automation consultant", "API integration repair"], path: "/services", settings });
 }
 
 export default async function ServicesPage() {
-  const [services, settings] = await Promise.all([getServices(), getSiteSettings()]);
+  const [allServices, settings] = await Promise.all([getServices(), getSiteSettings()]);
+  const services = allServices.filter((service) => isCanonicalPublicPage(`/services/${service.slug}`, service.seo));
   return (
     <main id="main-content" className="main service-pages">
       <JsonLd data={{ "@context": "https://schema.org", "@type": "ItemList", name: "Services", itemListElement: services.map((service, index) => ({ "@type": "ListItem", position: index + 1, name: service.title, url: absoluteUrl(`/services/${service.slug}`) })) }} />
@@ -23,7 +25,7 @@ export default async function ServicesPage() {
       <header className="page-hero"><div className="container">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
         <p className="eyebrow">Choose a useful next step</p>
-        <div className="page-heading"><h1>Better websites.<br /><span className="text-accent">Workflows that work.</span></h1></div>
+        <div className="page-heading"><h1>Development and automation<br /><span className="text-accent">for SaaS and ecommerce.</span></h1></div>
         <p className="lead">Start with the problem you need to solve. Explore the scope, deliverables and process before starting a conversation.</p>
         <div className="button-row"><Link className="button button-primary" href="/tools">Help me choose a service <ArrowUpRight size={17} aria-hidden="true" /></Link><Link className="button button-secondary" href="/contact">Discuss your project</Link></div>
       </div></header>

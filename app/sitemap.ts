@@ -28,8 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...projects.filter((project) => isCanonicalPublicPage(`/work/${project.slug}`, project.seo)).map((project) => ({
       url: absoluteUrl(`/work/${project.slug}`), changeFrequency: "monthly" as const, priority: 0.7, images: sitemapImages(project.mainImage)
-    })),
-    ...["/llms.txt", "/llms-full.txt", "/humans.txt"].map((path) => ({ url: absoluteUrl(path), changeFrequency: "monthly" as const, priority: 0.3 }))
+    }))
   ];
 }
 

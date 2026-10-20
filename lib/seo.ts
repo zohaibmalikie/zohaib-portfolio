@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonicalPageUrl } from "@/lib/url-policy";
 
 import { siteUrl } from "@/sanity/env";
 import { urlForImage } from "@/sanity/lib/image";
@@ -7,6 +8,14 @@ import type { SanityImage, SeoFields, SiteSettings } from "@/types/sanity";
 export function absoluteUrl(path = "/") {
   if (/^https?:\/\//.test(path)) return path;
   return new URL(path, siteUrl).toString();
+}
+
+export function canonicalUrlFor(path: string, override?: string) {
+  try {
+    return canonicalPageUrl(override || path, siteUrl);
+  } catch {
+    return canonicalPageUrl(path, siteUrl);
+  }
 }
 
 export function getImageUrl(image?: SanityImage, width = 1200, height = 630) {
@@ -44,6 +53,7 @@ export function buildMetadata({
   title,
   description,
   path,
+  canonicalUrl,
   image,
   settings,
   type = "website",
@@ -61,6 +71,7 @@ export function buildMetadata({
   title?: string;
   description?: string;
   path?: string;
+  canonicalUrl?: string;
   image?: SanityImage;
   settings?: SiteSettings;
   type?: "website" | "article";
@@ -83,7 +94,7 @@ export function buildMetadata({
     description ||
     settings?.defaultSeoDescription ||
     "Frontend development, responsive UI, technical SEO, and CMS implementation for high-performing websites.";
-  const resolvedUrl = absoluteUrl(path || "/");
+  const resolvedUrl = canonicalUrlFor(path || "/", canonicalUrl);
   const imagePath = getImageUrl(image) || getImageUrl(settings?.defaultOpenGraphImage) || "/assets/img/social/site-card.png";
   const resolvedImage = absoluteUrl(imagePath);
 
@@ -96,16 +107,14 @@ export function buildMetadata({
     alternates: {
       canonical: resolvedUrl
     },
-    robots: noIndex
-      ? {
+    ...(noIndex ? { robots: {
           index: false,
           follow: true,
           googleBot: {
             index: false,
             follow: true
           }
-        }
-      : undefined,
+        } } : {}),
     openGraph: {
       type,
       title: openGraphTitle || resolvedTitle,

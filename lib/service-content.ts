@@ -4,7 +4,8 @@ import type { Service } from "@/types/sanity";
 // Existing CMS documents override these by slug, without requiring a CMS write.
 export const serviceDetails: Record<string, Partial<Service>> = {
   "ai-automation-health-check": {
-    headline: "Find out why your automation is unreliable—and what to fix first.",
+    relatedServiceSlugs: ["workflow-implementation-or-repair", "ongoing-automation-maintenance"],
+    headline: "AI automation audits for reliable business workflows.",
     audience: "For teams with one live workflow that produces errors, duplicate records, missed alerts, or an unexpectedly high AI bill.",
     overview: [
       "A workflow can report a successful execution while a customer record never reaches the right destination. This health check follows one business process from its trigger to the final outcome, comparing the rules you expect with the behavior your tools actually produce.",
@@ -23,12 +24,13 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Does the health check include implementation?", answer: "The deliverable is an actionable audit. Repairs can be scoped separately after the findings are understood, with explicit acceptance criteria." },
       { question: "Is the $150–$300 range a fixed quote?", answer: "It is an illustrative pilot range in USD. The selected workflow, access requirements, and deliverables are confirmed before work begins." }
     ],
-    relatedPostSlugs: ["ai-automation-audit-checklist", "automation-monitoring-metrics", "reduce-ai-workflow-costs"],
+    relatedPostSlugs: ["automation-audit-deliverables-business-owner", "ai-automation-audit-checklist", "automation-monitoring-metrics", "reduce-ai-workflow-costs"],
     relatedProjectSlugs: [],
     seo: { keywords: ["AI automation audit", "workflow health check", "automation consultant"], metaTitle: "AI Automation Audit & Workflow Health Check | Zohaib Ramzan", metaDescription: "Review one workflow for failures, duplicate actions, missing alerts, privacy risks and unnecessary AI costs. Get a prioritized, actionable automation audit." }
   },
   "workflow-implementation-or-repair": {
-    headline: "Build a focused automation—or repair the integration holding your team back.",
+    relatedServiceSlugs: ["ai-automation-health-check", "ongoing-automation-maintenance"],
+    headline: "Workflow automation and API integration repair.",
     audience: "For businesses that know the process they want to automate, or have a broken API connection that needs a clear diagnosis and repair.",
     overview: [
       "Reliable automation starts with a specific business outcome. That might be creating one correctly assigned CRM lead from each valid enquiry, keeping selected fields synchronized between tools, or recovering a workflow that fails after an API change. The scope identifies the trigger, destination, rules, and exceptions before implementation begins.",
@@ -47,12 +49,13 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Which integrations can you work with?", answer: "Work is scoped around accessible APIs, webhooks, and the connected tools' supported capabilities. Endpoint availability, permissions, rate limits, and account plans are checked before a delivery commitment." },
       { question: "What does the illustrative $400–$1,200+ include?", answer: "It describes a possible range for a focused project in USD, not every integration. The final deliverables, testing, deployment, and exclusions are agreed before work starts." }
     ],
-    relatedPostSlugs: ["automation-project-acceptance-criteria", "idempotent-workflows-prevent-duplicates", "api-rate-limit-retry-strategy"],
+    relatedPostSlugs: ["api-integration-repair-or-rebuild", "automation-project-acceptance-criteria", "idempotent-workflows-prevent-duplicates", "api-rate-limit-retry-strategy"],
     relatedProjectSlugs: ["partco-electronics-store"],
     seo: { keywords: ["workflow automation consultant", "API integration repair", "business process automation"], metaTitle: "Workflow Automation Consultant & API Repair | Zohaib Ramzan", metaDescription: "Build a focused business automation or repair a broken API integration, with duplicate prevention, failure checks, acceptance criteria and a clear handoff." }
   },
   "ongoing-automation-maintenance": {
-    headline: "Keep your integrations understandable, monitored, and recoverable.",
+    relatedServiceSlugs: ["workflow-implementation-or-repair", "ai-automation-health-check"],
+    headline: "Automation maintenance and integration support.",
     audience: "For teams with live integrations that need a named maintenance owner, useful health reporting, and agreed support expectations.",
     overview: [
       "Automations change after launch because applications, credentials, fields, traffic, and business rules change. A maintenance arrangement makes ownership explicit: which workflows are covered, what signals are reviewed, who investigates failures, and when support is available.",
@@ -71,16 +74,17 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Are new workflows included?", answer: "New integrations and substantial redesigns are scoped separately unless explicitly included. The inventory makes it clear which existing workflows the plan covers." },
       { question: "How is the monthly retainer determined?", answer: "The $150–$400/month range is an illustrative starting range in USD. The number of workflows, business importance, review cadence, and support scope determine the final arrangement." }
     ],
-    relatedPostSlugs: ["automation-maintenance-plan", "automation-incident-response-runbook", "automation-documentation-handoff-checklist"],
+    relatedPostSlugs: ["automation-maintenance-support-hours", "automation-maintenance-plan", "automation-incident-response-runbook", "automation-documentation-handoff-checklist"],
     relatedProjectSlugs: [],
     seo: { keywords: ["automation maintenance", "integration support", "workflow monitoring"], metaTitle: "Automation Maintenance & Integration Support | Zohaib Ramzan", metaDescription: "Maintain business integrations with agreed support hours, alert review, failure investigation, recovery instructions and clear system-health reporting." }
   },
   "react-nextjs-frontends": {
-    headline: "A fast, editable website that makes your business easier to understand.",
+    relatedServiceSlugs: ["workflow-implementation-or-repair", "technical-seo-performance"],
+    headline: "Next.js, React and SvelteKit development for SaaS and ecommerce.",
     audience: "For businesses, SaaS teams, and ecommerce brands that need a responsive Next.js or React frontend, a CMS, or a focused improvement to an existing website.",
     overview: [
       "A business website needs more than polished screens. Visitors need a clear explanation of the offer, credible examples of work, usable navigation, and an enquiry path that behaves predictably. Development connects those needs to maintainable components, structured content, and a rendering approach suited to the site.",
-      "Projects can cover a new marketing website, a CMS-powered content site, an ecommerce interface, or a defined section of an existing product. React, Next.js, TypeScript, and compatible CMS integrations are selected according to the requirements. The editorial team should be able to manage the content that belongs in their workflow without relying on a developer for every text change.",
+      "Projects can cover a new marketing website, a CMS-powered content site, an ecommerce interface, or a defined section of an existing product. React, Next.js, SvelteKit, TypeScript and compatible CMS integrations are selected according to the requirements. A SaaS scope can also cover Node.js APIs, PostgreSQL or Supabase data integration, authentication requirements and role-specific product journeys, with deployment and data ownership agreed before implementation. The editorial team should be able to manage the content that belongs in their workflow without relying on a developer for every text change.",
       "The delivery scope includes the important states and devices, not just a desktop screenshot. We agree how content is published, how forms behave, what happens on missing or failed data, and which technical search foundations are needed. Features, integrations, migration, and support are estimated around the actual brief."
     ],
     deliverables: ["A responsive frontend built around the agreed user journeys", "Reusable components and structured CMS content where required", "Accessible navigation, forms, and important interaction states", "Metadata, canonical URLs, sitemap and rendering foundations", "Relevant build checks, documented setup, and a focused handoff"],
@@ -95,12 +99,13 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Can my team edit the website?", answer: "The content that needs ongoing editorial changes can be modeled in a CMS such as Sanity. Editing requirements, preview, and publishing behavior are agreed during scoping." },
       { question: "Does a Next.js website guarantee better rankings?", answer: "No framework guarantees rankings. The implementation can support crawlable content, fast pages, clear metadata, and reliable publishing; search performance also depends on relevance, content, competition, and other signals." }
     ],
-    relatedPostSlugs: ["nextjs-technical-seo-checklist", "cms-publishing-workflow-checklist", "accessible-contact-form-checklist"],
+    relatedPostSlugs: ["hire-freelance-nextjs-developer-project-brief", "nextjs-technical-seo-checklist", "cms-publishing-workflow-checklist", "accessible-contact-form-checklist"],
     relatedProjectSlugs: ["partco-electronics-store", "warehouse-equipment-b2b-ecommerce", "ledstore"],
-    seo: { keywords: ["freelance Next.js developer", "remote React developer", "Sanity CMS development"], metaTitle: "Freelance Next.js & React Developer | Zohaib Ramzan", metaDescription: "Responsive Next.js and React websites with clear service journeys, editable CMS content, accessible interactions and practical technical SEO foundations." }
+    seo: { keywords: ["freelance Next.js developer", "remote React developer", "Sanity CMS development"], metaTitle: "Freelance Next.js & React Developer | Zohaib Ramzan", metaDescription: "Build a Next.js, React or SvelteKit frontend for your SaaS, ecommerce or business website, with CMS editing, API integration and a practical handoff." }
   },
   "technical-seo-performance": {
-    headline: "Fix the website issues that get between your content and potential clients.",
+    relatedServiceSlugs: ["react-nextjs-frontends", "ai-automation-health-check"],
+    headline: "Technical SEO and website performance optimization.",
     audience: "For businesses with a live website that needs clearer indexing signals, better page experience, stronger service content, or a more reliable enquiry journey.",
     overview: [
       "Technical SEO starts with evidence about the public website and the important pages it needs people to find. The review examines response behavior, crawl controls, canonical URLs, sitemap coverage, metadata, internal links, structured data, and the relationship between published content and the CMS.",
@@ -119,7 +124,7 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Will you fix every page marked not indexed?", answer: "Not every exclusion is an error. Duplicates, redirects, filters, and intentionally unavailable pages can be correctly excluded. Important canonical pages are reviewed against the actual reported reason." },
       { question: "What access is useful for an SEO review?", answer: "Search Console access, the public site, relevant CMS or repository access, and available analytics can help. Sensitive credentials should be shared through approved account access methods, not the enquiry form." }
     ],
-    relatedPostSlugs: ["technical-seo-audit-small-business", "core-web-vitals-prioritization", "search-console-pages-not-indexed"],
+    relatedPostSlugs: ["technical-seo-audit-vs-monthly-seo", "technical-seo-audit-small-business", "core-web-vitals-prioritization", "search-console-pages-not-indexed"],
     relatedProjectSlugs: ["ledstore", "partco-electronics-store"],
     seo: { keywords: ["technical SEO consultant", "Next.js SEO services", "Core Web Vitals optimization"], metaTitle: "Technical SEO & Website Performance Services | Zohaib Ramzan", metaDescription: "Improve technical SEO, page performance, metadata, internal links and enquiry journeys with evidence-led fixes for your business website." }
   }

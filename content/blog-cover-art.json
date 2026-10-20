@@ -498,5 +498,30 @@
     "prompt": "Create ONE unique premium editorial blog cover, landscape 16:9. Article topic: what does a web developer do how do i become one. Specific composition: a beginner web developer workbench with a simple page model, learning notebook and practice tools. Art direction: photorealistic high-end sculptural 3D editorial still life; close-up tactile editorial composition; ink black, emerald and pearl palette; tactile matte and frosted-glass materials, physically plausible lighting, rich depth, sophisticated magazine-quality composition with generous breathing room. This is a conceptual editorial illustration, not a real product screenshot. Communicate the specific technical concept clearly through objects and relationships. Supporting article meaning: Frontend work covers the interface people use, including accessibility, responsive layouts, interactions and performance across browsers and devices. No text, letters, numbers, labels, logos, watermarks, fake UI screenshots, robot heads or neon cyberpunk. Do not reuse a generic workflow-node scene; follow this cover's specific objects and arrangement. Extremely polished, suitable as a professional developer and automation consultant's article hero image.",
     "alt": "Editorial illustration of a beginner web developer workbench with a simple page model, learning notebook and practice tools",
     "source": "AI-generated original editorial artwork"
+  },
+  "automation-audit-deliverables-business-owner": {
+    "prompt": "Create one premium conceptual editorial blog cover in landscape 16:9. A neatly opened forensic specimen case containing three ordered trays: a frosted glass process map, one damaged copper connector isolated as evidence, and a small mint repair tool, overhead editorial still life. Photorealistic sculptural 3D illustration, charcoal, warm ivory, mint and copper palette, restrained magazine composition, realistic tactile surfaces, generous breathing room. No text, letters, numbers, logos, watermarks, fake screenshots, robot heads or generic workflow nodes. Distinct object-based composition for this specific article. This is conceptual artwork, not client evidence.",
+    "alt": "An open specimen case holding a process model, a damaged connector and a repair tool",
+    "source": "AI-generated original editorial artwork"
+  },
+  "api-integration-repair-or-rebuild": {
+    "prompt": "Create one premium conceptual editorial blog cover in landscape 16:9. A precise mechanical bridge over a gap, one copper joint being replaced while intact ivory bridge sections rest on separate supports; calm architectural studio scene. Photorealistic sculptural 3D illustration, charcoal, warm ivory, mint and copper palette, restrained magazine composition, realistic tactile surfaces, generous breathing room. No text, letters, numbers, logos, watermarks, fake screenshots, robot heads or generic workflow nodes. Distinct object-based composition for this specific article. This is conceptual artwork, not client evidence.",
+    "alt": "A modular bridge with a single damaged joint being replaced",
+    "source": "AI-generated original editorial artwork"
+  },
+  "automation-maintenance-support-hours": {
+    "prompt": "Create one premium conceptual editorial blog cover in landscape 16:9. A sculptural clock and rotating service desk arranged beside a small protected glass machinery model, clearly separated day and night semicircles; no clock numerals. Photorealistic sculptural 3D illustration, charcoal, warm ivory, mint and copper palette, restrained magazine composition, realistic tactile surfaces, generous breathing room. No text, letters, numbers, logos, watermarks, fake screenshots, robot heads or generic workflow nodes. Distinct object-based composition for this specific article. This is conceptual artwork, not client evidence.",
+    "alt": "A clock and service desk beside a protected machinery model",
+    "source": "AI-generated original editorial artwork"
+  },
+  "hire-freelance-nextjs-developer-project-brief": {
+    "prompt": "Create one premium conceptual editorial blog cover in landscape 16:9. A premium architectural website model assembled from tactile page-shaped panels with one editable paper panel, a key and a folded blueprint, warm side lighting. Photorealistic sculptural 3D illustration, charcoal, warm ivory, mint and copper palette, restrained magazine composition, realistic tactile surfaces, generous breathing room. No text, letters, numbers, logos, watermarks, fake screenshots, robot heads or generic workflow nodes. Distinct object-based composition for this specific article. This is conceptual artwork, not client evidence.",
+    "alt": "An architectural model of website pages beside a key and folded blueprint",
+    "source": "AI-generated original editorial artwork"
+  },
+  "technical-seo-audit-vs-monthly-seo": {
+    "prompt": "Create one premium conceptual editorial blog cover in landscape 16:9. A pair of different instruments on charcoal stone: a focused inspection lamp examining one glass page and an orderly calendar-shaped series of green tiles extending into depth. Photorealistic sculptural 3D illustration, charcoal, warm ivory, mint and copper palette, restrained magazine composition, realistic tactile surfaces, generous breathing room. No text, letters, numbers, logos, watermarks, fake screenshots, robot heads or generic workflow nodes. Distinct object-based composition for this specific article. This is conceptual artwork, not client evidence.",
+    "alt": "An inspection lamp over a glass page beside a sequence of calendar tiles",
+    "source": "AI-generated original editorial artwork"
   }
 }

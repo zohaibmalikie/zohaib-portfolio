@@ -5,7 +5,6 @@ import { ActionLink } from "@/components/ui/action-link";
 import { AnimatedText } from "@/components/ui/animated-text";
 import { Badge } from "@/components/ui/badge";
 import type { SiteSettings } from "@/types/sanity";
-import "@/components/growth-tools.css";
 
 export type HeroStat = {
   value: string;
@@ -26,14 +25,14 @@ export function Hero({ stats, settings }: { stats: HeroStat[]; settings: SiteSet
           </Badge>
           <AnimatedText
             className="hero-title-enter conversion-title"
-            lines={settings.conversionHeadline
-              ? [{ text: settings.conversionHeadline }]
-              : [{ text: "Fast websites." }, { text: "Reliable workflows.", accent: true }, { text: "Less manual work." }]}
+            lines={settings.professionalHeadline
+              ? [{ text: settings.professionalHeadline }]
+              : [{ text: "Senior Next.js &" }, { text: "SvelteKit Developer", accent: true }, { text: "for SaaS and Ecommerce" }]}
           />
           <p className="hero-summary">
-            {settings.conversionDescription || "I help small businesses, SaaS teams, and ecommerce stores build better websites, connect their tools, and make everyday work run more smoothly."}
+            {settings.professionalSummary || "I build Next.js, React and SvelteKit websites, SaaS applications and ecommerce experiences, with reliable API and AI integrations. Based in Pakistan, working remotely with teams in the US, UK and Europe."}
           </p>
-          <p className="hero-identity">{settings.name} · Frontend developer & automation partner</p>
+          <p className="hero-identity">{settings.name} · Senior Full Stack SaaS & AI Developer</p>
           <div className="hero-actions">
             <ActionLink href="/services">
               Explore Services <ArrowUpRight size={16} aria-hidden="true" />

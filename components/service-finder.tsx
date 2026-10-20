@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useId, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { ActionLink } from "@/components/ui/action-link";
-import "@/components/growth-tools.css";
 
 const recommendations = {
   audit: { slug: "ai-automation-health-check", title: "AI / Automation Health Check", reason: "Start with a review of one workflow to identify failures, duplicate actions, missing alerts, and avoidable costs before deciding what to change." },

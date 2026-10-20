@@ -1,10 +1,10 @@
 # Blog imagery, FAQs and structured data
 
-Updated 19 October 2026.
+Updated 20 October 2026.
 
 ## Images and interaction
 
-The 100-article collection uses 100 individually generated editorial illustrations, each saved as a separate 1,600px WebP asset under `public/assets/img/blogs/artwork`. `content/blog-cover-art.json` records the article-specific brief and descriptive alternative text. Native ImageGen produced the original raster artwork; visible captions identify it as AI-generated. These are conceptual illustrations, not screenshots, client evidence or photographs.
+The 105-article collection uses 105 individually generated editorial illustrations, each saved as a separate 1,600px WebP asset under `public/assets/img/blogs/artwork`. `content/blog-cover-art.json` records the article-specific brief and descriptive alternative text. Native ImageGen produced the original raster artwork; visible captions identify it as AI-generated. These are conceptual illustrations, not screenshots, client evidence or photographs.
 
 `withBlogPhotography` now resolves covers by exact article slug. It never assigns a shared category image. A future article without a bundled illustration retains its own uploaded CMS cover; every publication must supply a unique image and check it against the existing collection. The CMS option **Use this article’s CMS cover** remains available, and the editor is responsible for unique artwork and accurate source/license information when using third-party media.
 

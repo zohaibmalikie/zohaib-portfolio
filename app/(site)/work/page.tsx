@@ -1,3 +1,4 @@
+import { isCanonicalPublicPage } from "@/lib/indexing";
 import { ProjectExplorer } from "@/components/project-explorer";
 
 import { JsonLd } from "@/components/json-ld";
@@ -9,7 +10,7 @@ export const revalidate = 3600;
 export async function generateMetadata() {
   const settings = await getSiteSettings({ stega: false });
   return buildMetadata({
-    title: "Work",
+    title: "Ecommerce & Website Development Case Studies | Zohaib Ramzan",
     description:
       "Frontend case studies and portfolio projects by Muhammad Zohaib Ramzan, including CMS, ecommerce, SaaS, and responsive website work.",
     path: "/work",
@@ -18,7 +19,13 @@ export async function generateMetadata() {
 }
 
 export default async function WorkPage() {
-  const projects = await getProjects();
+  const projects = (await getProjects()).filter((project) => isCanonicalPublicPage(`/work/${project.slug}`, project.seo));
+  // Only card/filter fields cross the server-to-client boundary. Detailed case
+  // bodies, screenshots and SEO settings remain on the server.
+  const explorerProjects = projects.map(({ _id, title, slug, shortDescription, projectDate, mainImage, techStack, servicesProvided, results }) => ({
+    _id, title, slug, shortDescription, projectDate, mainImage, techStack, servicesProvided,
+    results: results?.slice(0, 1)
+  }));
   const workListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -69,7 +76,7 @@ export default async function WorkPage() {
 
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="container">
-          <ProjectExplorer projects={projects} />
+          <ProjectExplorer projects={explorerProjects} />
         </div>
       </section>
     </main>

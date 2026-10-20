@@ -47,6 +47,8 @@ export const fallbackSettings: SiteSettings = {
     "/assets/img/zohaib-profile-portrait.webp",
     "Muhammad Zohaib Ramzan portrait"
   ),
+  professionalHeadline: "Senior Next.js & SvelteKit Developer for SaaS and Ecommerce",
+  professionalSummary: "I build Next.js, React and SvelteKit websites, SaaS applications and ecommerce experiences, with reliable API and AI integrations. Based in Pakistan, working remotely with teams in the US, UK and Europe.",
   conversionHeadline: "Fast websites. Reliable workflows. Less manual work.",
   conversionDescription: "I help businesses turn slow websites and repetitive processes into clear, responsive web experiences and dependable automations. From Next.js and CMS development to API repairs, we start with the outcome your team needs.",
   heroHeadline:
@@ -55,7 +57,7 @@ export const fallbackSettings: SiteSettings = {
     "I help businesses turn ideas into responsive, SEO-friendly websites, SaaS frontends, AI integrations, and automated workflows using React, Next.js, SvelteKit, Sanity, Builder.io, WordPress, and modern AI tools.",
   email: "hello@zohaibramzan.com",
   linkedinLink: "https://www.linkedin.com/in/zohaib-dev/",
-  githubLink: "https://github.com/",
+  githubLink: "https://github.com/zohaibmalikie",
   upworkLink: "",
   socialLinks: [
     {

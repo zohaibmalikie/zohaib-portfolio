@@ -4,7 +4,8 @@ import { NextStudio } from "next-sanity/studio";
 import config from "@/sanity.config";
 
 export const metadata: Metadata = {
-  title: "Sanity Studio"
+  title: "Sanity Studio",
+  robots: { index: false, follow: false, googleBot: { index: false, follow: false } }
 };
 
 export default function StudioPage() {

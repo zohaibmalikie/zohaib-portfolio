@@ -49,11 +49,11 @@ export function proxy(request: NextRequest) {
     "max-age=31536000; includeSubDomains"
   );
 
-  if (request.method === "GET" && !pathname.startsWith("/studio")) {
-    response.headers.set(
-      "Cache-Control",
-      "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
-    );
+  // Let Next.js own HTML caching, including private draft responses and errors.
+  const hasDraftCookie = request.cookies.has("__prerender_bypass");
+  if (hasDraftCookie) response.headers.set("Cache-Control", "private, no-store, max-age=0");
+  if (isStudioRoute(pathname) || hasDraftCookie || hostname.endsWith(".vercel.app")) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
   }
 
   if (sanityFrameableRoute) {

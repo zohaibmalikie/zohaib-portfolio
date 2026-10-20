@@ -108,6 +108,7 @@ export type Service = {
   faqs?: { question: string; answer: string }[];
   relatedPostSlugs?: string[];
   relatedProjectSlugs?: string[];
+  relatedServiceSlugs?: string[];
   offerLabel?: string;
   priceRange?: string;
   priceNote?: string;
@@ -145,6 +146,8 @@ export type SiteSettings = {
   logo?: SanityImage;
   profileImage?: SanityImage;
   heroHeadline?: string;
+  professionalHeadline?: string;
+  professionalSummary?: string;
   conversionHeadline?: string;
   conversionDescription?: string;
   heroDescription?: string;

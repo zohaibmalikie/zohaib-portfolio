@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { ServiceFinder } from "@/components/service-finder";
 import { Container } from "@/components/ui/container";
-import "@/components/growth-tools.css";
 
 export function GrowthTools() {
   return (

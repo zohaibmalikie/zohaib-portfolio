@@ -1,11 +1,18 @@
+import type { Metadata } from "next";
 import { DraftEditing } from "@/components/draft-editing";
 import { JsonLd } from "@/components/json-ld";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, getImageUrl } from "@/lib/seo";
 
 import { draftMode } from "next/headers";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { getSiteSettings } from "@/sanity/lib/fetchers";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return (await draftMode()).isEnabled
+    ? { robots: { index: false, follow: false, googleBot: { index: false, follow: false } } }
+    : {};
+}
 
 export default async function SiteLayout({
   children
@@ -33,7 +40,7 @@ export default async function SiteLayout({
         "@context": "https://schema.org",
         "@graph": [
           { "@type": "Person", "@id": absoluteUrl("/#person"), name: settings.name,
-            url: absoluteUrl("/"), image: settings.profileImage?.asset?.url,
+            url: absoluteUrl("/"), image: getImageUrl(settings.profileImage) ? absoluteUrl(getImageUrl(settings.profileImage)!) : undefined,
             sameAs: [settings.githubLink, settings.linkedinLink, settings.upworkLink].filter(Boolean) },
           { "@type": "WebSite", "@id": absoluteUrl("/#website"), name: settings.name,
             url: absoluteUrl("/"), inLanguage: "en", publisher: { "@id": absoluteUrl("/#person") } }

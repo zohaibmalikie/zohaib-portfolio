@@ -2,7 +2,6 @@
 
 import { useId, useState } from "react";
 import { ActionLink } from "@/components/ui/action-link";
-import "@/components/growth-tools.css";
 
 const fields = [
   { key: "records", label: "Records or tasks per month", value: 500, max: 1000000, step: 1, hint: "For example, orders, leads, or reports." },
