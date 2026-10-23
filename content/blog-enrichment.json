@@ -532,22 +532,35 @@
       {
         "question": "What should happen to disputed invoices in a reminder workflow?",
         "answer": "Route them through the agreed human policy and pause automatic reminders where required. Do not treat disputes, partial payments and ordinary overdue invoices as identical cases."
+      },
+      {
+        "question": "When is an invoicing platform’s built-in reminder feature enough?",
+        "answer": "Use the native feature when its schedule, templates, payment links and exclusions cover the approved process. A custom integration needs a specific missing behavior, such as a CRM hold or account-manager handoff, and should not duplicate the same reminder stage."
+      },
+      {
+        "question": "What should an invoice reminder workflow do after an email send times out?",
+        "answer": "Record the submission as uncertain and check the sending provider’s log or request reference before resending. A timeout does not prove rejection. Use provider-supported idempotency where available and document how uncertain sends are reconciled."
+      },
+      {
+        "question": "Which checks should be included when commissioning an invoice reminder repair?",
+        "answer": "Agree checks for payment after candidate selection, dispute holds, overlapping workers, uncertain sends, interrupted claims and timezone boundaries. Reconcile workflow records with provider message references and confirm that an operator can pause the workflow."
       }
     ],
     "visualSteps": [
       {
-        "title": "Read authoritative invoice state",
-        "description": "Use the provider invoice ID and agreed eligibility rules."
+        "title": "Choose the reminder owner",
+        "description": "Check native reminders first, identify any integration gap and assign one sender to each approved stage."
       },
       {
-        "title": "Claim a specific reminder",
-        "description": "Recheck exclusions and prevent overlapping runs from sending twice."
+        "title": "Recheck and claim the stage",
+        "description": "Retrieve current invoice state, apply holds and use durable uniqueness to prevent overlapping workers from claiming the same reminder."
       },
       {
-        "title": "Record and recover",
-        "description": "Store the send reference and keep provider failures recoverable."
+        "title": "Reconcile uncertain outcomes",
+        "description": "Retain the provider reference, investigate send timeouts before resending and test the agreed recovery path."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-23T14:10:29+05:00"
   },
   "n8n-workflow-error-handling": {
     "source": "content/editorial-articles.json#n8n-workflow-error-handling",
