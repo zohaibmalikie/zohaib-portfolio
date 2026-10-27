@@ -1171,22 +1171,35 @@
       {
         "question": "What should happen before changing a published article slug?",
         "answer": "Plan the old URL’s behavior and relevant redirect, then check internal links and discovery routes. Also verify retired CMS content is not unexpectedly restored by local fallback rules."
+      },
+      {
+        "question": "How should editors verify a CMS change without accidentally checking a draft preview?",
+        "answer": "Open the canonical public URL in a signed-out browser without the preview cookie. Compare the published CMS response with the detail page, archive card, relevant topic view, metadata and documented discovery output."
+      },
+      {
+        "question": "Why can a successful revalidation webhook still be followed by old content?",
+        "answer": "Acceptance of a webhook is not proof that every dependent view has regenerated. Route Handler path revalidation can wait for the next visit, and stale-while-revalidate tag behavior can serve a previous value while fresh data loads. Test the expected freshness window in the deployed build."
+      },
+      {
+        "question": "What should be included in a CMS publishing workflow handoff?",
+        "answer": "Name the reviewers, publisher and technical owner. Document the source of truth, affected views, freshness expectation, failure-reporting route, rollback steps and intended behavior for slug changes or retired content."
       }
     ],
     "visualSteps": [
       {
-        "title": "Review and preview",
-        "description": "Check headings, links, images, dates and mobile presentation."
+        "title": "Review the source revision",
+        "description": "Confirm the approved content, permissions and authorized draft preview before publication."
       },
       {
-        "title": "Observe one publication",
-        "description": "Confirm an identifiable change in the CMS and revalidation request."
+        "title": "Trace public delivery",
+        "description": "Compare the published CMS response, revalidation outcome and signed-out dependent views within the agreed freshness window."
       },
       {
-        "title": "Verify dependent routes",
-        "description": "Check article, listings, sitemap and intended retirement behavior."
+        "title": "Rehearse recovery and handoff",
+        "description": "Verify rollback, URL changes and retirement behavior, then give editors a named owner and repeatable acceptance checklist."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-28T00:32:31+05:00"
   },
   "react-fetch-race-conditions": {
     "source": "content/editorial-articles.json#react-fetch-race-conditions",
