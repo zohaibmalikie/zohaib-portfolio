@@ -1,19 +1,27 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
-import type { FormEvent } from "react";
+import { Mail, MessageCircle } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 const services = [
   { value: "health-check", label: "AI / Automation Health Check" },
   { value: "build-or-repair", label: "Workflow Implementation or Repair" },
   { value: "maintenance", label: "Ongoing Automation Maintenance" },
-  { value: "website-or-seo", label: "Website or SEO" },
+  { value: "website", label: "Next.js / React Website or CMS" },
+  { value: "seo", label: "Technical SEO or Website Performance" },
   { value: "other", label: "Something else" }
 ];
 
-export function EnquiryForm({ defaultService = "" }: { defaultService?: string }) {
+export function EnquiryForm({ defaultService = "", email }: { defaultService?: string; email?: string }) {
   const initialService = services.some((service) => service.value === defaultService) ? defaultService : "";
-  function continueInWhatsApp(event: FormEvent<HTMLFormElement>) {
+  const [draft, setDraft] = useState<{ message: string; service: string; subject: string } | null>(null);
+  const [copyStatus, setCopyStatus] = useState("");
+  const draftHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (draft) draftHeading.current?.focus();
+  }, [draft]);
+
+  function prepareBrief(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
@@ -32,20 +40,31 @@ export function EnquiryForm({ defaultService = "" }: { defaultService?: string }
       description,
       ...(budget ? ["", `Approximate budget: ${budget}`] : [])
     ].join("\n");
-    const whatsappUrl = new URL("https://api.whatsapp.com/send");
-    whatsappUrl.searchParams.set("phone", "923090844077");
-    whatsappUrl.searchParams.set("text", message);
+    setDraft({ message, service: selectedService.value, subject: `Project enquiry: ${selectedService.label}` });
+    setCopyStatus("");
+  }
 
+  function recordIntent(channel: "email" | "whatsapp") {
+    if (!draft) return;
     // This is enquiry intent only. It does not confirm a message was sent or a lead received.
     // Event details contain no name, description or budget; no analytics provider is configured.
     window.dispatchEvent(new CustomEvent("portfolio:enquiry-intent", {
-      detail: { service: selectedService.value, channel: "whatsapp" }
+      detail: { service: draft.service, channel }
     }));
-    window.location.assign(whatsappUrl.toString());
+  }
+
+  async function copyBrief() {
+    if (!draft) return;
+    try {
+      await navigator.clipboard.writeText(draft.message);
+      setCopyStatus("Brief copied. Paste it into your preferred email or messaging app.");
+    } catch {
+      setCopyStatus("Copy is unavailable. Select and copy the brief below instead.");
+    }
   }
 
   return (
-    <form className="enquiry-form" onSubmit={continueInWhatsApp} aria-describedby="enquiry-next-step">
+    <form className="enquiry-form" onSubmit={prepareBrief} onChange={() => { setDraft(null); setCopyStatus(""); }} aria-describedby="enquiry-next-step">
       <div className="enquiry-form-row">
         <div className="enquiry-field">
           <label htmlFor="enquiry-name">Your name <span>(required)</span></label>
@@ -75,10 +94,21 @@ export function EnquiryForm({ defaultService = "" }: { defaultService?: string }
       </div>
       <div className="enquiry-form-footer">
         <button className="button button-primary" type="submit">
-          <MessageCircle size={17} aria-hidden="true" /> Continue in WhatsApp
+          Prepare my project brief
         </button>
-        <p id="enquiry-next-step">Review and send your message in WhatsApp.</p>
+        <p id="enquiry-next-step">Then choose {email ? "email or " : ""}WhatsApp. Nothing is sent from this form.</p>
       </div>
+      {draft ? <section className="enquiry-draft" aria-labelledby="enquiry-draft-title">
+        <h3 id="enquiry-draft-title" ref={draftHeading} tabIndex={-1}>Your brief is ready to send</h3>
+        <p>Choose an app, review the message and send it there. {email ? `If no email app opens, copy the brief and email ${email}.` : "You can also copy the brief below."}</p>
+        <div className="button-row">
+          {email ? <a className="button button-primary" href={`mailto:${email}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.message)}`} onClick={() => recordIntent("email")}><Mail size={17} aria-hidden="true" /> Open email draft</a> : null}
+          <a className="button button-secondary" href={`https://api.whatsapp.com/send?phone=923090844077&text=${encodeURIComponent(draft.message)}`} target="_blank" rel="noopener noreferrer" onClick={() => recordIntent("whatsapp")}><MessageCircle size={17} aria-hidden="true" /> Open WhatsApp draft</a>
+          <button className="button button-secondary" type="button" onClick={copyBrief}>Copy brief</button>
+        </div>
+        <p role="status">{copyStatus}</p>
+        <details><summary>Review or manually copy your brief</summary><pre className="enquiry-brief">{draft.message}</pre></details>
+      </section> : null}
     </form>
   );
 }

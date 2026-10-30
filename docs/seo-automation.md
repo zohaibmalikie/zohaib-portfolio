@@ -31,7 +31,7 @@ Bundled articles render without Sanity. CMS documents override bundled posts by 
 
 ## Enquiry behavior and measurement
 
-The site has direct WhatsApp and email links plus a short form that prepares a WhatsApp message. The visitor reviews and sends it in WhatsApp. The form does not save enquiries to a database or confirm delivery. Its `portfolio:enquiry-intent` browser event contains service/channel only and has no configured reporting destination. It is not persistent analytics. Confirmed enquiries must be recorded from actual received conversations or a future connected CRM/analytics setup.
+The site has direct WhatsApp and email links plus a short form that prepares a project brief. The visitor can open an email or WhatsApp draft, or copy the brief manually, then review and send it in their chosen app. The form does not save enquiries to a database or confirm delivery. Preparing or copying a brief is not a received enquiry. Development and technical SEO are separate service choices; preserve service selection from the landing page. Its `portfolio:enquiry-intent` browser event contains service/channel only and has no configured reporting destination. It is not persistent analytics. Confirmed enquiries must be recorded from actual received conversations or a future connected CRM/analytics setup.
 
 Record search metrics and received enquiry counts separately. When enquiry data is unavailable, say so. Do not access unrelated inbox messages or contact prospective customers without explicit authorization.
 

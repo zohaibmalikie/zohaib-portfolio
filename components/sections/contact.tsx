@@ -23,7 +23,7 @@ export function Contact({ settings }: { settings: SiteSettings }) {
             Share the tools you use and the outcome you want. We can agree on a
             focused scope and the right next step.
           </p>
-          <EnquiryForm />
+          <EnquiryForm email={settings.email} />
           <p className="contact-direct-label">Prefer to start a conversation directly?</p>
           <div className="button-row contact-direct-links">
             <ActionLink

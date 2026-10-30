@@ -1997,6 +1997,19 @@ p {
   gap: 12px;
 }
 
+.enquiry-draft {
+  padding: 24px;
+  border: 1px solid var(--primary);
+  border-radius: 16px;
+  min-width: 0;
+}
+
+.enquiry-draft h3 { margin-top: 0; }
+.enquiry-draft .button-row { flex-wrap: wrap; }
+.enquiry-draft .button { white-space: normal; }
+.enquiry-draft summary { cursor: pointer; }
+.enquiry-brief { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; }
+
 .contact-panel .contact-direct-label {
   margin: 30px 0 12px;
   font-size: 0.9rem;
