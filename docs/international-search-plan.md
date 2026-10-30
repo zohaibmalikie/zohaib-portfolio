@@ -30,6 +30,8 @@ Technical answers were checked against [Next.js CLI documentation](https://nextj
 
 ## Priorities and measurement
 
+Follow the [client acquisition priorities](client-acquisition-priorities.md), reviewed 30 October 2026, for buyer evidence, the email/WhatsApp brief handoff, received-enquiry architecture and SEO/GEO/AEO decisions. Keep its private assessment and reporting exports in `.seo-reports/`.
+
 1. Verify deployed service pages, mobile enquiry usability, canonical URLs, unique images, schema and generated discovery routes. Fix important indexing problems by reported reason, rather than trying to index every excluded URL.
 2. Improve the commercial service pages and relevant case-study evidence before adding broad informational topics. Connect each useful article to the service that can solve its reader's problem.
 3. Use the existing maintenance automation to inspect evidence and improve useful material; publish new articles only for distinct, researched needs. Compare complete equal reporting windows and distinguish branded, informational and service intent.
