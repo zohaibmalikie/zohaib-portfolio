@@ -523,5 +523,11 @@
     "prompt": "Create one premium conceptual editorial blog cover in landscape 16:9. A pair of different instruments on charcoal stone: a focused inspection lamp examining one glass page and an orderly calendar-shaped series of green tiles extending into depth. Photorealistic sculptural 3D illustration, charcoal, warm ivory, mint and copper palette, restrained magazine composition, realistic tactile surfaces, generous breathing room. No text, letters, numbers, logos, watermarks, fake screenshots, robot heads or generic workflow nodes. Distinct object-based composition for this specific article. This is conceptual artwork, not client evidence.",
     "alt": "An inspection lamp over a glass page beside a sequence of calendar tiles",
     "source": "AI-generated original editorial artwork"
+  },
+  "contact-form-not-sending-enquiries": {
+    "prompt": "Use case: stylized-concept. Asset type: unique editorial blog cover, landscape 16:9. Primary request: a premium sculptural illustration about a website contact enquiry failing to reach a business inbox. One translucent ivory envelope travels along a carefully routed copper channel toward a dark green receiving tray; a single visible gap interrupts the channel and a small amber inspection light illuminates that gap. Refined charcoal stone surface, forest green, ivory and restrained copper, realistic tactile 3D materials, precise editorial composition, elegant side lighting, generous negative space. No text, no letters, no logos, no watermark, no human figures, no fake UI, no robot, no generic branching workflow. Conceptual artwork, not a screenshot or client evidence.",
+    "alt": "An ivory envelope on a copper delivery channel interrupted by a gap before a green inbox tray",
+    "source": "AI-generated original editorial artwork"
   }
+
 }

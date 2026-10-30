@@ -1238,6 +1238,14 @@
       {
         "question": "When should a form display a successful submission state?",
         "answer": "Only after the promised acceptance step actually succeeds. If delivery continues asynchronously, provide a recovery owner and avoid implying the email or CRM action already completed."
+      },
+      {
+        "question": "How should a form explain an email or WhatsApp draft handoff?",
+        "answer": "State that the brief is prepared on the visitor’s device and must be reviewed and sent in the chosen app. Keep a manual-copy alternative and do not present draft creation as delivered enquiry confirmation."
+      },
+      {
+        "question": "Where should keyboard focus go after preparing a project brief?",
+        "answer": "Move focus to the newly displayed review heading or another meaningful result target. Keep the draft actions keyboard accessible and preserve a clear way to return to the fields and correct the brief."
       }
     ],
     "visualSteps": [
@@ -1253,7 +1261,8 @@
         "title": "Verify actual acceptance",
         "description": "Test slow, failed and repeated submissions and reconcile the enquiry destination."
       }
-    ]
+    ],
+    "updatedAt": "2026-10-30T19:21:16+05:00"
   },
   "ecommerce-product-filter-performance": {
     "source": "content/editorial-articles.json#ecommerce-product-filter-performance",
@@ -2927,6 +2936,41 @@
       {
         "title": "Verify and revisit",
         "description": "Check deployed behavior and compare meaningful search and enquiry evidence over time."
+      }
+    ]
+  },
+  "contact-form-not-sending-enquiries": {
+    "source": "content/editorial-articles.json#contact-form-not-sending-enquiries",
+    "faqs": [
+      {
+        "question": "Why can a contact form show success without an enquiry reaching my inbox?",
+        "answer": "Its success message may describe a draft or an accepted request rather than delivery. Trace the browser request, application acceptance and notification outcome separately to identify the missing boundary."
+      },
+      {
+        "question": "Does an email provider delivered event prove the enquiry was read?",
+        "answer": "No. Check the selected provider’s definition. Delivery to a recipient mail server does not prove inbox placement, a human read, a reply or a qualified opportunity."
+      },
+      {
+        "question": "Should I replace my website when its enquiry emails stop arriving?",
+        "answer": "Start with one controlled request and inspect the form endpoint, sender configuration, destination and provider status. A narrowly scoped delivery repair may be sufficient; redesign only when the investigation supports it."
+      },
+      {
+        "question": "How can I test contact-form delivery without using customer data?",
+        "answer": "Use synthetic details in staging and an owner-controlled destination, or the provider’s test facility where available. Document simulated dependencies and agree any production verification with the business owner."
+      }
+    ],
+    "visualSteps": [
+      {
+        "title": "Define acceptance",
+        "description": "Identify whether the form prepares a draft, records an enquiry or submits a notification."
+      },
+      {
+        "title": "Trace one reference",
+        "description": "Follow a controlled synthetic request across the application, provider and destination."
+      },
+      {
+        "title": "Recover the missing step",
+        "description": "Reconcile uncertainty, retry the failed notification safely and verify the agreed outcome."
       }
     ]
   }

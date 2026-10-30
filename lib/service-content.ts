@@ -101,7 +101,7 @@ export const serviceDetails: Record<string, Partial<Service>> = {
       { question: "Can my team edit the website?", answer: "The content that needs ongoing editorial changes can be modeled in a CMS such as Sanity. Editing requirements, preview, and publishing behavior are agreed during scoping." },
       { question: "Does a Next.js website guarantee better rankings?", answer: "No framework guarantees rankings. The implementation can support crawlable content, fast pages, clear metadata, and reliable publishing; search performance also depends on relevance, content, competition, and other signals." }
     ],
-    relatedPostSlugs: ["hire-freelance-nextjs-developer-project-brief", "nextjs-technical-seo-checklist", "cms-publishing-workflow-checklist", "accessible-contact-form-checklist"],
+    relatedPostSlugs: ["contact-form-not-sending-enquiries", "hire-freelance-nextjs-developer-project-brief", "nextjs-technical-seo-checklist", "cms-publishing-workflow-checklist", "accessible-contact-form-checklist"],
     relatedProjectSlugs: ["partco-electronics-store", "warehouse-equipment-b2b-ecommerce", "ledstore"],
     seo: { keywords: ["freelance Next.js developer", "remote React developer", "Sanity CMS development"], metaTitle: "Freelance Next.js & React Developer | Zohaib Ramzan", metaDescription: "Build a Next.js, React or SvelteKit frontend for your SaaS, ecommerce or business website, with CMS editing, API integration and a practical handoff." }
   },
