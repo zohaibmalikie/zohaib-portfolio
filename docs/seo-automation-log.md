@@ -125,3 +125,5 @@ Expanded the existing automation platform migration checklist with an acceptance
 Content validation, lint, TypeScript, five native SEO tests, production build and the 141-page local canonical audit passed. Verified original and modified dates, all five FAQ answers against the visible text, both primary links, original WebP, sitemap, robots, discovery and the contact path. The release was prepared in an isolated checkout; the unrelated unpublished tool draft was excluded.
 
 Publication state at preparation: tested candidate. The exact production revision and verification are recorded in the private release report after deployment.
+
+Publication confirmed: content commit `437889e49541edb158e8cfac1f9a8e8103415667` reached production READY as `dpl_B3RtE9MBCwmq93FsjPPf3ANuTH36` on the existing domain aliases. The live guide returned the new worked example and excerpt, the original publication date and cover, the November 6 modified date and five matching FAQ answers. Verified the primary links, canonical, sitemap, robots, discovery and service-selected contact path. No test enquiry was sent. The earlier candidate state is historical.
