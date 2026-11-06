@@ -626,20 +626,32 @@
       {
         "question": "How can a replacement workflow be compared without duplicating writes?",
         "answer": "Use controlled shadow processing or compare proposed changes while suppressing duplicate external actions. Define cutover and rollback responsibilities before moving live intake."
+      },
+      {
+        "question": "What should we do with a timed-out destination write during cutover?",
+        "answer": "Treat its outcome as uncertain. Look up the destination using the stable source reference and reconcile the result before retrying. If you cannot verify it or enforce uniqueness, pause the action for manual review."
+      },
+      {
+        "question": "Can we roll back by switching the old automation back on?",
+        "answer": "Only after stopping the replacement writer and reconciling what it already completed. The old workflow needs a checkpoint and duplicate-handling state it can use safely; otherwise hold pending work for controlled recovery."
+      },
+      {
+        "question": "What evidence should we require before retiring the original workflow?",
+        "answer": "Reconcile eligible source references with destination records and important mapped fields. Confirm the new trigger, recovery owner and alert path, then retire the old workflow after the agreed observation period."
       }
     ],
     "visualSteps": [
       {
-        "title": "Inventory workflows and state",
-        "description": "Include schedules, dependencies, credentials, checkpoints and pending exceptions."
+        "title": "Record state and ownership",
+        "description": "Inventory triggers, destination writes, credentials, checkpoints and in-flight work. Define acceptance and who can approve the switch."
       },
       {
-        "title": "Compare without duplicate writes",
-        "description": "Validate the replacement against controlled or shadow inputs."
+        "title": "Rehearse and switch one writer",
+        "description": "Compare proposed writes in staging, capture the backlog and drain or fence old writes before enabling the replacement."
       },
       {
-        "title": "Reconcile and retire",
-        "description": "Check the transition window and disable old triggers after a verified cutover."
+        "title": "Reconcile before retiring",
+        "description": "Check source references and destination results. Confirm rollback state and give exceptions to the recovery owner."
       }
     ]
   },

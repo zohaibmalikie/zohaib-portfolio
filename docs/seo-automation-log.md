@@ -115,3 +115,13 @@ Publication state: local candidate. Publish after content, lint, typecheck, nati
 Pre-release validation passed: content inventory (106 distinct covers and 236 unique article FAQ questions), lint, typecheck, five native SEO tests, build and the 141-page canonical audit. The new image opens with keyboard activation and closes with Escape; the second walkthrough stage changes correctly, and mobile layout has no horizontal overflow. Source links were researched against primary documentation; article and existing-guide FAQ parity passed. No messages were sent.
 
 Publication confirmed: product commit `b7c74631a130006159c1febbbb6e25aa1808e35a` reached production READY as `dpl_H5mwABQ21QFQXz2KrCcfqdWpCg4i` on the existing domain aliases. Both changed articles returned 200 with four FAQs each. The new unique cover, sitemap inclusion, robots, text discovery routes and service-selected contact destination were verified publicly. The expanded full-site live audit result is retained privately in `.seo-reports/article-live-audit-2026-10-30.txt` and the release record. No messages were sent. The candidate state above is historical; the article and six added FAQs are live.
+
+## 6 November 2026 — automation migration cutover guide
+
+Reviewed two complete, finalized 28-day Search Console windows and the available sitemap summaries. Query, page and country reports are kept privately in ignored reports. The existing migration guide had useful exposure, but its filtered query report returned no rows; no particular keyword demand or ranking outcome was inferred. URL-level indexing reasons and confirmed enquiry receipt remain unavailable from the connected sources.
+
+Expanded the existing automation platform migration checklist with an acceptance contract, a clearly hypothetical ten-enquiry CRM reconciliation, single-writer cutover, uncertain-write recovery and rollback criteria. Added three original FAQs, improved the walkthrough and excerpt, and linked verified n8n/Stripe guidance and the relevant workflow repair enquiry path. Preserved the canonical URL, first publication date and unique original cover. No new article or message was sent.
+
+Content validation, lint, TypeScript, five native SEO tests, production build and the 141-page local canonical audit passed. Verified original and modified dates, all five FAQ answers against the visible text, both primary links, original WebP, sitemap, robots, discovery and the contact path. The release was prepared in an isolated checkout; the unrelated unpublished tool draft was excluded.
+
+Publication state at preparation: tested candidate. The exact production revision and verification are recorded in the private release report after deployment.
